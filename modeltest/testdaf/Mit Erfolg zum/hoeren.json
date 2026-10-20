@@ -1,0 +1,172 @@
+{
+  "kind": "prepstudio.module",
+  "version": 1,
+  "exported": "2026-10-20T12:00:00.000Z",
+  "exam": "testdaf",
+  "level": "TestDaF",
+  "module": "hoeren",
+  "name": "TestDaF — Modellprüfung 1 — Hören",
+  "content": {
+    "H1": {
+      "title": "Gespräch vor dem Professorenbüro",
+      "instruction": "Sie hören ein Gespräch zwischen den Studierenden Sandra und Julius. Ergänzen Sie beim Hören die fünf leeren Felder in der Tabelle. Schreiben Sie pro Feld maximal 2 Wörter. Sie hören das Gespräch einmal.",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext und Transkription online verfügbar (Track 1-2). Lösungen aus dem Lösungsschlüssel übernommen."
+          }
+        ]
+      },
+      "items": [
+        { "prompt": "Sandra arbeitet bei Professor Dr. Kruse an (1)", "answer": "einer Promotion / Dissertation / Doktorarbeit" },
+        { "prompt": "Dienstag Vormittag: Vorlesung in (2)", "answer": "praktischer Philosophie" },
+        { "prompt": "Dienstag Nachmittag: Problem (3)", "answer": "Computer abgestürzt / Daten weg / Software / Computer kaputt" },
+        { "prompt": "Donnerstag Nachmittag: Klausur in (4)", "answer": "alter Geschichte" },
+        { "prompt": "Freitag Vormittag: Kurs in (5)", "answer": "kreativem Schreiben" }
+      ]
+    },
+    "H2": {
+      "title": "Podiumsdiskussion „Citymaut“",
+      "instruction": "Notieren Sie für jede Person, welche Maßnahme sie vorschlägt und die dazugehörige Folge in Stichpunkten. Das Gespräch hören Sie einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        {
+          "prompt": "Herr Klöbner – Maßnahme",
+          "answer": "Citymaut einführen"
+        },
+        {
+          "prompt": "Herr Klöbner – Folge",
+          "answer": "weniger Verkehr / weniger Staus"
+        },
+        {
+          "prompt": "Frau Wagner – Maßnahme",
+          "answer": "öffentliche Verkehrsmittel billiger / kostenfrei anbieten"
+        },
+        {
+          "prompt": "Frau Wagner – Folge",
+          "answer": "Leute steigen auf öffentliche Verkehrsmittel um"
+        }
+      ]
+    },
+    "H3": {
+      "title": "Vorlesung „Regenerative Energien“",
+      "instruction": "Nach dem Hören wird eine schriftliche Zusammenfassung eingeblendet. Markieren Sie die Sätze, die eine falsche Information enthalten. Sie hören den Text einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        {
+          "prompt": "Falsche Sätze in der Zusammenfassung",
+          "answer": [
+            "Viele Menschen sind mittlerweile zu der Auffassung gelangt, dass regenerative Energien doch nicht so umweltfreundlich sind, wie man anfänglich angenommen hat.",
+            "Diese Dämme halten zwar das Wasser zurück, aber nicht die für viele Lebewesen notwendigen fruchtbaren Sedimente."
+          ],
+          "why": "Diese beiden Aussagen widersprechen dem Hörtext."
+        }
+      ]
+    },
+    "H4": {
+      "title": "Podiumsdiskussion „Resistenz gegen Antibiotika“",
+      "instruction": "Klicken Sie an, zu wem die Aussagen 1-6 passen (Herr Dr. Matthäus / Frau Zeltler / beide / keiner). Sie sehen das Video einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        { "prompt": "1. Schon der Erfinder des Penicillins hat befürchtet, dass Bakterien resistent werden könnten.", "answer": "Herr Dr. Matthäus" },
+        { "prompt": "2. Die Landwirtschaft ist ein Faktor, der zur Resistenzbildung beiträgt.", "answer": "Frau Zeltler" },
+        { "prompt": "3. Wenn der Mensch Fleisch isst, nimmt er damit möglicherweise auch Antibiotika auf.", "answer": "beide" },
+        { "prompt": "4. Vor den Bakterien gab es keine anderen Lebewesen auf der Erde.", "answer": "Herr Dr. Matthäus" },
+        { "prompt": "5. Die entwickelten Länder sind durch die Antibiotikaresistenz weniger gefährdet.", "answer": "keiner" },
+        { "prompt": "6. Ein Antibiotikum zu entwickeln, das gegen alle Bakterien wirkt, lohnt sich finanziell nicht.", "answer": "beide" }
+      ]
+    },
+    "H5": {
+      "title": "Vorlesung „Artensterben“",
+      "instruction": "Ergänzen Sie beim Hören die Gliederungspunkte in den Textfeldern in Stichpunkten. Sie sehen das Video einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        { "prompt": "Definition von Massensterben (nennen Sie einen Aspekt)", "answer": "Viele Arten sterben schnell aus / Arten sterben schnell aus / Zeitspanne ist zu kurz" },
+        { "prompt": "Argument gegen Ausrufung des Anthropozäns", "answer": "Zeitspanne ist zu kurz" },
+        { "prompt": "Seit 1800 paralleler Anstieg von", "answer": "Bevölkerungszahl und Artensterben / Aussterben von Tierarten" },
+        { "prompt": "Vom fünften Massensterben profitierten", "answer": "Säugetiere / Menschen" }
+      ]
+    },
+    "H6": {
+      "title": "Vortrag „Prozessautomatisierung“",
+      "instruction": "Beantworten Sie die Fragen 1-5. Für jede Frage gibt es genau eine richtige Lösung. Sie hören den Text einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        {
+          "prompt": "Die Automatisierung von Arbeitsprozessen",
+          "options": [
+            "gibt es schon seit der Industrialisierung.",
+            "konzentrierte sich bis jetzt auf bestimmte Bereiche.",
+            "wird heutzutage kritischer gesehen als früher.",
+            "wird in der modernen Welt begrüßt."
+          ],
+          "answer": 1,
+          "why": "Antwort b"
+        },
+        {
+          "prompt": "Software-Roboter",
+          "options": [
+            "können Forschungsdaten analysieren.",
+            "machen Fabrikarbeiter überflüssig.",
+            "simulieren menschliche Handlungen.",
+            "unterstützen die industrielle Produktion."
+          ],
+          "answer": 2,
+          "why": "Antwort c"
+        },
+        {
+          "prompt": "Die von dem Sprecher genannten Vorteile",
+          "options": [
+            "betreffen nur wenige Wirtschaftszweige.",
+            "gelten vor allem für die Unternehmen.",
+            "kommen besonders den Mitarbeitenden zugute.",
+            "sind bis jetzt noch nicht bewiesen."
+          ],
+          "answer": 1,
+          "why": "Antwort b"
+        },
+        {
+          "prompt": "Wie äußert sich der Sprecher über die zukünftige menschliche Arbeit?",
+          "options": [
+            "Er empfiehlt, dass die Unternehmen die Arbeitszeiten reduzieren.",
+            "Er kritisiert, dass Menschen nicht mehr arbeiten möchten.",
+            "Er vermutet, dass qualifizierte Tätigkeiten bald automatisiert werden.",
+            "Er warnt, dass das Leben ohne Arbeit seinen Sinn verliert."
+          ],
+          "answer": 0,
+          "why": "Antwort a"
+        },
+        {
+          "prompt": "Das Hauptziel des Vortrags besteht darin,",
+          "options": [
+            "auf die Gefahren der Automatisierung hinzuweisen.",
+            "die Geschichte der Automatisierung darzulegen.",
+            "die großen Vorteile von Automatisierung zu erklären.",
+            "einen guten Umgang mit Automatisierung aufzuzeigen."
+          ],
+          "answer": 3,
+          "why": "Antwort d"
+        }
+      ]
+    },
+    "H7": {
+      "title": "Laut- und Schriftbild abgleichen – Die Entwicklung der Sprachen",
+      "instruction": "Hörtext und schriftlicher Text sind nicht identisch. Vier Wörter sind unterschiedlich. Klicken Sie auf die vier Wörter, die nicht dem Hörtext entsprechen. Sie hören den Text einmal.",
+      "audio": { "plays": 1, "script": [] },
+      "items": [
+        {
+          "prompt": "Unterschiedliche Wörter (schriftlich → gehört)",
+          "answer": [
+            "vor → von",
+            "Rolle → Roller",
+            "Menschen → Männchen",
+            "zwischen → wischen"
+          ],
+          "why": "Laut Lösungsschlüssel der Modellprüfung 1"
+        }
+      ]
+    }
+  }
+}
