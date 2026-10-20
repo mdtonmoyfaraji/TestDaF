@@ -9,90 +9,173 @@
   "content": {
     "H1": {
       "title": "Gespräch vor dem Professorenbüro",
-      "instruction": "Sie hören ein Gespräch zwischen den Studierenden Sandra und Julius. Ergänzen Sie beim Hören die fünf leeren Felder in der Tabelle. Schreiben Sie pro Feld maximal 2 Wörter. Sie hören das Gespräch einmal.",
+      "instruction": "Ergänzen Sie die Übersicht in Stichworten. Hören Sie das Gespräch nur einmal.",
       "audio": {
         "plays": 1,
         "script": [
           {
             "speaker": "Hinweis",
-            "text": "Vollständiger Hörtext und Transkription online verfügbar (Track 1-2). Lösungen aus dem Lösungsschlüssel übernommen."
+            "text": "Vollständiger Hörtext und Transkription online unter www.klett-sprachen.de/MEz-digitalen-TestDaF verfügbar. Die Antworten stammen aus dem offiziellen Lösungsschlüssel der Modellprüfung 1."
           }
         ]
       },
       "items": [
-        { "prompt": "Sandra arbeitet bei Professor Dr. Kruse an (1)", "answer": "einer Promotion / Dissertation / Doktorarbeit" },
-        { "prompt": "Dienstag Vormittag: Vorlesung in (2)", "answer": "praktischer Philosophie" },
-        { "prompt": "Dienstag Nachmittag: Problem (3)", "answer": "Computer abgestürzt / Daten weg / Software / Computer kaputt" },
-        { "prompt": "Donnerstag Nachmittag: Klausur in (4)", "answer": "alter Geschichte" },
-        { "prompt": "Freitag Vormittag: Kurs in (5)", "answer": "kreativem Schreiben" }
+        { "prompt": "Sandra arbeitet bei Professor Dr. Kruse an:", "answer": "einer Promotion / Dissertation / Doktorarbeit" },
+        { "prompt": "Dienstag Vormittag – Vorlesung in:", "answer": "praktischer Philosophie" },
+        { "prompt": "Dienstag Nachmittag – Problem:", "answer": "Computer abgestürzt / Daten weg / Software / Computer kaputt" },
+        { "prompt": "Donnerstag Nachmittag – Klausur in:", "answer": "alter Geschichte" },
+        { "prompt": "Freitag Vormittag – Kurs in:", "answer": "kreativem Schreiben" }
       ]
     },
     "H2": {
       "title": "Podiumsdiskussion „Citymaut“",
-      "instruction": "Notieren Sie für jede Person, welche Maßnahme sie vorschlägt und die dazugehörige Folge in Stichpunkten. Das Gespräch hören Sie einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "instruction": "Hören Sie das Interview. Notieren Sie zu den Personen stichartig, was im Text darüber gesagt wird. Schreiben Sie Stichworte.",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext online verfügbar. Antworten aus dem offiziellen Lösungsschlüssel."
+          }
+        ]
+      },
       "items": [
-        {
-          "prompt": "Herr Klöbner – Maßnahme",
-          "answer": "Citymaut einführen"
-        },
-        {
-          "prompt": "Herr Klöbner – Folge",
-          "answer": "weniger Verkehr / weniger Staus"
-        },
-        {
-          "prompt": "Frau Wagner – Maßnahme",
-          "answer": "öffentliche Verkehrsmittel billiger / kostenfrei anbieten"
-        },
-        {
-          "prompt": "Frau Wagner – Folge",
-          "answer": "Leute steigen auf öffentliche Verkehrsmittel um"
-        }
+        { "prompt": "Herr Klöbner – Maßnahme", "answer": "Citymaut einführen" },
+        { "prompt": "Herr Klöbner – Folge", "answer": "weniger Verkehr / weniger Staus" },
+        { "prompt": "Frau Wagner – Maßnahme", "answer": "öffentliche Verkehrsmittel billiger / kostenfrei anbieten" },
+        { "prompt": "Frau Wagner – Folge", "answer": "Leute steigen auf öffentliche Verkehrsmittel um" }
       ]
     },
     "H3": {
       "title": "Vorlesung „Regenerative Energien“",
-      "instruction": "Nach dem Hören wird eine schriftliche Zusammenfassung eingeblendet. Markieren Sie die Sätze, die eine falsche Information enthalten. Sie hören den Text einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "instruction": "Vergleichen Sie den gehörten Text mit der schriftlichen Zusammenfassung. Welche Aussage stimmt nicht?",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext online verfügbar. Die beiden falschen Sätze stammen aus dem offiziellen Lösungsschlüssel."
+          }
+        ]
+      },
       "items": [
         {
-          "prompt": "Falsche Sätze in der Zusammenfassung",
-          "answer": [
+          "prompt": "Welche Information aus dem Text wird in der schriftlichen Zusammenfassung falsch wiedergegeben?",
+          "options": [
+            "Regenerative Energien sind umweltfreundlicher als anfangs angenommen.",
             "Viele Menschen sind mittlerweile zu der Auffassung gelangt, dass regenerative Energien doch nicht so umweltfreundlich sind, wie man anfänglich angenommen hat.",
-            "Diese Dämme halten zwar das Wasser zurück, aber nicht die für viele Lebewesen notwendigen fruchtbaren Sedimente."
+            "Staudämme halten fruchtbare Sedimente zurück.",
+            "Windräder zerstören das Landschaftsbild."
           ],
-          "why": "Diese beiden Aussagen widersprechen dem Hörtext."
+          "answer": 1,
+          "why": "Laut Lösungsschlüssel ist dieser Satz einer der beiden falschen Sätze in der Zusammenfassung.",
+          "audio_reference": "Viele Menschen sind mittlerweile zu der Auffassung gelangt, dass regenerative Energien doch nicht so umweltfreundlich sind, wie man anfänglich angenommen hat."
+        },
+        {
+          "prompt": "Welche weitere Aussage in der Zusammenfassung widerspricht dem Hörtext?",
+          "options": [
+            "Solarenergie verursacht Umweltprobleme durch Blei und Cadmium.",
+            "Diese Dämme halten zwar das Wasser zurück, aber nicht die für viele Lebewesen notwendigen fruchtbaren Sedimente.",
+            "Windräder sind vor allem für Vögel gefährlich.",
+            "Das Speicherproblem ist aus ingenieurswissenschaftlicher Sicht noch nicht gelöst."
+          ],
+          "answer": 1,
+          "why": "Laut Lösungsschlüssel ist dieser Satz der zweite falsche Satz in der Zusammenfassung.",
+          "audio_reference": "Diese Dämme halten zwar das Wasser zurück, aber nicht die für viele Lebewesen notwendigen fruchtbaren Sedimente."
         }
       ]
     },
     "H4": {
       "title": "Podiumsdiskussion „Resistenz gegen Antibiotika“",
-      "instruction": "Klicken Sie an, zu wem die Aussagen 1-6 passen (Herr Dr. Matthäus / Frau Zeltler / beide / keiner). Sie sehen das Video einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "instruction": "Hören Sie Aussagen von zwei Experten zum Einsatz von Antibiotika. Wer sagt was? Ordnen Sie die Aussagen den Personen zu.",
+      "personas": [
+        {
+          "name": "Herr Dr. Matthäus",
+          "text": "Schon der Erfinder des Penicillins hat befürchtet, dass Bakterien resistent werden könnten. Vor den Bakterien gab es keine anderen Lebewesen auf der Erde."
+        },
+        {
+          "name": "Frau Zeltler",
+          "text": "Die Landwirtschaft ist ein Faktor, der zur Resistenzbildung beiträgt."
+        },
+        {
+          "name": "beide",
+          "text": "Wenn der Mensch Fleisch isst, nimmt er damit möglicherweise auch Antibiotika auf. Ein Antibiotikum zu entwickeln, das gegen alle Bakterien wirkt, lohnt sich finanziell nicht."
+        },
+        {
+          "name": "keiner",
+          "text": "Die entwickelten Länder sind durch die Antibiotikaresistenz weniger gefährdet."
+        }
+      ],
       "items": [
-        { "prompt": "1. Schon der Erfinder des Penicillins hat befürchtet, dass Bakterien resistent werden könnten.", "answer": "Herr Dr. Matthäus" },
-        { "prompt": "2. Die Landwirtschaft ist ein Faktor, der zur Resistenzbildung beiträgt.", "answer": "Frau Zeltler" },
-        { "prompt": "3. Wenn der Mensch Fleisch isst, nimmt er damit möglicherweise auch Antibiotika auf.", "answer": "beide" },
-        { "prompt": "4. Vor den Bakterien gab es keine anderen Lebewesen auf der Erde.", "answer": "Herr Dr. Matthäus" },
-        { "prompt": "5. Die entwickelten Länder sind durch die Antibiotikaresistenz weniger gefährdet.", "answer": "keiner" },
-        { "prompt": "6. Ein Antibiotikum zu entwickeln, das gegen alle Bakterien wirkt, lohnt sich finanziell nicht.", "answer": "beide" }
+        {
+          "prompt": "Schon der Erfinder des Penicillins hat befürchtet, dass Bakterien resistent werden könnten.",
+          "answer": 0,
+          "why": "Aussage von Herrn Dr. Matthäus.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        },
+        {
+          "prompt": "Die Landwirtschaft ist ein Faktor, der zur Resistenzbildung beiträgt.",
+          "answer": 1,
+          "why": "Aussage von Frau Zeltler.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        },
+        {
+          "prompt": "Wenn der Mensch Fleisch isst, nimmt er damit möglicherweise auch Antibiotika auf.",
+          "answer": 2,
+          "why": "Beide Experten erwähnen diesen Punkt.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        },
+        {
+          "prompt": "Vor den Bakterien gab es keine anderen Lebewesen auf der Erde.",
+          "answer": 0,
+          "why": "Aussage von Herrn Dr. Matthäus.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        },
+        {
+          "prompt": "Die entwickelten Länder sind durch die Antibiotikaresistenz weniger gefährdet.",
+          "answer": 3,
+          "why": "Diese Aussage trifft auf keinen der beiden Experten zu.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        },
+        {
+          "prompt": "Ein Antibiotikum zu entwickeln, das gegen alle Bakterien wirkt, lohnt sich finanziell nicht.",
+          "answer": 2,
+          "why": "Beide Experten teilen diese Einschätzung.",
+          "options": ["Herr Dr. Matthäus", "Frau Zeltler", "beide", "keiner"]
+        }
       ]
     },
     "H5": {
       "title": "Vorlesung „Artensterben“",
-      "instruction": "Ergänzen Sie beim Hören die Gliederungspunkte in den Textfeldern in Stichpunkten. Sie sehen das Video einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "instruction": "Ergänzen Sie die Gliederung des Vortrags in Stichworten. Hören Sie den Vortrag einmal.",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext und Video online verfügbar. Antworten aus dem offiziellen Lösungsschlüssel."
+          }
+        ]
+      },
       "items": [
-        { "prompt": "Definition von Massensterben (nennen Sie einen Aspekt)", "answer": "Viele Arten sterben schnell aus / Arten sterben schnell aus / Zeitspanne ist zu kurz" },
-        { "prompt": "Argument gegen Ausrufung des Anthropozäns", "answer": "Zeitspanne ist zu kurz" },
-        { "prompt": "Seit 1800 paralleler Anstieg von", "answer": "Bevölkerungszahl und Artensterben / Aussterben von Tierarten" },
-        { "prompt": "Vom fünften Massensterben profitierten", "answer": "Säugetiere / Menschen" }
+        { "prompt": "1. Definition von Massensterben (nennen Sie einen Aspekt):", "answer": "Viele Arten sterben schnell aus / Zeitspanne ist zu kurz" },
+        { "prompt": "2. Argument gegen Ausrufung des Anthropozäns:", "answer": "Zeitspanne ist zu kurz" },
+        { "prompt": "3. Seit 1800 paralleler Anstieg von:", "answer": "Bevölkerungszahl und Artensterben / Aussterben von Tierarten" },
+        { "prompt": "4. Vom fünften Massensterben profitierten:", "answer": "Säugetiere / Menschen" }
       ]
     },
     "H6": {
       "title": "Vortrag „Prozessautomatisierung“",
-      "instruction": "Beantworten Sie die Fragen 1-5. Für jede Frage gibt es genau eine richtige Lösung. Sie hören den Text einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "instruction": "Hören Sie den Vortrag und wählen Sie bei jeder Aufgabe die richtige Lösung.",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext online verfügbar. Antworten aus dem offiziellen Lösungsschlüssel."
+          }
+        ]
+      },
       "items": [
         {
           "prompt": "Die Automatisierung von Arbeitsprozessen",
@@ -103,7 +186,7 @@
             "wird in der modernen Welt begrüßt."
           ],
           "answer": 1,
-          "why": "Antwort b"
+          "why": "Laut Lösungsschlüssel Antwort b."
         },
         {
           "prompt": "Software-Roboter",
@@ -114,7 +197,7 @@
             "unterstützen die industrielle Produktion."
           ],
           "answer": 2,
-          "why": "Antwort c"
+          "why": "Laut Lösungsschlüssel Antwort c."
         },
         {
           "prompt": "Die von dem Sprecher genannten Vorteile",
@@ -125,7 +208,7 @@
             "sind bis jetzt noch nicht bewiesen."
           ],
           "answer": 1,
-          "why": "Antwort b"
+          "why": "Laut Lösungsschlüssel Antwort b."
         },
         {
           "prompt": "Wie äußert sich der Sprecher über die zukünftige menschliche Arbeit?",
@@ -136,7 +219,7 @@
             "Er warnt, dass das Leben ohne Arbeit seinen Sinn verliert."
           ],
           "answer": 0,
-          "why": "Antwort a"
+          "why": "Laut Lösungsschlüssel Antwort a."
         },
         {
           "prompt": "Das Hauptziel des Vortrags besteht darin,",
@@ -147,25 +230,27 @@
             "einen guten Umgang mit Automatisierung aufzuzeigen."
           ],
           "answer": 3,
-          "why": "Antwort d"
+          "why": "Laut Lösungsschlüssel Antwort d."
         }
       ]
     },
     "H7": {
-      "title": "Laut- und Schriftbild abgleichen – Die Entwicklung der Sprachen",
-      "instruction": "Hörtext und schriftlicher Text sind nicht identisch. Vier Wörter sind unterschiedlich. Klicken Sie auf die vier Wörter, die nicht dem Hörtext entsprechen. Sie hören den Text einmal.",
-      "audio": { "plays": 1, "script": [] },
+      "title": "Laut- und Schriftbild abgleichen",
+      "instruction": "Im folgenden schriftlichen Text stehen Wörter, die im gesprochenen Text nicht vorkommen. Notieren Sie diese Wörter in Stichworten.",
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Hinweis",
+            "text": "Vollständiger Hörtext online verfügbar. Die vier unterschiedlichen Wörter stammen aus dem offiziellen Lösungsschlüssel."
+          }
+        ]
+      },
       "items": [
-        {
-          "prompt": "Unterschiedliche Wörter (schriftlich → gehört)",
-          "answer": [
-            "vor → von",
-            "Rolle → Roller",
-            "Menschen → Männchen",
-            "zwischen → wischen"
-          ],
-          "why": "Laut Lösungsschlüssel der Modellprüfung 1"
-        }
+        { "prompt": "Schriftlich „vor“ – gehört:", "answer": "von" },
+        { "prompt": "Schriftlich „Rolle“ – gehört:", "answer": "Roller" },
+        { "prompt": "Schriftlich „Menschen“ – gehört:", "answer": "Männchen" },
+        { "prompt": "Schriftlich „zwischen“ – gehört:", "answer": "wischen" }
       ]
     }
   }

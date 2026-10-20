@@ -9,41 +9,35 @@
   "content": {
     "L1": {
       "title": "Vegetarische Krokodile",
-      "instruction": "Lesen Sie den Lückentext. Entscheiden Sie für jede Lücke, welches Wort passt. Für jede Lücke gibt es genau eine richtige Lösung. Sie haben 4 Minuten Zeit.",
-      "passage": "Heute existieren weltweit nur noch 23 unterschiedliche Arten von Krokodilen. Sie alle fressen fast ausschließlich Fleisch und Fisch. Doch das war nicht immer so, wie eine Studie zeigt. Im langen Lauf ihrer evolutionären (1) _________ brachten die krokodilartigen Tiere mindestens dreimal Pflanzen fressende Gattungen hervor.\n\nWissenschaftler analysierten 146 fossile Zähne von 16 unterschiedlichen (2) _________, die vor 250 Millionen Jahren bis vor 66 Millionen Jahren existiert haben. Aus Form und Aufbau konnten die Wissenschaftler schließen, welche Nahrung bevorzugt aufgenommen wurde: Einfache, spitze Zähne deuten demnach auf Fleischkonsum hin, breite Formen sprechen dagegen für Pflanzenkost. Allesfresser, die Omnivoren, besaßen Zähne, die ein Mittelding zwischen den beiden anderen Varianten bildeten. Unter den (3) _________ Arten stießen die Paläontologen auf acht Pflanzenfresser, eine omnivore Spezies und nur sieben Fleischfresser. Die »Vegetarier« verteilten sich über mehrere Kontinente und lebten zu unterschiedlichen Zeiten der Erdgeschichte.\n\nDie ersten Pflanzen fressenden Krokodilarten entstanden im frühen Jura, einem Erdzeitalter vor etwa 200 Millionen Jahren, und sie hielten sich bis zum Ende der Kreidezeit, als durch den Einschlag eines Asteroiden nicht nur die Dinosaurier, sondern auch viele andere Arten (4) _________ wurden. Warum sich danach aus den vorhandenen überlebenden Krokodilen keine neuen vegetarischen Spezies herausbildeten, ist (5) _________.",
+      "instruction": "Ergänzen Sie die Lücken im wissenschaftlichen Text. Wählen Sie aus den vorgegebenen Wörtern. Für jede Lücke gibt es genau eine richtige Lösung.",
+      "passage": "Heute existieren weltweit nur noch 23 unterschiedliche Arten von Krokodilen. Sie alle fressen fast ausschließlich Fleisch und Fisch. Doch das war nicht immer so, wie eine Studie zeigt. Im langen Lauf ihrer evolutionären ___1___ brachten die krokodilartigen Tiere mindestens dreimal Pflanzen fressende Gattungen hervor. Wissenschaftler analysierten 146 fossile Zähne von 16 unterschiedlichen ___2___, die vor 250 Millionen Jahren bis vor 66 Millionen Jahren existiert haben. Aus Form und Aufbau konnten die Wissenschaftler schließen, welche Nahrung bevorzugt aufgenommen wurde. Unter den ___3___ Arten stießen die Paläontologen auf acht Pflanzenfresser, eine omnivore Spezies und nur sieben Fleischfresser. Die ersten Pflanzen fressenden Krokodilarten entstanden im frühen Jura und hielten sich bis zum Ende der Kreidezeit, als durch den Einschlag eines Asteroiden nicht nur die Dinosaurier, sondern auch viele andere Arten ___4___ wurden. Warum sich danach aus den vorhandenen überlebenden Krokodilen keine neuen vegetarischen Spezies herausbildeten, ist ___5___.",
       "bank": [
         { "key": "a", "text": "Auswahl" },
         { "key": "b", "text": "Entstehung" },
         { "key": "c", "text": "Entwicklung" },
         { "key": "d", "text": "Verbreitung" },
-        { "key": "a2", "text": "Formen" },
-        { "key": "b2", "text": "Sorten" },
-        { "key": "c2", "text": "Spezies" },
-        { "key": "d2", "text": "Tieren" },
-        { "key": "a3", "text": "ausgeforschten" },
-        { "key": "b3", "text": "entdeckten" },
-        { "key": "c3", "text": "gefundenen" },
-        { "key": "d3", "text": "untersuchten" },
-        { "key": "a4", "text": "abgeschafft" },
-        { "key": "b4", "text": "ausgerottet" },
-        { "key": "c4", "text": "beendet" },
-        { "key": "d4", "text": "niedergemacht" },
-        { "key": "a5", "text": "unbegreiflich" },
-        { "key": "b5", "text": "unbekannt" },
-        { "key": "c5", "text": "unerklärlich" },
-        { "key": "d5", "text": "unverständlich" }
+        { "key": "e", "text": "Formen" },
+        { "key": "f", "text": "Sorten" },
+        { "key": "g", "text": "Spezies" },
+        { "key": "h", "text": "Tieren" },
+        { "key": "i", "text": "untersuchten" },
+        { "key": "j", "text": "entdeckten" },
+        { "key": "k", "text": "ausgerottet" },
+        { "key": "l", "text": "abgeschafft" },
+        { "key": "m", "text": "unbekannt" },
+        { "key": "n", "text": "unerklärlich" }
       ],
       "items": [
-        { "prompt": "Lücke 1", "answer": "c", "why": "evolutionären Entwicklung" },
-        { "prompt": "Lücke 2", "answer": "c2", "why": "unterschiedlichen Spezies" },
-        { "prompt": "Lücke 3", "answer": "d3", "why": "untersuchten Arten" },
-        { "prompt": "Lücke 4", "answer": "b4", "why": "ausgerottet wurden" },
-        { "prompt": "Lücke 5", "answer": "b5", "why": "ist unbekannt" }
+        { "prompt": "Lücke 1", "answer": "c", "why": "Im Text ist von einer evolutionären 'Entwicklung' die Rede." },
+        { "prompt": "Lücke 2", "answer": "g", "why": "Es handelt sich um unterschiedliche 'Spezies'." },
+        { "prompt": "Lücke 3", "answer": "i", "why": "Unter den 'untersuchten' Arten." },
+        { "prompt": "Lücke 4", "answer": "k", "why": "Viele Arten wurden 'ausgerottet'." },
+        { "prompt": "Lücke 5", "answer": "m", "why": "Die Ursache ist 'unbekannt'." }
       ]
     },
     "L2": {
-      "title": "Textabschnitte ordnen",
-      "instruction": "Bringen Sie die Textabschnitte in die richtige Reihenfolge. Es gibt genau eine richtige Reihenfolge. Sie haben 5 Minuten Zeit.",
+      "title": "Textabschnitte ordnen – Lesen und Demenz",
+      "instruction": "Bringen Sie die Abschnitte in die richtige Reihenfolge: Welcher Abschnitt gehört an welche Position?",
       "bank": [
         { "key": "a", "text": "Das gilt sogar für solche Menschen, die nur wenige Jahre zur Schule gegangen sind und relativ wenig Hirntraining betreiben." },
         { "key": "b", "text": "Die Forscher schließen daraus, dass Lesen und Schreiben das Gehirn nicht nur trainiert, sondern es auch bis zu einem gewissen Grad vor dem Abbau der Nervenzellen schützt oder diesen zumindest hinauszögert." },
@@ -52,17 +46,17 @@
         { "key": "e", "text": "Zu diesem Ergebnis gelangten Wissenschaftler nach einer zweijährigen Studie. Dazu hatten sie rund 1000 ältere Menschen aus ländlichen Regionen untersucht, die maximal vier Jahre zur Schule gegangen waren." }
       ],
       "items": [
-        { "prompt": "1. Position", "answer": "d", "why": "Einstieg mit der Hauptthese" },
-        { "prompt": "2. Position", "answer": "e", "why": "Studie und Methode" },
-        { "prompt": "3. Position", "answer": "c", "why": "Ergebnisse der Studie" },
-        { "prompt": "4. Position", "answer": "b", "why": "Schlussfolgerung der Forscher" },
-        { "prompt": "5. Position", "answer": "a", "why": "Erweiterung / Abschluss" }
+        { "prompt": "1. Position im Text", "answer": "d", "why": "Der Text beginnt mit der allgemeinen Aussage über den Zusammenhang von Lesen/Schreiben und Demenz." },
+        { "prompt": "2. Position im Text", "answer": "e", "why": "Abschnitt E schließt mit der Beschreibung der Studie an." },
+        { "prompt": "3. Position im Text", "answer": "c", "why": "Abschnitt C liefert die konkreten Ergebnisse der Studie." },
+        { "prompt": "4. Position im Text", "answer": "b", "why": "Abschnitt B zieht die Schlussfolgerung der Forscher." },
+        { "prompt": "5. Position im Text", "answer": "a", "why": "Abschnitt A erweitert die Aussage und bildet den Abschluss." }
       ]
     },
     "L3": {
       "title": "Neue Arbeitsformen in der modernen Arbeitswelt",
-      "instruction": "Lesen Sie den Text. Beantworten Sie die Fragen 1-7. Für jede Frage gibt es genau eine richtige Lösung. Sie haben 15 Minuten Zeit.",
-      "passage": "Wie wirkt sich unterschiedliches Personalmanagement in Unternehmen auf die Leistung der Angestellten aus? Mit dieser Frage beschäftigt sich Prof. Michael Beckmann von der wirtschaftswissenschaftlichen Fakultät der Universität Basel seit mehreren Jahren. Dabei untersucht er den Effekt von Maßnahmen, die Mitarbeitenden mehr Autonomie im Hinblick auf die Arbeitszeit geben. Dahinter steht die These, dass dies ein starkes Motivationsinstrument sein kann. Beispiele für derartige Arbeitszeitmodelle sind die sogenannte Vertrauensarbeitszeit – auch selbstbestimmte Arbeitszeit genannt – und das Home Office, bei denen die Angestellten weitestgehend selber bestimmen, wann und wo sie ihre Aufgaben erledigen. Im Vordergrund steht dabei immer die Erledigung vereinbarter Aufgaben, nicht die zeitliche Präsenz. Auf die Dokumentation der Arbeitszeiten wird ganz oder teilweise verzichtet.\n\nDie Arbeit im Home Office ist allerdings ein umstrittenes Instrument. Viele Arbeitgeber befürchten, dass der eingeräumte Freiraum missbraucht werden könnte. «Der klassische Ökonom denkt bei der Förderung von Motivation eher an Anreize wie Leistungsprämien oder Überwachung», sagt Beckmann. Dieser Idee liegt ein Menschenbild zugrunde, das unter dem Begriff Homo oeconomicus bekannt ist und davon ausgeht, dass Menschen nur nach wirtschaftlichen Kriterien denken und handeln und immer ihren Nutzen maximieren möchten. Damit in Zusammenhang steht eine ziemlich pessimistische Haltung, was Arbeitsbereitschaft betrifft. «Den Homo oeconomicus muss man von außen dazu bringen, dass er das tut, was er soll – das heißt, er muss extrinsisch motiviert werden.»\n\nGeht man von solchem Verhalten aus, muss man tatsächlich befürchten, dass Arbeitnehmende nur dann Leistung bringen, wenn sie unter Aufsicht stehen. Für Beckmann greift dieses Menschenbild allerdings zu kurz. «Es gibt durchaus Menschen, die sich mit ihrem Job identifizieren, Freude an ihrer Tätigkeit haben oder von Natur aus pflichtbewusst sind – sie verfügen über eine intrinsische Motivation.» Um die bestehende Eigenmotivation dieser Mitarbeitenden zu fördern, so Beckmann, müssen Firmen andere Methoden finden. Großes Potenzial sieht er dabei in der Mitarbeiterautonomie.\n\nDieses Jahr veröffentlichten Beckmann und Co-Autoren eine große Studie zur Vertrauensarbeitszeit. Die Ergebnisse zeigten, dass Beschäftigte, die weitgehende Kontrolle über ihre Arbeitsstunden haben, nicht weniger, sondern sogar mehr Arbeitseinsatz liefern. Nach Abzug aller anderen Faktoren arbeiten Angestellte bei Vertrauensarbeitszeit pro Woche durchschnittlich 80 Minuten länger als Angestellte mit festen Arbeitszeiten. «Die Studie widerlegt deutlich die Befürchtungen, dass eine fehlende Arbeitszeitkontrolle zu Faulheit führt», so Beckmann. Im Gegenteil: Selbstbestimmung scheint für viele Arbeitnehmende ein starkes intrinsisches Motivationsinstrument zu sein. «Das soll nicht bedeuten, dass es nicht auch Angestellte gibt, die ihre Arbeitszeitsouveränität missbrauchen – die empirischen Daten zeigen allerdings, dass dies eine große Anzahl nicht tut», erläutert er.\n\nSchwierig wird es, wenn Unternehmen versuchen, den entstandenen Kontrollverlust durch Kontrollinstrumente zu kompensieren. Als Beispiel nennt Beckmann überambitionierte Zielvereinbarungen: Wird den Mitarbeitern einerseits gesagt, dass sie zwar arbeiten können, wann und wo sie wollen, dass sie aber bestimmte Ziele erfüllen müssen, kann das kontraproduktiv wirken. Häufig seien diese Ziele nämlich so hoch gesteckt, dass sie nicht realistisch zu erreichen sind, oder sie würden immer wieder nach oben angepasst: «Das hat mit Autonomie dann nichts mehr zu tun, und der positive Effekt kann dadurch verloren gehen.» Sollten Firmen Instrumente für mehr Mitarbeiterautonomie nutzen, ist es entscheidend, dass sie es ernst meinen mit dem Vertrauen. Selbstbestimmte Arbeitszeiten und Home Office funktionieren nur dann, wenn gegenseitiges Vertrauen herrscht. Fühlen sich die Mitarbeitenden überwacht, zerstört das ihre ursprüngliche Eigenmotivation.\n\nTrotz aller Bedenken: Arbeiten in den eigenen vier Wänden liegt im Trend. Auch in der Schweiz steigt die Anzahl jener, die zumindest teilweise auf das Büro verzichten. Möglich macht dies nicht zuletzt die moderne Kommunikationstechnik. So kann man leichter von anderen Orten aus arbeiten, und viele Menschen schätzen Selbstbestimmung und Flexibilität bei der Zeiteinteilung – gerade im Hinblick auf die Vereinbarkeit von Beruf und Familie. «Das Aufkommen von flexiblen Arbeitszeitmodellen hängt auch damit zusammen, dass sich die Tätigkeiten geändert haben. Im Schnitt werden die Arbeitsaufgaben immer anspruchsvoller», sagt Beckmann. Wachsender Wettbewerb und technologischer Wandel stellen hohe Anforderungen an die Flexibilität sowohl von Unternehmen als auch von Arbeitnehmenden. Die neuen Arbeitsmodelle werden sich also weiter verbreiten.",
+      "instruction": "Lesen Sie den Text und wählen Sie für die Fragen 1 bis 7 die richtige Lösung (a, b, c oder d).",
+      "passage": "Wie wirkt sich unterschiedliches Personalmanagement in Unternehmen auf die Leistung der Angestellten aus? Mit dieser Frage beschäftigt sich Prof. Michael Beckmann von der wirtschaftswissenschaftlichen Fakultät der Universität Basel seit mehreren Jahren. Dabei untersucht er den Effekt von Maßnahmen, die Mitarbeitenden mehr Autonomie im Hinblick auf die Arbeitszeit geben. Dahinter steht die These, dass dies ein starkes Motivationsinstrument sein kann. Beispiele für derartige Arbeitszeitmodelle sind die sogenannte Vertrauensarbeitszeit und das Home Office, bei denen die Angestellten weitestgehend selber bestimmen, wann und wo sie ihre Aufgaben erledigen. Im Vordergrund steht dabei immer die Erledigung vereinbarter Aufgaben, nicht die zeitliche Präsenz.\n\nDie Arbeit im Home Office ist allerdings ein umstrittenes Instrument. Viele Arbeitgeber befürchten, dass der eingeräumte Freiraum missbraucht werden könnte. «Der klassische Ökonom denkt bei der Förderung von Motivation eher an Anreize wie Leistungsprämien oder Überwachung», sagt Beckmann. Dieser Idee liegt ein Menschenbild zugrunde, das unter dem Begriff Homo oeconomicus bekannt ist.\n\nGeht man von solchem Verhalten aus, muss man befürchten, dass Arbeitnehmende nur dann Leistung bringen, wenn sie unter Aufsicht stehen. Für Beckmann greift dieses Menschenbild allerdings zu kurz. «Es gibt durchaus Menschen, die sich mit ihrem Job identifizieren oder von Natur aus pflichtbewusst sind – sie verfügen über eine intrinsische Motivation.» Großes Potenzial sieht er dabei in der Mitarbeiterautonomie.\n\nDieses Jahr veröffentlichten Beckmann und Co-Autoren eine große Studie zur Vertrauensarbeitszeit. Die Ergebnisse zeigten, dass Beschäftigte, die weitgehende Kontrolle über ihre Arbeitsstunden haben, nicht weniger, sondern sogar mehr Arbeitseinsatz liefern. Nach Abzug aller anderen Faktoren arbeiten Angestellte bei Vertrauensarbeitszeit pro Woche durchschnittlich 80 Minuten länger.\n\nSchwierig wird es, wenn Unternehmen versuchen, den entstandenen Kontrollverlust durch Kontrollinstrumente zu kompensieren. Als Beispiel nennt Beckmann überambitionierte Zielvereinbarungen: Wird den Mitarbeitern einerseits gesagt, dass sie arbeiten können, wann und wo sie wollen, dass sie aber bestimmte Ziele erfüllen müssen, kann das kontraproduktiv wirken.\n\nTrotz aller Bedenken: Arbeiten in den eigenen vier Wänden liegt im Trend. Viele Menschen schätzen Selbstbestimmung und Flexibilität bei der Zeiteinteilung – gerade im Hinblick auf die Vereinbarkeit von Beruf und Familie. Die neuen Arbeitsmodelle werden sich also weiter verbreiten.",
       "items": [
         {
           "prompt": "Welches ist laut Absatz 1 das Hauptmerkmal der neuen Arbeitszeitmodelle?",
@@ -84,7 +78,7 @@
             "Der Homo oeconomicus ist wichtig für den Erfolg eines Unternehmens."
           ],
           "answer": 1,
-          "why": "Das Menschenbild (Homo oeconomicus) bestimmt, ob man mit Anreizen/Überwachung oder mit Autonomie motiviert."
+          "why": "Das Menschenbild (Homo oeconomicus) bestimmt die Wahl der Motivationsstrategien."
         },
         {
           "prompt": "In Absatz 3 empfiehlt der Forscher,",
@@ -106,7 +100,7 @@
             "selbstverantwortlich gestaltete Arbeitszeit beflügelnd wirken kann."
           ],
           "answer": 3,
-          "why": "Selbstbestimmung scheint ein starkes intrinsisches Motivationsinstrument zu sein; Angestellte arbeiten länger."
+          "why": "Selbstbestimmung scheint ein starkes intrinsisches Motivationsinstrument zu sein."
         },
         {
           "prompt": "Welche der folgenden Überschriften passt inhaltlich zu Absatz 5?",
@@ -145,7 +139,7 @@
     },
     "L4": {
       "title": "Kommentar eines Experten zu Umweltsorgen",
-      "instruction": "Ordnen Sie die Textstellen 1-4 den Aussagen zu. Für jede Textstelle gibt es genau eine richtige Lösung. Sie haben 6 Minuten Zeit.",
+      "instruction": "Lesen Sie den Text und die Aufgaben dazu. Welche Sprachhandlung vollzieht der Autor an den markierten Stellen (1–4)? Wählen Sie für jede markierte Stelle den passenden Buchstaben (a–h) aus. Mehrere Optionen bleiben übrig.",
       "bank": [
         { "key": "a", "text": "Der Experte bedauert etwas." },
         { "key": "b", "text": "Der Experte empfiehlt etwas." },
@@ -157,44 +151,153 @@
         { "key": "h", "text": "Der Experte widerspricht etwas." }
       ],
       "items": [
-        { "prompt": "Stelle 1", "answer": "d", "why": "Kritik an Panikpropaganda und angeblichen Experten" },
-        { "prompt": "Stelle 2", "answer": "h", "why": "Widerspruch: beide Geschichten entsprechen nicht der Realität" },
-        { "prompt": "Stelle 3", "answer": "c", "why": "Erklärung der Dosis-Regel und natürlicher Pestizide" },
-        { "prompt": "Stelle 4", "answer": "e", "why": "Prognose: droht ein Scheitern bei der Lösung der eigentlichen Probleme" }
+        {
+          "prompt": "Stelle 1: Jeden Tag sagen uns irgendwelche angeblichen Experten, wovor wir jetzt wieder ganz dringend Angst haben sollen.",
+          "answer": "d",
+          "why": "Der Autor kritisiert die Panikpropaganda angeblicher Experten."
+        },
+        {
+          "prompt": "Stelle 2: Beide Geschichten entsprechen nicht der Realität.",
+          "answer": "h",
+          "why": "Der Autor widerspricht den genannten Angstgeschichten."
+        },
+        {
+          "prompt": "Stelle 3: Auch fern von der Zivilisation nimmt man mit jedem Atemzug schädliche Substanzen auf, weil sie in der Luft vorkommen, seit es die Atmosphäre gibt.",
+          "answer": "c",
+          "why": "Der Autor erklärt die Dosis-Regel anhand natürlicher Substanzen."
+        },
+        {
+          "prompt": "Stelle 4: Doch wenn wir es nicht schaffen, die Gefahren in die richtige Reihenfolge zu bringen, droht uns ein Scheitern bei der Lösung der eigentlichen Probleme.",
+          "answer": "e",
+          "why": "Der Autor prognostiziert negative Folgen bei falscher Priorisierung."
+        }
       ]
     },
     "L5": {
       "title": "Diesel oder Erdgas?",
-      "instruction": "Ordnen Sie die Aussagen 1-7 zu: Entscheiden Sie für jede Aussage, ob sie zum Antrieb durch Diesel, durch Erdgas, zu beiden oder gar nicht passt. Sie haben 9 Minuten Zeit.",
+      "instruction": "Lesen Sie den Text. Ordnen Sie die Aussagen 1 bis 7 zu: Entscheiden Sie für jede Aussage, ob sie zum Antrieb durch Diesel, durch Erdgas, zu beiden oder gar nicht passt.",
+      "personas": [
+        { "name": "Diesel", "text": "Heutige Dieselsysteme arbeiten hydraulisch, also mit Druck. Bei einem Unfall herrscht erhöhte Brandgefahr." },
+        { "name": "Erdgas", "text": "Die Technik ist vor allem für Nutzfahrzeuge geeignet. Spezielle Technik beim Befüllen des Tanks (200 bar). Der Motor stößt weder Ruß noch andere Partikel aus." },
+        { "name": "beide", "text": "Im Tank ist ein bestimmter Druck nötig." },
+        { "name": "passt nicht", "text": "Der Motor muss extern gezündet werden (betrifft den historischen Ottomotor)." }
+      ],
       "items": [
-        { "prompt": "1. Dieses System funktioniert mit Druck.", "answer": "Diesel", "why": "Heutige Dieselsysteme arbeiten hydraulisch, also mit Druck." },
-        { "prompt": "2. Bei einem Unfall herrscht erhöhte Brandgefahr.", "answer": "Diesel", "why": "Dieselbussen blieben nur Asche übrig; Erdgas-Busse überstanden das Feuer." },
-        { "prompt": "3. Der Motor muss extern gezündet werden.", "answer": "passt nicht", "why": "Betrifft den historischen Ottomotor, nicht die modernen Systeme." },
-        { "prompt": "4. Diese Technik ist z. B. für LKW geeignet.", "answer": "Erdgas", "why": "Die Technik ist vor allem für Nutzfahrzeuge (LKW, Busse) geeignet." },
-        { "prompt": "5. Spezielle Technik beim Befüllen des Tanks", "answer": "Erdgas", "why": "Gas muss bei 200 bar eingeblasen werden." },
-        { "prompt": "6. Im Tank ist ein bestimmter Druck nötig.", "answer": "beide", "why": "Diesel braucht konstanten Druck; Erdgas 200 bar." },
-        { "prompt": "7. Die Antriebsart ist schadstofffrei.", "answer": "Erdgas", "why": "Der Motor stößt weder Ruß noch andere Partikel aus." }
+        {
+          "prompt": "Dieses System funktioniert mit Druck.",
+          "answer": 0,
+          "why": "Heutige Dieselsysteme arbeiten hydraulisch mit Druck.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Bei einem Unfall herrscht erhöhte Brandgefahr.",
+          "answer": 0,
+          "why": "Dieselbussen blieben nur Asche übrig; Erdgas-Busse überstanden das Feuer.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Der Motor muss extern gezündet werden.",
+          "answer": 3,
+          "why": "Betrifft den historischen Ottomotor, nicht die modernen Systeme.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Diese Technik ist z. B. für LKW geeignet.",
+          "answer": 1,
+          "why": "Die Technik ist vor allem für Nutzfahrzeuge (LKW, Busse) geeignet.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Spezielle Technik beim Befüllen des Tanks",
+          "answer": 1,
+          "why": "Gas muss bei 200 bar eingeblasen werden.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Im Tank ist ein bestimmter Druck nötig.",
+          "answer": 2,
+          "why": "Sowohl Diesel als auch Erdgas benötigen Druck im Tank.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        },
+        {
+          "prompt": "Die Antriebsart ist schadstofffrei.",
+          "answer": 1,
+          "why": "Der Erdgasmotor stößt weder Ruß noch andere Partikel aus.",
+          "options": ["Diesel", "Erdgas", "beide", "passt nicht"]
+        }
       ]
     },
     "L6": {
       "title": "Stadtentwicklung",
-      "instruction": "Entscheiden Sie, welche Aussagen richtig sind. Schreiben Sie die richtigen Aussagen an die passende Stelle in der Tabelle. Es müssen vier Aussagen zugeordnet werden. Sie haben 7 Minuten Zeit.",
+      "instruction": "Lesen Sie den Text. Entscheiden Sie, welche Aussagen richtig sind. Ordnen Sie vier Aussagen den Kategorien Gründe und Folgen zu.",
+      "personas": [
+        { "name": "Gründe", "text": "Geringe Attraktivität von Kleinstädten; Erhöhung des Lebensstandards (bessere Chancen, Ausbildung, Medizin)." },
+        { "name": "Folgen", "text": "Zunahme der Luftverschmutzung; Konkurrenz um Arbeitsplätze und steigende Mieten." }
+      ],
       "items": [
-        { "prompt": "Gründe 1", "answer": "g", "why": "Geringe Attraktivität von Kleinstädten (Menschen ziehen in Städte)" },
-        { "prompt": "Gründe 2", "answer": "c", "why": "Erhöhung des Lebensstandards (bessere Chancen, Ausbildung, Medizin, Mobilität)" },
-        { "prompt": "Folgen 3", "answer": "b", "why": "Zunahme der Luftverschmutzung" },
-        { "prompt": "Folgen 4", "answer": "e", "why": "Konkurrenz um Arbeitsplätze / steigende Mieten" }
+        {
+          "prompt": "Geringe Attraktivität von Kleinstädten",
+          "answer": 0,
+          "why": "Menschen ziehen vom Land in die Städte.",
+          "options": ["Gründe", "Folgen"]
+        },
+        {
+          "prompt": "Erhöhung des Lebensstandards",
+          "answer": 0,
+          "why": "Bessere Karrierechancen, Ausbildung und medizinische Versorgung.",
+          "options": ["Gründe", "Folgen"]
+        },
+        {
+          "prompt": "Zunahme der Luftverschmutzung",
+          "answer": 1,
+          "why": "Folge der Urbanisierung und Nutzung fossiler Energien.",
+          "options": ["Gründe", "Folgen"]
+        },
+        {
+          "prompt": "Konkurrenz um Arbeitsplätze / steigende Mieten",
+          "answer": 1,
+          "why": "Folgen der hohen Nachfrage in großen Städten.",
+          "options": ["Gründe", "Folgen"]
+        }
       ]
     },
     "L7": {
       "title": "Mülldeponien sind Rohstofflager",
-      "instruction": "Sie sehen eine Zusammenfassung. Unterstreichen Sie die Sätze in der Zusammenfassung, die inhaltlich falsch sind. Es gibt genau drei inhaltlich falsche Sätze. Sie haben 7 Minuten Zeit.",
-      "passage": "Zusammenfassung:\n(1) Auf den Mülldeponien befinden sich viele Rohstoffe, die noch gut zu nutzen wären. (2) Denn früher haben die Menschen einfach alles weggeworfen. (3) Heute betreibt man „Urban Mining“. (4) Das bedeutet, dass auf den Müllhalden in den Städten diese wertvollen Stoffe wiedergewonnen werden. (5) Das ist umweltfreundlich, weil damit natürliche Vorkommen geschont werden. (6) Eine andere Möglichkeit zur Schonung dieser Quellen ist das direkte Recycling. (7) Beispielsweise werden in der EU Elektrogeräte von den Händlern zurückgenommen und direkt dem Recycling zugeführt. (8) Auf diese Weise wurde in Deutschland in einem Jahr mehr als die Hälfte der ausgedienten Geräte recycelt. (9) Spitzenreiter in diesem Zusammenhang ist allerdings die schwedische Recyclingquote.",
+      "instruction": "Lesen Sie den Text und die dazugehörige Zusammenfassung. Die Zusammenfassung gibt den Text an einigen Stellen falsch wieder. Welche Formulierungen stimmen nicht mit dem Text überein?",
+      "passage": "In den sechziger und siebziger Jahren des vergangenen Jahrhunderts gab es noch kein Bewusstsein dafür, dass unsere Ressourcen irgendwann knapp werden könnten: Abfälle wurden auf Mülldeponien entsorgt. Das führte dazu, dass dort heute wertvolle Metalle, Papier, Bauschutt und anderes lagern. „Urban Mining“ befasst sich mit dem gesamten Bestand an langlebigen Gütern. Recyclingquote von Elektroschrott 2014: Bulgarien 68,3 %, Schweden 52,5 %, Deutschland 36,0 %.",
       "items": [
         {
-          "prompt": "Welche Sätze sind inhaltlich falsch?",
-          "answer": [4, 8, 9],
-          "why": "4: Urban Mining bezieht sich nicht nur auf Müllhalden in Städten. 8: Deutschland hat 36 %, nicht mehr als die Hälfte. 9: Spitzenreiter ist Bulgarien (68,3 %), nicht Schweden."
+          "prompt": "Welche Aussage der Zusammenfassung widerspricht dem Text?",
+          "options": [
+            "Auf den Mülldeponien befinden sich viele Rohstoffe, die noch gut zu nutzen wären.",
+            "Urban Mining bedeutet ausschließlich, dass auf den Müllhalden in den Städten wertvolle Stoffe wiedergewonnen werden.",
+            "Die Nutzung wiedergewonnener Rohstoffe trägt zum Umweltschutz bei.",
+            "In Deutschland wurde in einem Jahr mehr als die Hälfte der ausgedienten Geräte recycelt."
+          ],
+          "answer": 1,
+          "why": "Urban Mining bezieht sich nicht allein auf innerstädtische Müllhalden, sondern auf den gesamten Bestand an langlebigen Gütern."
+        },
+        {
+          "prompt": "Welcher weitere Aspekt wird in der Zusammenfassung falsch dargestellt?",
+          "options": [
+            "Die Gewinnung von Primärrohstoffen ist oft mit Eingriffen in Ökosysteme verbunden.",
+            "Spitzenreiter bei der Recyclingquote ist Schweden.",
+            "Urban Mining kann Konflikte um knappe natürliche Vorkommen entschärfen.",
+            "Elektrogeräte werden in der EU von Händlern zurückgenommen."
+          ],
+          "answer": 1,
+          "why": "Spitzenreiter ist Bulgarien (68,3 %), nicht Schweden (52,5 %). Deutschland liegt bei 36 %."
+        },
+        {
+          "prompt": "Welche weitere Aussage stimmt nicht mit dem Text überein?",
+          "options": [
+            "Auf den Mülldeponien lagern wertvolle Metalle und andere Materialien.",
+            "Deutschland hat eine Recyclingquote von über 50 %.",
+            "Kreislaufwirtschaft bedeutet Rückgewinnung von Materialien über Recyclingprozesse.",
+            "Die Förderung von Primärrohstoffen konkurriert mit der lokalen Bevölkerung um Wasser und Flächen."
+          ],
+          "answer": 1,
+          "why": "Deutschland hat laut Grafik nur 36 %, nicht über 50 %."
         }
       ]
     }

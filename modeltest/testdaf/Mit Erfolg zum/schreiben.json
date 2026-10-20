@@ -9,22 +9,21 @@
   "content": {
     "S1": {
       "title": "Massentourismus",
-      "instruction": "Auf einer Lernplattform diskutieren Sie mit Ihrem Dozenten und anderen Seminarteilnehmern über das Thema „Massentourismus“. Schreiben Sie einen kurzen Beitrag. Erläutern und begründen Sie, welche positiven und negativen Aspekte es für die Bewohner hat, wenn viele Touristen ihre Stadt besuchen. Schreiben Sie mindestens 200 Wörter. Sie haben 30 Minuten Zeit.",
-      "prompt": "Immer mehr Städte leiden unter Massentourismus. Diskutieren Sie die Vor- und Nachteile für die Bewohner.",
+      "instruction": "Schreiben Sie einen zusammenhängenden, klar gegliederten argumentativen Text zum Thema Massentourismus. Gehen Sie dabei auf die folgenden Punkte ein:",
+      "prompt": "Auf einer Lernplattform diskutieren Sie mit Ihrem Dozenten und anderen Seminarteilnehmern über das Thema „Massentourismus“. Erläutern und begründen Sie, welche positiven und negativen Aspekte es für die Bewohner hat, wenn viele Touristen ihre Stadt besuchen.",
       "bullets": [
         "Geben Sie Ihre eigene Position zum Thema Massentourismus wieder.",
-        "Nennen Sie positive und negative Aspekte für die Bewohner und stützen Sie diese durch Beispiele.",
-        "Gehen Sie auf mögliche Gegenargumente ein.",
+        "Nennen Sie Argumente, warum Massentourismus Ihrer Meinung nach vorteilhaft oder nachteilig ist, und stützen Sie diese durch Beispiele.",
+        "Gehen Sie auf die Gegenposition ein und setzen Sie sich kritisch damit auseinander.",
         "Ziehen Sie ein abschließendes Fazit."
       ],
       "words": 200,
-      "tips": "Gliedern Sie Ihren Text in Einleitung, Hauptteil mit Argumenten und Gegenargumenten sowie ein klares Fazit.",
-      "sample": "Das Reisen ist in den letzten Jahrzehnten viel günstiger geworden durch Angebote von Billigairlines, Fernbussen und Ferienwohnungen. Das hat zur Folge, dass immer mehr Menschen viele kurze Städtereisen buchen. Aber was bedeuten die hohen Besucherzahlen für die Bewohner einer Stadt?\n\nDer Massentourismus kann auf der einen Seite ein wichtiger wirtschaftlicher Faktor für die Stadt und Region darstellen. In der Gastronomie und Hotellerie, aber auch in anderen Bereichen, können so mehr Arbeitsplätze entstehen. Das Geld, das die Stadt dadurch zusätzlich einnimmt, kann sowohl in die Renovierung von Gebäuden als auch in die Infrastruktur investiert werden, was auch den Bewohnerinnen und Bewohnern zugutekommt. Zudem reisen manche Menschen in andere Länder, weil sie sich für die Kultur und Geschichte der Region interessieren. Dieser Austausch kann für beide Seiten eine Bereicherung sein.\n\nEin Nachteil des Tourismus hingegen ist, dass viele Wohnungen nicht mehr an die Einwohner, sondern als Ferienwohnungen an Gäste vermietet werden. So steigen die Mietpreise, und Menschen, die in der Stadt leben und arbeiten, werden aus dem Zentrum verdrängt. Hinzukommt der Lärm, den die Besucherinnen und Besucher verursachen können. Viele Touristen möchten sich im Urlaub amüsieren und nehmen nicht immer Rücksicht auf die Anwohner. In beliebten Kunststädten wie z. B. Venedig beklagen die Bewohner außerdem den zunehmenden Müll und die Umweltverschmutzung und fordern, den Tourismus stärker zu regulieren.\n\nEs wäre in der Tat wünschenswert, dass Städte ein Konzept für den Tourismus entwickeln, damit sich einerseits die Gäste willkommen und gleichzeitig die Bewohner in ihrer Stadt wohlfühlen können."
+      "tips": "Gliedern Sie Ihren Text in Einleitung, Hauptteil mit Argumenten und Gegenargumenten sowie ein klares Fazit."
     },
     "S2": {
-      "title": "Verlust von Waldflächen weltweit",
-      "instruction": "In Ihrem Seminar für Umweltwissenschaften schreiben Sie eine Hausarbeit zum Thema „Verlust von Waldflächen weltweit“. In einem Abschnitt wollen Sie sich mit folgender Frage beschäftigen: Welche Hauptursachen und Folgen hat der Verlust von Waldflächen? Fassen Sie zu dieser Frage Informationen aus dem Text und der Grafik zusammen. Benutzen Sie eigene Formulierungen. Das Abschreiben von Textpassagen ist nicht erlaubt. Schreiben Sie ca. 100–150 Wörter. Sie haben 30 Minuten Zeit.",
-      "prompt": "Welche Hauptursachen und Folgen hat der Verlust von Waldflächen?",
+      "title": "Zusammenfassung: Verlust von Waldflächen weltweit",
+      "instruction": "Fassen Sie die wichtigsten Informationen aus dem Lesetext und der dazugehörigen Grafik in einem zusammenhängenden Text zusammen. Beachten Sie dabei die vorgegebenen Leitpunkte. Schreiben Sie circa 100 bis 150 Wörter und bewerten Sie die Informationen nicht.",
+      "prompt": "In Ihrem Seminar für Umweltwissenschaften schreiben Sie eine Hausarbeit zum Thema „Verlust von Waldflächen weltweit“. Welche Hauptursachen und Folgen hat der Verlust von Waldflächen? Fassen Sie Informationen aus dem Text und der Grafik zusammen.",
       "bullets": [
         "Geben Sie das allgemeine Thema des Textes und der Grafik wieder.",
         "Beschreiben Sie die wichtigsten Entwicklungen oder Trends anhand der Daten.",
@@ -32,8 +31,7 @@
         "Fassen Sie die Folgen prägnant zusammen, ohne eigene Meinungen einzubringen."
       ],
       "words": 125,
-      "tips": "Achten Sie darauf, die Daten aus der Grafik korrekt einzubinden und den Text sachlich sowie objektiv zusammenzufassen.",
-      "sample": "In dem Text „Der Wald im Wandel“ und der dazugehörigen Grafik geht es um die Hauptursachen und Folgen des Verlusts von Waldflächen weltweit. Unter den Gründen ist die Forstwirtschaft mit einem Anteil von 31 % der wichtigste Faktor. An zweiter Stelle stehen Rohstoffe, deren Gewinnung ein Viertel der Abholzung verursacht. Waldbrände (22 %) und die Landwirtschaft (21 %) sind zu fast gleichen Teilen für den Rückgang verantwortlich.\n\nInfolge dieser Entwicklung verlieren nicht nur Pflanzen und Tiere ihren Lebensraum. Auch für den Menschen bedeutet das eine zunehmende Luftverschmutzung und höhere Temperaturen im Sommer in den Städten, wenn es immer weniger Bäume auf der Welt gibt. Zudem wird der Klimawandel dadurch noch weiter verstärkt."
+      "tips": "Achten Sie darauf, die Daten aus der Grafik korrekt einzubinden und den Text sachlich sowie objektiv zusammenzufassen."
     }
   }
 }

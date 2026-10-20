@@ -9,8 +9,8 @@
   "content": {
     "P1": {
       "title": "Rat geben – Vorbereitung auf Austauschsemester in Sydney",
-      "instruction": "Ihre Freundin Klara wird bald zwei Austauschsemester in Sydney machen. Da sie noch nie in Australien war, ist sie sehr aufgeregt. Klara überlegt, wie sie sich am besten auf den Auslandsaufenthalt vorbereiten kann, und fragt Sie um Rat. Sagen Sie Klara, wozu Sie ihr raten würden. Sie haben 0:30 Minuten Vorbereitungszeit und 0:45 Minuten Sprechzeit.",
-      "prompt": "Geben Sie Klara konkrete Ratschläge zur Vorbereitung auf ihren Auslandsaufenthalt in Sydney.",
+      "instruction": "Sie hören und lesen eine Situation aus dem Hochschulalltag. Geben Sie der Person einen Rat. Sie haben 30 Sekunden Vorbereitungszeit und 45 Sekunden Sprechzeit.",
+      "prompt": "Ihre Freundin Klara wird bald zwei Austauschsemester in Sydney machen. Da sie noch nie in Australien war, ist sie sehr aufgeregt. Klara überlegt, wie sie sich am besten auf den Auslandsaufenthalt vorbereiten kann, und fragt Sie um Rat.",
       "bullets": [
         "Reagieren Sie auf Klaras Aufregung und Unsicherheit.",
         "Schlagen Sie mindestens zwei konkrete Vorbereitungsschritte vor.",
@@ -18,27 +18,25 @@
       ],
       "seconds": 45,
       "prepSec": 30,
-      "tips": "Sprechen Sie zusammenhängend und achten Sie auf eine klare Struktur Ihres Ratschlags.",
-      "sample": "Also Klara, ich kann gut verstehen, dass du nervös bist. Du wirst ein Jahr in einem ganz fremden Land leben. An deiner Stelle würde ich mich erstmal gut über alles informieren, was dich in Sydney erwartet. Schau doch mal im Internet nach, wie groß die Stadt ist, wie viele Leute an der Uni eingeschrieben sind und welche Aktivitäten es für die Studierenden gibt. Dann kannst du dir besser vorstellen, wie dein Leben in Australien aussehen wird. Du könntest auch versuchen, zu Studierenden in Sydney Kontakt aufzunehmen, es gibt sicher verschiedene Gruppen in sozialen Netzwerken. Da könntest du noch mehr Informationen bekommen."
+      "tips": "Sprechen Sie zusammenhängend und achten Sie auf eine klare Struktur Ihres Ratschlags."
     },
     "P2": {
-      "title": "Optionen abwägen – Staatliches Stipendium von 1000 Euro",
-      "instruction": "Sie sind mit einigen Kommilitonen in der Cafeteria Ihrer Hochschule. Sie jobben alle neben dem Studium und diskutieren über den finanziellen Stress von Studierenden. Ihr Freund Michael meint, dass alle Studierenden ein staatliches Stipendium von 1000 Euro pro Monat bekommen sollten. Wägen Sie die positiven und negativen Folgen eines staatlichen Stipendiums ab. Legen Sie Ihren Standpunkt dar und begründen Sie Ihre Meinung. Sie haben 0:45 Minuten Vorbereitungszeit und 1:30 Minuten Sprechzeit.",
-      "prompt": "Wägen Sie Vor- und Nachteile eines staatlichen Stipendiums von 1000 € ab und begründen Sie Ihre Position.",
+      "title": "Optionen abwägen: Staatliches Stipendium von 1000 Euro",
+      "instruction": "Sie sollen in einer mündlichen Prüfung zwei Optionen abwägen. Lesen Sie die Situation und die Aufgabe. Sie haben 45 Sekunden Vorbereitungszeit und 90 Sekunden Sprechzeit.",
+      "prompt": "Sie sind mit einigen Kommilitonen in der Cafeteria Ihrer Hochschule. Sie jobben alle neben dem Studium und diskutieren über den finanziellen Stress von Studierenden. Ihr Freund Michael meint, dass alle Studierenden ein staatliches Stipendium von 1000 Euro pro Monat bekommen sollten. Wägen Sie die positiven und negativen Folgen eines staatlichen Stipendiums ab und begründen Sie Ihre Meinung.",
       "bullets": [
-        "Vorteile eines staatlichen Stipendiums",
-        "Nachteile / Risiken",
+        "Vorteile eines staatlichen Stipendiums von 1000 Euro",
+        "Nachteile und Risiken",
         "Ihre persönliche Empfehlung mit Begründung"
       ],
       "seconds": 90,
       "prepSec": 45,
-      "tips": "Strukturieren Sie Ihren Beitrag klar mit einer Einleitung, der Abwägung beider Seiten und einem begründeten Fazit.",
-      "sample": "Ja, das wäre natürlich super. Mit 1000 Euro pro Monat müsste man sich hier keinen Nebenjob mehr machen und könnte sich voll auf sein Studium konzentrieren. Dann hätte man nicht nur weniger Stress, sondern man könnte das Studium auch schneller abschließen. An einem Stipendium wäre auch positiv, dass es im Gegensatz zu einem Studienkredit nicht zurückgezahlt werden muss. So hat man keine jahrelange finanzielle Belastung, nachdem man mit der Uni fertig ist. Es könnte aber auch negative Folgen haben. Alle Studierenden mit 1000 Euro pro Monat zu unterstützen, wäre sehr teuer für den Staat. Zudem könnte man kaum überprüfen, ob jemand wirklich ein Student ist und fleißig lernt oder einfach nur eingeschrieben ist, um das Geld zu bekommen. So könnte auch viel Geld verschwendet werden für Leute, die die Unterstützung gar nicht verdienen. Aus diesem Grund finde ich die Idee zwar gut, aber das Stipendium müsste meiner Meinung nach mit bestimmten Voraussetzungen verbunden sein. Zum Beispiel sollten die Studierenden ihre Klausurergebnisse und ihren Fortschritt im Studium nachweisen müssen. Dann wäre es eine gute Sache, weil dadurch alle die Chance bekommen, zu studieren, solange sie gute Leistungen erbringen, und zwar ganz unabhängig vom Geld der Eltern."
+      "tips": "Strukturieren Sie Ihren Beitrag klar mit einer Einleitung, der Abwägung beider Seiten und einem begründeten Fazit."
     },
     "P3": {
-      "title": "Zusammenfassung – Verbessern Zimmerpflanzen die Raumluft?",
-      "instruction": "In einer Arbeitsgruppe an Ihrer Hochschule behandeln Sie gerade das Thema „Maßnahmen zur Verbesserung des Raumklimas“. Sie haben dazu einen interessanten Artikel gelesen und wollen ihn für Ihre Mitstudierenden zusammenfassen. Lesen Sie den Text. Fassen Sie dann die wesentlichen Informationen zusammen. Sie haben 4:00 Minuten Vorbereitungszeit und 2:00 Minuten Sprechzeit.",
-      "prompt": "Fassen Sie den Artikel über Zimmerpflanzen und Raumluft zusammen.",
+      "title": "Zusammenfassung: Verbessern Zimmerpflanzen die Raumluft?",
+      "instruction": "Fassen Sie den Inhalt des folgenden Textes über Zimmerpflanzen und Raumluft zusammen und gehen Sie dabei auf die drei Leitpunkte ein.",
+      "prompt": "In einer Arbeitsgruppe an Ihrer Hochschule behandeln Sie gerade das Thema „Maßnahmen zur Verbesserung des Raumklimas“. Sie haben dazu einen interessanten Artikel gelesen und wollen ihn für Ihre Mitstudierenden zusammenfassen.",
       "bullets": [
         "Nennen Sie die Hauptvorteile, die Studien Zimmerpflanzen zuschreiben.",
         "Beschreiben Sie die neuere wissenschaftliche Auswertung der Studien.",
@@ -46,13 +44,12 @@
       ],
       "seconds": 120,
       "prepSec": 240,
-      "tips": "Strukturieren Sie Ihren Vortrag klar mit einer Einleitung, den drei Hauptpunkten und einem kurzen Fazit.",
-      "sample": "In dem Text geht es um wissenschaftliche Studien zur Wirkung von Zimmerpflanzen. Einige dieser Studien haben gezeigt, dass Zimmerpflanzen schädliche Stoffe aus der Luft filtern und die Luftqualität in Räumen dadurch verbessern können. Forscher haben diese Studien jetzt jedoch ausgewertet und sind zu dem Ergebnis gekommen, dass dieser Effekt nicht relevant ist, denn der natürliche Luftwechsel, der in Gebäuden stattfindet, hat einen stärkeren Einfluss auf die Luftqualität als die luftreinigende Wirkung der Pflanzen. Die Forscher erklären ihr Ergebnis damit, dass die ursprünglichen Studien in geschlossenen Räumen durchgeführt wurden, in denen kein Austausch mit der Außenluft stattfand. Unter solchen Bedingungen haben Pflanzen einen Effekt. In normalen Gebäuden ist diese Wirkung allerdings nicht entscheidend."
+      "tips": "Strukturieren Sie Ihren Vortrag klar mit einer Einleitung, den drei Hauptpunkten und einem kurzen Fazit."
     },
     "P4": {
-      "title": "Stellungnahme zu Kriterien bei der Personalauswahl",
-      "instruction": "In Ihrem wirtschaftswissenschaftlichen Seminar sprechen Sie über wichtige Kriterien bei der Auswahl neuer Mitarbeiter und Mitarbeiterinnen. Ihre Dozentin, Frau Dr. Rabenstein, hat eine Grafik mitgebracht und bittet die Seminarteilnehmenden um eine Stellungnahme. Hören Sie, was ein Seminarteilnehmer zum Thema sagt. Nehmen Sie Stellung zu der gehörten Aussage. Beziehen Sie sich dabei auch auf die vorliegende Grafik. Sie haben 0:30 Minuten Vorbereitungszeit und 1:30 Minuten Sprechzeit.",
-      "prompt": "Nehmen Sie Stellung zur Aussage Ihres Kommilitonen und beziehen Sie die Grafik ein.",
+      "title": "Fachgespräch im Seminar: Kriterien bei der Personalauswahl",
+      "instruction": "Sie nehmen an einem studentischen Fachgespräch über wichtige Kriterien bei der Auswahl neuer Mitarbeiter teil. Nehmen Sie zu den vorliegenden Argumenten Stellung und begründen Sie Ihre eigene Position.",
+      "prompt": "In Ihrem wirtschaftswissenschaftlichen Seminar sprechen Sie über wichtige Kriterien bei der Auswahl neuer Mitarbeiter und Mitarbeiterinnen. Ihre Dozentin hat eine Grafik mitgebracht. Hören Sie, was ein Seminarteilnehmer zum Thema sagt, und nehmen Sie Stellung dazu. Beziehen Sie sich auch auf die Grafik.",
       "bullets": [
         "Geben Sie die Kernaussage des Kommilitonen wieder.",
         "Vergleichen Sie sie mit den Daten der Grafik.",
@@ -60,27 +57,25 @@
       ],
       "seconds": 90,
       "prepSec": 30,
-      "tips": "Strukturieren Sie Ihren Beitrag durch klare Überleitungen und begründen Sie Ihre Meinung mit nachvollziehbaren Beispielen.",
-      "sample": "Ja, danke. Ich kann meinem Kommilitonen nicht ganz zustimmen. Er ist der Meinung, dass es heutzutage nur noch auf die Berufserfahrung und Auslandserfahrung eines Bewerbers ankomme und Noten für die Personalchefs nicht mehr wichtig seien. Diese Aussage steht jedoch im Widerspruch zur Grafik. Dort können wir eindeutig erkennen, dass Berufserfahrung zwar das wichtigste Kriterium für Personaler ist, aber mehr als vier Fünftel interessieren sich auch für die Abschlussnote. Im Gegensatz dazu ist Auslandserfahrung nur für eine Minderheit von Bedeutung. Meiner Ansicht nach ist es erstaunlich, dass die Abschlussnote weiterhin ein so wichtiges Kriterium bei der Auswahl zukünftiger Mitarbeiter ist. Denn gute Noten im Studium zeigen nur, wie gut man Tests bestehen kann. Sie sagen aber nicht darüber aus, wie erfolgreich jemand im Berufsleben sein wird. Auch überrascht mich, dass Auslandserfahrung für Personalchefs nicht wichtiger ist. In der heutigen globalisierten Arbeitswelt würde ich erwarten, dass internationale Erfahrungen eine viel größere Bedeutung haben. Außerdem scheinen mir noch andere Kriterien sehr wichtig, die nicht in der Grafik genannt sind, wie zum Beispiel die Persönlichkeit eines Bewerbers und seine soziale Kompetenz."
+      "tips": "Strukturieren Sie Ihren Beitrag durch klare Überleitungen und begründen Sie Ihre Meinung mit nachvollziehbaren Beispielen aus dem Hochschulalltag."
     },
     "P5": {
-      "title": "Thema präsentieren – Familie früher und heute",
-      "instruction": "Sie haben für Ihren studienvorbereitenden Deutschkurs eine Kurzpräsentation zum Thema „Familie früher und heute“ vorbereitet. Ihre Tutorin, Frau Hofmann, bittet Sie, Ihre Präsentation vorzutragen. Erläutern Sie zunächst den Aufbau Ihrer Präsentation. Gehen Sie dann auf die einzelnen Punkte näher ein und heben Sie wichtige Einzelheiten hervor. Sie haben 2:00 Minuten Vorbereitungszeit und 2:30 Minuten Sprechzeit.",
-      "prompt": "Präsentieren Sie das Thema „Familie früher und heute“ anhand der drei Leitpunkte.",
+      "title": "Aufgabe 5: Ein Thema präsentieren — Familie früher und heute",
+      "instruction": "Sie sollen in dieser Aufgabe eine Präsentation zu einem akademischen Thema halten. Gehen Sie dabei auf die drei vorgegebenen Punkte ein und begründen Sie Ihre Meinung.",
+      "prompt": "Sie haben für Ihren studienvorbereitenden Deutschkurs eine Kurzpräsentation zum Thema „Familie früher und heute“ vorbereitet. Ihre Tutorin bittet Sie, Ihre Präsentation vorzutragen.",
       "bullets": [
-        "Familiengröße",
-        "Formen des Zusammenlebens",
-        "Rollenverteilung Männer / Frauen"
+        "Bewerten Sie die Veränderungen der Familiengröße.",
+        "Beschreiben Sie die Formen des Zusammenlebens früher und heute.",
+        "Sprechen Sie eine begründete Einschätzung zur Rollenverteilung Männer / Frauen aus."
       ],
       "seconds": 150,
       "prepSec": 120,
-      "tips": "Strukturieren Sie Ihren Vortrag klar mit einer Einleitung, der Beantwortung aller drei Leitpunkte und einem runden Schlusswort.",
-      "sample": "Liebe Kommilitoninnen und Kommilitonen, in meiner heutigen Präsentation möchte ich das Thema „Familie früher und heute“ vorstellen. Meine Präsentation besteht aus drei Teilen: Zuerst werde ich euch einige Informationen über die Familiengröße geben. Danach gehe ich auf die Formen des Zusammenlebens ein. Am Ende spreche ich noch über die Rollenverteilung zwischen Männern und Frauen.\n\nBeginnen wir mit der Familiengröße. Vor etwa einhundert Jahren war die Großfamilie verbreitet, und es war keine Seltenheit, dass Frauen fünf bis sechs Kinder hatten. Familien bestanden aus vielen Mitgliedern und jede Person hatte Tanten und Onkel, Cousins und Cousinen und auch Brüder und Schwestern. Im Gegensatz dazu sind die heutigen Familien viel kleiner. Frauen bekommen im Durchschnitt nur noch ein bis zwei Kinder, weshalb viele Kinder ohne Geschwister aufwachsen. Wenn dann auch die Eltern Einzelkinder sind, haben die Kinder außer den Großeltern keine anderen Verwandten.\n\nKommen wir nun zum zweiten Aspekt, den veränderten Formen des Zusammenlebens. Zur Zeit der Großfamilie war es üblich, dass mehrere Generationen unter einem Dach lebten. Die Großeltern gehörten zum Haushalt und halfen zum Beispiel bei der Kindererziehung. Heute dagegen ist es der Normalfall, als Kleinfamilie zusammenzuleben. Neben der Kleinfamilie gibt es aber auch zunehmend andere Familienformen, wie etwa Patchworkfamilien oder Familien mit nur einem Elternteil.\n\nAls Letztes sage ich noch etwas zur Rollenverteilung. In der traditionellen Familie der Vergangenheit war im Allgemeinen der Mann das Familienoberhaupt. Heutzutage besteht mehr Gleichberechtigung zwischen Männern und Frauen. Häufig sind beide Partner berufstätig und verdienen Geld. Auch die Hausarbeit ist auf beide Partner verteilt, und Männer haben eine größere Rolle bei der Erziehung ihrer Kinder.\n\nDamit bin ich am Ende meiner Präsentation angelangt. Ich bedanke mich fürs Zuhören."
+      "tips": "Strukturieren Sie Ihren Vortrag klar mit einer Einleitung, der Beantwortung aller drei Leitpunkte und einem runden Schlusswort."
     },
     "P6": {
-      "title": "Argumente wiedergeben und Stellung nehmen – Verbot von Benzin- und Dieselfahrzeugen",
-      "instruction": "In Ihrem sozialwissenschaftlichen Seminar diskutieren Sie heute über das Thema „Verbot von Benzin- und Dieselfahrzeugen – Umstieg auf Elektromobilität“. Eine Kommilitonin äußert sich zu diesem Thema. Ihre Dozentin, Frau Dr. Bauer, bittet Sie, zu der Äußerung Stellung zu nehmen. Geben Sie die Argumente Ihrer Kommilitonin wieder und nehmen Sie Stellung zu ihren Argumenten. Begründen Sie Ihren eigenen Standpunkt zum Thema. Sie haben 1:30 Minuten Vorbereitungszeit und 2:00 Minuten Sprechzeit.",
-      "prompt": "Geben Sie die Argumente wieder und nehmen Sie begründet Stellung.",
+      "title": "Aufgabe 6: Stellungnahme zum Verbot von Benzin- und Dieselfahrzeugen",
+      "instruction": "Sie hören einen Ausschnitt aus einer Universitätsdiskussion zum Thema Umstieg auf Elektromobilität. Wiedergeben Sie die wichtigsten Argumente und nehmen Sie anschließend begründet Stellung dazu.",
+      "prompt": "In Ihrem sozialwissenschaftlichen Seminar diskutieren Sie über das Thema „Verbot von Benzin- und Dieselfahrzeugen – Umstieg auf Elektromobilität“. Eine Kommilitonin äußert sich zu diesem Thema. Geben Sie die Argumente wieder und nehmen Sie Stellung.",
       "bullets": [
         "Geben Sie die Argumente für den Umstieg auf Elektroautos wieder.",
         "Geben Sie die Gegenargumente / Einschränkungen wieder.",
@@ -88,22 +83,20 @@
       ],
       "seconds": 120,
       "prepSec": 90,
-      "tips": "Strukturieren Sie Ihren Redebeitrag klar mit Einleitung, Wiedergabe, eigener Meinung und Schluss.",
-      "sample": "Ja, danke. Mein Kommilitone ist der Meinung, dass bald nur noch Elektroautos erlaubt sein sollten und wir auf diese Weise die Luftqualität in den Städten verbessern könnten, denn diese Autos würden keine Schadstoffe produzieren. Diesem Argument stimme ich teilweise zu. Die Luft in den Städten würde sicher besser werden. Wir dürfen aber nicht vergessen, dass der Strom für die Elektroautos vor allem mit Kohle und Erdgas erzeugt wird. Und in diesen Kraftwerken entstehen natürlich Schadstoffe.\n\nMein Kommilitone hat außerdem erklärt, dass der Verkehrslärm sich reduzieren ließe, wenn es nur noch Elektroautos gäbe. Mit dieser Aussage bin ich zum Teil einverstanden. Solange Elektroautos nur langsam fahren, sind sie tatsächlich sehr leise. Die Lärmbelastung durch Autoverkehr in den Städten würde sich also verringern. Sobald diese Autos allerdings schnell fahren, sind sie auch ziemlich laut.\n\nSchließlich hat mein Kommilitone noch gesagt, dass elektrische Autos eine große Bequemlichkeit bieten würden, da man sie nachts zuhause aufladen könne. Diesem Argument muss ich allerdings widersprechen, da es nur auf Menschen zutrifft, die in ihrem eigenen Haus leben. Die Mehrheit lebt dagegen in Wohnungen und hat zu Hause keine Lademöglichkeit für ein Elektroauto.\n\nMeiner Meinung nach ist ein komplettes Verbot von Benzin- und Diesel-PKW und ein vollständiger Umstieg auf Elektroautos in den nächsten Jahren nicht realistisch. Für einen großen Teil der Bevölkerung sind sie im Moment noch keine echte Alternative. Ich halte E-Autos aber sowieso nicht für die beste Alternative. Meiner Ansicht nach sollten wir den öffentlichen Nahverkehr besser ausbauen."
+      "tips": "Strukturieren Sie Ihren Redebeitrag klar mit Einleitung, Wiedergabe, eigener Meinung und Schluss."
     },
     "P7": {
-      "title": "Kritik äußern – Online-Studium für geisteswissenschaftliche Studiengänge",
-      "instruction": "Sie haben auf der Internetseite Ihrer Hochschule gelesen, dass aufgrund von Sparmaßnahmen geisteswissenschaftliche Studiengänge umstrukturiert werden sollen. Sie vertreten eine Studierendengruppe, die dieses Vorhaben kritisch verfolgt, und möchten sich bei einer Informationsveranstaltung zum Thema äußern. Äußern Sie die Kritik der Studierendengruppe an der geplanten Maßnahme. Begründen Sie diese Position. Sagen Sie, wie die Geisteswissenschaften anderweitig Geld einsparen könnten. Sie haben 1:30 Minuten Vorbereitungszeit und 1:30 Minuten Sprechzeit.",
-      "prompt": "Kritisieren Sie die geplante Umstellung auf reines Online-Studium und schlagen Sie Alternativen vor.",
+      "title": "Kritik an der geplanten Umstellung geisteswissenschaftlicher Studiengänge auf Online-Studium",
+      "instruction": "Sie hören eine Ankündigung der Hochschulverwaltung zur Umstrukturierung geisteswissenschaftlicher Studiengänge. Äußern Sie sich dazu in einer Sprachnachricht.",
+      "prompt": "Sie haben auf der Internetseite Ihrer Hochschule gelesen, dass aufgrund von Sparmaßnahmen geisteswissenschaftliche Studiengänge ab dem nächsten Jahr nur noch als Online-Studium angeboten werden sollen. Kritisieren Sie diese Maßnahme und begründen Sie Ihre Haltung ausführlich.",
       "bullets": [
         "Gehen Sie auf die Bedeutung der aktuellen Präsenzstudiengänge ein.",
         "Kritisieren Sie die Begründung der Hochschulverwaltung (Sparmaßnahmen).",
-        "Schlagen Sie mindestens zwei realistische Alternativen vor."
+        "Schlagen Sie mindestens zwei realistische Alternativen vor, um Kosten zu sparen."
       ],
       "seconds": 90,
       "prepSec": 90,
-      "tips": "Strukturieren Sie Ihren Redebeitrag klar mit einer Einleitung, begründeter Kritik und konstruktiven Vorschlägen zum Schluss.",
-      "sample": "Vielen Dank, dass Sie mir das Wort erteilen. Dem Vorhaben der Universität können wir Studierenden nicht zustimmen. Wenn geisteswissenschaftliche Studienfächer nur noch als Online-Studium angeboten würden, würde das ihre Attraktivität für die Studierenden und ihre Bedeutung stark reduzieren. Wir brauchen geisteswissenschaftliche Studiengänge jedoch ebenso sehr wie auch andere Fächer. Die Geisteswissenschaften haben eine wichtige Funktion für unsere moderne Gesellschaft. Sie vermitteln uns Werte und geben uns Orientierung für die Zukunft. Auch die Universität braucht die geisteswissenschaftlichen Fakultäten. Denn sie leisten einen Beitrag zur Persönlichkeitsbildung der Studierenden und machen sie zu selbstständig denkenden Menschen. Daher wäre es ein Fehler, geisteswissenschaftliche Studiengänge als überflüssigen Luxus wahrzunehmen, auf den man einfach verzichten kann.\n\nEine bessere Lösung, als die Präsenzstudiengänge komplett abzuschaffen, wäre es, einen Schwerpunkt zu setzen. Mehrere Universitäten könnten zusammenarbeiten und kleine Fächer, in denen nur wenige Studierende immatrikuliert sind, untereinander aufteilen. Mit dem eingesparten Geld könnten die anderen Fakultäten finanziert werden. Eine weitere Maßnahme könnte sein, die Fachbibliotheken in den geisteswissenschaftlichen Fakultäten aufzulösen und in die Universitätsbibliothek zu integrieren. Auf diese Weise könnte die Universität die Kosten reduzieren und die Studierenden hätten immer noch Zugang zu den Büchern. Wir hoffen, dass die Universität die geplanten Sparmaßnahmen noch einmal überdenkt und wir gemeinsam eine bessere Lösung finden."
+      "tips": "Strukturieren Sie Ihren Redebeitrag klar mit einer Einleitung, begründeter Kritik und konstruktiven Vorschlägen zum Schluss."
     }
   }
 }
