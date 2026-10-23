@@ -1,37 +1,59 @@
 {
-  "kind": "prepstudio.module",
-  "version": 1,
-  "exported": "2026-09-22T12:18:51.971Z",
-  "exam": "testdaf",
-  "level": "TestDaF",
-  "module": "schreiben",
-  "name": "TestDaF — Modelltest 1 — Schreiben",
-  "content": {
-    "S1": {
-      "title": "Digitale Prüfungen an Universitäten",
-      "instruction": "Schreiben Sie einen zusammenhängenden, klar gegliederten argumentativen Text zum Thema digitale Prüfungen. Gehen Sie dabei auf die folgenden Punkte ein:",
-      "prompt": "Immer mehr Universitäten stellen von klassischen Klausuren auf digitale Prüfungsformate am Computer um. Befürworter loben die Effizienz und die bessere Lesbarkeit, während Kritiker vor technischen Problemen und sozialer Ungleichheit warnen.",
-      "bullets": [
-        "Geben Sie Ihre eigene Position zu digitalen Prüfungen an der Hochschule wieder.",
-        "Nennen Sie Argumente, warum digitale Prüfungen Ihrer Meinung nach vorteilhaft oder nachteilig sind, und stützen Sie diese durch Beispiele.",
-        "Gehen Sie auf die Gegenposition ein und setzen Sie sich kritisch damit auseinander.",
-        "Ziehen Sie ein abschließendes Fazit."
+ "kind": "prepstudio.module",
+ "version": 1,
+ "exported": "2026-10-23T00:00:00.000Z",
+ "exam": "testdaf",
+ "level": "TestDaF",
+ "module": "schreiben",
+ "name": "TestDaF — Modelltest 1 — Schreiben",
+ "content": {
+  "S1": {
+   "title": "Studieren im Ausland",
+   "situation": "Auf einer Lernplattform diskutieren Sie mit Ihrem Dozenten und anderen Seminarteilnehmenden über das Thema „Studieren im Ausland“.",
+   "task": "Erläutern und begründen Sie, welche Vorteile und Nachteile ein Auslandssemester für Studierende haben kann.",
+   "notes": [
+    "Vorteile: Sprachkenntnisse verbessern sich schnell; interkulturelle Erfahrung; Kontakte und bessere Chancen im Beruf.",
+    "Nachteile: hohe Kosten (Miete, Reise) auch bei Stipendien; Anerkennung der Leistungen nicht immer gesichert; Studienzeit kann sich verlängern.",
+    "Aufbau: Einleitung – Vorteile mit Begründung – Nachteile mit Begründung – kurzes Fazit; mindestens 200 Wörter."
+   ]
+  },
+  "S2": {
+   "title": "Lebensmittelverschwendung",
+   "situation": "In Ihrem Seminar für Umweltwissenschaften schreiben Sie eine Hausarbeit zum Thema „Lebensmittelverschwendung“. In einem Abschnitt wollen Sie sich mit folgender Frage beschäftigen:",
+   "task": "Welche Ursachen und Folgen hat die Lebensmittelverschwendung?",
+   "text": "Etwa ein Drittel aller Lebensmittel, die weltweit produziert werden, landet im Abfall. Die Gründe dafür sind vielfältig. In privaten Haushalten kaufen viele Menschen mehr ein, als sie verbrauchen können, und werfen Produkte weg, sobald das Mindesthaltbarkeitsdatum abgelaufen ist – obwohl sie häufig noch genießbar wären. „Das Datum bedeutet nicht, dass ein Lebensmittel danach verdorben ist“, erklärt die Ernährungswissenschaftlerin Dr. Hanna Berger. Auch der Handel trägt dazu bei: Obst und Gemüse, das nicht der Norm in Größe oder Form entspricht, wird oft schon vor dem Verkauf aussortiert. In Restaurants und Kantinen führen große Portionen und schwer kalkulierbare Gästezahlen zu Überschüssen.\n\nDie Folgen sind erheblich. Für Lebensmittel, die niemand isst, werden Wasser, Ackerfläche und Energie verbraucht. Rund zehn Prozent der weltweiten Treibhausgase stehen im Zusammenhang mit Lebensmitteln, die nicht gegessen werden. Hinzu kommen wirtschaftliche Verluste: Ein durchschnittlicher Haushalt wirft jedes Jahr Lebensmittel im Wert von mehreren hundert Euro weg. Gleichzeitig hungern Millionen Menschen, sodass die Verschwendung auch ein ethisches Problem darstellt.",
+   "chart": {
+    "title": "Lebensmittelabfälle nach Bereichen (Anteil in Prozent)",
+    "axis": "Anteil in Prozent",
+    "cats": [
+     "Private\nHaushalte",
+     "Industrie",
+     "Groß-\nverbraucher",
+     "Landwirt-\nschaft",
+     "Handel"
+    ],
+    "series": [
+     {
+      "name": "Anteil",
+      "values": [
+       52,
+       18,
+       14,
+       9,
+       7
       ],
-      "words": 200,
-      "tips": "Gliedern Sie Ihren Text in Einleitung, Hauptteil mit Argumenten und Gegenargumenten sowie ein klares Fazit."
-    },
-    "S2": {
-      "title": "Zusammenfassung: Nutzung digitaler Medien an Hochschulen",
-      "instruction": "Fassen Sie die wichtigsten Informationen aus dem Lesetext und der dazugehörigen Grafik in einem zusammenhängenden Text zusammen. Beachten Sie dabei die vorgegebenen Leitpunkte. Schreiben Sie circa 100 bis 150 Wörter und bewerten Sie die Informationen nicht.",
-      "prompt": "Immer mehr Studierende nutzen digitale Medien und Lernplattformen im studentischen Alltag. Der vorliegende Text sowie die begleitende Grafik informieren über die Entwicklung und die bevorzugten Anwendungsbereiche dieser Technologien an deutschen Universitäten im Jahr 2023. Fassen Sie die Kerninhalte in Ihrem eigenen Text zusammen.",
-      "bullets": [
-        "Geben Sie das allgemeine Thema des Textes und der Grafik wieder.",
-        "Beschreiben Sie die wichtigsten Entwicklungen oder Trends anhand der Daten.",
-        "Nennen Sie die zentralen Gründe für die genannte Nutzung.",
-        "Fassen Sie die Ergebnisse prägnant zusammen, ohne eigene Meinungen einzubringen."
-      ],
-      "words": 125,
-      "tips": "Achten Sie darauf, die Daten aus der Grafik korrekt einzubinden und den Text sachlich sowie objektiv zusammenzufassen."
-    }
+      "color": "#4f8a43"
+     }
+    ],
+    "max": 60,
+    "step": 10,
+    "unit": "%"
+   },
+   "notes": [
+    "Ursachen (aus dem Text): zu große Einkaufsmengen; Mindesthaltbarkeitsdatum wird mit Verfallsdatum verwechselt; Handel sortiert Obst/Gemüse nach Norm aus; große Portionen in der Gastronomie.",
+    "Folgen (aus Text und Grafik): Verbrauch von Wasser, Fläche und Energie; Treibhausgase; finanzielle Verluste; ethisches Problem. Grafik: Haushalte verursachen mit gut der Hälfte den größten Anteil der Abfälle.",
+    "Eigene Formulierungen, keine Wertung, ca. 100–150 Wörter."
+   ]
   }
+ }
 }

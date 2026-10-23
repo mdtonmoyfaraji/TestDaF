@@ -14,7 +14,7 @@
    ======================================================================= */
 "use strict";
 
-const VERSION = "ps-cache-v3";
+const VERSION = "ps-cache-v3-tdpdf1";
 const APP_SHELL = [
   "./",
   "./index.html",

@@ -626,6 +626,8 @@ const FORMATS = {
   gapmc:   { auto: true,  opts: 4, cloze: true },
   gapbank: { auto: true,  bank: true, cloze: true },
   short:   { auto: false, text: true },
+  td:      { auto: true, td: true },
+  tdshort: { auto: true, td: true, lenient: true },
   writing: { auto: false, essay: true },
   speaking:{ auto: false, spoken: true }
 };
@@ -1046,57 +1048,41 @@ const BLUEPRINTS = {
   const bp = {
     title: "TestDaF digital",
     modular: true, verified: "verified",
-    source: "testdaf.de, „Aufbau des digitalen TestDaF“: Lesen 7 Aufgaben / 34 Items / ca. 55 Min, Hören 7 Aufgaben / 30 Items / ca. 40 Min, Schreiben 2 Aufgaben / ca. 60 Min, Sprechen 7 Aufgaben / ca. 35 Min mit den dort genannten Sprechzeiten.",
+    source: "g.a.s.t., Beispielaufgaben aus der Demo-Version des digitalen TestDaF: Lesen 7 Aufgabentypen / 34 Items (53 Min), Hören 7 / 30 Items, Schreiben 2 (2 × 30 Min), Sprechen 7 mit den im PDF genannten Vorbereitungs- und Sprechzeiten.",
     scoring: { kind: "tdn", target, cut: tdnCut, bands: tdnCut },
     topics: "Hochschulalltag, Forschung, Studienorganisation, Gesellschaft, Technik",
     blockNote: "Ihr TDN pro Modul wird aus dem Prozentanteil richtiger Antworten berechnet (Bänder bei 40 / 60 / 80 %) — es gibt keine vorab wählbare Schwierigkeitsstufe. Die echte Einstufung erfolgt testsatzspezifisch. Die Aufgaben laufen linear: vorwärts ja, zurück nein.",
     modules: {
-      lesen: { minutes: 55, linear: true, parts: [
-        P("L1", "Aufgabe 1", "Lückentext ergänzen (Wortschatz)", "gapbank", 5, 1, 8,
-          { bank: 8, instruction: "Ergänzen Sie die Lücken im wissenschaftlichen Text. Drei Vorgaben passen nicht." }),
-        P("L2", "Aufgabe 2", "Textabschnitte ordnen", "match", 4, 1, 7,
-          { bank: 4, instruction: "Bringen Sie die Abschnitte in die richtige Reihenfolge: Welcher Abschnitt gehört an welche Position?" }),
-        P("L3", "Aufgabe 3", "Journalistischer oder Forschungstext – Mehrfachauswahl", "mc4", 7, 1, 12,
-          { instruction: "Wählen Sie die richtige Lösung a, b, c oder d." }),
-        P("L4", "Aufgabe 4", "Sprachhandlungen zuordnen", "match", 4, 1, 7,
-          { bank: 6, instruction: "Welche Sprachhandlung vollzieht die Autorin bzw. der Autor an der markierten Stelle?" }),
-        P("L5", "Aufgabe 5", "Aussagen Kategorien zuordnen", "match", 7, 1, 10,
-          { bank: 3, bankMulti: true, instruction: "Ordnen Sie jede Aussage der passenden Kategorie zu. Kategorien können mehrfach vorkommen." }),
-        P("L6", "Aufgabe 6", "Aussagen einem Begriffspaar zuordnen", "match", 4, 1, 6,
-          { bank: 3, bankMulti: true, instruction: "Bezieht sich die Aussage auf den ersten Begriff, den zweiten oder auf beide?" }),
-        P("L7", "Aufgabe 7", "Fehler in einer Zusammenfassung erkennen", "mc4", 3, 1, 5,
-          { instruction: "Die Zusammenfassung gibt den Text an einigen Stellen falsch wieder. Welche Formulierung stimmt nicht mit dem Text überein?" })
+      lesen: { minutes: 53, linear: true, parts: [
+        P("L1", "Aufgabe 1", "Lückentext ergänzen", "td", 5, 1, 4),
+        P("L2", "Aufgabe 2", "Textabschnitte ordnen", "td", 4, 1, 5),
+        P("L3", "Aufgabe 3", "Multiple-Choice", "td", 7, 1, 15),
+        P("L4", "Aufgabe 4", "Sprachhandlungen zuordnen", "td", 4, 1, 6),
+        P("L5", "Aufgabe 5", "Aussagen Kategorien zuordnen", "td", 7, 1, 9),
+        P("L6", "Aufgabe 6", "Aussagen einem Begriffspaar zuordnen", "td", 4, 1, 7),
+        P("L7", "Aufgabe 7", "Fehler in Zusammenfassung erkennen", "td", 3, 1, 7)
       ]},
       hoeren: { minutes: 40, linear: true, parts: [
-        P("H1", "Aufgabe 1", "Kurzantwort: Übersicht ergänzen (Audio)", "short", 5, 1, 7,
-          { plays: 1, instruction: "Ergänzen Sie die Übersicht in Stichworten. Der Text läuft nur einmal." }),
-        P("H2", "Aufgabe 2", "Kurzantwort: Textstellen zu einem Begriffspaar notieren (Audio)", "short", 4, 1, 6,
-          { plays: 1, instruction: "Notieren Sie in Stichworten, was zu den beiden Begriffen gesagt wird." }),
-        P("H3", "Aufgabe 3", "Fehler in einer Zusammenfassung erkennen (Audio)", "mc4", 2, 1, 4,
-          { plays: 1, instruction: "Vergleichen Sie den gehörten Text mit der schriftlichen Zusammenfassung. Welche Aussage stimmt nicht?" }),
-        P("H4", "Aufgabe 4", "Aussagen Personen zuordnen (Video)", "match", 6, 1, 8,
-          { bank: 3, bankMulti: true, plays: 1, instruction: "Wer sagt das? Ordnen Sie jede Aussage einer Person zu." }),
-        P("H5", "Aufgabe 5", "Kurzantwort: Gliederungspunkte zu einem Vortrag ergänzen (Video)", "short", 4, 1, 6,
-          { plays: 1, instruction: "Ergänzen Sie die Gliederung des Vortrags in Stichworten." }),
-        P("H6", "Aufgabe 6", "Mehrfachauswahl (Audio)", "mc3", 5, 1, 6,
-          { plays: 1, instruction: "Wählen Sie die richtige Lösung." }),
-        P("H7", "Aufgabe 7", "Laut- und Schriftbild abgleichen (Audio)", "short", 4, 1, 3,
-          { plays: 1, instruction: "Im schriftlichen Text stehen Wörter, die im gesprochenen Text nicht vorkommen. Notieren Sie diese Wörter." })
+        P("H1", "Aufgabe 1", "Kurzantwort: Übersicht ergänzen", "tdshort", 5, 1, 0, { plays: 1 }),
+        P("H2", "Aufgabe 2", "Kurzantwort: Textstellen zu Begriffspaar notieren", "tdshort", 4, 1, 0, { plays: 1 }),
+        P("H3", "Aufgabe 3", "Fehler in Zusammenfassung erkennen", "td", 2, 1, 0, { plays: 1 }),
+        P("H4", "Aufgabe 4", "Aussagen Personen zuordnen", "td", 6, 1, 0, { plays: 1 }),
+        P("H5", "Aufgabe 5", "Kurzantwort: Gliederungspunkte zu Vortrag ergänzen", "tdshort", 4, 1, 0, { plays: 1 }),
+        P("H6", "Aufgabe 6", "Multiple-Choice", "td", 5, 1, 0, { plays: 1 }),
+        P("H7", "Aufgabe 7", "Laut- und Schriftbild abgleichen", "td", 4, 1, 0, { plays: 1 })
       ]},
       schreiben: { minutes: 60, linear: true, parts: [
-        P("S1", "Aufgabe 1", "Argumentativen Text schreiben", "writing", 1, 60, 40,
-          { words: 200, instruction: "Schreiben Sie einen zusammenhängenden, klar gegliederten argumentativen Text von mindestens 200 Wörtern: Position, Argumente mit Beispielen, Gegenposition, Fazit." }),
-        P("S2", "Aufgabe 2", "Informationen aus Lesetext und Grafik zusammenfassen", "writing", 1, 40, 20,
-          { words: 125, instruction: "Fassen Sie die wichtigsten Informationen aus Text und Grafik in circa 100 bis 150 Wörtern zusammen. Ohne eigene Bewertung." })
+        P("S1", "Aufgabe 1", "Argumentativen Text schreiben", "writing", 1, 60, 30, { words: 200 }),
+        P("S2", "Aufgabe 2", "Informationen aus Lesetext und Grafik zusammenfassen", "writing", 1, 40, 30, { words: 125 })
       ]},
-      sprechen: { minutes: 35, linear: true, group: "Aufnahme am Computer, kein Prüfungsgespräch", prep: 0, parts: [
-        P("P1", "Aufgabe 1", "Rat geben — private Situation (Cafeteria, Mensa)", "speaking", 1, 100 / 7, 3, { prepSec: 30, seconds: 45 }),
-        P("P2", "Aufgabe 2", "Optionen abwägen", "speaking", 1, 100 / 7, 4, { prepSec: 60, seconds: 90 }),
-        P("P3", "Aufgabe 3", "Einen Text zusammenfassen — studentische Arbeitsgruppe", "speaking", 1, 100 / 7, 6, { prepSec: 90, seconds: 120 }),
-        P("P4", "Aufgabe 4", "Informationen abgleichen und Stellung nehmen — Fachgespräch im Seminar", "speaking", 1, 100 / 7, 5, { prepSec: 60, seconds: 90 }),
-        P("P5", "Aufgabe 5", "Ein Thema präsentieren — Tutorium oder Propädeutikum", "speaking", 1, 100 / 7, 7, { prepSec: 120, seconds: 150 }),
-        P("P6", "Aufgabe 6", "Argumente wiedergeben und Stellung nehmen — Diskussionsveranstaltung", "speaking", 1, 100 / 7, 6, { prepSec: 90, seconds: 120 }),
-        P("P7", "Aufgabe 7", "Maßnahmen kritisieren — Veranstaltung der Hochschulverwaltung", "speaking", 1, 100 / 7, 4, { prepSec: 60, seconds: 90 })
+      sprechen: { minutes: 26, linear: true, group: "Aufnahme am Computer, kein Prüfungsgespräch", prep: 0, parts: [
+        P("P1", "Aufgabe 1", "Rat geben", "speaking", 1, 100 / 7, 2, { prepSec: 30, seconds: 45 }),
+        P("P2", "Aufgabe 2", "Optionen abwägen", "speaking", 1, 100 / 7, 2, { prepSec: 45, seconds: 90 }),
+        P("P3", "Aufgabe 3", "Text zusammenfassen", "speaking", 1, 100 / 7, 6, { prepSec: 240, seconds: 120 }),
+        P("P4", "Aufgabe 4", "Informationen abgleichen, Stellung nehmen", "speaking", 1, 100 / 7, 4, { prepSec: 90, seconds: 90 }),
+        P("P5", "Aufgabe 5", "Thema präsentieren", "speaking", 1, 100 / 7, 5, { prepSec: 120, seconds: 150 }),
+        P("P6", "Aufgabe 6", "Argumente wiedergeben, Stellung nehmen", "speaking", 1, 100 / 7, 5, { prepSec: 90, seconds: 120 }),
+        P("P7", "Aufgabe 7", "Maßnahmen kritisieren", "speaking", 1, 100 / 7, 3, { prepSec: 90, seconds: 90 })
       ]}
     }
   };
@@ -1294,7 +1280,7 @@ function scoreModule(bp, modKey, content, answers) {
         const key = part.id + ":" + i;
         const given = answers ? answers[key] : undefined;
         if (given !== undefined && given !== null && given !== "") answered++;
-        if (given !== undefined && String(given) === String(it.answer)) { correct++; got += part.ptsPerItem; }
+        if (given !== undefined && (window.TDF ? TDF.isRight(part, it, given) : String(given) === String(it.answer))) { correct++; got += part.ptsPerItem; }
       });
     } else {
       // Human/AI-graded: use stored grade if present (0..1 of part max)
@@ -2331,7 +2317,7 @@ const SEED_TESTDAF = {
 };
 
 /* ---------------------------------------------------------------------- */
-const SEED_TESTS = [SEED_GOETHE_B2, SEED_TELC_B1, SEED_TESTDAF];
+const SEED_TESTS = [SEED_GOETHE_B2, SEED_TELC_B1]; // altes TestDaF-Seed entfernt (anderes Schema)
 
 /** Makes sure S.tests is an array (first run ever). Does NOT add any "(Standard)"
  *  example tests — those are only added when the user explicitly clicks
@@ -2910,6 +2896,7 @@ function startFullExam(testId) {
 let clockTimer = null;
 function startClock() {
   stopClock();
+  if (S.run && S.run.test && S.run.test.exam === "testdaf") return; // TestDaF: eigene Aufgaben-Timer (testdaf-Engine)
   let tick = 0;
   clockTimer = setInterval(() => {
     if (!S.run || S.run.finished) return stopClock();
@@ -2966,6 +2953,7 @@ VIEWS.run = () => {
   const shell = el("div", {});
   if (!R) { shell.append(el("div", { class: "page" }, el("div", { class: "empty" }, "Keine aktive Sitzung."))); return shell; }
   if (R.reviewing) return reviewView();
+  if (R.test.exam === "testdaf" && window.TDF) return TDF.runView();
 
   const part = R.mod.parts[R.partIndex];
   const content = R.test.content?.[R.moduleKey]?.[part.id];
@@ -3960,7 +3948,9 @@ function reviewView() {
       el("thead", {}, el("tr", {}, el("th", { text: "Teil" }), el("th", { text: "Richtig" }), el("th", { text: "" }), el("th", { text: "Punkte" }))), tb))));
 
   /* solutions */
-  if (S.settings.showSolutionsAfter) {
+  if (R.test.exam === "testdaf" && window.TDF) {
+    page.append(TDF.solutionsBlock());
+  } else if (S.settings.showSolutionsAfter) {
     page.append(el("h2", { style: "margin:20px 0 10px", text: "Lösungen" }));
     for (const part of R.mod.parts) {
       const c = R.test.content?.[R.moduleKey]?.[part.id];
@@ -4481,6 +4471,7 @@ function normalisePart(part, obj) {
    GENERATION
    ======================================================================= */
 async function aiGeneratePart(testId, mk, partId, silent = false) {
+  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { if (!silent) toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId);
   if (!test) return;
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }
@@ -4526,6 +4517,7 @@ async function aiGeneratePart(testId, mk, partId, silent = false) {
 }
 
 async function aiGenerateModule(testId, mk, silent = false) {
+  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId);
   if (!test) return toast("Kein Modelltest ausgewählt.", "err");
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }
@@ -4549,6 +4541,7 @@ async function aiGenerateModule(testId, mk, silent = false) {
 }
 
 async function aiGenerateAll(testId) {
+  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId || S.settings.testId);
   if (!test) return toast("Kein Modelltest ausgewählt.", "err");
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }
@@ -6036,6 +6029,710 @@ go = function (view, params) { _go(view, params); try { syncTopbar(); } catch (e
 
 document.addEventListener("DOMContentLoaded", boot);
 if (document.readyState !== "loading") boot();
+</script>
+<script>
+/* =========================================================================
+   TestDaF digital — Prüfungsoberfläche nach dem offiziellen g.a.s.t.-Demo-PDF
+   "Beispielaufgaben aus der Demo-Version des digitalen TestDaF"
+   (Aufgabentypen, Itemzahlen, Arbeitsanweisungen, Zeiten, Drag & Drop).
+   Datenformat: modeltest/testdaf/SCHEMA.md
+   ======================================================================= */
+(function () {
+"use strict";
+const TD = window.TDF = {};
+const ACTS = ["bedauert", "begrüßt", "empfiehlt", "kritisiert", "prognostiziert", "vermutet", "warnt vor", "zweifelt an"]
+  .map(v => "Der Experte " + v + " etwas.");
+const KEYS = "abcdefgh";
+const MODN = { lesen: "Lesen", hoeren: "Hören", schreiben: "Schreiben", sprechen: "Sprechen" };
+const TITLES = {
+  L1: "Lückentext ergänzen", L2: "Textabschnitte ordnen", L3: "Multiple-Choice", L4: "Sprachhandlungen zuordnen",
+  L5: "Aussagen Kategorien zuordnen", L6: "Aussagen einem Begriffspaar zuordnen", L7: "Fehler in Zusammenfassung erkennen",
+  H1: "Kurzantwort: Übersicht ergänzen", H2: "Kurzantwort: Textstellen zu Begriffspaar notieren", H3: "Fehler in Zusammenfassung erkennen",
+  H4: "Aussagen Personen zuordnen", H5: "Kurzantwort: Gliederungspunkte zu Vortrag ergänzen", H6: "Multiple-Choice", H7: "Laut- und Schriftbild abgleichen",
+  S1: "Argumentativen Text schreiben", S2: "Informationen aus Lesetext und Grafik zusammenfassen",
+  P1: "Rat geben", P2: "Optionen abwägen", P3: "Text zusammenfassen", P4: "Informationen abgleichen, Stellung nehmen",
+  P5: "Thema präsentieren", P6: "Argumente wiedergeben, Stellung nehmen", P7: "Maßnahmen kritisieren"
+};
+TD.TITLES = TITLES;
+
+/* ---------- phases (Zeiten laut PDF) ---------- */
+const PH = {
+  L1: [["work", 240]], L2: [["work", 300]], L3: [["work", 900]], L4: [["work", 360]], L5: [["work", 540]], L6: [["work", 420]], L7: [["work", 420]],
+  H1: [["pre", 15], ["listen", 0], ["post", 20]], H2: [["listen", 0], ["post", 180]], H3: [["listen", 0], ["post", 150]],
+  H4: [["pre", 45], ["listen", 0], ["post", 45]], H5: [["pre", 10], ["listen", 0], ["post", 180]], H6: [["pre", 90], ["listen", 0], ["post", 90]],
+  H7: [["listen", 0], ["post", 20]],
+  S1: [["work", 1800]], S2: [["work", 1800]],
+  P1: [["prep", 30], ["speak", 45]], P2: [["prep", 45], ["speak", 90]], P3: [["read", 240], ["speak", 120]],
+  P4: [["img", 30], ["audio", 20], ["prep", 90], ["speak", 90]], P5: [["prep", 120], ["speak", 150]],
+  P6: [["audio", 58], ["prep", 90], ["speak", 120]], P7: [["prep", 90], ["speak", 90]]
+};
+const PHL = { work: "Bearbeiten", pre: "Ansehen", listen: "Hören", post: "Kontrollieren", prep: "Vorbereiten", speak: "Sprechen", read: "Lesen & Vorbereiten", img: "Grafik ansehen", audio: "Hören" };
+const PHI = { prep: "💭", read: "📖", speak: "🎤", audio: "🎧", img: "🖼", listen: "🎧", pre: "👁", post: "✔", work: "✎" };
+TD.PH = PH;
+TD.moduleSeconds = mk => Object.keys(PH).filter(k => k[0] === { lesen: "L", hoeren: "H", schreiben: "S", sprechen: "P" }[mk]).reduce((a, k) => a + PH[k].reduce((x, p) => x + p[1], 0), 0);
+
+function dur(s) {
+  const m = Math.floor(s / 60), r = s % 60;
+  const mm = m === 1 ? "1 Minute" : m + " Minuten", rr = r === 1 ? "1 Sekunde" : r + " Sekunden";
+  return m && r ? mm + " und " + rr : m ? mm : rr;
+}
+const phSec = (id, k) => (PH[id].find(p => p[0] === k) || [0, 0])[1];
+
+/* ---------- Arbeitsanweisungen (wörtlich nach PDF) ---------- */
+const INSTR = {
+  L1: () => ["Lesen Sie den Lückentext.", "**Klicken Sie in die Lücken und entscheiden Sie, welches Wort passt.**", "Für jede Lücke gibt es genau eine richtige Lösung.", "Sie haben **4 Minuten** Zeit."],
+  L2: () => ["Lesen Sie die Textabschnitte rechts.", "**Bringen Sie die Textabschnitte in die richtige Reihenfolge. Ziehen Sie dafür die Textteile von rechts nach links.**", "Es gibt genau eine richtige Reihenfolge.", "Sie haben **5 Minuten** Zeit."],
+  L3: () => ["Lesen Sie den Text.", "**Beantworten Sie die Fragen 1–7. Klicken Sie die Fragen an und entscheiden Sie, welche Lösung passt.**", "Für jede Frage gibt es genau eine richtige Lösung.", "Sie können die Fragen und Lösungen beliebig oft anklicken.", "Sie haben **15 Minuten** Zeit."],
+  L4: () => ["Lesen Sie den Text.", "**Ordnen Sie die Textstellen (1–4) den Aussagen rechts zu. Ziehen Sie dafür die Zahlen von links nach rechts. Die Zahlen beziehen sich immer auf den nachfolgenden Satz.**", "Für jede Textstelle gibt es genau eine richtige Lösung.", "Sie haben **6 Minuten** Zeit."],
+  L5: c => ["Lesen Sie den Text.", "**Ordnen Sie die Aussagen 1–7 zu: Entscheiden Sie für jede Aussage, ob sie " + (c.catPhrase || "zur Stadt, zum Land, zu beiden oder gar nicht passt") + ". Es kann auch sein, dass einzelne Aussagen gar nicht passen. Für jede Aussage gibt es genau eine richtige Lösung.**", "Die Aussagen folgen nicht dem Textverlauf.", "Sie haben **9 Minuten** Zeit."],
+  L6: () => ["Lesen Sie den Text.", "**Entscheiden Sie, welche Aussagen stimmen. Ziehen Sie die richtigen Aussagen an die passende Stelle in der Tabelle.**", "Es müssen vier Aussagen zugeordnet werden.", "Sie haben **7 Minuten** Zeit."],
+  L7: () => ["Lesen Sie den Text.", "Beachten Sie auch die Informationen aus der Grafik.", "**Rechts sehen Sie eine Zusammenfassung. Die Zusammenfassung folgt nicht dem Textverlauf. Klicken Sie auf die Sätze in der Zusammenfassung, die inhaltlich falsch sind.**", "Ein zweiter Klick löscht die Auswahl wieder.", "Es gibt genau **drei** inhaltlich falsche Sätze.", "Sie haben **7 Minuten** Zeit."],
+  H1: c => ["Sie hören ein Gespräch zwischen zwei Studierenden zum Thema „" + c.topic + "“. Sie hören das Gespräch **einmal**.", "**Ergänzen Sie beim Hören die fünf leeren Felder in der Tabelle.**", "Schreiben Sie pro Feld maximal 2 Wörter.", "Nach dem Hören haben Sie noch **20 Sekunden** Zeit, um Ihre Antworten zu kontrollieren.", "Sie haben jetzt **15 Sekunden** Zeit, um sich die Tabelle anzuschauen."],
+  H2: c => ["Sie hören eine Podiumsdiskussion zum Thema „" + c.topic + "“. Sie hören das Gespräch **einmal.**", "**Notieren Sie für jede Person auf der linken Seite, was die Person fordert, und auf der rechten Seite ein dazugehöriges Argument in Stichpunkten.**", "Nach dem Hören haben Sie **3 Minuten** Zeit, um Ihre Antworten zu kontrollieren."],
+  H3: c => ["Sie hören einen Ausschnitt aus einer Vorlesung im Fach " + c.field + " zum Thema „" + c.topic + "“. Sie hören den Text **einmal**.", "Machen Sie sich beim Hören Notizen. Sie müssen nicht jedes Detail notieren.", "Nach dem Hörtext sehen Sie eine schriftliche Zusammenfassung.", "**Klicken Sie auf die zwei Sätze in der Zusammenfassung, die falsche Informationen enthalten.**", "Ein zweiter Klick löscht die Auswahl wieder.", "Nach dem Hören haben Sie **2 Minuten und 30 Sekunden** Zeit, um die Aufgabe zu bearbeiten."],
+  H4: c => ["Sie sehen eine Podiumsdiskussion zum Thema „" + c.topic + "“. Sie sehen das Video **einmal**.", "**Klicken Sie an, zu wem die Aussagen 1–6 passen.**", "Für jede Aussage gibt es genau eine richtige Lösung.", "Nach dem Video haben Sie **45 Sekunden** Zeit, um Ihre Antworten zu kontrollieren.", "Sie haben jetzt **45 Sekunden** Zeit, um die Aussagen zu lesen."],
+  H5: c => ["Sie sehen einen Ausschnitt aus einer Vorlesung im Fach " + c.field + " zum Thema „" + c.topic + "“. Sie sehen das Video **einmal**.", "**Ergänzen Sie beim Hören die Gliederungspunkte in den Textfeldern in Stichpunkten.**", "Nach dem Video haben Sie **3 Minuten** Zeit, um Ihre Antworten zu kontrollieren.", "Sie haben jetzt **10 Sekunden** Zeit, sich die Gliederungspunkte anzuschauen."],
+  H6: c => ["Sie hören einen Ausschnitt aus einem Vortrag zum Thema „" + c.topic + "“. Sie hören den Text **einmal**.", "**Beantworten Sie die Fragen 1–5. Klicken Sie die Fragen an und entscheiden Sie, welche Lösung passt.**", "Für jede Frage gibt es genau eine richtige Lösung.", "Nach dem Hören haben Sie **1 Minute und 30 Sekunden** Zeit, um Ihre Antworten zu kontrollieren.", "Sie haben jetzt **1 Minute und 30 Sekunden** Zeit, um die Fragen zu lesen."],
+  H7: c => ["Sie hören einen Text zum Thema „" + c.topic + "“, den Sie gleichzeitig mitlesen müssen. Hörtext und schriftlicher Text sind nicht identisch. Vier Wörter sind unterschiedlich. Sie hören den Text **einmal**.", "**Klicken Sie beim Hören auf die vier Wörter, die nicht dem Hörtext entsprechen, um sie zu markieren.**", "Ein zweiter Klick löscht die Markierung wieder.", "Nach dem Hören haben Sie **20 Sekunden** Zeit, um Ihre Antworten zu kontrollieren."],
+  S1: c => [c.title ? "**" + c.title + "**" : "", c.situation, "Schreiben Sie einen kurzen Beitrag.", "**" + c.task + "**", "Schreiben Sie mindestens 200 Wörter.", "Sie haben **30 Minuten** Zeit."].filter(Boolean),
+  S2: c => [c.situation, "**" + c.task + "**", "Fassen Sie zu dieser Frage Informationen aus dem Text und der Grafik zusammen. Benutzen Sie eigene Formulierungen. Das Abschreiben von Textpassagen ist nicht erlaubt.", "Schreiben Sie ca. **100–150 Wörter**.", "Sie haben **30 Minuten** Zeit."],
+  P1: c => [c.situation, "**" + c.task + "**"],
+  P2: c => [c.situation, "**" + c.task + "**"],
+  P3: c => [c.situation, "**Lesen Sie den Text.** Der Text ist **4 Minuten** lang zu sehen.", "**" + (c.task || "Fassen Sie danach die wesentlichen Informationen zusammen.") + "**"],
+  P4: c => [c.situation, "**" + c.task + "**"],
+  P5: c => [c.situation, "**" + c.task + "**"],
+  P6: c => [c.situation, "**" + c.task + "**"],
+  P7: c => [c.situation, "**" + c.task + "**"]
+};
+TD.instr = (id, c) => (INSTR[id] ? INSTR[id](c || {}) : []);
+
+/* ---------- Helfer ---------- */
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
+const rich = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/__(.+?)__/g, "<i>$1</i>");
+const H = (tag, cls, html) => { const n = document.createElement(tag); if (cls) n.className = cls; if (html != null) n.innerHTML = html; return n; };
+const T = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+const partNo = id => id.slice(1);
+const norm = s => String(s == null ? "" : s).toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+const wc = s => (String(s).trim().match(/\S+/g) || []).length;
+const typeOf = id => id; // task id is the type
+const ST = (R, id) => R.answers[id + ":st"];
+function setA(R, id, i, v) { R.answers[id + ":" + i] = v; }
+function save() { try { saveRunAnswers(); } catch (e) {} }
+
+/* ---------- Bewertung (Kurzantworten tolerant, Rest exakt) ---------- */
+TD.isRight = function (part, it, given) {
+  if (given === undefined || given === null || given === "") return false;
+  if (!(FORMATS[part.format] || {}).lenient) return String(given) === String(it.answer);
+  const g = norm(given); if (!g) return false;
+  const gw = g.split(" ");
+  const vars = [it.answer].concat(it.alts || []);
+  for (const v of vars) {
+    const nv = norm(v); if (!nv) continue;
+    const digits = nv.match(/\d+/g);
+    if (digits && !digits.every(d => gw.includes(d))) continue;
+    if (g === nv || g.includes(nv)) return true;
+    const tk = nv.split(" ").filter(t => t.length > 3);
+    if (tk.length) {
+      const hits = tk.filter(t => gw.some(w => w.startsWith(t.slice(0, Math.max(4, t.length - 2))) || (t.startsWith(w.slice(0, Math.max(4, w.length - 2))) && w.length > 3))).length;
+      if (hits === tk.length || (tk.length >= 3 && hits / tk.length >= 0.6)) return true;
+    }
+  }
+  return false;
+};
+
+/* ---------- Diagramm (SVG) ---------- */
+function chartSVG(ch) {
+  const W = 620, Hh = ch.horizontal ? 60 + ch.cats.length * (ch.series.length * 18 + 14) + 50 : 330;
+  const colors = ["#cd8a2d", "#4f8a43", "#7d8fa3", "#9a5aa8"];
+  const max = ch.max || Math.ceil(Math.max(...ch.series.flatMap(s => s.values)) / 10) * 10 || 100;
+  const unit = ch.unit || "";
+  const step = ch.step || (max <= 100 ? 10 : max / 10);
+  let g = '<text x="' + W / 2 + '" y="22" text-anchor="middle" font-weight="700" font-size="14" fill="#222">' + esc(ch.title || "") + "</text>";
+  if (ch.horizontal) {
+    const L = 190, R = 20, top = 44, plotW = W - L - R;
+    for (let v = 0; v <= max; v += step) { const x = L + plotW * v / max; g += '<line x1="' + x + '" x2="' + x + '" y1="' + top + '" y2="' + (Hh - 46) + '" stroke="#ddd"/><text x="' + x + '" y="' + (Hh - 30) + '" text-anchor="middle" font-size="11" fill="#555">' + v + "</text>"; }
+    const grp = ch.series.length * 18 + 14;
+    ch.cats.forEach((c, i) => {
+      const y0 = top + i * grp + 4;
+      g += '<text x="' + (L - 8) + '" y="' + (y0 + ch.series.length * 9 + 4) + '" text-anchor="end" font-size="12" fill="#222">' + esc(c) + "</text>";
+      ch.series.forEach((s, j) => { const w = plotW * s.values[i] / max; g += '<rect x="' + L + '" y="' + (y0 + j * 18) + '" width="' + w + '" height="15" fill="' + (s.color || colors[j]) + '"/><text x="' + (L + w + 4) + '" y="' + (y0 + j * 18 + 12) + '" font-size="11" fill="#444">' + s.values[i] + "</text>"; });
+    });
+    g += '<text x="' + (L + plotW / 2) + '" y="' + (Hh - 10) + '" text-anchor="middle" font-size="12" fill="#222">' + esc(ch.axis || "") + "</text>";
+    ch.series.forEach((s, j) => { g += '<rect x="' + (W - 110) + '" y="' + (Hh - 50 - (ch.series.length - j) * 16) + '" width="10" height="10" fill="' + (s.color || colors[j]) + '"/><text x="' + (W - 96) + '" y="' + (Hh - 41 - (ch.series.length - j) * 16) + '" font-size="11" fill="#222">' + esc(s.name) + "</text>"; });
+  } else {
+    const L = 54, R = 16, top = 44, bot = 52, plotH = Hh - top - bot, plotW = W - L - R;
+    for (let v = 0; v <= max; v += step) { const y = top + plotH - plotH * v / max; g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '" stroke="#e2e2e2"/><text x="' + (L - 6) + '" y="' + (y + 4) + '" text-anchor="end" font-size="11" fill="#555">' + v + unit + "</text>"; }
+    if (ch.axis) g += '<text transform="translate(12 ' + (top + plotH / 2) + ') rotate(-90)" text-anchor="middle" font-size="11" fill="#222">' + esc(ch.axis) + "</text>";
+    const gw = plotW / ch.cats.length, bw = Math.min(34, gw / (ch.series.length + 1));
+    ch.cats.forEach((c, i) => {
+      const cx = L + gw * i + gw / 2;
+      ch.series.forEach((s, j) => {
+        const x = cx + (j - (ch.series.length - 1) / 2) * (bw + 4) - bw / 2, h = plotH * s.values[i] / max, y = top + plotH - h;
+        g += '<rect x="' + x + '" y="' + y + '" width="' + bw + '" height="' + h + '" fill="' + (s.color || colors[j]) + '"/>';
+        if (ch.tags) g += '<text x="' + (x + bw / 2) + '" y="' + (y - 4) + '" text-anchor="middle" font-size="9.5" fill="' + (s.color || colors[j]) + '">' + esc(s.name) + "</text>";
+      });
+      const lab = String(c).split("\n");
+      lab.forEach((t, k) => { g += '<text x="' + cx + '" y="' + (top + plotH + 16 + k * 13) + '" text-anchor="middle" font-size="11" fill="#222">' + esc(t) + "</text>"; });
+    });
+  }
+  return '<svg viewBox="0 0 ' + W + " " + Hh + '" class="td-chart" role="img" aria-label="' + esc(ch.title || "Grafik") + '" xmlns="http://www.w3.org/2000/svg">' + g + "</svg>";
+}
+const chartNode = ch => { const d = H("div", "td-chartbox", chartSVG(ch)); return d; };
+
+/* ---------- Drag & Drop (Pointer-Events + Tippen-zum-Platzieren) ---------- */
+let SEL = null;
+function clearSel() { if (SEL) { SEL.node.classList.remove("td-sel"); SEL = null; } document.querySelectorAll(".td-zone-armed").forEach(n => n.classList.remove("td-zone-armed")); }
+function zone(node, drop) {
+  node.dataset.zone = "1"; node._drop = drop;
+  node.addEventListener("click", e => {
+    if (!SEL) return;
+    if (e.target.closest(".td-drag") && e.target.closest(".td-drag") !== node && e.target.closest(".td-drag") === SEL.node) return;
+    const p = SEL.payload; clearSel(); drop(p);
+  });
+  return node;
+}
+function drag(node, payload) {
+  node.classList.add("td-drag"); node.style.touchAction = "none"; node.setAttribute("draggable", "false");
+  node.addEventListener("pointerdown", e => {
+    if (e.button > 0) return;
+    const sx = e.clientX, sy = e.clientY; let ghost = null, moved = false, over = null, scr = null, lastEv = null;
+    try { node.setPointerCapture(e.pointerId); } catch (_) {}
+    const hit = ev => {
+      if (ghost) ghost.style.display = "none";
+      const t = document.elementFromPoint(ev.clientX, ev.clientY);
+      if (ghost) ghost.style.display = "";
+      return t && t.closest("[data-zone]");
+    };
+    const mv = ev => {
+      if (!moved && Math.hypot(ev.clientX - sx, ev.clientY - sy) < 6) return;
+      if (!moved) {
+        moved = true; clearSel();
+        ghost = node.cloneNode(true); ghost.classList.add("td-ghost"); ghost.style.width = node.offsetWidth + "px";
+        document.body.append(ghost); node.classList.add("td-dragging");
+      }
+      ghost.style.left = ev.clientX + "px"; ghost.style.top = ev.clientY + "px"; lastEv = ev;
+      if (!scr) scr = setInterval(() => { if (!lastEv) return; if (lastEv.clientY < 80) window.scrollBy(0, -16); else if (lastEv.clientY > window.innerHeight - 80) window.scrollBy(0, 16); }, 16);
+      const z = hit(ev);
+      if (z !== over) { if (over) over.classList.remove("td-over"); over = z; if (over) over.classList.add("td-over"); }
+    };
+    const up = ev => {
+      node.removeEventListener("pointermove", mv); node.removeEventListener("pointerup", up); node.removeEventListener("pointercancel", up);
+      if (scr) { clearInterval(scr); scr = null; }
+      try { node.releasePointerCapture(e.pointerId); } catch (_) {}
+      if (over) over.classList.remove("td-over");
+      if (!moved) { // Tippen: auswählen
+        if (SEL && SEL.node === node) { clearSel(); return; }
+        clearSel(); SEL = { node, payload }; node.classList.add("td-sel");
+        document.querySelectorAll("[data-zone]").forEach(z => z.classList.add("td-zone-armed"));
+        return;
+      }
+      const z = hit(ev);
+      if (ghost) ghost.remove(); node.classList.remove("td-dragging");
+      if (z && z._drop) z._drop(payload);
+    };
+    node.addEventListener("pointermove", mv); node.addEventListener("pointerup", up); node.addEventListener("pointercancel", up);
+  });
+  return node;
+}
+function menu(anchor, options, cur, onPick) {
+  document.querySelectorAll(".td-menu").forEach(n => n.remove());
+  const m = H("div", "td-menu"); const r = anchor.getBoundingClientRect();
+  options.forEach((o, i) => { const b = T("button", "td-menu-i" + (cur === KEYS[i] ? " on" : ""), KEYS[i] + ") " + o); b.type = "button"; b.onclick = () => { m.remove(); onPick(KEYS[i]); }; m.append(b); });
+  document.body.append(m);
+  m.style.left = Math.max(8, Math.min(window.innerWidth - m.offsetWidth - 8, r.left + window.scrollX)) + "px";
+  m.style.top = (r.bottom + window.scrollY + 4) + "px";
+  setTimeout(() => document.addEventListener("click", function f(e) { if (!m.contains(e.target)) { m.remove(); document.removeEventListener("click", f); } }), 0);
+}
+
+/* ---------- Medien (Hörtext / Video) ---------- */
+function mediaBox(x) {
+  const { c, part } = x, isVideo = part.id === "H4" || part.id === "H5";
+  const box = H("div", isVideo ? "td-video" : "td-audiobar");
+  const st = TD.audioState || {}; const stText = st.status === "playing" ? (isVideo ? "Video läuft" : "Hörtext läuft") : st.status === "ended" ? (isVideo ? "Video beendet" : "Hörtext beendet") : x.phase === "pre" ? "Der Text beginnt gleich …" : "Bereit";
+  if (isVideo) {
+    box.append(T("div", "td-vhead", "▶ Video-Player"));
+    if (c.video) { const v = document.createElement("video"); v.src = c.video; v.className = "td-vid"; v.controls = false; box.append(v); TD.mediaEl = v; }
+    else box.append(H("div", "td-vbody", "<div class='td-vsub'>" + esc(c.speakers ? c.speakers.join("   ·   ") : "") + "</div><div class='td-vnote'>" + (st.status === "playing" ? "🔊 Sprachausgabe läuft (kein Videofile hinterlegt)" : "Kein Videofile hinterlegt – es wird die Sprachausgabe verwendet.") + "</div>"));
+    box.append(H("div", "td-vbar", "<i style='width:" + Math.round((st.frac || 0) * 100) + "%'></i>"));
+  } else {
+    box.append(H("div", "td-abox", "<span class='td-abeep" + (st.status === "playing" ? " on" : "") + "'>🔊</span> <b>" + stText + "</b> · Sie hören den Text einmal." + "<div class='td-vbar'><i style='width:" + Math.round((st.frac || 0) * 100) + "%'></i></div>"));
+  }
+  if ((!st.status || st.status === "idle") && x.phase !== "pre") { const b = T("button", "btn sm accent", "▶ Wiedergabe starten"); b.onclick = () => TD.startAudio(); box.append(b); }
+  return box;
+}
+
+/* ---------- Aufgabenkörper ---------- */
+const B = {};
+function card(x, c) { const w = H("div", "td-body"); if (c && c.title && !/^(S1|L2)$/.test(x.part.id)) w.append(T("h3", "td-h", c.title)); return w; }
+function paragraphs(text) { const d = H("div", "td-text"); String(text || "").split(/\n\s*\n/).forEach(p => d.append(H("p", "", rich(p).replace(/\((\d)\)/g, "<b class='td-pn'>($1)</b>")))); return d; }
+
+B.L1 = x => {
+  const { R, part, c } = x, w = card(x, c), d = H("p", "td-gaptext");
+  String(c.passage).split(/(\[\d+\])/).forEach(seg => {
+    const m = seg.match(/^\[(\d+)\]$/);
+    if (!m) { d.append(document.createTextNode(seg)); return; }
+    const n = +m[1], it = c.items[n - 1], cur = R.answers[part.id + ":" + (n - 1)];
+    const b = T("button", "td-gap" + (cur ? " filled" : ""), "");
+    b.type = "button"; b.innerHTML = "<span class='td-gapn'>[" + n + "]</span> <span class='td-gapw'>" + (cur ? esc(it.options[KEYS.indexOf(cur)]) : "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;") + "</span>";
+    b.onclick = e => { e.stopPropagation(); menu(b, it.options, cur, k => { setA(R, part.id, n - 1, k); save(); x.redraw(); }); };
+    d.append(b);
+  });
+  w.append(d); return w;
+};
+
+B.L2 = x => {
+  const { R, part, c } = x, w = card(x, c), n = c.paras.length;
+  const st = ST(R, part.id) || Array(n).fill(null);
+  const commit = () => { R.answers[part.id + ":st"] = st; for (let i = 0; i < n - 1; i++) setA(R, part.id, i, st[i + 1] || ""); save(); x.redraw(); };
+  const row = H("div", "td-two"), left = H("div", "td-slots"), right = H("div", "td-pool");
+  const para = k => c.paras.find(p => p.key === k);
+  for (let i = 0; i < n; i++) {
+    const s = H("div", "td-slot"); s.append(T("span", "td-slotn", "[" + (i + 1) + "]"));
+    if (st[i]) { const card = T("div", "td-card td-placed", para(st[i]).text); drag(card, { from: i, key: st[i] }); s.append(card); }
+    zone(s, p => { const old = st[i]; if (p.from != null) st[p.from] = old || null; else { const pi = st.indexOf(p.key); if (pi >= 0) st[pi] = null; } st[i] = p.key; commit(); });
+    left.append(s);
+  }
+  c.paras.forEach(p => { if (st.includes(p.key)) return; const cd = T("div", "td-card", p.text); drag(cd, { from: null, key: p.key }); right.append(cd); });
+  zone(right, p => { if (p.from != null) { st[p.from] = null; commit(); } });
+  row.append(left, right); w.append(row); return w;
+};
+
+B.L3 = x => {
+  const { R, part, c } = x, w = card(x, c);
+  if (c.title) w.firstChild; 
+  w.append(paragraphs(c.passage));
+  c.items.forEach((it, i) => {
+    const q = H("div", "td-q"); q.append(H("div", "td-qp", "<b>Frage " + (i + 1) + ":</b> " + rich(it.prompt)));
+    it.options.forEach((o, j) => {
+      const l = H("label", "td-opt"), r = document.createElement("input"); r.type = "radio"; r.name = part.id + i; r.checked = String(R.answers[part.id + ":" + i]) === String(j);
+      r.onchange = () => { setA(R, part.id, i, j); save(); }; l.append(r, T("span", "", o)); q.append(l);
+    });
+    w.append(q);
+  });
+  return w;
+};
+
+B.L4 = x => {
+  const { R, part, c } = x, w = card(x, c); const placed = {}; // marker -> act key
+  c.items.forEach((it, i) => { const v = R.answers[part.id + ":" + i]; if (v) placed[i + 1] = v; });
+  const acts = c.acts || ACTS;
+  const set = (n, key) => { Object.keys(placed).forEach(k => { if (placed[k] === key) delete placed[k]; }); if (key) placed[n] = key; else delete placed[n];
+    c.items.forEach((_, i) => setA(R, part.id, i, placed[i + 1] || "")); save(); x.redraw(); };
+  const row = H("div", "td-two"), left = H("div", "td-text"), right = H("div", "td-acts");
+  String(c.passage).split(/(\[\d+\])/).forEach(seg => {
+    const m = seg.match(/^\[(\d+)\]$/);
+    if (!m) { left.append(H("span", "", esc(seg))); return; }
+    const n = +m[1], b = T("span", "td-num" + (placed[n] ? " used" : ""), n); drag(b, { n }); left.append(b);
+  });
+  zone(left, p => { if (placed[p.n]) set(p.n, null); });
+  acts.forEach((a, i) => {
+    const k = KEYS[i], r = H("div", "td-act"), holder = H("span", "td-box"), nn = Object.keys(placed).find(q => placed[q] === k);
+    if (nn) { const b = T("span", "td-num", nn); drag(b, { n: +nn }); holder.append(b); }
+    r.append(holder, T("span", "", a)); zone(r, p => set(p.n, k)); right.append(r);
+  });
+  row.append(left, right); w.append(row); return w;
+};
+
+B.L5 = x => {
+  const { R, part, c } = x, w = card(x, c), cats = c.cats || ["Stadt", "Land", "beide", "passt nicht"];
+  w.append(paragraphs(c.passage));
+  const t = H("table", "td-cat"), hr = document.createElement("tr"); hr.append(T("th", ""), ...cats.map(k => T("th", "", k)), ); hr.firstChild.textContent = ""; t.append(hr);
+  c.items.forEach((it, i) => {
+    const tr = document.createElement("tr"); tr.append(T("td", "td-cs", (i + 1) + ". " + it.prompt));
+    cats.forEach((k, j) => { const td = document.createElement("td"), r = document.createElement("input"); r.type = "radio"; r.name = part.id + i; r.checked = String(R.answers[part.id + ":" + i]) === String(j); r.onchange = () => { setA(R, part.id, i, j); save(); }; td.append(r); tr.append(td); });
+    t.append(tr);
+  });
+  w.append(t); return w;
+};
+
+B.L6 = x => {
+  const { R, part, c } = x, w = card(x, c); w.append(paragraphs(c.passage));
+  const cap = [0, 0]; c.statements.forEach(s => { if (s.col != null) cap[s.col]++; });
+  const st = ST(R, part.id) || { 0: [], 1: [] };
+  const commit = () => { R.answers[part.id + ":st"] = st; let j = 0;
+    c.statements.forEach((s, idx) => { if (s.col == null) return; const col = st[0].includes(idx) ? 0 : st[1].includes(idx) ? 1 : ""; setA(R, part.id, j++, col); }); save(); x.redraw(); };
+  const place = (idx, col) => { [0, 1].forEach(k => { st[k] = st[k].filter(v => v !== idx); }); if (col != null) { if (st[col].length >= cap[col]) { toast("Diese Spalte ist voll – ziehen Sie zuerst eine Aussage heraus.", "err"); return; } st[col].push(idx); } commit(); };
+  const tbl = H("div", "td-pair"); tbl.append(T("div", "td-pair-h", c.heading || ""));
+  const cols = H("div", "td-pair-cols");
+  (c.pair || ["", ""]).forEach((nm, k) => {
+    const col = H("div", "td-pair-col"); col.append(T("div", "td-pair-t", nm));
+    for (let s = 0; s < cap[k]; s++) { const cell = H("div", "td-pair-cell"); const idx = st[k][s]; if (idx != null) { const cd = T("div", "td-card td-placed", c.statements[idx].t); drag(cd, { idx }); cell.append(cd); } col.append(cell); }
+    zone(col, p => place(p.idx, k)); cols.append(col);
+  });
+  tbl.append(cols);
+  const pool = H("div", "td-pool2"); c.statements.forEach((s, idx) => { if (st[0].includes(idx) || st[1].includes(idx)) return; const cd = T("div", "td-card", s.t); drag(cd, { idx }); pool.append(cd); });
+  zone(pool, p => place(p.idx, null));
+  w.append(tbl, T("div", "td-sub", "Aussagen"), pool); return w;
+};
+
+B.L7 = x => {
+  const { R, part, c } = x, w = H("div", "td-body");
+  const marked = ST(R, part.id) || [];
+  const commit = () => { R.answers[part.id + ":st"] = marked; c.wrong.forEach((wi, i) => setA(R, part.id, i, marked.includes(wi) ? wi : "")); save(); x.redraw(); };
+  const g = H("div", "td-three");
+  const a = H("div", "td-col"); a.append(T("h3", "td-h", c.title || ""), paragraphs(c.passage));
+  const b = H("div", "td-col"); if (c.chart) b.append(chartNode(c.chart));
+  const s = H("div", "td-col td-summary"); s.append(T("h3", "td-h", "Zusammenfassung"));
+  const p = H("p", "td-sum");
+  c.summary.forEach((sent, i) => { const sp = T("span", "td-sent" + (marked.includes(i) ? " on" : ""), sent + " "); sp.onclick = () => { const k = marked.indexOf(i); if (k >= 0) marked.splice(k, 1); else { if (marked.length >= 3) { toast("Es gibt genau drei falsche Sätze – löschen Sie zuerst eine Markierung.", "err"); return; } marked.push(i); } commit(); }; p.append(sp); });
+  s.append(p); g.append(a, b, s); w.append(g); return w;
+};
+
+/* Hören */
+function gridCell(x, txt) {
+  const td = document.createElement("td"); const lines = String(txt || "").split("\n");
+  lines.forEach((ln, li) => { if (li) td.append(document.createElement("br"));
+    ln.split(/(\[\[\d+\]\])/).forEach(seg => { const m = seg.match(/^\[\[(\d+)\]\]$/);
+      if (!m) { td.append(H("span", "", rich(seg))); return; }
+      const n = +m[1], inp = document.createElement("input"); inp.type = "text"; inp.className = "td-in"; inp.value = x.R.answers[x.part.id + ":" + (n - 1)] || "";
+      inp.disabled = x.phase === "pre"; inp.autocomplete = "off"; inp.spellcheck = false;
+      inp.oninput = () => { setA(x.R, x.part.id, n - 1, inp.value); save(); }; td.append(inp); }); });
+  return td;
+}
+B.H1 = x => {
+  const { c } = x, w = H("div", "td-body"), g = c.grid, t = H("table", "td-grid");
+  const head = document.createElement("tr"), h1 = document.createElement("td"); h1.colSpan = 1; h1.className = "td-gh"; h1.append(T("b", "", g.title || ""));
+  const h2 = gridCell(x, g.headRight || ""); h2.colSpan = g.cols.length; head.append(h1, h2); head.className = "td-ghead"; t.append(head);
+  const cr = document.createElement("tr"); cr.className = "td-gcols"; cr.append(T("td", "", "")); g.cols.forEach(k => cr.append(T("td", "", k))); t.append(cr);
+  g.rows.forEach(r => { const tr = document.createElement("tr");
+    if (r.span) { tr.className = "td-gspan"; tr.append(T("td", "", "")); const td = T("td", "", r.span); td.colSpan = g.cols.length; tr.append(td); }
+    else { const lab = T("td", "td-gl", r.label); lab.style.whiteSpace = "pre-line"; tr.append(lab); r.cells.forEach(cell => tr.append(gridCell(x, cell))); }
+    t.append(tr); });
+  w.append(mediaBox(x), t); return w;
+};
+B.H2 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x));
+  const box = H("div", "td-h2");
+  (c.persons || []).forEach((pn, pi) => {
+    box.append(T("div", "td-h2n", pn)); const r = H("div", "td-h2r");
+    ["Forderung", "Argument"].forEach((lab, li) => { const i = pi * 2 + li, col = H("div", ""); col.append(T("div", "td-h2l", lab));
+      const ta = document.createElement("textarea"); ta.className = "td-ta"; ta.placeholder = "Notieren Sie hier nur " + (li ? "das Argument." : "die Forderung."); ta.value = R.answers[part.id + ":" + i] || ""; ta.disabled = x.phase === "pre";
+      ta.oninput = () => { setA(R, part.id, i, ta.value); save(); }; col.append(ta); r.append(col); });
+    box.append(r);
+  });
+  w.append(box); return w;
+};
+B.H3 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x));
+  if (x.phase !== "post") { w.append(H("div", "td-hidden", "Die Zusammenfassung erscheint nach dem Hörtext. Machen Sie sich beim Hören Notizen auf Papier.")); return w; }
+  const marked = ST(R, part.id) || [];
+  const commit = () => { R.answers[part.id + ":st"] = marked; c.wrong.forEach((wi, i) => setA(R, part.id, i, marked.includes(wi) ? wi : "")); save(); x.redraw(); };
+  w.append(T("h3", "td-h", "Zusammenfassung"));
+  const p = H("p", "td-sum");
+  c.summary.forEach((sent, i) => { const sp = T("span", "td-sent" + (marked.includes(i) ? " on" : ""), sent + " "); sp.onclick = () => { const k = marked.indexOf(i); if (k >= 0) marked.splice(k, 1); else { if (marked.length >= 2) { toast("Es gibt genau zwei falsche Sätze – löschen Sie zuerst eine Markierung.", "err"); return; } marked.push(i); } commit(); }; p.append(sp); });
+  w.append(p); return w;
+};
+B.H4 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x));
+  const cols = (c.persons || []).concat(["beide", "keiner"]);
+  const t = H("table", "td-cat"), hr = document.createElement("tr"); hr.append(T("th", "")); cols.forEach(k => hr.append(T("th", "", k))); t.append(hr);
+  c.items.forEach((it, i) => { const tr = document.createElement("tr"); tr.append(T("td", "td-cs", (i + 1) + ". " + it.prompt));
+    cols.forEach((k, j) => { const td = document.createElement("td"), r = document.createElement("input"); r.type = "radio"; r.name = part.id + i; r.checked = String(R.answers[part.id + ":" + i]) === String(j); r.disabled = x.phase === "pre"; r.onchange = () => { setA(R, part.id, i, j); save(); }; td.append(r); tr.append(td); }); t.append(tr); });
+  w.append(t); return w;
+};
+B.H5 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x));
+  if (c.slideTitle) w.append(T("div", "td-slide", c.slideTitle));
+  const box = H("div", "td-h5");
+  c.items.forEach((it, i) => { const r = H("div", "td-h5r"); r.append(T("div", "td-h5l", it.prompt));
+    const ta = document.createElement("textarea"); ta.className = "td-ta"; ta.value = R.answers[part.id + ":" + i] || ""; ta.disabled = x.phase === "pre"; ta.oninput = () => { setA(R, part.id, i, ta.value); save(); }; r.append(ta); box.append(r); });
+  w.append(box); return w;
+};
+B.H6 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x));
+  c.items.forEach((it, i) => { const q = H("div", "td-q"); q.append(H("div", "td-qp", "<b>Frage " + (i + 1) + ":</b> " + rich(it.prompt)));
+    it.options.forEach((o, j) => { const l = H("label", "td-opt"), r = document.createElement("input"); r.type = "radio"; r.name = part.id + i; r.checked = String(R.answers[part.id + ":" + i]) === String(j); r.disabled = x.phase === "pre";
+      r.onchange = () => { setA(R, part.id, i, j); save(); }; l.append(r, T("span", "", o)); q.append(l); }); w.append(q); });
+  return w;
+};
+function parseWords(text) { // {{falsch|gehört}} markiert abweichende Wörter
+  const toks = []; String(text).split(/(\{\{[^}]+\}\})/).forEach(seg => {
+    const m = seg.match(/^\{\{([^|}]+)\|([^}]+)\}\}$/);
+    if (m) toks.push({ w: m[1], heard: m[2], diff: true });
+    else seg.split(/(\s+)/).forEach(t => { if (t) toks.push({ w: t, ws: /^\s+$/.test(t) }); });
+  }); return toks;
+}
+TD.parseWords = parseWords;
+B.H7 = x => {
+  const { R, part, c } = x, w = H("div", "td-body"); w.append(mediaBox(x)); w.append(T("h3", "td-h", c.title || ""));
+  const marked = ST(R, part.id) || [], toks = parseWords(c.text);
+  const diffIdx = toks.map((t, i) => t.diff ? i : -1).filter(i => i >= 0);
+  const commit = () => { R.answers[part.id + ":st"] = marked; diffIdx.forEach((ti, i) => setA(R, part.id, i, marked.includes(ti) ? "ok" : "")); save(); x.redraw(); };
+  const p = H("p", "td-sum td-words");
+  toks.forEach((t, i) => { if (t.ws) { p.append(document.createTextNode(t.w)); return; }
+    const sp = T("span", "td-word" + (marked.includes(i) ? " on" : ""), t.w); sp.onclick = () => { const k = marked.indexOf(i); if (k >= 0) marked.splice(k, 1); else { if (marked.length >= 4) { toast("Es gibt genau vier abweichende Wörter – löschen Sie zuerst eine Markierung.", "err"); return; } marked.push(i); } commit(); }; p.append(sp); });
+  w.append(p); return w;
+};
+
+/* Schreiben */
+B.S1 = B.S2 = x => {
+  const { R, part, c } = x, w = H("div", "td-body td-write");
+  const left = H("div", "td-col");
+  if (part.id === "S2") { left.append(T("h3", "td-h", c.title || "")); left.append(paragraphs(c.text)); if (c.chart) left.append(chartNode(c.chart)); }
+  const right = H("div", "td-col"); const ta = document.createElement("textarea"); ta.className = "td-ta big"; ta.value = R.answers[part.id + ":0"] || "";
+  const cnt = T("div", "td-wc", ""); const upd = () => { const n = wc(ta.value); cnt.textContent = "Wörter: " + n + (part.id === "S1" ? " (mindestens 200)" : " (ca. 100–150)"); cnt.className = "td-wc" + (part.id === "S1" ? (n >= 200 ? " ok" : "") : (n >= 100 && n <= 150 ? " ok" : "")); };
+  ta.oninput = () => { setA(R, part.id, 0, ta.value); upd(); save(); }; ta.setAttribute("spellcheck", "false"); upd();
+  if (part.id === "S2") right.append(T("div", "td-h2n", c.task)); right.append(ta, cnt);
+  if (part.id === "S1") w.append(right); else { w.append(left, right); w.classList.add("td-two"); }
+  return w;
+};
+
+/* Sprechen */
+B.P = x => {
+  const { part, c, phase } = x, w = H("div", "td-body");
+  const ind = H("div", "td-phases");
+  PH[part.id].forEach(([k, s], i) => ind.append(H("span", "td-ph" + (i === TD.R().td.ph ? " on" : i < TD.R().td.ph ? " done" : ""), PHI[k] + " " + fmtMS(s))));
+  w.append(ind);
+  const id = part.id;
+  if (id === "P3") { if (phase === "read") { w.append(T("h3", "td-h", c.title || ""), paragraphs(c.text)); } else w.append(H("div", "td-hidden", "Der Text ist nicht mehr sichtbar. Fassen Sie die wesentlichen Informationen zusammen.")); }
+  if (id === "P4" && c.chart) w.append(chartNode(c.chart));
+  if (id === "P5" && c.outline) { const o = H("div", "td-outline"); o.append(T("b", "", c.outline.title)); const ul = document.createElement("ul"); c.outline.points.forEach(p => { const li = T("li", "", typeof p === "string" ? p : p.t); if (p.sub) { const u2 = document.createElement("ul"); p.sub.forEach(s => u2.append(T("li", "", s))); li.append(u2); } ul.append(li); }); o.append(ul); w.append(o); }
+  if (id === "P7" && c.notice) { const o = H("div", "td-outline"); o.append(T("b", "", c.notice.title), T("p", "", c.notice.text)); w.append(o); }
+  if (phase === "audio") w.append(H("div", "td-hidden", "🎧 Sie hören die Äußerung …"));
+  if (phase === "prep") w.append(H("div", "td-hidden", "Bereiten Sie Ihre Äußerung vor. Sie können sich Notizen auf Papier machen."));
+  if (phase === "speak") { const r = H("div", "td-rec"); r.append(H("div", "td-recdot", "<span></span> Aufnahme läuft"), T("div", "td-live", TD.live || ""));
+    const b = T("button", "btn sm accent", "■ Fertig – weiter"); b.onclick = () => TD.next(); r.append(b); w.append(r); TD.liveEl = r.querySelector(".td-live"); }
+  return w;
+};
+function fmtMS(s) { return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); }
+TD.R = () => S.run;
+
+/* ---------- Ablauf ---------- */
+let iv = null, lastPart = null, bodyHost = null, instrHost = null;
+function kind() { const R = S.run; return PH[R.mod.parts[R.partIndex].id][R.td.ph][0]; }
+function stopTimers() { if (iv) { clearInterval(iv); iv = null; } }
+TD.stop = () => { TD.audioTok = null; clearTimeout(TD.wd); stopTimers(); try { stopAudio(); } catch (e) {} stopRec(false); TD.audioState = null; };
+
+TD.startAudio = function () {
+  const R = S.run, part = R.mod.parts[R.partIndex], c = R.test.content[R.moduleKey][part.id];
+  TD.audioState = { status: "playing", frac: 0 };
+  const tok = TD.audioTok = {};
+  const done = () => { if (TD.audioTok !== tok) return; if (TD.audioState) TD.audioState.status = "ended"; if (S.run === R && R.mod.parts[R.partIndex] === part) { const k = kind(); if (k === "listen" || k === "audio") TD.next(); } };
+  if (c.audioUrl) { const a = new Audio(c.audioUrl); TD.mediaAudio = a; a.onended = done; a.ontimeupdate = () => { if (a.duration) TD.audioState.frac = a.currentTime / a.duration; paintMedia(); }; a.play().catch(() => { TD.audioState.status = "idle"; toast("Audio konnte nicht gestartet werden – bitte „Wiedergabe starten“ klicken.", "err"); redrawBody(); }); }
+  else {
+    const script = (c.audio && c.audio.script) || (c.statement && c.statement.script);
+    if (!script) { done(); return; }
+    const est = (script.reduce((a, l) => a + String(l.text).length, 0) / 11 + 10) / (S.settings.speechRate || 1);
+    let fin = false; const once = () => { if (fin) return; fin = true; clearTimeout(TD.wd); done(); };
+    clearTimeout(TD.wd); TD.wd = setTimeout(once, est * 1000); // Notbremse, falls der Browser keine Sprachausgabe liefert
+    Speech.playFrom("td:" + part.id, script, S.settings.speechRate || 1, 0, (i, t) => { if (TD.audioState) TD.audioState.frac = t ? i / t : 0; paintMedia(); }, once);
+  }
+  if (TD.mediaEl && TD.mediaEl.play) TD.mediaEl.play().catch(() => {});
+  redrawBody();
+};
+function paintMedia() { const bar = document.querySelector(".td-vbar i"); if (bar && TD.audioState) bar.style.width = Math.round((TD.audioState.frac || 0) * 100) + "%"; }
+
+/* Aufnahme (Sprechen) */
+let rec = null, recStream = null, recChunks = [], recog = null, recText = "";
+async function startRec() {
+  const R = S.run, part = R.mod.parts[R.partIndex]; recChunks = []; recText = ""; TD.live = "";
+  try {
+    recStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    rec = new MediaRecorder(recStream); rec.ondataavailable = e => { if (e.data.size) recChunks.push(e.data); }; rec.start(1000);
+  } catch (e) { rec = null; toast("Kein Mikrofon verfügbar – es wird nur mitgeschrieben, soweit der Browser Spracherkennung kann.", "err", 6000); }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SR) { try { recog = new SR(); recog.lang = S.settings.speechRecogLang || "de-DE"; recog.continuous = true; recog.interimResults = true;
+    recog.onresult = ev => { let fin = "", tmp = ""; for (let i = 0; i < ev.results.length; i++) (ev.results[i].isFinal ? (fin += ev.results[i][0].transcript + " ") : (tmp += ev.results[i][0].transcript)); recText = fin; TD.live = (fin + tmp).trim(); if (TD.liveEl) TD.liveEl.textContent = TD.live; };
+    recog.onend = () => { if (recog && kind() === "speak") try { recog.start(); } catch (_) {} }; recog.start(); } catch (_) { recog = null; } }
+}
+function stopRec(save_) {
+  const R = S.run; let part = null; if (R && R.mod && R.mod.parts) part = R.mod.parts[R.partIndex];
+  if (recog) { const r = recog; recog = null; try { r.onend = null; r.stop(); } catch (_) {} }
+  const blob = recChunks.length ? new Blob(recChunks, { type: (rec && rec.mimeType) || "audio/webm" }) : null;
+  if (rec && rec.state !== "inactive") { try { rec.stop(); } catch (_) {} }
+  if (recStream) { recStream.getTracks().forEach(t => t.stop()); recStream = null; }
+  rec = null;
+  if (save_ && part && R) {
+    const key = part.id + ":0";
+    R.answers[key] = (TD.live || recText || "").trim() || (blob ? "(Aufnahme ohne Transkript)" : "");
+    if (blob) idbSet("audio:" + R.testId + ":" + R.moduleKey + ":" + key, blob).catch(() => {});
+    save();
+  }
+  recChunks = [];
+}
+
+function startPhase(i) {
+  const R = S.run, part = R.mod.parts[R.partIndex], ph = PH[part.id];
+  R.td.ph = i; R.td.left = ph[i][1]; const k = ph[i][0];
+  TD.audioState = null; TD.live = "";
+  if (k === "listen") { setTimeout(() => { if (S.run === R && kind() === "listen" && !TD.audioState) TD.startAudio(); }, 300); }
+  if (k === "audio") { setTimeout(() => { if (S.run === R && kind() === "audio" && !TD.audioState) TD.startAudio(); }, 300); }
+  if (k === "speak") startRec();
+  redrawInstr(); redrawBody(); tickPaint();
+}
+TD.next = function () {
+  const R = S.run; if (!R || R.finished) return;
+  const part = R.mod.parts[R.partIndex], ph = PH[part.id], k = ph[R.td.ph][0];
+  TD.audioTok = null; clearTimeout(TD.wd);
+  try { Speech.stop(); } catch (e) {} if (TD.mediaAudio) { try { TD.mediaAudio.pause(); } catch (e) {} TD.mediaAudio = null; }
+  if (k === "speak") stopRec(true);
+  if (R.td.ph + 1 < ph.length) startPhase(R.td.ph + 1); else TD.advance();
+};
+TD.advance = function () {
+  const R = S.run; if (!R) return; TD.stop();
+  save();
+  if (R.partIndex + 1 < R.mod.parts.length) { R.partIndex++; R.td = null; go("run"); } else { finishRun(); }
+};
+function tickPaint() {
+  const R = S.run; if (!R || !R.td) return; const c = document.getElementById("clock"); if (!c) return;
+  const k = kind(); const timed = !(k === "listen") && !(k === "audio" && R.td.left <= 0);
+  c.textContent = (PHI[k] || "") + " " + PHL[k] + (k === "listen" ? "" : " · " + fmtMS(Math.max(0, R.td.left)));
+  c.className = "clock" + (timed && R.td.left < 30 && R.td.left > 0 ? " warn" : "");
+  const i = document.getElementById("tdphase"); if (i) i.textContent = "Noch " + fmtMS(Math.max(0, R.td.left));
+}
+function tick() {
+  const R = S.run; if (!R || R.finished || !R.td) return stopTimers();
+  const k = kind();
+  if (k === "listen") { tickPaint(); return; }
+  R.td.left--;
+  if (k === "speak" && R.td.left === 5) toast("Noch 5 Sekunden", "", 1500);
+  tickPaint();
+  if (R.td.left <= 0) {
+    if (k === "audio") { if (!TD.audioState || TD.audioState.status === "ended" || TD.audioState.status === "idle") TD.next(); return; }
+    TD.next();
+  }
+  if (++R.td.n % 15 === 0) save();
+}
+function redrawInstr() {
+  if (!instrHost) return; const R = S.run, part = R.mod.parts[R.partIndex], c = R.test.content[R.moduleKey][part.id];
+  instrHost.innerHTML = ""; TD.instr(part.id, c).forEach(l => instrHost.append(H("p", "", rich(l))));
+  const k = kind(); if (PH[part.id].length > 1 && k !== "work") { const p = H("p", "td-phaseline", ""); p.innerHTML = "<b>" + PHI[k] + " " + PHL[k] + "</b>" + (k === "listen" ? "" : " – <span id='tdphase'></span>"); instrHost.append(p); }
+}
+function redrawBody() {
+  if (!bodyHost) return; const R = S.run, part = R.mod.parts[R.partIndex], c = R.test.content[R.moduleKey][part.id];
+  const y = window.scrollY; bodyHost.innerHTML = "";
+  const x = { R, part, c, phase: kind(), redraw: redrawBody };
+  try { bodyHost.append((B[part.id] || B.P)(x)); } catch (e) { bodyHost.append(H("div", "td-hidden", "Diese Aufgabe hat nicht das erwartete Datenformat (" + esc(e.message) + "). Siehe modeltest/testdaf/SCHEMA.md.")); console.error(e); }
+  window.scrollTo(0, y); tickPaint();
+}
+
+TD.runView = function () {
+  const R = S.run, shell = el("div", {});
+  const part = R.mod.parts[R.partIndex], c = R.test.content?.[R.moduleKey]?.[part.id];
+  if (!c) { shell.append(el("div", { class: "page" }, el("div", { class: "empty" }, "Für diese Aufgabe sind keine Inhalte hinterlegt."))); return shell; }
+  if (!R.td || R.td.part !== part.id) { TD.stop(); R.td = { part: part.id, ph: 0, left: PH[part.id][0][1], n: 0 }; lastPart = null; }
+  shell.append(el("div", { class: "runbar" },
+    el("button", { class: "btn sm ghost", onclick: () => { TD.stop(); exitRun(); } }, "💾 Speichern & Verlassen"),
+    el("div", { class: "row", style: "gap:8px" }, el("span", { class: "pill " + MODULE_META[R.moduleKey].cls }, el("span", { class: "mod-dot" }), modName(R.moduleKey)), el("span", { class: "xsmall muted", text: R.test.name })),
+    el("div", { class: "spacer" }),
+    el("span", { class: "small muted", text: "Aufgabe " + (R.partIndex + 1) + " / " + R.mod.parts.length }),
+    el("div", { id: "clock", class: "clock", text: "" }),
+    el("button", { class: "btn sm accent", title: "Zur nächsten Aufgabe bzw. Phase – ein Zurück gibt es wie in der Prüfung nicht.", onclick: () => TD.next() }, "Weiter →")));
+  const page = el("div", { class: "page wide td-page" });
+  const head = H("div", "td-head", "<div class='td-h1'>" + MODN[R.moduleKey] + " – Aufgabentyp " + partNo(part.id) + "</div><div class='td-h1s'>(" + esc(TITLES[part.id]) + ")</div>");
+  instrHost = H("div", "td-instr"); bodyHost = H("div", "td-main");
+  const wrap = H("div", "td-wrap"); wrap.append(head, instrHost, bodyHost); page.append(wrap); shell.append(page);
+  setTimeout(() => { if (!S.run || S.run !== R) return; redrawInstr(); redrawBody();
+    if (lastPart !== part.id) { lastPart = part.id; startPhase(R.td.ph); }
+    stopTimers(); iv = setInterval(tick, 1000); }, 0);
+  return shell;
+};
+
+/* ---------- Auswertung / Lösungen ---------- */
+function ctxText(c, i, id) { return ""; }
+function ans(id, c, it, i, v) { // lesbare Darstellung eines Antwortwerts
+  if (v === undefined || v === null || v === "") return "—";
+  switch (id) {
+    case "L1": return v + ") " + (it.options[KEYS.indexOf(v)] || "");
+    case "L2": { const p = c.paras.find(q => q.key === v); return p ? "„" + p.text.split(" ").slice(0, 7).join(" ") + " …“" : String(v); }
+    case "L4": return (c.acts || ACTS)[KEYS.indexOf(v)] || v;
+    case "L5": return (c.cats || ["Stadt", "Land", "beide", "passt nicht"])[+v];
+    case "L6": return (c.pair || [])[+v] || "—";
+    case "L7": case "H3": return "„" + String(c.summary[+v]).slice(0, 90) + (String(c.summary[+v]).length > 90 ? " …" : "") + "“";
+    case "H4": return (c.persons || []).concat(["beide", "keiner"])[+v];
+    case "H7": return v === "ok" ? "markiert" : "—";
+    case "L3": case "H6": return KEYS[+v] + ") " + it.options[+v];
+    default: return String(v);
+  }
+}
+function prom(id, c, it, i) {
+  if (id === "L1") return "Lücke [" + (i + 1) + "]";
+  if (id === "L2") return "Position [" + (i + 2) + "]";
+  if (id === "L4") return "Textstelle [" + (i + 1) + "]";
+  if (id === "L7") return "Falscher Satz " + (i + 1);
+  if (id === "H3") return "Falscher Satz " + (i + 1);
+  if (id === "H7") { const t = parseWords(c.text).filter(q => q.diff)[i]; return "Wort: „" + t.w + "“ (gehört: „" + t.heard + "“)"; }
+  if (id === "L6") return it.prompt;
+  return (i + 1) + ". " + (it.prompt || "");
+}
+TD.solutionsBlock = function () {
+  const R = S.run, root = el("div", {});
+  root.append(el("h2", { style: "margin:20px 0 10px", text: "Lösungen" }));
+  for (const part of R.mod.parts) {
+    const c = R.test.content?.[R.moduleKey]?.[part.id]; if (!c) continue;
+    const fmt = FORMATS[part.format] || {};
+    const cardN = el("div", { class: "card", style: "margin-bottom:12px" }, el("div", { class: "row", style: "justify-content:space-between" },
+      el("h3", { text: MODN[R.moduleKey] + " – Aufgabentyp " + partNo(part.id) + " (" + TITLES[part.id] + ")" })));
+    if (fmt.essay || fmt.spoken) {
+      const ans0 = R.answers[part.id + ":0"] || "";
+      cardN.append(el("p", { class: "small muted", text: fmt.spoken ? "Ihre Äußerung (Transkript) und Aufnahme:" : "Ihr Text:" }));
+      cardN.append(el("div", { class: "stimulus", style: "white-space:pre-wrap", text: ans0 || "(nichts aufgezeichnet)" }));
+      if (fmt.spoken) { const box = el("div", { style: "margin-top:8px" }); cardN.append(box); idbGet("audio:" + R.testId + ":" + R.moduleKey + ":" + part.id + ":0").then(b => { if (b) box.append(el("audio", { controls: true, src: URL.createObjectURL(b), style: "width:100%" })); }).catch(() => {}); }
+      if (c.notes && c.notes.length) cardN.append(el("div", { class: "card tight", style: "margin-top:10px" }, el("h4", { text: "Hinweise zur Lösung (Beispiel)" }), el("ul", { style: "margin:6px 0 0 18px" }, c.notes.map(n => el("li", { class: "small", text: n })))));
+      const g = R.answers[part.id + ":grade"];
+      cardN.append(el("div", { class: "row", style: "margin-top:10px" },
+        el("button", { class: "btn sm", onclick: () => aiGrade(part, Object.assign({ prompt: [c.situation, c.task].filter(Boolean).join(" ") }, c), ans0, part.id + ":0", fmt.spoken ? "mündlich" : "schriftlich").then(() => go("run")) }, "✦ KI-Bewertung"),
+        g != null ? el("span", { class: "pill", text: Math.round(g * 100) + " %" }) : null));
+      if (R.answers[part.id + ":feedback"]) cardN.append(el("div", { class: "card tight", style: "margin-top:10px;white-space:pre-wrap" }, el("h4", { text: "KI-Rückmeldung" }), el("div", { class: "small", style: "margin-top:6px", text: R.answers[part.id + ":feedback"] })));
+      root.append(cardN); continue;
+    }
+    const list = el("div", { class: "col", style: "gap:8px" });
+    (c.items || []).forEach((it, i) => {
+      const given = R.answers[part.id + ":" + i], ok = TD.isRight(part, it, given);
+      list.append(el("div", { class: "card tight", style: "border-left:4px solid " + (ok ? "var(--color-good)" : "var(--color-danger)") },
+        el("div", { class: "small", style: "font-weight:600", text: (ok ? "✓ " : "✗ ") + prom(part.id, c, it, i) }),
+        el("div", { class: "small", text: "Ihre Antwort: " + ans(part.id, c, it, i, given) }),
+        ok ? null : el("div", { class: "small", style: "color:var(--color-good)", text: "Lösung: " + ans(part.id, c, it, i, it.answer) + (it.alts && it.alts.length && fmt.lenient ? "  (auch: " + it.alts.join(" | ") + ")" : "") }),
+        it.why ? el("div", { class: "xsmall muted", text: it.why }) : null));
+    });
+    cardN.append(list);
+    if (c.audio && c.audio.script) { const d = el("details", { style: "margin-top:10px" }, el("summary", { text: "Transkript anzeigen" }), el("div", { class: "small", style: "white-space:pre-wrap;margin-top:6px", text: c.audio.script.map(l => (l.speaker ? l.speaker + ": " : "") + l.text).join("\n\n") })); cardN.append(d); }
+    root.append(cardN);
+  }
+  return root;
+};
+
+/* ---------- CSS ---------- */
+const css = `
+.td-wrap{max-width:1000px;margin:0 auto;background:#fff;color:#222;border:1px solid #cfd8e3;border-radius:6px;overflow:hidden;font-size:15px;line-height:1.55}
+.td-head{background:#2a5588;color:#fff;padding:22px 30px 18px}.td-h1{font-size:21px;font-weight:700}.td-h1s{font-size:21px;font-weight:700}
+.td-instr{background:#d3e5f3;padding:14px 30px 10px}.td-instr p{margin:0 0 8px}.td-phaseline{margin-top:4px!important;padding-top:6px;border-top:1px solid #a9c7e0}
+.td-main{padding:22px 30px 40px}.td-h{font-size:15px;font-weight:700;margin:0 0 10px;font-family:inherit;color:#222}.td-text p{margin:0 0 12px;text-align:justify}.td-pn{color:#2a5588}
+.td-gaptext{line-height:2.2;text-align:justify}.td-gap{border:0;border-bottom:1.5px solid #555;background:#e8f0f8;border-radius:3px 3px 0 0;padding:1px 6px;margin:0 2px;font:inherit;cursor:pointer;color:#222}
+.td-gap .td-gapn{color:#2a5588;font-size:12px}.td-gap.filled{background:#cfe3f5;font-weight:600}
+.td-menu{position:absolute;z-index:9999;background:#fff;border:1px solid #9bb8d3;box-shadow:0 6px 24px rgba(0,0,0,.2);border-radius:4px;min-width:200px;padding:4px}
+.td-menu-i{display:block;width:100%;text-align:left;border:0;background:#e8f0f8;margin:2px 0;padding:7px 12px;font:inherit;color:#222;cursor:pointer}.td-menu-i:hover,.td-menu-i.on{background:#bcd7ee}
+.td-two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}@media(max-width:760px){.td-two,.td-three{grid-template-columns:1fr!important}}
+.td-slot{position:relative;border:1.5px dashed #6b8fb3;min-height:96px;margin-bottom:12px;padding:8px 10px 8px 34px;border-radius:2px;background:#fafcff}.td-slotn{position:absolute;left:8px;top:6px;color:#2a5588;font-weight:700}
+.td-card{border:1px solid #333;background:#fff;padding:10px 12px;margin-bottom:12px;font-size:14px;cursor:grab;user-select:none;border-radius:2px;color:#222}.td-card.td-placed{margin:0;border-color:#2a5588;background:#eef5fb}
+.td-pool,.td-pool2{min-height:60px}.td-pool2{display:grid;grid-template-columns:1fr 1fr;gap:10px;border:1px dashed #b8c8d8;padding:10px;border-radius:4px}.td-pool2 .td-card{margin:0}
+.td-dragging{opacity:.35}.td-ghost{position:fixed;z-index:10000;pointer-events:none;transform:translate(-50%,-50%);opacity:.92;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.td-over{outline:3px solid #2f86d0;outline-offset:1px;background:#e3f1fd!important}.td-sel{outline:3px solid #e08c2a}.td-zone-armed{box-shadow:inset 0 0 0 2px #f3c27c}
+.td-num{display:inline-block;background:#bcd7ee;color:#143a63;font-weight:700;min-width:24px;text-align:center;border-radius:3px;padding:0 6px;margin:0 2px;cursor:grab}.td-num.used{background:#e3e3e3;color:#888}
+.td-act{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:3px}.td-act:nth-child(odd){background:#eef5fb}.td-box{display:inline-flex;align-items:center;justify-content:center;width:32px;height:26px;border:1.5px solid #2a5588;background:#fff;border-radius:2px;flex:none}
+.td-q{margin:14px 0 18px}.td-qp{background:#d3e5f3;padding:7px 10px;margin-bottom:4px}.td-opt{display:flex;gap:10px;align-items:flex-start;padding:5px 10px;cursor:pointer}.td-opt input{margin-top:5px}
+.td-cat{border-collapse:collapse;width:100%;margin-top:18px}.td-cat th{font-weight:700;padding:6px 8px;text-align:center}.td-cat td{padding:7px 8px;text-align:center}.td-cat td.td-cs{text-align:left;width:52%}.td-cat tr:nth-child(even) td{background:#eef5fb}
+.td-pair{border:1px solid #333;margin:16px 0}.td-pair-h{background:#9a9a9a;color:#fff;font-weight:700;text-align:center;padding:6px}.td-pair-cols{display:grid;grid-template-columns:1fr 1fr}.td-pair-col{border-left:1px solid #333;padding:0 0 6px}.td-pair-col:first-child{border-left:0}
+.td-pair-t{background:#d8d8d8;text-align:center;font-weight:700;padding:5px;border-bottom:1px solid #333}.td-pair-cell{min-height:58px;margin:8px;border:1px dashed #6b8fb3;border-radius:3px;display:flex;align-items:stretch}.td-pair-cell .td-card{flex:1}.td-sub{font-weight:700;margin:14px 0 6px}
+.td-three{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:22px;align-items:start}.td-sum{line-height:1.7}.td-sent{cursor:pointer;padding:1px 2px;border-radius:2px}.td-sent:hover,.td-word:hover{background:#e3f1fd}.td-sent.on,.td-word.on{background:#f7c97a}.td-word{cursor:pointer;padding:0 1px;border-radius:2px}
+.td-chart{width:100%;height:auto;background:#fff}.td-chartbox{border:1px solid #dde3ea;padding:6px;margin:8px 0;background:#fff}
+.td-grid{border-collapse:collapse;width:100%;margin-top:14px;font-size:14px}.td-grid td{border:1px solid #333;padding:6px 8px;vertical-align:top;background:#fff}.td-grid tr.td-gcols td,.td-grid .td-gl,.td-gspan td{background:#a0a0a0;color:#fff;font-weight:700}.td-grid tr:nth-child(n+3) td:nth-child(even):not(.td-gl){background:#e1edf7}.td-grid tr.td-gspan td{text-align:center;background:#a0a0a0!important;color:#fff}
+.td-in{width:100%;min-width:90px;border:1px solid #889;border-radius:2px;padding:3px 6px;font:inherit;margin:3px 0;background:#fff;color:#222}.td-in:disabled,.td-ta:disabled{background:#eee}
+.td-h2n{font-weight:700;margin:14px 0 4px}.td-h2r,.td-h5r{display:grid;grid-template-columns:1fr 1fr;gap:20px}.td-h2l{font-weight:700;font-style:italic;font-size:13px;margin-bottom:3px}.td-ta{width:100%;min-height:90px;border:1px solid #889;padding:8px;font:inherit;border-radius:2px;background:#fff;color:#222;resize:vertical}.td-ta.big{min-height:380px}
+.td-h5{background:#d3e5f3;padding:14px;margin-top:14px}.td-h5r{grid-template-columns:260px 1fr;align-items:center;margin-bottom:10px}.td-slide{font-size:20px;margin:8px 0}
+.td-video{border:1px solid #333;margin:10px 0 18px;background:#c9d4de}.td-vhead{background:#cfd9e2;font-weight:700;padding:7px 10px;font-family:Arial,sans-serif}.td-vbody{background:#444;color:#eee;padding:34px 20px;text-align:center;min-height:130px}.td-vsub{font-size:18px;margin-bottom:10px}.td-vnote{font-size:12px;opacity:.8}.td-vid{width:100%;display:block;background:#000}
+.td-vbar{height:8px;background:#ddd;margin:8px 0 0;border-radius:4px;overflow:hidden}.td-vbar i{display:block;height:100%;background:#2a5588}.td-video .td-vbar{margin:0}
+.td-audiobar{border:1px solid #9bb8d3;background:#f2f7fc;padding:10px 14px;margin:6px 0 14px;border-radius:3px}.td-abeep.on{animation:tdp 1s infinite}@keyframes tdp{50%{opacity:.35}}
+.td-hidden{background:#f3f3f3;border:1px dashed #aaa;padding:22px;text-align:center;color:#555;margin:16px 0}
+.td-write .td-col{min-width:0}.td-wc{margin-top:6px;color:#666;font-size:13px}.td-wc.ok{color:#1f7a45;font-weight:700}
+.td-phases{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:16px}.td-ph{font-weight:700;color:#8aa;padding:4px 10px;border-radius:14px;border:1px solid transparent}.td-ph.on{color:#fff;background:#2a5588}.td-ph.done{color:#999;text-decoration:line-through}
+.td-outline{border:1.5px solid #2a5588;padding:12px 18px;max-width:420px;margin:14px 0}.td-outline ul{margin:6px 0 0 20px}
+.td-rec{margin:18px 0;padding:18px;border:1px solid #c33;border-radius:4px;background:#fff6f6}.td-recdot{font-weight:700;color:#b00}.td-recdot span{display:inline-block;width:12px;height:12px;border-radius:50%;background:#d22;margin-right:6px;animation:tdp 1s infinite}.td-live{margin:10px 0;min-height:22px;font-style:italic;color:#444}
+:root[data-theme=dark] .td-wrap{box-shadow:0 0 0 1px #444}
+`;
+const st = document.createElement("style"); st.textContent = css; document.head.append(st);
+})();
+
 </script>
 </body>
 </html>
