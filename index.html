@@ -667,26 +667,26 @@ const BLUEPRINTS = {
         topics: "Person, Familie, Einkaufen, Wohnen, Uhrzeit, Wegbeschreibung",
         modules: {
           lesen: { minutes: 25, parts: [
-            P("L1", "Teil 1", "Zwei kurze Texte (E-Mail, Notiz) – Richtig/Falsch", "tf", 5, 5 / 3, 8,
+            P("L1", "Teil 1", "Zwei kurze Texte (E-Mail, Notiz) – Richtig/Falsch", "tf", 5, 1.66, 8,
               { instruction: "Lesen Sie die beiden Texte. Sind die Aussagen richtig oder falsch?" }),
-            P("L2", "Teil 2", "Kleinanzeigen – zwei Anzeigen vergleichen", "mc2", 5, 5 / 3, 9,
+            P("L2", "Teil 2", "Kleinanzeigen – zwei Anzeigen vergleichen", "mc2", 5, 1.66, 9,
               { instruction: "Lesen Sie die Situationen und die Anzeigen. Welche Anzeige passt: a oder b?" }),
-            P("L3", "Teil 3", "Schilder, Hinweise und Aushänge", "tf", 5, 5 / 3, 8,
+            P("L3", "Teil 3", "Schilder, Hinweise und Aushänge", "tf", 5, 1.66, 8,
               { instruction: "Lesen Sie die Schilder. Sind die Aussagen richtig oder falsch?" })
           ]},
           hoeren: { minutes: 20, parts: [
-            P("H1", "Teil 1", "Sechs kurze Gespräche und Ansagen", "mc3", 6, 5 / 3, 8, { plays: 2, instruction: "Sie hören sechs kurze Texte zweimal. Kreuzen Sie an: a, b oder c." }),
-            P("H2", "Teil 2", "Durchsagen am Bahnhof, Flughafen, im Kaufhaus", "tf", 4, 5 / 3, 5, { plays: 1, instruction: "Sie hören vier Durchsagen einmal. Richtig oder falsch?" }),
-            P("H3", "Teil 3", "Nachrichten auf dem Anrufbeantworter", "mc3", 5, 5 / 3, 7, { plays: 2, instruction: "Sie hören fünf Nachrichten zweimal. Kreuzen Sie an: a, b oder c." })
+            P("H1", "Teil 1", "Sechs kurze Gespräche und Ansagen", "mc3", 6, 1.66, 8, { plays: 2, instruction: "Sie hören sechs kurze Texte zweimal. Kreuzen Sie an: a, b oder c." }),
+            P("H2", "Teil 2", "Durchsagen am Bahnhof, Flughafen, im Kaufhaus", "tf", 4, 1.66, 5, { plays: 1, instruction: "Sie hören vier Durchsagen einmal. Richtig oder falsch?" }),
+            P("H3", "Teil 3", "Nachrichten auf dem Anrufbeantworter", "mc3", 5, 1.66, 7, { plays: 2, instruction: "Sie hören fünf Nachrichten zweimal. Kreuzen Sie an: a, b oder c." })
           ]},
           schreiben: { minutes: 20, parts: [
-            P("S1", "Teil 1", "Formular ausfüllen", "short", 5, 5 / 3, 8, { instruction: "Ergänzen Sie die fünf fehlenden Angaben im Formular." }),
-            P("S2", "Teil 2", "Kurze Mitteilung schreiben", "writing", 1, 50 / 3, 12, { words: 30, instruction: "Schreiben Sie eine kurze Mitteilung zu drei Leitpunkten (ca. 30 Wörter)." })
+            P("S1", "Teil 1", "Formular ausfüllen", "short", 5, 1.66, 8, { instruction: "Ergänzen Sie die fünf fehlenden Angaben im Formular." }),
+            P("S2", "Teil 2", "Kurze Mitteilung schreiben", "writing", 1, 16.6, 12, { words: 30, instruction: "Schreiben Sie eine kurze Mitteilung zu drei Leitpunkten (ca. 30 Wörter)." })
           ]},
           sprechen: { minutes: 15, group: "Gruppenprüfung (3–4 Personen)", prep: 0, parts: [
-            P("P1", "Teil 1", "Sich vorstellen", "speaking", 1, 8, 4, { seconds: 90, instruction: "Stellen Sie sich vor: Name, Alter, Land, Wohnort, Sprachen, Beruf, Hobby. Buchstabieren Sie danach ein Wort und nennen Sie eine Zahl." }),
-            P("P2", "Teil 2", "Um Informationen bitten und Informationen geben", "speaking", 2, 4.5, 6, { seconds: 120, instruction: "Bilden Sie zu den Stichwortkarten je eine Frage und antworten Sie auf die Frage Ihres Gegenübers." }),
-            P("P3", "Teil 3", "Bitten formulieren und darauf reagieren", "speaking", 2, 4, 5, { seconds: 90, instruction: "Formulieren Sie zu den Bildkarten eine Bitte und reagieren Sie auf die Bitte der anderen." })
+            P("P1", "Teil 1", "Sich vorstellen", "speaking", 1, 5, 4, { seconds: 90, instruction: "Stellen Sie sich vor: Name, Alter, Land, Wohnort, Sprachen, Beruf, Hobby. Buchstabieren Sie danach ein Wort und nennen Sie eine Zahl." }),
+            P("P2", "Teil 2", "Um Informationen bitten und Informationen geben", "speaking", 2, 5, 6, { seconds: 120, instruction: "Bilden Sie zu den Stichwortkarten je eine Frage und antworten Sie auf die Frage Ihres Gegenübers." }),
+            P("P3", "Teil 3", "Bitten formulieren und darauf reagieren", "speaking", 2, 5, 5, { seconds: 90, instruction: "Formulieren Sie zu den Bildkarten eine Bitte und reagieren Sie auf die Bitte der anderen." })
           ]}
         }
       },
@@ -814,7 +814,7 @@ const BLUEPRINTS = {
             P("S2", "Teil 2", "(Halb-)formelle E-Mail (Interaktion)", "writing", 1, 50, 25,
               { words: 120, instruction: "Freier Text von circa 120 Wörtern mit vier Sprachfunktionen, z. B. auf ein Problem aufmerksam machen, etwas vorschlagen, beschreiben, höflich Verständnis zeigen." })
           ]},
-          sprechen: { minutes: 20, group: "Paarprüfung ca. 20 Min (Einzelprüfung ca. 10 Min)", prep: 20,
+          sprechen: { minutes: 20, group: "Paarprüfung ca. 20 Min (Einzelprüfung ca. 15 Min)", prep: 20,
             note: "Punkteverteilung analog zum B2-Bewertungsbogen; die Aussprache wird über beide Teile hinweg bewertet.",
             parts: [
             P("P1", "Teil 1", "Vortrag zu einem gewählten Thema und Nachfragen", "speaking", 1, 48, 7,
@@ -842,8 +842,8 @@ const BLUEPRINTS = {
             P("H3", "Teil 3", "Experteninterview oder Radiofeature", "mc3", 10, 100 / 30, 15, { plays: 1, instruction: "Sie hören ein Interview einmal." })
           ]},
           schreiben: { minutes: 80, parts: [
-            P("S1", "Teil 1", "Kurzreferat stilistisch umformulieren", "writing", 1, 50, 40, { words: 200, instruction: "Formulieren Sie die vorgegebenen Passagen eines Kurzreferats sprachlich und stilistisch angemessen um." }),
-            P("S2", "Teil 2", "Leserbrief, Artikel oder Buchrezension", "writing", 1, 50, 40, { words: 350, choices: 4, instruction: "Wählen Sie eines von vier Themen – zwei allgemeine und zwei literaturgebundene – und schreiben Sie einen klar gegliederten Text." })
+            P("S1", "Teil 1", "Kurzreferat stilistisch umformulieren", "writing", 1, 20, 40, { words: 200, instruction: "Formulieren Sie die vorgegebenen Passagen eines Kurzreferats sprachlich und stilistisch angemessen um." }),
+            P("S2", "Teil 2", "Leserbrief, Artikel oder Buchrezension", "writing", 1, 80, 40, { words: 350, choices: 4, instruction: "Wählen Sie eines von vier Themen – zwei allgemeine und zwei literaturgebundene – und schreiben Sie einen klar gegliederten Text." })
           ]},
           sprechen: { minutes: 15, group: "Einzelprüfung", prep: 15, parts: [
             P("P1", "Teil 1", "Vortrag zu einem komplexen Thema", "speaking", 1, 50, 5, { seconds: 240, instruction: "Halten Sie einen Vortrag und erläutern Sie Ihre Argumentation auf Nachfragen differenziert." }),
@@ -1294,7 +1294,7 @@ function scoreModule(bp, modKey, content, answers) {
                    items: part.items, auto: !!autoable, format: part.format });
   }
 
-  const pct = max ? raw / max : 0;
+  let pct = max ? raw / max : 0;
   const sc = bp.scoring || { kind: "module100", pass: 60 };
   let normalised = Math.round(pct * 100), label = normalised + " / 100", passed = normalised >= 60, scale = 100;
 
@@ -1320,6 +1320,14 @@ function scoreModule(bp, modKey, content, answers) {
     const order = ["unter TDN 3", "TDN 3", "TDN 4", "TDN 5"];
     passed = order.indexOf(tdn) >= order.indexOf(sc.target);
     label = tdn + " · " + Math.round(raw) + "/" + Math.round(max) + " Items";
+  }
+  /* Goethe B1/B2/C1 Lesen+Hören: 30 Messpunkte -> Ergebnispunkte nach Tabelle (Durchführungsbestimmungen 4.1/4.2) */
+  if (bp._exam === "goethe" && sc.kind === "module100" && ["B1", "B2", "C1"].includes(bp._level) && (modKey === "lesen" || modKey === "hoeren")
+      && mod.parts.reduce((s0, p0) => s0 + (p0.items || 0), 0) === 30) {
+    const tbl = [0,3,7,10,13,17,20,23,27,30,33,37,40,43,47,50,53,57,60,63,67,70,73,77,80,83,87,90,93,97,100];
+    const corr = perPart.reduce((s0, p0) => s0 + p0.correct, 0);
+    normalised = tbl[corr]; raw = normalised; max = 100; pct = normalised / 100; scale = 100;
+    passed = normalised >= (sc.pass || 60); label = normalised + " / 100 (" + corr + " von 30 Messpunkten)";
   }
   return { raw: Math.round(raw * 10) / 10, max: Math.round(max * 10) / 10, pct, normalised, scale,
            label, passed, perPart, pendingHuman: Math.round(pendingHuman * 10) / 10 };
@@ -2801,7 +2809,7 @@ const Speech = {
       const pushBuf = () => {
         if (!buf.trim()) { buf = ""; return; }
         const u = hasTTS ? new SpeechSynthesisUtterance(buf) : { text: buf };
-        u.lang = "de-DE"; if (voice) u.voice = voice; u.rate = rate || 1;
+        u.lang = "de-DE"; if (voice) u.voice = voice; u.rate = rate || 1; if (hasTTS && window.GZ && GZ.vol != null) u.volume = GZ.vol;
         utts.push(u); buf = "";
       };
       for (const c of chunks) { if ((buf + c).length > 220) pushBuf(); buf += c; }
@@ -2883,20 +2891,22 @@ function startRun(testId, moduleKey, opts = {}) {
   if (resuming) toast("Fortgesetzt — gespeichert " + fmtSavedAt(cp.savedAt) + ".", "ok");
 }
 
+const lvlRank = lv => ({ A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6 }[lv] || 1);
 function startFullExam(testId) {
   const test = testById(testId);
   const bp = blueprint(test.exam, test.level);
-  const keys = moduleKeys(bp).filter(k => moduleCoverage(test, k).filled > 0);
+  const ORD = test.exam === "goethe" ? (test.level === "A1" ? ["hoeren", "lesen", "schreiben", "sprechen"] : ["lesen", "hoeren", "schreiben", "sprechen"]) : null;
+  const keys = moduleKeys(bp).filter(k => moduleCoverage(test, k).filled > 0).sort((a, b) => ORD ? ORD.indexOf(a) - ORD.indexOf(b) : 0);
   if (!keys.length) return toast("Es sind noch keine Inhalte vorhanden.", "err");
   confirmBox("Komplette Prüfung starten?",
-    "Die Module laufen nacheinander mit ihren eigenen Zeitgebern: " + keys.map(k => modName(k) + " " + moduleMinutes(bp.modules[k]) + " Min").join(", ") + ". Gesamt " + keys.reduce((s, k) => s + moduleMinutes(bp.modules[k]), 0) + " Minuten.",
+    "Die Module laufen nacheinander mit ihren eigenen Zeitgebern: " + keys.map(k => modName(k) + " " + moduleMinutes(bp.modules[k]) + " Min").join(", ") + ". Gesamt " + keys.reduce((s, k) => s + moduleMinutes(bp.modules[k]), 0) + " Minuten." + (test.exam === "goethe" && lvlRank(test.level) >= 3 ? " Zwischen den schriftlichen Modulen ist nach den Durchführungsbestimmungen eine Pause von mindestens 15 Minuten vorgesehen." : ""),
     () => startRun(testId, keys[0], { chain: keys.slice(1) }), "Prüfung starten", false);
 }
 
 let clockTimer = null;
 function startClock() {
   stopClock();
-  if (S.run && S.run.test && S.run.test.exam === "testdaf") return; // TestDaF: eigene Aufgaben-Timer (testdaf-Engine)
+  if (S.run && S.run.test && (S.run.test.exam === "testdaf" || S.run.test.exam === "goethe")) return; // TestDaF/Goethe: eigene Zeitgeber (TDF-/GZ-Engine)
   let tick = 0;
   clockTimer = setInterval(() => {
     if (!S.run || S.run.finished) return stopClock();
@@ -2954,6 +2964,7 @@ VIEWS.run = () => {
   if (!R) { shell.append(el("div", { class: "page" }, el("div", { class: "empty" }, "Keine aktive Sitzung."))); return shell; }
   if (R.reviewing) return reviewView();
   if (R.test.exam === "testdaf" && window.TDF) return TDF.runView();
+  if (R.test.exam === "goethe" && window.GZ) return GZ.runView();
 
   const part = R.mod.parts[R.partIndex];
   const content = R.test.content?.[R.moduleKey]?.[part.id];
@@ -3345,6 +3356,7 @@ function renderBank(col, right, part, c) {
    (no z-index/overflow-clipping issues) and never changes the layout of the
    chip that opened it (no shift on open/close — only the chip's own text
    changes width once an answer is actually picked, which is expected). */
+const gapDirect = () => !!S.settings.directGapFill || !!(S.run && S.run.test && S.run.test.exam === "goethe");
 let _gapPopover = null, _gapPopoverBtn = null;
 function closeGapPopover() {
   if (_gapPopoverBtn) _gapPopoverBtn.classList.remove("open");
@@ -3369,7 +3381,7 @@ function onGapPopoverScroll(e) {
 function openGapPopover(btn, options, cur, onPick) {
   if (_gapPopoverBtn === btn) { closeGapPopover(); return; } // click again = close
   closeGapPopover();
-  const direct = !!S.settings.directGapFill;
+  const direct = gapDirect();
   const pop = el("div", { class: "gapchip-list" });
   if (cur !== undefined && cur !== null && cur !== "") {
     pop.append(el("button", { type: "button", class: "gapchip-opt gapchip-clear",
@@ -3417,11 +3429,11 @@ function buildGapChip(key, gapNo, options, R, it) {
   const paint = () => {
     const chosen = options.find(o => String(o.val) === String(cur));
     if (!chosen) {
-      btn.textContent = "(" + gapNo + ")";
+      btn.textContent = "(" + (gapNo + (window.GZ_OFF || 0)) + ")";
       btn.classList.remove("filled", "correct", "wrong");
       btn.removeAttribute("title");
     } else {
-      const direct = !!S.settings.directGapFill;
+      const direct = gapDirect();
       btn.textContent = direct ? chosen.text : chosen.label;
       btn.title = direct ? (chosen.label + " — " + chosen.text) : ("Lücke " + gapNo + ": " + chosen.label);
       btn.classList.add("filled");
@@ -6734,5 +6746,506 @@ const st = document.createElement("style"); st.textContent = css; document.head.
 })();
 
 </script>
+<script>
+/* =========================================================================
+   Goethe-Zertifikat digital — Prüfungsoberfläche nach dem Goethe-Institut-
+   Demo („Digital German exams“): Kopfzeile mit Prüfungsnummer und Restzeit,
+   Regler für Helligkeit / Schriftgröße / Kontrast / Lautstärke, Aufgaben-
+   navigator, Text links – Aufgaben rechts, automatischer Hörablauf mit
+   Lesezeit und Wiedergaben, Prüfung-beendet-Dialog.
+   Zeiten, Teile und Punkte: Durchführungsbestimmungen 01.09.2025 (A1–C2).
+   Datenformat der Aufgaben: modeltest/goethe/SCHEMA.md
+   ======================================================================= */
+(function () {
+"use strict";
+const GZ = window.GZ = { vol: 1 };
+const PHIMG = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260"><rect width="400" height="260" fill="#e3e6e8"/><circle cx="300" cy="80" r="30" fill="#c5cacd"/><path d="M0 230 L120 110 L200 190 L270 130 L400 240 L400 260 L0 260Z" fill="#b3b9bd"/></svg>');
+GZ.PH = PHIMG;
+const LV = { A1: "#8b1a5c", A2: "#8b1a5c", B1: "#e8620a", B2: "#e8620a", C1: "#0c3a6b", C2: "#0c3a6b" };
+const MODN = { lesen: "Lesen", hoeren: "Hören", schreiben: "Schreiben", sprechen: "Sprechen" };
+/* Lesezeit vor dem Hören (Sekunden) je Teil — nach den Arbeitsanweisungen der Modellsätze */
+const READ = { A1: [10, 10, 10], A2: [10, 10, 10, 10], B1: [10, 30, 30, 45], B2: [60, 60, 60, 60], C1: [60, 60, 30, 60], C2: [60, 60, 60] };
+const PAUSE = 5, WORK = 10;
+const UIK = "ps.gz.ui";
+const ui = Object.assign({ bright: 0, font: 0, contrast: 0, vol: 10, layout: "50-50" }, store.read(UIK, {}));
+const saveUi = () => store.write(UIK, ui);
+GZ.vol = ui.vol / 10;
+
+const fmtOf = p => FORMATS[p.format] || {};
+const itemsOf = p => (fmtOf(p).essay || fmtOf(p).spoken) ? 1 : (p.items || 0);
+const lvlNo = lv => ({ A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6 }[lv] || 1);
+function offsets(R) { const o = []; let n = 0; R.mod.parts.forEach(p => { o.push(n); n += itemsOf(p); }); return o; }
+function candNo(id) { let h = 1234567; for (const ch of String(id)) h = (h * 31 + ch.charCodeAt(0)) % 999999937; return String(100000000000 + (h * 7919) % 899999999999).slice(0, 12); }
+let ac = null;
+function beep(f, ms) {
+  try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); const o = ac.createOscillator(), g = ac.createGain();
+    o.frequency.value = f || 880; g.gain.value = 0.18 * GZ.vol; o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + (ms || 350) / 1000); } catch (e) {}
+}
+const fmtMin = s => { const m = Math.ceil(Math.max(0, s) / 60); return m <= 0 ? "0 Minuten" : (m === 1 ? "1 Minute" : m + " Minuten"); };
+
+let iv = null, curRoot = null;
+function applyUi(root) {
+  root.style.setProperty("--gzfs", (16 + ui.font * 1.5) + "px");
+  root.style.filter = "brightness(" + (1 + ui.bright * 0.07).toFixed(2) + ") contrast(" + (1 + ui.contrast * 0.07).toFixed(2) + ")";
+}
+const A = (R, part) => { R.ga = R.ga || {}; return R.ga[part.id] || (R.ga[part.id] = { st: "idle", plays: 0, left: 0, tot: 0, frac: 0 }); };
+const curPart = R => R.mod.parts[R.partIndex];
+const contentOf = (R, part) => R.test.content?.[R.moduleKey]?.[part.id];
+
+/* ---------------- Navigation ---------------- */
+function leavePart(R) {
+  try { Speech.stop(); } catch (e) {}
+  const part = curPart(R); if (!part) return;
+  const a = R.ga && R.ga[part.id]; if (a) { a.st = a.plays > 0 ? "done" : "idle"; }
+}
+function goPage(i) {
+  const R = S.run; if (!R) return;
+  leavePart(R); R.partIndex = clamp(i, 0, R.mod.parts.length - 1); saveRunAnswers(); go("run");
+}
+GZ.leave = () => { try { Speech.stop(); } catch (e) {} stopAudio(); exitRun(); };
+function finishDialog() {
+  const R = S.run, miss = totalItems() - answeredCount();
+  const box = el("div", { class: "gz-dlg" },
+    el("div", { class: "gz-dlgh", text: "PRÜFUNG BEENDET" }),
+    el("div", { class: "gz-dlgb" },
+      el("p", { text: "Sind Sie jetzt fertig mit der Prüfung? Achtung: Sie können dann nicht mehr antworten." }),
+      miss > 0 ? el("p", { class: "gz-dlgs", text: miss + " Aufgabe(n) sind noch unbeantwortet und zählen als falsch." }) : null),
+    el("div", { class: "gz-dlgf" },
+      el("button", { class: "gz-btn", onclick: closeModal, text: "nein" }),
+      el("button", { class: "gz-btn on", onclick: () => { closeModal(); leavePart(R); finishRun(); }, text: "ja" })));
+  modal(box);
+}
+
+/* ---------------- Kopfzeile ---------------- */
+const LOGO = '<svg viewBox="0 0 120 40" width="86" height="29"><g fill="none" stroke="#fff" stroke-width="2"><circle cx="20" cy="20" r="6"/><path d="M20 4a16 16 0 1 0 16 16"/><path d="M20 9a11 11 0 1 0 11 11"/></g><circle cx="33" cy="9" r="4" fill="none" stroke="#fff" stroke-width="2"/><text x="44" y="18" fill="#fff" font-size="9" font-weight="700" font-family="Arial">GOETHE</text><text x="44" y="29" fill="#fff" font-size="9" font-weight="700" font-family="Arial">INSTITUT</text></svg>';
+function ctl(icon, title, key, min, max, onChange) {
+  const val = el("span", { class: "gz-cv" });
+  const set = d => { ui[key] = clamp(ui[key] + d, min, max); saveUi(); if (curRoot) applyUi(curRoot); if (onChange) onChange(); };
+  return el("span", { class: "gz-ctl", title },
+    el("span", { class: "gz-ci", text: icon }),
+    el("button", { type: "button", onclick: () => set(-1), "aria-label": title + " verringern", text: "−" }), val,
+    el("button", { type: "button", onclick: () => set(1), "aria-label": title + " erhöhen", text: "+" }));
+}
+function shell(R, withBar) {
+  const root = el("div", { class: "gz-root" });
+  curRoot = root; applyUi(root);
+  const head = el("div", { class: "gz-head" },
+    el("div", { class: "gz-logo", html: LOGO }),
+    el("div", { class: "gz-center" },
+      el("div", { class: "gz-cand", text: candNo(R.testId) }),
+      withBar ? el("div", { class: "gz-time" }, "verbleibende Zeit | ", el("b", { id: "gz-time", text: fmtMin(R.secondsLeft) })) : null),
+    el("div", { class: "gz-right" },
+      el("span", { id: "gz-status", class: "gz-status" }),
+      withBar ? el("span", { class: "gz-ctls" },
+        ctl("☀", "Helligkeit", "bright", -5, 5), ctl("A", "Schriftgröße", "font", -3, 6),
+        ctl("◐", "Kontrast", "contrast", -5, 5), ctl("🔊", "Lautstärke", "vol", 0, 10, () => { GZ.vol = ui.vol / 10; })) : null,
+      el("button", { class: "gz-save", type: "button", title: "Sichert Antworten, aktuellen Teil und Restzeit", onclick: GZ.leave, text: "💾 Speichern & Verlassen" })));
+  root.append(head, el("div", { class: "gz-line" }, el("i", { id: "gz-prog" })));
+  return root;
+}
+function paintHead() {
+  const R = S.run; if (!R) return;
+  const t = document.getElementById("gz-time"); if (t) t.textContent = fmtMin(R.secondsLeft);
+  const total = moduleMinutes(R.mod) * 60, p = document.getElementById("gz-prog");
+  if (p && total) p.style.width = Math.round(clamp(1 - R.secondsLeft / total, 0, 1) * 100) + "%";
+}
+
+/* ---------------- Startbildschirm ---------------- */
+function introLines(R) {
+  const mk = R.moduleKey, n = R.mod.parts.length, lv = R.test.level;
+  const L = [];
+  if (mk === "lesen") L.push("Das Modul Lesen hat " + n + " Teile.", "Sie lesen mehrere Texte und lösen Aufgaben dazu.", "Für jede Aufgabe gibt es nur eine richtige Lösung.", "Sie können Ihre Lösungen bis zur Abgabe jederzeit ändern. Mit dem Stift markieren Sie Textstellen und schreiben Notizen.");
+  if (mk === "hoeren") L.push("Das Modul Hören " + (lv === "B1" ? "besteht aus " : "hat ") + n + " Teile" + (lv === "B1" ? "n" : "") + ".", "Sie hören mehrere Texte und lösen Aufgaben dazu.", "Lesen Sie jeweils zuerst die Aufgaben und hören Sie dann den Text dazu.", "Für jede Aufgabe gibt es nur eine richtige Lösung.", "Das Audio startet automatisch. Am Ende jeder Pause hören Sie dieses Signal: ♬");
+  if (mk === "schreiben") L.push("Das Modul Schreiben hat " + n + " Aufgaben.", "Sie schreiben Ihre Texte direkt in das Textfeld. Unter dem Textfeld sehen Sie die Wortanzahl.", "Sie können Ihre Texte bis zur Abgabe jederzeit ändern.");
+  if (mk === "sprechen") L.push("Das Modul Sprechen hat " + n + " Teile.", R.mod.prep ? "Zur Vorbereitung haben Sie " + R.mod.prep + " Minuten Zeit. Sie dürfen sich Notizen in Stichpunkten machen." : "Es gibt keine Vorbereitungszeit.", R.mod.group || "", "Die Aufgaben stehen hier am Bildschirm. Ihre Antworten werden aufgenommen und können anschließend ausgewertet werden.");
+  if (lv === "A1" && mk !== "sprechen") L.push("Die schriftliche Prüfung Start Deutsch 1 besteht aus Hören, Lesen und Schreiben (zusammen 65 Minuten, ohne Pause).");
+  return L.filter(Boolean);
+}
+function tutorial() {
+  modal(el("div", { class: "gz-tut" }, el("h2", { text: "Tutorial" }),
+    el("ul", {},
+      el("li", { text: "Oben sehen Sie Ihre Prüfungsnummer und die verbleibende Zeit." }),
+      el("li", { text: "Rechts oben stellen Sie Helligkeit, Schriftgröße, Kontrast und Lautstärke ein." }),
+      el("li", { text: "Mit den grünen Pfeilen am Rand wechseln Sie zur vorherigen oder nächsten Aufgabe. Das Quadrat auf der letzten Seite beendet die Prüfung." }),
+      el("li", { text: "Das grüne Listensymbol unten links öffnet die Übersicht aller Aufgaben. Ein Haken zeigt, dass die Aufgabe beantwortet ist." }),
+      el("li", { text: "Mit den drei Symbolen unten rechts ändern Sie die Aufteilung von Text und Aufgaben." }),
+      el("li", { text: "Markieren Sie Text mit der Maus: Sie können ihn hervorheben oder kommentieren." }),
+      el("li", { text: "Beim Hören beginnt das Audio automatisch. Zuerst haben Sie Lesezeit (Sanduhr), dann folgt die Wiedergabe (Lautsprecher)." })),
+    el("div", { class: "gz-dlgf" }, el("button", { class: "gz-btn on", onclick: closeModal, text: "schließen" }))), false);
+}
+function audioCheck(onOk) {
+  const say = () => { beep(660, 400); setTimeout(() => { try { const u = new SpeechSynthesisUtterance("Dies ist ein Test. Können Sie mich gut hören?"); u.lang = "de-DE"; u.volume = GZ.vol; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }, 500); };
+  modal(el("div", { class: "gz-dlg" },
+    el("div", { class: "gz-dlgh", text: "AUDIOCHECK" }),
+    el("div", { class: "gz-dlgb gz-ac" }, el("div", { class: "gz-ring big", html: ringSVG(0.35, "🔊") }), el("p", { class: "gz-acq", text: "Können Sie gut hören?" }),
+      el("button", { class: "gz-btn", type: "button", onclick: say, text: "▶ Testton abspielen" })),
+    el("div", { class: "gz-dlgf" },
+      el("button", { class: "gz-btn", onclick: () => { toast("Bitte prüfen Sie Lautstärke und Lautsprecher bzw. Kopfhörer und versuchen Sie es erneut.", "err", 5000); say(); }, text: "nein" }),
+      el("button", { class: "gz-btn on", onclick: () => { try { speechSynthesis.cancel(); } catch (e) {} closeModal(); onOk(); }, text: "ja, Prüfung jetzt starten" }))));
+  say();
+}
+function introView(R) {
+  const root = shell(R, false), mk = R.moduleKey, lv = R.test.level;
+  const cp = getCheckpoint(R.testId, mk), resumed = !!cp && R.secondsLeft < moduleMinutes(R.mod) * 60;
+  const wrap = el("div", { class: "gz-intro" },
+    el("div", { class: "gz-introh" }, el("span", { class: "gz-badge", style: "background:" + LV[lv], text: lv }),
+      el("div", {}, el("h1", { text: MODN[mk] }), el("div", { class: "gz-introd", text: (mk === "hoeren" || (lv === "A1" && mk === "hoeren") ? "ca. " : "") + moduleMinutes(R.mod) + " Minuten" }))),
+    introLines(R).map(l => el("p", { text: l })),
+    el("p", { text: "Bevor Sie die Prüfung starten, können Sie sich ein Tutorial ansehen. Die Prüfungszeit beginnt erst, wenn Sie auf den Button " }, el("i", { text: "Prüfung starten" }), " klicken."),
+    el("div", { class: "gz-c" }, el("button", { class: "gz-tbtn", type: "button", onclick: tutorial, text: "▭ Tutorial" })),
+    el("p", { text: "Wenn Sie das Tutorial nicht sehen möchten, können Sie direkt auf den Button Prüfung starten klicken." }),
+    el("p", { text: "Wörterbücher und Mobiltelefone sind nicht erlaubt." }),
+    el("div", { class: "gz-c" }, el("button", { class: "gz-go", type: "button", onclick: () => {
+      const start = () => { R.gz.intro = false; if (mk === "sprechen" && R.mod.prep && !R.gz.prepDone) R.gz.prepLeft = R.mod.prep * 60; go("run"); };
+      if (mk === "hoeren") audioCheck(start); else start();
+    }, text: "▶ " + (resumed ? "Prüfung fortsetzen" : "Prüfung starten") })));
+  root.append(el("div", { class: "gz-introbox" }, wrap));
+  return root;
+}
+
+/* ---------------- Ring / Hörzustand ---------------- */
+function ringSVG(frac, icon) {
+  const r = 38, c = 2 * Math.PI * r;
+  return '<svg viewBox="0 0 90 90"><circle cx="45" cy="45" r="' + r + '" fill="none" stroke="#d7d9da" stroke-width="5"/><circle cx="45" cy="45" r="' + r + '" fill="none" stroke="#8ab521" stroke-width="5" stroke-linecap="round" stroke-dasharray="' + c + '" stroke-dashoffset="' + (c * (1 - clamp(frac, 0, 1))) + '" transform="rotate(-90 45 45)"/></svg><span class="gz-ri">' + icon + "</span>";
+}
+function audioInfo(R, part, c) {
+  const a = A(R, part), offs = offsets(R), off = offs[R.partIndex], n = itemsOf(part);
+  const allowed = (c.audio && c.audio.plays) || part.plays || 1;
+  const range = n > 1 ? "Aufgabe " + (off + 1) + "–" + (off + n) : "Aufgabe " + (off + 1);
+  if (a.st === "play") return { frac: a.frac, icon: "🔊", label: range + " · Wiedergabe" + (allowed > 1 ? " " + a.plays : ""), play: true };
+  const base = a.tot ? 1 - a.left / a.tot : (a.st === "done" ? 1 : 0);
+  return { frac: base, icon: "⌛", label: "Bearbeitungszeit", play: false };
+}
+function paintAudio() {
+  const R = S.run; if (!R || R.moduleKey !== "hoeren") return;
+  const part = curPart(R), c = contentOf(R, part); if (!c || !c.audio) return;
+  const i = audioInfo(R, part, c), box = document.getElementById("gz-audio"), st = document.getElementById("gz-status");
+  if (box) box.innerHTML = '<div class="gz-ring">' + ringSVG(i.frac, i.icon) + '</div><div class="gz-albl">' + esc(i.label) + "</div>";
+  if (st) st.textContent = (i.play ? "🔊 " : "⌛ ") + i.label;
+}
+function ensureAudio() {
+  const R = S.run; if (!R || R.moduleKey !== "hoeren" || R.gz.intro || R.finished) return;
+  const part = curPart(R), c = contentOf(R, part); if (!c || !c.audio || !c.audio.script) return;
+  const a = A(R, part);
+  if (a.st === "idle") {
+    const rs = c.audio.readSec != null ? c.audio.readSec : ((READ[R.test.level] || [])[R.partIndex] ?? 10);
+    a.st = "pre"; a.left = a.tot = rs;
+  }
+  paintAudio();
+}
+function startPlay(part, c) {
+  const R = S.run; if (!R || curPart(R) !== part) return;
+  const a = A(R, part); a.plays++; a.st = "play"; a.frac = 0; a.left = a.tot = 0; paintAudio();
+  const allowed = c.audio.plays || part.plays || 1, mine = a.plays;
+  Speech.playFrom("gz:" + part.id + ":" + mine, c.audio.script, S.settings.speechRate || 1, 0,
+    (i, t) => { if (a.st === "play" && a.plays === mine) { a.frac = t ? i / t : 0; paintAudio(); } },
+    () => {
+      if (a.st !== "play" || a.plays !== mine || S.run !== R || curPart(R) !== part) return;
+      if (a.plays < allowed) { a.st = "gap"; a.left = a.tot = PAUSE; } else { a.st = "work"; a.left = a.tot = WORK; }
+      paintAudio();
+    });
+}
+function audioTick(R) {
+  if (R.moduleKey !== "hoeren") return;
+  const part = curPart(R), c = contentOf(R, part); if (!c || !c.audio) return;
+  const a = A(R, part);
+  if (a.st === "pre" || a.st === "gap" || a.st === "work") {
+    a.left--; paintAudio();
+    if (a.left <= 0) {
+      if (a.st === "work") { a.st = "done"; if (R.partIndex < R.mod.parts.length - 1) goPage(R.partIndex + 1); return; }
+      a.st = "play"; beep(880, 350);
+      setTimeout(() => { if (S.run === R && curPart(R) === part && a.st === "play") startPlay(part, c); }, 700);
+    }
+  }
+}
+function tick() {
+  const R = S.run;
+  if (!R || R.finished || S.view !== "run" || !R.gz || R.test.exam !== "goethe" || R.reviewing) { clearInterval(iv); iv = null; return; }
+  if (R.gz.intro) return;
+  if (R.gz.prepLeft > 0) { R.gz.prepLeft--; paintPrep(R); if (R.gz.prepLeft <= 0) endPrep(R); return; }
+  if (R.secondsLeft > 0) R.secondsLeft--;
+  paintHead(); audioTick(R);
+  R.gz.n = (R.gz.n || 0) + 1; if (R.gz.n % 20 === 0) saveRunAnswers();
+  if (R.secondsLeft <= 0 && !R.gz.over) {
+    R.gz.over = true;
+    if (S.settings.strictTimer) { toast("Zeit abgelaufen — das Modul wurde abgegeben.", "err"); leavePart(R); finishRun(); }
+    else toast("Zeit abgelaufen. Sie üben ohne Zeitdruck weiter.", "");
+  }
+}
+
+/* ---------------- Sprechen: Vorbereitung ---------------- */
+function paintPrep(R) {
+  const t = document.getElementById("gz-prep"), r = document.getElementById("gz-prepring");
+  const l = R.gz.prepLeft, tot = R.mod.prep * 60;
+  if (t) t.textContent = String(Math.floor(l / 60)).padStart(2, "0") + ":" + String(l % 60).padStart(2, "0");
+  if (r) r.innerHTML = ringSVG(1 - l / tot, "⌛");
+}
+function endPrep(R) { R.gz.prepLeft = 0; R.gz.prepDone = true; beep(880, 350); saveRunAnswers(); go("run"); }
+function prepView(R) {
+  const root = shell(R, true);
+  const left = el("div", { class: "pane gz-pane" }), right = el("div", { class: "pane gz-pane" });
+  left.append(el("div", { class: "gz-plabel", text: "Sprechen – Aufgaben" }));
+  R.mod.parts.forEach((p, i) => {
+    const c = contentOf(R, p); if (!c) return;
+    left.append(el("div", { class: "gz-prepcard" }, el("b", { text: "Teil " + (i + 1) + (c.title ? ": " + c.title : "") }), c.prompt ? el("p", { text: c.prompt }) : null,
+      c.topics ? el("ul", {}, c.topics.map((tp, k) => el("li", {}, el("b", { text: "Thema " + (k + 1) + ": " }), tp))) : null,
+      c.bullets ? el("ul", {}, c.bullets.map(b => el("li", { text: b }))) : null));
+  });
+  right.append(el("div", { class: "gz-arb", text: "⊙ Vorbereitungszeit: " + R.mod.prep + " Minuten" }),
+    el("div", { class: "gz-audio" }, el("div", { id: "gz-prepring", class: "gz-ring", html: ringSVG(0, "⌛") }), el("div", { class: "gz-albl" }, "Vorbereitung · ", el("b", { id: "gz-prep", text: "" }))),
+    el("div", { class: "gz-wlabel", text: "Notizen (Stichpunkte, dürfen im Gespräch benutzt werden)" }),
+    el("textarea", { class: "gz-ta", rows: 12, value: R.answers["prep:notes"] || "", oninput: e => { R.answers["prep:notes"] = e.target.value; } }),
+    el("div", { class: "gz-c" }, el("button", { class: "gz-btn on", onclick: () => endPrep(R), text: "Vorbereitung beenden und Prüfung beginnen" })));
+  root.append(el("div", { class: "gz-main" }, el("div", { class: "gz-split", style: "grid-template-columns:1fr 1fr" }, left, right)));
+  setTimeout(() => paintPrep(R), 0);
+  return root;
+}
+
+/* ---------------- Aufgabenseiten ---------------- */
+function addCollapsers(task) {
+  task.querySelectorAll(".q").forEach(q => {
+    const head = q.querySelector(".qhead"); if (!head || head.querySelector(".gz-col")) return;
+    const b = el("button", { type: "button", class: "gz-col", title: "Aufgabe ein-/ausklappen", text: "−", onclick: () => {
+      const hide = !q.classList.contains("gz-closed"); q.classList.toggle("gz-closed", hide); b.textContent = hide ? "+" : "−"; } });
+    head.append(b);
+  });
+}
+function photoFor(i) { return el("img", { class: "gz-photo", src: PHIMG, alt: "Platzhalterbild" }); }
+function finishLayout(R, part, c, mat, task, off) {
+  [...task.querySelectorAll(".qnum")].forEach((n, k) => { n.textContent = String(off + k + 1); });
+  addCollapsers(task);
+  mat.querySelectorAll(".persona").forEach((p, i) => p.prepend(photoFor(i)));
+  if (c.personas) task.querySelectorAll(".optrow button.opt").forEach(b => { const k = (b.textContent || "").trim().toLowerCase().charCodeAt(0) - 97, pe = c.personas[k]; if (pe) { const nm = String(pe.name || pe.label || "").replace(/^[a-z]\)\s*/i, "").split(",")[0]; if (nm) { b.title = pe.name || nm; b.textContent = nm; } } });
+  if (c.image || c.img) mat.prepend(el("img", { class: "gz-img", src: PHIMG, alt: "Platzhalterbild" }));
+  if (c.images) {
+    task.querySelectorAll("label.opt").forEach(l => l.prepend(el("img", { class: "gz-opt-img", src: PHIMG, alt: "Platzhalterbild" })));
+    const sel = [...mat.querySelectorAll(".card")].find(x => /Auswahl/.test(x.textContent));
+    if (sel && c.bank) { const g = el("div", { class: "gz-tiles" }, c.bank.map(b => el("div", { class: "gz-tile" }, el("img", { src: PHIMG, alt: "Platzhalterbild" }), el("b", { text: b.key }), el("span", { text: b.text || "" })))); sel.replaceWith(g); }
+  }
+}
+GZ.renderGapDrag = function (mat, task, part, c, off) {
+  const R = S.run, bank = c.bank || [], items = c.items || [];
+  const exKey = c.example && c.example.answer;
+  let selKey = null;
+  if (c.image || c.img) mat.append(el("img", { class: "gz-img", src: PHIMG, alt: "Platzhalterbild" }));
+  const wrap = el("div", { class: "gz-text" }), pool = el("div", { class: "gz-pool" });
+  const placedKeys = () => items.map((_, i) => R.answers[part.id + ":" + i]).filter(v => v !== undefined && v !== null && v !== "");
+  const setGap = (i, k) => {
+    if (k !== undefined) items.forEach((_, j) => { if (j !== i && String(R.answers[part.id + ":" + j]) === String(k)) delete R.answers[part.id + ":" + j]; });
+    if (k === undefined) delete R.answers[part.id + ":" + i]; else R.answers[part.id + ":" + i] = k;
+    selKey = null; saveRunAnswers(); paint();
+  };
+  const textOf = k => (bank.find(b => String(b.key) === String(k)) || {}).text || "";
+  const paras = String(c.passage || "").split(/\n\n+/);
+  const gaps = [];
+  paras.forEach(para => {
+    const p = el("p");
+    para.split(/(___\d+___)/g).forEach(seg => {
+      const m = seg.match(/^___(\d+)___$/);
+      if (!m) { p.append(document.createTextNode(seg)); return; }
+      const n = Number(m[1]);
+      if (n === 0) { p.append(el("span", { class: "gz-gap ex", text: "0  " + (exKey ? textOf(exKey) : "Beispiel") })); return; }
+      const idx = n - 1, g = el("span", { class: "gz-gap", tabindex: "0" });
+      g.addEventListener("click", () => { const cur = R.answers[part.id + ":" + idx]; if (selKey !== null) setGap(idx, selKey); else if (cur !== undefined) setGap(idx, undefined); });
+      g.addEventListener("dragover", e => { e.preventDefault(); g.classList.add("over"); });
+      g.addEventListener("dragleave", () => g.classList.remove("over"));
+      g.addEventListener("drop", e => { e.preventDefault(); g.classList.remove("over"); const k = e.dataTransfer.getData("text/plain"); if (k) setGap(idx, k); });
+      gaps.push({ idx, n, g }); p.append(g);
+    });
+    wrap.append(p);
+  });
+  function paint() {
+    gaps.forEach(({ idx, n, g }) => {
+      const k = R.answers[part.id + ":" + idx];
+      g.className = "gz-gap" + (k !== undefined ? " filled" : "") + (selKey !== null && k === undefined ? " armed" : "");
+      g.innerHTML = ""; g.append(el("b", { class: "gz-gn", text: String(off + n) })); if (k !== undefined) g.append(el("span", { class: "gz-gt", text: " " + textOf(k) }));
+      g.title = k !== undefined ? "Klicken zum Entfernen" : "Satz hierher ziehen";
+    });
+    pool.innerHTML = "";
+    const used = placedKeys().map(String);
+    bank.filter(b => String(b.key) !== String(exKey) && !used.includes(String(b.key))).forEach(b => {
+      const card = el("div", { class: "gz-card" + (String(selKey) === String(b.key) ? " sel" : ""), draggable: "true", title: "Ziehen oder anklicken, dann Lücke anklicken" }, el("span", { class: "gz-grip", text: "✥" }), el("span", { text: b.text }));
+      card.addEventListener("dragstart", e => { e.dataTransfer.setData("text/plain", String(b.key)); });
+      card.addEventListener("click", () => { selKey = String(selKey) === String(b.key) ? null : b.key; paint(); });
+      pool.append(card);
+    });
+    if (!pool.children.length) pool.append(el("div", { class: "gz-muted", text: "Alle Sätze sind zugeordnet. Klicken Sie auf einen Satz im Text, um ihn zurückzulegen." }));
+  }
+  mat.append(wrap); task.append(pool); paint();
+};
+GZ.renderWriting = function (mat, task, part, c, pi) {
+  const R = S.run, key = part.id + ":0", lv = R.test.level, target = c.words || part.words || 100;
+  const hasMin = lvlNo(lv) >= 3 && target >= 80;
+  if (c.image || c.img) mat.append(el("img", { class: "gz-img", src: PHIMG, alt: "Platzhalterbild" }));
+  if (c.title) mat.append(el("div", { class: "gz-wtitle", text: c.title }));
+  if (c.bullets && c.bullets.length) mat.append(el("ul", { class: "gz-wul" }, c.bullets.map(b => el("li", { text: b }))));
+  mat.append(el("p", { class: "gz-wwords" }, "Schreiben Sie " + (hasMin ? "mindestens " : "circa "), el("b", { text: String(target) }), " Wörter."));
+  if (lvlNo(lv) >= 3) mat.append(el("p", { class: "gz-wnote", text: "Bei der Bewertung wird darauf geachtet, wie genau die Inhaltspunkte bearbeitet sind, wie korrekt der Text ist und wie gut die Sätze und Abschnitte sprachlich miteinander verknüpft sind." }));
+  if (c.tips) mat.append(el("p", { class: "gz-wtip", text: "So gehen Sie vor: " + c.tips }));
+  const counter = el("div", { class: "gz-wc" });
+  const ta = el("textarea", { class: "gz-ta big", value: R.answers[key] || "", spellcheck: "false", oninput: e => { R.answers[key] = e.target.value; saveRunAnswers(); upd(); } });
+  const upd = () => { counter.textContent = "Wortanzahl: " + words(ta.value); };
+  const um = el("div", { class: "gz-um" }, ["ä", "ö", "ü", "ß", "Ä", "Ö", "Ü", "„", "“"].map(ch => el("button", { type: "button", onclick: () => {
+    const s = ta.selectionStart, e2 = ta.selectionEnd; ta.value = ta.value.slice(0, s) + ch + ta.value.slice(e2); ta.selectionStart = ta.selectionEnd = s + ch.length; ta.focus(); R.answers[key] = ta.value; saveRunAnswers(); upd(); }, text: ch })));
+  task.append(el("div", { class: "gz-wlabel", text: (pi + 1) + ". Schreiben Sie Ihren Text in dieses Feld." }), ta, counter, um,
+    el("div", { class: "gz-c" }, el("button", { class: "gz-btn", type: "button", onclick: () => aiGradeWriting(part, c, ta.value, key), text: "✦ Von der KI bewerten lassen" }),
+      el("span", { class: "gz-muted", text: R.answers[part.id + ":grade"] != null ? "KI-Bewertung gespeichert: " + Math.round(R.answers[part.id + ":grade"] * 100) + " %" : "" })));
+  upd();
+};
+function bannerText(R, part, c) {
+  let t = (fmtOf(part).essay && c.prompt) ? c.prompt : (c.instruction || part.instruction || "");
+  if (part.format === "gapbank") t = t.replace(/ [a-z] bis [a-z] /, " ");
+  if (R.moduleKey === "hoeren" && c.audio && !/Sekunden/.test(t)) {
+    const off = offsets(R)[R.partIndex], n = itemsOf(part), rs = c.audio.readSec != null ? c.audio.readSec : ((READ[R.test.level] || [])[R.partIndex] ?? 10);
+    t += " Lesen Sie jetzt " + (n > 1 ? "die Aufgaben " + (off + 1) + " bis " + (off + n) : "die Aufgabe " + (off + 1)) + ". Dazu haben Sie " + rs + " Sekunden Zeit.";
+  }
+  return t;
+}
+function infoDialog(R, part, c) {
+  modal(el("div", { class: "gz-dlg" }, el("div", { class: "gz-dlgh", text: "INFORMATION" }),
+    el("div", { class: "gz-dlgb" }, el("p", {}, el("b", { text: MODN[R.moduleKey] + " " + (R.partIndex + 1) + ": " }), part.task || ""),
+      el("p", { text: "Aufgaben in diesem Teil: " + itemsOf(part) + " · Arbeitszeit: ca. " + (part.minutes || "—") + " Minuten." }),
+      part.plays ? el("p", { text: "Der Text wird " + ((c && c.audio && c.audio.plays) || part.plays) + "-mal gespielt." }) : null,
+      el("p", { class: "gz-muted", text: "Prüfungsdauer des Moduls: " + moduleMinutes(R.mod) + " Minuten." })),
+    el("div", { class: "gz-dlgf" }, el("button", { class: "gz-btn on", onclick: closeModal, text: "schließen" }))));
+}
+function navigator(R) {
+  const offs = offsets(R), nav = el("div", { class: "gz-nav", id: "gz-nav", hidden: true });
+  const row = el("div", { class: "gz-navrow" });
+  R.mod.parts.forEach((p, pi) => {
+    const n = itemsOf(p), fmt = fmtOf(p), card = el("div", { class: "gz-navc" + (pi === R.partIndex ? " on" : "") }, el("div", { class: "gz-navh", text: MODN[R.moduleKey].toUpperCase() + " " + (pi + 1) }));
+    const grid = el("div", { class: "gz-navg" });
+    for (let k = 0; k < n; k++) {
+      const v = R.answers[p.id + ":" + k], done = v !== undefined && v !== null && String(v).trim() !== "";
+      grid.append(el("button", { type: "button", class: "gz-navi", onclick: () => { nav.hidden = true; goPage(pi); } }, el("span", { class: "gz-cb", text: done ? "☑" : "☐" }), " Aufgabe " + ((fmt.essay || fmt.spoken) ? pi + 1 : offs[pi] + k + 1)));
+    }
+    card.append(grid); row.append(card);
+  });
+  nav.append(row); return nav;
+}
+function layoutBtns(R) {
+  const mk = (val, title, a, b) => el("button", { type: "button", class: "gz-lay" + (ui.layout === val ? " on" : ""), title, onclick: () => { ui.layout = val; saveUi(); const sp = document.querySelector(".gz-split"); if (sp && !sp.dataset.single) sp.style.gridTemplateColumns = a + "fr " + b + "fr"; document.querySelectorAll(".gz-lay").forEach(x => x.classList.toggle("on", x.title === title)); } },
+    el("i", { style: "width:" + a * 0.5 + "px" }), el("i", { style: "width:" + b * 0.5 + "px" }));
+  return el("div", { class: "gz-lays" }, mk("40-60", "Text kleiner", 4, 6), mk("50-50", "Text und Aufgaben gleich groß", 5, 5), mk("60-40", "Text größer", 6, 4));
+}
+function pageView(R) {
+  const part = curPart(R), c = contentOf(R, part), n = R.mod.parts.length, i = R.partIndex, offs = offsets(R), off = offs[i];
+  const root = shell(R, true), fmt = fmtOf(part);
+  const left = el("div", { class: "pane gz-pane gz-left" }), right = el("div", { class: "pane gz-pane gz-right" });
+  const main = el("div", { class: "gz-main" });
+  if (!c) {
+    right.append(el("div", { class: "gz-empty" }, el("p", { text: "Für diesen Teil sind noch keine Aufgaben hinterlegt." }),
+      el("button", { class: "gz-btn on", onclick: () => aiGeneratePart(R.testId, R.moduleKey, part.id).then(() => go("run")), text: "✦ Diesen Teil mit KI generieren" })));
+  } else {
+    left.append(el("div", { class: "gz-plabel", text: MODN[R.moduleKey] + " " + (i + 1) }), el("div", { class: "gz-banner", text: bannerText(R, part, c) }));
+    if (R.moduleKey === "hoeren" && c.audio && c.audio.script) {
+      left.append(el("div", { id: "gz-audio", class: "gz-audio" }));
+      if (!window.speechSynthesis) left.append(el("details", { class: "gz-tr" }, el("summary", { text: "Transkript (keine Sprachausgabe verfügbar)" }), c.audio.script.map(l => el("p", {}, el("b", { text: l.speaker ? l.speaker + ": " : "" }), l.text))));
+    }
+    const mat = el("div", { class: "gz-mat" }), task = el("div", { class: "gz-tasks" });
+    right.append(el("div", { class: "gz-arb", text: "⊙ Arbeitszeit: " + (part.minutes ? part.minutes + " Minuten" : "—") }));
+    window.GZ_OFF = off;
+    try {
+      if (fmt.essay) GZ.renderWriting(mat, task, part, c, i);
+      else if (part.format === "gapbank") GZ.renderGapDrag(mat, task, part, c, off);
+      else renderPart(mat, task, part, Object.assign({}, c, { audio: null }));
+      if (part.format === "gapmc") mat.querySelectorAll(".card").forEach(x => { if (/Optionen je Lücke/.test(x.textContent)) x.remove(); });
+    } catch (e) { console.error(e); task.append(el("div", { class: "gz-empty", text: "Diese Aufgabe hat nicht das erwartete Datenformat (" + e.message + ")." })); }
+    window.GZ_OFF = 0;
+    if (!fmt.essay && part.format !== "gapbank") finishLayout(R, part, c, mat, task, off);
+    else if (c.images) finishLayout(R, part, c, mat, document.createElement("div"), off);
+    left.append(mat); right.append(task);
+  }
+  const single = c && (part.format === "gapmc" || !right.querySelector(".gz-tasks").children.length);
+  if (single) right.hidden = true;
+  const col = ui.layout.split("-");
+  const split = el("div", { class: "gz-split", style: single ? "grid-template-columns:minmax(0,820px)" : "grid-template-columns:" + col[0] + "fr " + col[1] + "fr" }, left, single ? null : right);
+  if (single) split.dataset.single = "1";
+  const last = i === n - 1;
+  main.append(...[split,
+    i > 0 ? el("button", { type: "button", class: "gz-edge l", title: "Zurück zur vorherigen Aufgabe", onclick: () => goPage(i - 1), text: "←" }) : null,
+    el("button", { type: "button", class: "gz-edge r", title: last ? "Prüfung beenden" : "Weiter zur nächsten Aufgabe", onclick: () => last ? finishDialog() : goPage(i + 1), text: last ? "■" : "→" }),
+    el("div", { class: "gz-pager" }, el("b", { text: String(i + 1) }), " | " + n),
+    single ? null : layoutBtns(R),
+    el("button", { type: "button", class: "gz-listbtn", title: "Übersicht aller Aufgaben", onclick: () => { const old = document.getElementById("gz-nav"), nn = navigator(R); nn.hidden = !old.hidden; old.replaceWith(nn); }, text: "☰" }),
+    el("button", { type: "button", class: "gz-infobtn", title: "Information zur Aufgabe", onclick: () => infoDialog(R, part, c), text: "i" }),
+    navigator(R)].filter(Boolean));
+  root.append(main);
+  setTimeout(() => { if (S.run !== R) return; ensureAudio(); paintHead(); }, 0);
+  return root;
+}
+GZ.runView = function () {
+  const R = S.run, shellNode = el("div", {});
+  if (!R.gz) R.gz = { intro: true, n: 0 };
+  if (iv) clearInterval(iv); iv = setInterval(tick, 1000);
+  document.body.classList.add("gz-active");
+  let v;
+  if (R.gz.intro) v = introView(R);
+  else if (R.moduleKey === "sprechen" && R.gz.prepLeft > 0) v = prepView(R);
+  else v = pageView(R);
+  shellNode.append(v);
+  return shellNode;
+};
+const obs = new MutationObserver(() => { if (document.body.classList.contains("gz-active") && !document.querySelector(".gz-root")) document.body.classList.remove("gz-active"); });
+obs.observe(document.getElementById("app") || document.body, { childList: true });
+
+const css = `
+body.gz-active .shell>aside,body.gz-active #sidebar,body.gz-active .topbar{visibility:hidden}
+.gz-root{color-scheme:light;position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:#f4f4f0;color:#222;font-family:"Open Sans",Arial,sans-serif;font-size:var(--gzfs,16px)}
+.gz-head{background:#343a3f;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:6px 14px;min-height:54px;gap:12px}
+.gz-center{text-align:center;line-height:1.25}.gz-cand{font-weight:600;font-size:.9em}.gz-time{font-size:.9em;opacity:.95}
+.gz-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.gz-status{font-size:.68em;color:#b8d94a;min-height:1em}
+.gz-ctls{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.gz-ctl{display:inline-flex;align-items:center;gap:3px;color:#c7e14b;font-size:.75em}
+.gz-ctl button{background:none;border:0;color:#c7e14b;font-weight:700;cursor:pointer;font-size:1.2em;padding:0 3px}.gz-ci{opacity:.8}
+.gz-save{background:none;border:1px solid #6b7378;color:#dfe;border-radius:3px;padding:2px 8px;font-size:.7em;cursor:pointer}
+.gz-line{height:5px;background:#9aa;flex:none}.gz-line i{display:block;height:100%;width:0;background:#8ab521}
+.gz-main{position:relative;flex:1;min-height:0;padding:12px 56px 12px 56px;display:flex}
+.gz-split{display:grid;gap:14px;width:100%;margin:0 auto;min-height:0}
+.gz-pane{background:#fff;border-radius:3px;box-shadow:0 0 0 1px #e1e1dc;padding:14px 18px;overflow:auto;min-height:0;font-size:.82em;line-height:1.5}
+.gz-plabel{font-weight:600;font-size:.9em;margin-bottom:8px}.gz-banner{background:#8d8d8d;color:#fff;padding:10px 12px;margin:0 0 14px;font-weight:600}
+.gz-arb{text-align:right;color:#777;font-size:.78em;border-bottom:1px solid #e3e3e3;padding-bottom:6px;margin-bottom:10px}
+.gz-audio{background:#efefef;padding:14px;text-align:center;margin-bottom:12px}.gz-ring{position:relative;width:90px;height:90px;margin:0 auto}.gz-ring.big{width:110px;height:110px}.gz-ring svg{width:100%;height:100%}
+.gz-ri{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px}.gz-albl{color:#7aa21a;font-weight:700;font-size:.8em;margin-top:6px}
+.gz-edge{position:absolute;top:42%;width:34px;height:64px;border:0;background:#8ab521;color:#fff;font-size:20px;cursor:pointer;z-index:3}.gz-edge.l{left:0;border-radius:0 4px 4px 0}.gz-edge.r{right:0;border-radius:4px 0 0 4px}.gz-edge:hover{background:#729a14}
+.gz-pager{position:absolute;right:8px;top:2px;color:#999;font-size:.75em}.gz-pager b{color:#222}
+.gz-lays{position:absolute;right:8px;bottom:40px;display:flex;flex-direction:column;gap:4px}.gz-lay{display:flex;gap:2px;border:2px solid #bbb;border-radius:3px;background:#fff;padding:2px;cursor:pointer;height:20px;width:34px}.gz-lay i{display:block;background:#ccc;height:100%}.gz-lay.on{border-color:#222}
+.gz-listbtn,.gz-infobtn{position:absolute;bottom:0;width:36px;height:30px;border:0;background:#8ab521;color:#fff;font-size:16px;cursor:pointer;z-index:4}.gz-listbtn{left:0;border-radius:0 4px 0 0}.gz-infobtn{right:0;border-radius:50% 0 0 0;font-weight:700}
+.gz-nav{position:absolute;left:0;right:0;bottom:0;background:#343a3f;padding:16px 50px 20px;z-index:3;overflow-x:auto}.gz-nav[hidden]{display:none}
+.gz-navrow{display:flex;gap:12px;align-items:flex-start}.gz-navc{background:#fff;min-width:230px;border-radius:3px;overflow:hidden;border-bottom:8px solid #aaa}.gz-navc.on{border-bottom-color:#b8e03a}
+.gz-navh{background:#8b8b8b;color:#fff;padding:7px 12px;font-weight:700;font-size:.85em}.gz-navc.on .gz-navh{background:#8ab521}
+.gz-navg{display:grid;grid-template-columns:1fr 1fr}.gz-navi{border:0;border-bottom:1px solid #eee;background:#fff;text-align:left;padding:7px 12px;font-size:.85em;cursor:pointer}.gz-navi:hover{background:#f1f6e3}.gz-cb{font-size:1.1em}
+.gz-intro{max-width:760px;margin:0 auto;font-size:.85em;line-height:1.7}.gz-introbox{flex:1;overflow:auto;padding:50px 20px}.gz-introh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.gz-badge{color:#fff;font-weight:700;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center}.gz-intro h1{font-size:1.5em;margin:0}.gz-introd{font-weight:700}
+.gz-c{text-align:center;margin:12px 0}.gz-tbtn{background:#5aa5dc;color:#fff;border:0;border-radius:3px;padding:5px 14px;cursor:pointer;font-size:.85em}
+.gz-go{background:#8ab521;color:#fff;border:0;border-radius:3px;padding:9px 20px;cursor:pointer;font-weight:700;font-size:1em}.gz-go:hover{background:#729a14}
+.gz-btn{background:#eee;border:1px solid #ccc;border-radius:3px;padding:5px 14px;cursor:pointer;margin:0 4px;font:inherit;font-size:.9em}.gz-btn.on{background:#8ab521;border-color:#8ab521;color:#fff}
+.gz-dlg{min-width:min(420px,88vw);font-family:"Open Sans",Arial,sans-serif;color:#222}.gz-dlgh{background:#8ab521;color:#fff;font-weight:700;padding:8px 14px;font-size:.85em}.gz-dlgb{padding:16px 14px;font-size:.9em}.gz-dlgf{text-align:right;padding:8px 12px 12px}.gz-dlgs{color:#a33}.gz-ac{text-align:center}.gz-acq{font-weight:700;margin:10px 0}
+.gz-tut ul{margin:10px 0 0 18px;line-height:1.7;font-size:.9em}
+.gz-ta{width:100%;border:1px solid #888;padding:8px;font:inherit;font-size:.95em;resize:vertical}.gz-ta.big{min-height:46vh}.gz-wc{font-size:.85em;margin-top:4px}.gz-um{margin:6px 0}.gz-um button{margin-right:4px;border:1px solid #ccc;background:#f5f5f5;border-radius:3px;padding:1px 8px;cursor:pointer}
+.gz-wlabel{font-weight:700;margin:6px 0 8px;font-size:1.02em}.gz-wtitle{text-align:center;font-weight:700;margin:14px 0}.gz-wul{margin:10px 0 14px 22px}.gz-wnote,.gz-wtip{color:#444}.gz-wtip{font-size:.9em;color:#777}
+.gz-img{display:block;max-width:100%;width:340px;margin:8px auto 12px}.gz-photo{float:left;width:130px;margin:0 14px 8px 0}.gz-opt-img{display:block;width:150px;margin:6px 0}
+.gz-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin:8px 0}.gz-tile{border:1px solid #ccc;padding:6px;text-align:center;font-size:.85em}.gz-tile img{width:100%}
+.gz-mat .stimulus{background:transparent;border:0;padding:0;font-family:Arial,sans-serif;font-size:1.02em;line-height:1.55;text-align:justify}.gz-mat .persona{overflow:auto;margin-bottom:14px}
+.gz-text{font-family:Arial,sans-serif;font-size:1.02em;line-height:1.75;text-align:justify}
+.gz-gap{display:inline-block;min-width:44px;border:1.5px dashed #999;background:#e6e6e6;padding:0 6px;margin:2px 3px;cursor:pointer;border-radius:2px}.gz-gap.filled{background:#eef6d4;border:1.5px solid #8ab521}.gz-gap.ex{background:#eef6d4;border:1.5px solid #8ab521;cursor:default}.gz-gap.over,.gz-gap.armed{outline:2px solid #8ab521}.gz-gn{background:#777;color:#fff;border-radius:3px;padding:0 5px}.gz-gap.filled .gz-gn{background:#8ab521}
+.gz-pool{display:flex;flex-direction:column;gap:12px}.gz-card{border:2px dashed #aaa;border-radius:3px;padding:8px 10px;cursor:grab;background:#fff;display:flex;gap:8px;font-size:.95em}.gz-card.sel{outline:3px solid #8ab521}.gz-grip{color:#888}
+.gz-tasks .q{border:0!important;border-top:1px solid #e1e1e1!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;color:#222!important;padding:10px 0 12px}.gz-tasks .q .qhead,.gz-tasks .q .qhead *{color:#222!important}.gz-tasks .q .qtext,.gz-tasks .q label.opt{color:#222}.gz-tasks label.opt.sel,.gz-tasks label.opt.sel *{color:#fff!important}.gz-tasks .qhead{display:flex;justify-content:space-between;gap:10px;font-weight:700;font-size:1.05em}.gz-tasks .qnum{background:transparent;border:0;min-width:0;padding:0;margin-right:2px;color:inherit}.gz-tasks .qnum:after{content:". "}
+.gz-tasks .qhead>div{flex:1}.gz-col{border:0;background:none;font-size:1.2em;font-weight:700;cursor:pointer;color:#333}.gz-closed .opts,.gz-closed .optrow{display:none}
+.gz-tasks .opts,.gz-tasks .optrow{display:flex;flex-direction:column;gap:8px;margin-top:10px}.gz-tasks label.opt{display:flex;align-items:flex-start;gap:8px;padding:2px 4px;border:0;background:transparent;border-radius:2px;cursor:pointer;flex-wrap:wrap}.gz-tasks label.opt .k{display:none}.gz-tasks label.opt.sel{background:#8ab521;color:#fff}
+.gz-tasks .optrow button.opt{border:1px solid #bbb;background:#fff;border-radius:3px;padding:3px 10px;cursor:pointer}.gz-tasks .optrow button.opt.sel{background:#8ab521;color:#fff;border-color:#8ab521}.gz-tasks .optrow{flex-direction:row;flex-wrap:wrap}
+.gz-mat .gapchip{border:0;border-bottom:2px solid #8ab521;background:#eef2e0;font:inherit;padding:0 6px;cursor:pointer;border-radius:2px;color:#222}
+.gz-prepcard{border:1px solid #ddd;padding:10px 14px;margin-bottom:10px;border-radius:3px}.gz-prepcard ul{margin:6px 0 0 18px}
+.gz-tasks,.gz-mat{max-width:none!important;margin:0!important;width:100%}.gz-pane>*{max-width:none}.gz-tasks input[type=radio],.gz-tasks input[type=checkbox]{appearance:auto!important;-webkit-appearance:auto!important;accent-color:#2f6fd0;width:14px;height:14px;min-width:14px;margin:3px 2px 0 0;background:#fff}
+.gz-ta,.gz-ta:focus{background:#fff!important;color:#222!important;border:1px solid #888!important;border-radius:0!important;box-shadow:none!important;outline:none}.gz-ta:focus{border-color:#3b82c4!important}.gz-root input[type=text],.gz-root select{background:#fff;color:#222}
+.gz-tasks label.opt:has(.gz-opt-img){display:grid;grid-template-columns:22px 1fr;grid-template-areas:"r i" "r t";align-items:start;gap:2px 8px}.gz-tasks label.opt:has(.gz-opt-img) input{grid-area:r}.gz-tasks label.opt:has(.gz-opt-img) .gz-opt-img{grid-area:i;width:130px;margin:0}.gz-tasks label.opt:has(.gz-opt-img) span:last-child{grid-area:t}
+#modalBox:has(.gz-dlg),#modalBox:has(.gz-tut){background:#fff!important;color:#222!important;padding:0!important;border-radius:3px;overflow:hidden;color-scheme:light}#modalBox .gz-tut{padding:18px 20px;max-width:560px}#modalBox .gz-tut h2{margin:0;color:#222}#modalBox .gz-tut li{color:#222}#modalBox .gz-dlg p{color:#222;margin:0 0 8px}.gz-dlg .gz-btn{color:#222}.gz-dlg .gz-btn.on{color:#fff}.gz-dlg .gz-dlgs{color:#a33}
+.gz-muted{color:#777;font-size:.85em}.gz-empty{padding:30px;text-align:center}
+@media(max-width:800px){.gz-main{padding:8px 34px}.gz-split{grid-template-columns:1fr!important;overflow:auto}.gz-ctls{display:none}.gz-head{flex-wrap:wrap}}
+`;
+const st = document.createElement("style"); st.textContent = css; document.head.append(st);
+})();
+</script>
+
 </body>
 </html>

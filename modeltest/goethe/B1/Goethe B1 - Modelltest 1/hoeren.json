@@ -375,7 +375,52 @@
           "answer": "W",
           "why": "Frau Wagner bringt einen konkreten Vorschlag ein: „Ein guter Kompromiss sind feste Teamtage, an denen sich alle im Büro treffen.“"
         }
-      ]
+      ],
+      "audio": {
+        "plays": 2,
+        "script": [
+          {
+            "speaker": "Moderator",
+            "text": "Herzlich willkommen zu unserer heutigen Sendung über flexibles Arbeiten. Heute sprechen wir mit Herrn Bergmann, Unternehmensberater, und Frau Wagner, Personalleiterin. Herr Bergmann, wie sehen Sie die Entwicklung?"
+          },
+          {
+            "speaker": "Herr Bergmann",
+            "text": "Feste Präsenzzeiten im Büro sind meiner Meinung nach ein Auslaufmodell. Wer gute Technik hat, kann von überall aus arbeiten."
+          },
+          {
+            "speaker": "Frau Wagner",
+            "text": "Wir müssen aufpassen, dass die Grenze zwischen Freizeit und Arbeit nicht völlig verschwimmt. Ständige Erreichbarkeit macht auf Dauer krank, deshalb braucht man klare Regeln."
+          },
+          {
+            "speaker": "Moderator",
+            "text": "Wie kann man denn den Zusammenhalt im Team stärken, wenn sich alle im Homeoffice befinden?"
+          },
+          {
+            "speaker": "Herr Bergmann",
+            "text": "Bei uns in der Abteilung hat sich gezeigt, dass die Arbeitsleistung im Homeoffice sogar gestiegen ist. Die Kollegen sind zufriedener und konzentrierter."
+          },
+          {
+            "speaker": "Frau Wagner",
+            "text": "Man darf nicht vergessen, dass viele Berufe im Handwerk oder im Service vor Ort erledigt werden müssen. Nicht jeder kann einfach zu Hause bleiben."
+          },
+          {
+            "speaker": "Moderator",
+            "text": "Gibt es eigentlich Beschwerden von Kunden, weil sie manchmal niemanden erreichen?"
+          },
+          {
+            "speaker": "Herr Bergmann",
+            "text": "Bisher kaum. Unsere Kunden erreichen uns über eine zentrale Nummer, das funktioniert gut."
+          },
+          {
+            "speaker": "Frau Wagner",
+            "text": "Ein guter Kompromiss sind feste Teamtage, an denen sich alle im Büro treffen."
+          },
+          {
+            "speaker": "Moderator",
+            "text": "Vielen Dank für das Gespräch und auf Wiederhören."
+          }
+        ]
+      }
     }
   }
 }

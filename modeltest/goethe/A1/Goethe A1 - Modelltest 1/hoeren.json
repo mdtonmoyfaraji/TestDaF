@@ -172,7 +172,8 @@
           "answer": 0,
           "why": "Die Frau antwortet: 'Meine Eltern kommen zum Abendessen vorbei.'"
         }
-      ]
+      ],
+      "images": true
     },
     "H2": {
       "title": "Durchsagen am Bahnhof und im Kaufhaus",

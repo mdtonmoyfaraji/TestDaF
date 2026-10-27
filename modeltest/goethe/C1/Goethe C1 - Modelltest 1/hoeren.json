@@ -10,80 +10,67 @@
     "H1": {
       "title": "Literarischer Podcast: Neue Sachbücher im Fokus",
       "instruction": "Hören Sie den Podcast. Wählen Sie bei den Aufgaben 1 bis 6, zu welchem der drei Bücher (A, B oder C) die Aussagen passen. Sie hören den Text einmal.",
-      "personas": [
-        {
-          "name": "Dr. Helena Berg, Literaturkritikerin",
-          "text": "Herzlich willkommen zu unserem wöchentlichen Literaturpott. Heute widmen wir uns drei faszinierenden Neuerscheinungen an der Schnittstelle von Gesellschaft und Wissenschaft. Beginnen wir mit dem Werk 'Die Vermessung des Alltags' von Jonas Weber. Weber untersucht darin sehr anschaulich, wie digitale Algorithmen unser konsumorientiertes Verhalten steuern. Besonders überzeugend finde ich, dass der Autor komplett auf akademisches Fachchinesisch verzichtet. Stattdessen nutzt er alltägliche Beispiele aus dem Supermarkt oder von Streaming-Diensten, um komplexe Big-Data-Strukturen verständlich zu machen. Das Buch richtet sich an alle, die verstehen wollen, wie unbemerkt unsere täglichen Entscheidungen von unsichtbaren Codes beeinflusst werden, ohne dabei den moralischen Zeigefinger zu erheben."
-        },
-        {
-          "name": "Markus Thiel, Redakteur",
-          "text": "Kommen wir nun zu einem gänzlich anderen Themenbereich: der Ökologie und urbanen Zukunft. In 'Grüne Metropolen' analysiert Hannah Stern, wie europäische Großstädte den Herausforderungen des Klimawandels begegnen. Stern blickt dabei nicht nur auf bereits umfasste Begrünungsprojekte, sondern wagt einen radikalen Blick in die Zukunft. Sie argumentiert faktenbasiert, dass vertikale Gärten und autofreie Zonen allein nicht ausreichen werden, um unsere Städte langfristig lebenswert zu erhalten. Kritiker mögen einwandern, dass ihre Visionen utopisch wirken, doch Stern untermauert ihre Thesen mit fundierten Fallstudien aus Kopenhagen und Wien. Ein inspirierendes Buch für Stadtplaner und alle Bürgerinnen und Bürger, die aktiv an der Gestaltung ihrer urbanen Umwelt mitwirken möchten."
-        },
-        {
-          "name": "Svenja Ahlers, Moderatorin",
-          "text": "Zu guter Letzt werfen wir einen Blick auf den Arbeitsmarkt der Zukunft. In 'Das Ende der Präsenzkultur' beleuchtet Tobias Klein den rasanten Wandel unserer Arbeitswelt. Klein fordert einen grundlegenden Paradigmenwechsel weg von starren Arbeitszeiten hin zu reiner Vertrauensarbeit und ergebnisorientierter Bewertung. Was dieses Buch von der Masse ähnlicher Ratgeber abhebt, ist der enorme Praxisbezug. Klein hat über zwei Jahre lang mittelständische Unternehmen begleitet, die die Vier-Tage-Woche eingeführt haben, und dokumentiert die jeweiligen Erfolge und Stolpersteineungslos. Es ist ein hochaktueller Leitfaden für Führungskräfte, die den Anschluss an moderne Arbeitsmodelle nicht verpassen wollen und bereit sind, bewährte Strukturen kritisch zu hinterfragen."
-        }
-      ],
       "items": [
         {
           "prompt": "Dieses Buch verzichtet bewusst auf komplizierte Fachbegriffe, um komplexe technologische Zusammenhänge für ein breites Publikum zugänglich zu machen.",
-          "answer": 0,
-          "why": "Im ersten Text wird über Jonas Webers Buch gesagt: 'dass der Autor komplett auf akademisches Fachchinesisch verzichtet.'",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "a",
+          "why": "Im ersten Text wird über Jonas Webers Buch gesagt: 'dass der Autor komplett auf akademisches Fachchinesisch verzichtet.'"
         },
         {
           "prompt": "In dieser Publikation wird argumentiert, dass bisherige ökologische Maßnahmen in Städten für die Zukunft nicht ausreichen werden.",
-          "answer": 1,
-          "why": "Im zweiten Text heißt es über Hannah Sterns Buch, sie argumentiere, 'dass vertikale Gärten und autofreie Zonen allein nicht ausreichen werden'.",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "b",
+          "why": "Im zweiten Text heißt es über Hannah Sterns Buch, sie argumentiere, 'dass vertikale Gärten und autofreie Zonen allein nicht ausreichen werden'."
         },
         {
           "prompt": "Dieses Werk dokumentiert die Erfahrungen von Unternehmen, die neue Arbeitszeitmodelle in der Praxis erprobt haben.",
-          "answer": 2,
-          "why": "Im dritten Text wird zu Tobias Kleins Buch erwähnt, er habe 'mittelständische Unternehmen begleitet, die die Vier-Tage-Woche eingeführt haben'.",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "c",
+          "why": "Im dritten Text wird zu Tobias Kleins Buch erwähnt, er habe 'mittelständische Unternehmen begleitet, die die Vier-Tage-Woche eingeführt haben'."
         },
         {
           "prompt": "Hier wird untersucht, wie digitale Systeme und Algorithmen unbemerkt das Konsumverhalten der Menschen lenken.",
-          "answer": 0,
-          "why": "Im ersten Text beschreibt Dr. Berg, dass Weber untersucht, 'wie digitale Algorithmen unser konsumorientiertes Verhalten steuern'.",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "a",
+          "why": "Im ersten Text beschreibt Dr. Berg, dass Weber untersucht, 'wie digitale Algorithmen unser konsumorientiertes Verhalten steuern'."
         },
         {
           "prompt": "Das Buch stützt seine zukunftsweisenden Thesen auf konkrete Fallstudien aus ausgewählten europäischen Städten.",
-          "answer": 1,
-          "why": "Im zweiten Text wird betont, dass Stern 'ihre Thesen mit fundierten Fallstudien aus Kopenhagen und Wien' untermauert.",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "b",
+          "why": "Im zweiten Text wird betont, dass Stern 'ihre Thesen mit fundierten Fallstudien aus Kopenhagen und Wien' untermauert."
         },
         {
           "prompt": "Diese Neuerscheinung richtet sich vor allem an Führungskräfte, die herkömmliche Arbeitsstrukturen überdenken möchten.",
-          "answer": 2,
-          "why": "Im dritten Text wird das Buch als 'hochaktueller Leitfaden für Führungskräfte' bezeichnet, 'die bereit sind, bewährte Strukturen kritisch zu hinterfragen'.",
-          "options": [
-            "Dr. Helena Berg, Literaturkritikerin",
-            "Markus Thiel, Redakteur",
-            "Svenja Ahlers, Moderatorin"
-          ]
+          "answer": "c",
+          "why": "Im dritten Text wird das Buch als 'hochaktueller Leitfaden für Führungskräfte' bezeichnet, 'die bereit sind, bewährte Strukturen kritisch zu hinterfragen'."
+        }
+      ],
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "",
+            "text": "Herzlich willkommen zu unserem wöchentlichen Literaturpott. Heute widmen wir uns drei faszinierenden Neuerscheinungen an der Schnittstelle von Gesellschaft und Wissenschaft. Beginnen wir mit dem Werk 'Die Vermessung des Alltags' von Jonas Weber. Weber untersucht darin sehr anschaulich, wie digitale Algorithmen unser konsumorientiertes Verhalten steuern. Besonders überzeugend finde ich, dass der Autor komplett auf akademisches Fachchinesisch verzichtet. Stattdessen nutzt er alltägliche Beispiele aus dem Supermarkt oder von Streaming-Diensten, um komplexe Big-Data-Strukturen verständlich zu machen. Das Buch richtet sich an alle, die verstehen wollen, wie unbemerkt unsere täglichen Entscheidungen von unsichtbaren Codes beeinflusst werden, ohne dabei den moralischen Zeigefinger zu erheben."
+          },
+          {
+            "speaker": "",
+            "text": "Kommen wir nun zu einem gänzlich anderen Themenbereich: der Ökologie und urbanen Zukunft. In 'Grüne Metropolen' analysiert Hannah Stern, wie europäische Großstädte den Herausforderungen des Klimawandels begegnen. Stern blickt dabei nicht nur auf bereits umfasste Begrünungsprojekte, sondern wagt einen radikalen Blick in die Zukunft. Sie argumentiert faktenbasiert, dass vertikale Gärten und autofreie Zonen allein nicht ausreichen werden, um unsere Städte langfristig lebenswert zu erhalten. Kritiker mögen einwandern, dass ihre Visionen utopisch wirken, doch Stern untermauert ihre Thesen mit fundierten Fallstudien aus Kopenhagen und Wien. Ein inspirierendes Buch für Stadtplaner und alle Bürgerinnen und Bürger, die aktiv an der Gestaltung ihrer urbanen Umwelt mitwirken möchten."
+          },
+          {
+            "speaker": "",
+            "text": "Zu guter Letzt werfen wir einen Blick auf den Arbeitsmarkt der Zukunft. In 'Das Ende der Präsenzkultur' beleuchtet Tobias Klein den rasanten Wandel unserer Arbeitswelt. Klein fordert einen grundlegenden Paradigmenwechsel weg von starren Arbeitszeiten hin zu reiner Vertrauensarbeit und ergebnisorientierter Bewertung. Was dieses Buch von der Masse ähnlicher Ratgeber abhebt, ist der enorme Praxisbezug. Klein hat über zwei Jahre lang mittelständische Unternehmen begleitet, die die Vier-Tage-Woche eingeführt haben, und dokumentiert die jeweiligen Erfolge und Stolpersteineungslos. Es ist ein hochaktueller Leitfaden für Führungskräfte, die den Anschluss an moderne Arbeitsmodelle nicht verpassen wollen und bereit sind, bewährte Strukturen kritisch zu hinterfragen."
+          }
+        ]
+      },
+      "bank": [
+        {
+          "key": "a",
+          "text": "Buch 1 – Die Vermessung des Alltags"
+        },
+        {
+          "key": "b",
+          "text": "Buch 2 – Grüne Metropolen"
+        },
+        {
+          "key": "c",
+          "text": "Buch 3 – Das Ende der Präsenzkultur"
         }
       ]
     },

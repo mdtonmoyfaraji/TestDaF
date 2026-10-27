@@ -101,3 +101,10 @@ Aus (Standard): unverändert, Ergebnis erst nach der Abgabe.
 | PHP-Webspace | automatisch über `library.php` |
 | Lokal mit `python -m http.server` | automatisch (Ordnerliste des Servers) |
 | Lokal per Doppelklick auf `index.html` | einmal „Ordner wählen …“ (Projektordner) — Chrome/Edge merken ihn |
+
+
+## Goethe-Zertifikat (A1–C2) — digitale Oberfläche
+Alle Goethe-Module laufen in der Oberfläche des digitalen Goethe-Instituts-Tests (Kopfzeile, Aufgabenübersicht,
+Hörablauf mit Lesezeit und Wiedergaben, Prüfung-beendet-Dialog). Details: `modeltest/goethe/SCHEMA.md`.
+Zeiten und Punkte folgen den Durchführungsbestimmungen vom 01.09.2025. KI-Bewertung (Schreiben/Sprechen) und
+KI-Generator arbeiten mit denselben Teilen wie die Oberfläche.

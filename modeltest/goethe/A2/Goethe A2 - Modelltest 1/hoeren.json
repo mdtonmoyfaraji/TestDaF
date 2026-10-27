@@ -155,7 +155,57 @@
           "answer": "c",
           "why": "Tobias plant: 'Wenn das Wetter gut ist, machen wir mit allen Nachbarn ein großes Essen draußen im Park.'"
         }
-      ]
+      ],
+      "audio": {
+        "plays": 1,
+        "script": [
+          {
+            "speaker": "Moderatorin",
+            "text": "Hallo und herzlich willkommen. Wir fragen heute fünf Leute: Was machen Sie am Wochenende? Markus, fangen wir mit dir an."
+          },
+          {
+            "speaker": "Markus",
+            "text": "Am Samstag nehme ich mein Rad und fahre raus an den See. Das Wetter soll ja schön werden, da bleibe ich nicht zu Hause."
+          },
+          {
+            "speaker": "Moderatorin",
+            "text": "Und du, Julia?"
+          },
+          {
+            "speaker": "Julia",
+            "text": "Ich stehe am Wochenende gerne in der Küche und koche etwas Schönes für meine Gäste. Am Samstagabend kommen vier Freunde zu mir."
+          },
+          {
+            "speaker": "Moderatorin",
+            "text": "Stefan, was hast du vor?"
+          },
+          {
+            "speaker": "Stefan",
+            "text": "Abends hole ich mir Karten für den neuen Actionfilm im Kino. Ich habe schon lange keinen guten Film mehr gesehen."
+          },
+          {
+            "speaker": "Moderatorin",
+            "text": "Anna, und bei dir?"
+          },
+          {
+            "speaker": "Anna",
+            "text": "Ich schaue mir die neue Ausstellung in der Stadtgalerie an. Dafür habe ich am Sonntagnachmittag Zeit."
+          },
+          {
+            "speaker": "Moderatorin",
+            "text": "Und zum Schluss Tobias."
+          },
+          {
+            "speaker": "Tobias",
+            "text": "Wenn das Wetter gut ist, machen wir mit allen Nachbarn ein großes Essen draußen im Park. Jeder bringt etwas mit."
+          },
+          {
+            "speaker": "Moderatorin",
+            "text": "Vielen Dank euch allen und ein schönes Wochenende!"
+          }
+        ]
+      },
+      "images": true
     },
     "H3": {
       "title": "Hören Teil 3: Fünf kurze Gespräche",

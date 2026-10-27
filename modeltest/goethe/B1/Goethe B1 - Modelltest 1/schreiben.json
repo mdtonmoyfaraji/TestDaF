@@ -17,7 +17,8 @@
         "Bitte um kurze Rückmeldung bis morgen"
       ],
       "words": 80,
-      "tips": "Achten Sie darauf, alle drei Leitpunkte in einer logischen Reihenfolge zu bearbeiten und schreiben Sie in einem freundlichen, aber professionellen Ton."
+      "tips": "Achten Sie darauf, alle drei Leitpunkte in einer logischen Reihenfolge zu bearbeiten und schreiben Sie in einem freundlichen, aber professionellen Ton.",
+      "image": true
     },
     "S2": {
       "title": "Online-Gästebuch: Homeoffice",
