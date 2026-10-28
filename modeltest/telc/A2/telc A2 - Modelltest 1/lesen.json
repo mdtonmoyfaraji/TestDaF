@@ -8,189 +8,168 @@
   "name": "telc A2 — Modelltest 1 — Lesen",
   "content": {
     "L1": {
-      "title": "Überschriften zuordnen",
-      "instruction": "Lesen Sie die fünf kurzen Texte und die Überschriften a–h. Welcher Text passt zu welcher Überschrift? Schreiben Sie den richtigen Buchstaben (a–h) hinter die Nummer (1–5). Drei Überschriften bleiben übrig.",
-      "bank": [
-        {
-          "key": "a",
-          "text": "Wichtige Tipps für das Bewerbungsgespräch"
-        },
-        {
-          "key": "b",
-          "text": "Gesund kochen nach einem langen Arbeitstag"
-        },
-        {
-          "key": "c",
-          "text": "Der perfekte Start in den Urlaub mit dem Zug"
-        },
-        {
-          "key": "d",
-          "text": "Terminabsage beim Arzt ohne Probleme"
-        },
-        {
-          "key": "e",
-          "text": "Gemeinsam Sport machen in der Freizeit"
-        },
-        {
-          "key": "f",
-          "text": "Neue Möbel für das Wohnzimmer kaufen"
-        },
-        {
-          "key": "g",
-          "text": "Ein Ausflug in die Berge bei schlechtem Wetter"
-        },
-        {
-          "key": "h",
-          "text": "Öffnungszeiten vom Supermarkt am Wochenende"
-        }
-      ],
+      "title": "Stadtbibliothek Neustadt",
+      "passage": "**Stadtbibliothek Neustadt – Informationen für Leserinnen und Leser**\n\nÖffnungszeiten: Montag bis Freitag 10–19 Uhr, Samstag 10–14 Uhr, Sonntag geschlossen.\n\nNeue Leserausweise bekommen Sie am Informationsschalter im Erdgeschoss. Erwachsene brauchen einen Ausweis und 10 Euro Jahresgebühr. Kinder bis 14 Jahre zahlen nichts.\n\nBücher können Sie vier Wochen lang ausleihen. Danach verlängern Sie online oder am Schalter.\n\nIm ersten Stock gibt es ruhige Lernplätze. Dort ist Essen nicht erlaubt. Im Café im Erdgeschoss dürfen Sie essen und trinken.\n\nJeden Mittwoch um 16 Uhr lesen wir Geschichten für Kinder vor. Der Eintritt ist frei.",
       "items": [
         {
-          "prompt": "Wenn Sie heute oder morgen nicht zu Ihrem Arzttermin kommen können, rufen Sie bitte mindestens 24 Stunden vorher in der Praxis an. So kann der Termin an andere Patientinnen und Patienten vergeben werden.",
-          "answer": "d",
-          "why": "Im Text wird erklärt, wie man einen Arzttermin absagen kann, was genau zu der Überschrift d passt."
+          "prompt": "Wie lange ist die Bibliothek am Samstag geöffnet?",
+          "options": [
+            "10 bis 14 Uhr",
+            "10 bis 19 Uhr",
+            "Samstags ist sie geschlossen."
+          ],
+          "answer": 0,
+          "why": ""
         },
         {
-          "prompt": "Sie möchten nach der Arbeit nicht lange in der Küche stehen? Mit frischem Gemüse und schnellen Rezepten zaubern Sie in nur zwanzig Minuten ein leckeres und gesundes Abendessen für die ganze Familie.",
-          "answer": "b",
-          "why": "Der Text beschreibt das Kochen nach der Arbeit, was direkt mit der Überschrift b übereinstimmt."
+          "prompt": "Was brauchen Erwachsene für einen Leserausweis?",
+          "options": [
+            "Nur einen Ausweis.",
+            "Einen Ausweis und 10 Euro.",
+            "Ein Foto und 14 Euro."
+          ],
+          "answer": 1,
+          "why": ""
         },
         {
-          "prompt": "Bereiten Sie sich gut auf Ihr Gespräch mit dem neuen Arbeitgeber vor: Pünktlichkeit ist sehr wichtig, und passende Kleidung zeigt, dass Sie die Arbeitsstelle wirklich ernst nehmen.",
-          "answer": "a",
-          "why": "Es werden Ratschläge für das Vorstellungsgespräch gegeben, passend zur Überschrift a."
+          "prompt": "Wie lange darf man Bücher ausleihen?",
+          "options": [
+            "Zwei Wochen",
+            "Vier Wochen",
+            "Zwei Monate"
+          ],
+          "answer": 1,
+          "why": ""
         },
         {
-          "prompt": "Reisen Sie stressfrei und ohne Stau! Buchen Sie Ihre Fahrkarten am besten früh online. Unsere Züge bringen Sie direkt ins Zentrum, und Sie können während der Fahrt entspannt lesen oder Musik hören.",
-          "answer": "c",
-          "why": "Der Text wirbt für eine entspannte Zugreise in den Urlaub, was exakt zu Überschrift c passt."
+          "prompt": "Wo darf man essen?",
+          "options": [
+            "Im ersten Stock",
+            "An den Lernplätzen",
+            "Im Café im Erdgeschoss"
+          ],
+          "answer": 2,
+          "why": ""
         },
         {
-          "prompt": "Warum allein trainieren? Kommen Sie in unseren Laufclub im Stadtpark. Wir treffen uns jeden Dienstag um 18 Uhr und laufen gemeinsam in einer netten Gruppe durch die Natur.",
-          "answer": "e",
-          "why": "Das gemeinsame sportliche Training in der Gruppe wird beschrieben, passend zu Überschrift e."
+          "prompt": "Was gibt es mittwochs?",
+          "options": [
+            "Eine Lesung für Kinder",
+            "Einen Kurs für Erwachsene",
+            "Einen Film am Abend"
+          ],
+          "answer": 0,
+          "why": ""
         }
       ]
     },
     "L2": {
-      "title": "Neues im Stadtteilzentrum",
-      "instruction": "Lesen Sie den Text und die Aufgaben 1 bis 5. Kreuzen Sie die richtige Lösung an.",
-      "passage": "Liebe Nachbarinnen und Nachbarn,\n\nim Stadtteilzentrum „Mitte“ gibt es in den kommenden Wochen wieder viele spannende Angebote für Jung und Alt. Wir möchten Ihnen hier einen kurzen Überblick über die wichtigsten Neuigkeiten geben.\n\nAb dem nächsten Monat bieten wir jeden Dienstagvormittag einen neuen Kochkurs an. Unter dem Motto „Gesund und günstig kochen“ zeigt Ihnen unsere Kursleiterin Frau Wagner, wie man mit einfachen Zutaten leckere und gesunde Mahlzeiten zubereitet. Der Kurs richtet sich an alle, die ihre Kochkünste verbessern möchten. Eine Anmeldung ist bis zum Ende dieser Woche im Büro des Zentrums erforderlich, da die Plätze begrenzt sind.\n\nFür alle, die sich mehr bewegen möchten, startet am Mittwochabend eine neue Yoga-Gruppe. Yoga ist perfekt, um nach einem langen Arbeitstag zu entspannen und den Rücken zu stärken. Bitte bringen Sie zu diesem Kurs eine eigene Yoga-Matte und bequeme Kleidung mit. Vorkenntnisse sind nicht nötig, alle Interessierten sind herzlich willkommen.\n\nEin wichtiger Hinweis betrifft unsere Bibliothek: Wegen Umbauarbeiten bleibt sie vom 15. bis zum 22. des Monats komplett geschlossen. Ab dem 23. können Sie wie gewohnt wieder Bücher und Zeitschriften ausleihen. In dieser Woche ist auch die Rückgabe von ausgeliehenen Medien nicht möglich. Wir bitten hierfür um Ihr Verständnis.\n\nZum Schluss noch ein Aufruf: Unser Stadtteilfest findet im nächsten Monat statt. Dafür suchen wir noch fleißige Helferinnen und Helfer für den Kuchenverkauf und den Auf- und Abbau. Wer uns unterstützen möchte, kann sich einfach per E-Mail bei unserem Team melden. Als Dankeschön sind alle Helferinnen und Helfer am Abend zu einem gemeinsamen Essen eingeladen.",
+      "title": "Einladung",
+      "passage": "Liebe Katrin,\n\nich möchte dich zu meiner Einweihungsparty am Samstag, 12. Juli, ab 18 Uhr einladen. Wir wohnen seit zwei Wochen in einer neuen Wohnung in der Gartenstraße 9, dritter Stock, mit Balkon.\n\nBitte bring keinen Wein mit, wir haben genug Getränke. Aber ein Dessert wäre toll! Parken ist schwierig – am besten kommst du mit der Straßenbahn Linie 5 bis zur Haltestelle Gartenplatz.\n\nSag mir bitte bis Mittwoch, ob du kommst.\n\nLiebe Grüße\nSimone",
       "items": [
         {
-          "prompt": "Wann findet der neue Kochkurs statt?",
+          "prompt": "Die Party beginnt am Samstagabend.",
           "options": [
-            "jeden Dienstagvormittag",
-            "jeden Mittwochabend",
-            "am Wochenende"
+            "Richtig",
+            "Falsch"
           ],
           "answer": 0,
-          "why": "Im Text steht: „...ab dem nächsten Monat bieten wir jeden Dienstagvormittag einen neuen Kochkurs an.“"
+          "why": ""
         },
         {
-          "prompt": "Was muss man für den Kochkurs tun?",
+          "prompt": "Simone wohnt seit zwei Monaten in der neuen Wohnung.",
           "options": [
-            "man muss eigene Lebensmittel mitbringen",
-            "man muss sich bis zum Ende der Woche anmelden",
-            "man muss bereits gut kochen können"
+            "Richtig",
+            "Falsch"
           ],
           "answer": 1,
-          "why": "Im Text steht: „Eine Anmeldung ist bis zum Ende dieser Woche im Büro des Zentrums erforderlich...“"
+          "why": ""
         },
         {
-          "prompt": "Was soll man zum Yoga-Kurs mitbringen?",
+          "prompt": "Katrin soll Wein mitbringen.",
           "options": [
-            "ein eigenes Buch",
-            "eine eigene Yoga-Matte",
-            "etwas zu essen"
+            "Richtig",
+            "Falsch"
           ],
           "answer": 1,
-          "why": "Im Text steht: „Bitte bringen Sie zu diesem Kurs eine eigene Yoga-Matte und bequeme Kleidung mit.“"
+          "why": ""
         },
         {
-          "prompt": "Warum bleibt die Bibliothek geschlossen?",
+          "prompt": "Man kann mit der Straßenbahn zur Wohnung fahren.",
           "options": [
-            "wegen Umbauarbeiten",
-            "weil es Sommerferien gibt",
-            "wegen einer Krankheit"
+            "Richtig",
+            "Falsch"
           ],
           "answer": 0,
-          "why": "Im Text steht: „Wegen Umbauarbeiten bleibt sie vom 15. bis zum 22. des Monats komplett geschlossen.“"
+          "why": ""
         },
         {
-          "prompt": "Was bekommen die Helferinnen und Helfer für das Stadtteilfest?",
+          "prompt": "Katrin soll bis Samstag antworten.",
           "options": [
-            "ein neues Buch",
-            "Geld für ihre Arbeit",
-            "eine Einladung zu einem gemeinsamen Essen"
+            "Richtig",
+            "Falsch"
           ],
-          "answer": 2,
-          "why": "Im Text steht: „Als Dankeschön sind alle Helferinnen und Helfer am Abend zu einem gemeinsamen Essen eingeladen.“"
+          "answer": 1,
+          "why": ""
         }
       ]
     },
     "L3": {
-      "title": "Anzeigen und Situationen",
-      "instruction": "Lesen Sie die Situationen 1 bis 5 und die Anzeigen a bis h. Welche Anzeige passt zu welcher Situation? Für jede Situation gibt es nur eine richtige Lösung. Sie können jede Anzeige nur einmal verwenden. Zwei Anzeigen bleiben übrig.",
+      "title": "Anzeigen",
       "bank": [
         {
           "key": "a",
-          "text": "Fahrradwerkstatt Müller: Wir reparieren Ihr Rad schnell und günstig. Auch E-Bikes. Hauptstraße 12."
+          "text": "Tanzschule Rhythmus: Anfängerkurse Salsa, jeden Dienstag um 19 Uhr."
         },
         {
           "key": "b",
-          "text": "Praxis Dr. Weber: Wegen Urlaub ist unsere Praxis vom 10. bis zum 21. August geschlossen. Vertretung übernimmt Dr. Schmidt, Bahnhofstr. 4."
+          "text": "Computer-Hilfe für Senioren: kostenlose Beratung jeden Donnerstag im Stadtteiltreff."
         },
         {
           "key": "c",
-          "text": "Suche zuverlässige Putzhilfe für 3 Stunden pro Woche für eine 3-Zimmer-Wohnung in Mitte. Tel: 0155-987654."
+          "text": "Suche Babysitter für zwei Kinder (4 und 6 Jahre), abends, zweimal pro Woche. Tel. 0172 555 01."
         },
         {
           "key": "d",
-          "text": "Italienisches Restaurant 'Da Marco' sucht ab sofort freundliche Servicekraft auf Minijob-Basis. Arbeitszeiten nach Absprache."
+          "text": "Gebrauchte Möbel günstig: Sofa, Tisch, Stühle. Abholung in Neustadt."
         },
         {
           "key": "e",
-          "text": "VHS-Kurs: 'Deutsch im Beruf' für Anfänger. Start am nächsten Montag, jeweils von 18 bis 20 Uhr."
+          "text": "Kochkurs für Männer: Italienisch kochen, Samstag 10 Uhr, Volkshochschule."
         },
         {
           "key": "f",
-          "text": "Gartenpflege Schmidt: Wir schneiden Ihre Hecken und pflegen Ihren Rasen. Rufen Sie uns an!"
+          "text": "Fahrradtour am Sonntag: Treffpunkt 9 Uhr am Bahnhof, ca. 40 km, bitte Essen und Trinken mitbringen."
         },
         {
           "key": "g",
-          "text": "1. FC Hansa sucht neue Spieler für die Tischtennis-Hobbygruppe. Training immer mittwochs um 19 Uhr in der Turnhalle Süd."
+          "text": "Zahnarztpraxis Dr. Lang: neue Patienten willkommen, auch Notdienst am Wochenende."
         },
         {
           "key": "h",
-          "text": "Gebrauchte Möbel zu verschenken: Ein großes Sofa und ein Holztisch an Selbstabholer abzugeben."
+          "text": "Urlaub am Meer: Ferienwohnung für vier Personen, ab 70 Euro pro Nacht."
         }
       ],
       "items": [
         {
-          "prompt": "Sie möchten nach der Arbeit noch etwas Deutsch lernen, um besser im Büro kommunizieren zu können.",
-          "answer": "e",
-          "why": "In Anzeige e wird der Kurs 'Deutsch im Beruf' angeboten."
+          "prompt": "Sie möchten tanzen lernen.",
+          "answer": "a"
         },
         {
-          "prompt": "Ihr Fahrrad hat einen platten Reifen und Sie brauchen schnell Hilfe.",
-          "answer": "a",
-          "why": "Anzeige a bietet schnelle Reparaturen für Räder in der Fahrradwerkstatt Müller an."
+          "prompt": "Sie brauchen ein günstiges Sofa.",
+          "answer": "d"
         },
         {
-          "prompt": "Sie suchen nach einer Möglichkeit, am Abend Sport in einer Gruppe zu machen.",
-          "answer": "g",
-          "why": "Anzeige g sucht Spieler für die Tischtennis-Hobbygruppe mit Training am Mittwochabend."
+          "prompt": "Sie haben am Sonntag Zahnschmerzen.",
+          "answer": "g"
         },
         {
-          "prompt": "Ihr Hausarzt hat geschlossen und Sie brauchen eine Vertretung in der Nähe.",
-          "answer": "b",
-          "why": "In Anzeige b wird für die Urlaubszeit eine Praxis als Vertretung genannt."
+          "prompt": "Sie möchten im Winter mit der Familie Ski fahren.",
+          "answer": "x"
         },
         {
-          "prompt": "Sie möchten am Wochenende nebenbei etwas Geld verdienen und suchen einen Job in der Gastronomie.",
-          "answer": "d",
-          "why": "Anzeige d sucht eine freundliche Servicekraft für ein italienisches Restaurant."
+          "prompt": "Ihr Großvater braucht Hilfe mit dem Computer.",
+          "answer": "b"
         }
       ]
     }

@@ -8,40 +8,42 @@
   "name": "telc A2 — Modelltest 1 — Sprechen",
   "content": {
     "P1": {
-      "title": "Neues Hobby finden",
-      "instruction": "Sprechen Sie mit Ihrem Gesprächspartner / Ihrer Gesprächspartnerin. Erzählen Sie etwas über sich und stellen Sie Fragen zu dem Thema.",
-      "prompt": "Sie möchten gerne einen neuen Sportkurs besuchen und sprechen mit einer Person im Sprachkurs darüber. Erzählen Sie von Ihren Plänen und stellen Sie Fragen.",
+      "title": "Sich vorstellen",
+      "prompt": "Stellen Sie sich vor. Sprechen Sie über die Stichworte.",
       "bullets": [
-        "Welchen Sport machen Sie gern?",
-        "Angebot am Wochenende",
-        "Preis fragen"
+        "Name",
+        "Alter",
+        "Herkunft",
+        "Wohnort",
+        "Familie",
+        "Beruf",
+        "Hobbys",
+        "Sprachen"
       ],
-      "seconds": 120,
-      "tips": "Reagieren Sie auf die Fragen Ihres Partners und stellen Sie mindestens eine Gegenfrage."
+      "seconds": 90,
+      "tips": "In ganzen Sätzen sprechen und Fragen der Prüfenden beantworten."
     },
     "P2": {
-      "title": "Gespräch über ein Thema: Sport und Freizeit",
-      "instruction": "Sprechen Sie mit Ihrem Gesprächspartner oder Ihrer Gesprächspartnerin über das Thema Sport. Nutzen Sie die folgenden Punkte als Hilfestellung.",
-      "prompt": "Machen Sie Vorschläge für gemeinsame sportliche Aktivitäten in der Freizeit und reagieren Sie auf die Vorschläge Ihres Partners oder Ihrer Partnerin.",
+      "title": "Ein Alltagsgespräch führen",
+      "prompt": "Sie ziehen eine Karte zu einem Alltagsthema. Stellen Sie Ihrem Partner / Ihrer Partnerin Fragen und antworten Sie auf seine / ihre Fragen.",
       "bullets": [
-        "Welchen Sport machen Sie gern?",
-        "Wie oft machen Sie Sport in der Woche?",
-        "Machen Sie lieber Sport allein oder mit Freunden?"
+        "Thema Freizeit am Wochenende: Was machen Sie gern? · Mit wem? · Wo? · Wie oft?",
+        "Thema Einkaufen: Wo kaufen Sie ein? · Was kaufen Sie? · Wann? · Wie bezahlen Sie?"
       ],
-      "seconds": 180,
-      "tips": "Hören Sie gut zu und stellen Sie Fragen an Ihren Partner oder Ihre Partnerin."
+      "seconds": 150,
+      "tips": "Beginnen Sie mit einer Frage und reagieren Sie auf die Antwort."
     },
     "P3": {
-      "title": "Gemeinsam eine Aufgabe lösen",
-      "instruction": "Sie planen gemeinsam mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner eine Aktivität. Sprechen Sie über die Punkte unten. Machen Sie Vorschläge, reagieren Sie auf die Vorschläge und einigen Sie sich.",
-      "prompt": "Ein guter Freund hat bald Geburtstag und Sie möchten zusammen mit ihm ein großes Fest organisieren. Sprechen Sie darüber, wie Sie das Fest planen können.",
+      "title": "Etwas aushandeln",
+      "prompt": "Sie möchten gemeinsam mit Ihrem Partner / Ihrer Partnerin einen Ausflug am Wochenende machen. Machen Sie Vorschläge, reagieren Sie und einigen Sie sich.",
       "bullets": [
-        "Wo wollen Sie das Fest feiern?",
-        "Was wollen Sie essen und trinken?",
-        "Welche Musik oder Spiele soll es geben?"
+        "Wann?",
+        "Wohin?",
+        "Wie fahren wir?",
+        "Was machen wir dort?"
       ],
-      "seconds": 180,
-      "tips": "Hören Sie gut zu und vergessen Sie nicht, auf die Ideen Ihrer Partnerin oder Ihres Partners zu reagieren."
+      "seconds": 150,
+      "tips": "„Wie wäre es mit …?“ – „Das ist eine gute Idee.“ – „Lieber …“"
     }
   }
 }

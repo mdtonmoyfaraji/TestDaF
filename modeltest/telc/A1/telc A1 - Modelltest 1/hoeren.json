@@ -8,147 +8,158 @@
   "name": "telc A1 — Modelltest 1 — Hören",
   "content": {
     "H1": {
-      "title": "Hören Teil 1",
-      "instruction": "Hören Sie fünf kurze Gespräche. Zu jedem Gespräch gibt es eine Aufgabe. Kreuzen Sie die richtige Lösung an. Sie hören die Gespräche zweimal.",
+      "title": "Kurze Gespräche und Ansagen",
+      "images": true,
       "audio": {
         "plays": 2,
+        "readSec": 10,
         "script": [
           {
-            "speaker": "Ansager",
-            "text": "Hören Sie Teil 1. Nummer 1. Wo ist der Schlüssel?"
+            "speaker": "Ansage",
+            "text": "Nummer 1."
           },
           {
-            "speaker": "Anna",
-            "text": "Du, Tom, hast du meinen Autoschlüssel gesehen? Ich kann ihn nicht finden."
+            "speaker": "Kundin",
+            "text": "Entschuldigung, was kostet diese Tasche?"
           },
           {
-            "speaker": "Tom",
-            "text": "Schau mal auf dem Tisch im Wohnzimmer, da liegt er doch neben der Zeitung."
+            "speaker": "Verkäufer",
+            "text": "Die Tasche kostet dreißig Euro."
           },
           {
-            "speaker": "Anna",
-            "text": "Ah, ja, stimmt. Danke!"
+            "speaker": "Kundin",
+            "text": "Dreizehn Euro?"
           },
           {
-            "speaker": "Ansager",
-            "text": "Nummer 2. Was kostet der Pullover?"
+            "speaker": "Verkäufer",
+            "text": "Nein, dreißig. Drei, null."
           },
           {
-            "speaker": "Verkäuferin",
-            "text": "Guten Tag, kann ich Ihnen helfen?"
+            "speaker": "Ansage",
+            "text": "Nummer 2."
           },
           {
-            "speaker": "Kunde",
-            "text": "Ja, was kostet dieser blaue Pullover dort im Schaufenster?"
+            "speaker": "Frau",
+            "text": "Wie spät ist es, bitte?"
           },
           {
-            "speaker": "Verkäuferin",
-            "text": "Der ist heute im Angebot und kostet nur 25 Euro."
+            "speaker": "Mann",
+            "text": "Es ist Viertel vor zehn."
           },
           {
-            "speaker": "Kunde",
-            "text": "Gut, den nehme ich."
+            "speaker": "Frau",
+            "text": "Danke. Dann muss ich jetzt gehen."
           },
           {
-            "speaker": "Ansager",
-            "text": "Nummer 3. Um wie viel Uhr treffen sich die Freunde?"
+            "speaker": "Ansage",
+            "text": "Nummer 3."
           },
           {
-            "speaker": "Maria",
-            "text": "Hallo Stefan, wann gehen wir heute ins Kino? Um sieben Uhr?"
+            "speaker": "Kellner",
+            "text": "Was möchten Sie trinken?"
           },
           {
-            "speaker": "Stefan",
-            "text": "Nein, der Film fängt erst um halb acht an. Treffen wir uns doch um viertel nach sieben vor dem Kino?"
+            "speaker": "Gast",
+            "text": "Einen Tee, bitte. Keinen Kaffee, ich trinke abends nur Tee."
           },
           {
-            "speaker": "Maria",
-            "text": "Alles klar, bis später!"
+            "speaker": "Ansage",
+            "text": "Nummer 4."
           },
           {
-            "speaker": "Ansager",
-            "text": "Nummer 4. Wo wohnt die neue Kollegin?"
+            "speaker": "Herr Neumann",
+            "text": "Wo wohnt Frau Berger genau?"
           },
           {
-            "speaker": "Lena",
-            "text": "Sag mal, Lukas, weißt du, wo unsere neue Kollegin Sarah wohnt?"
+            "speaker": "Kollegin",
+            "text": "Sie wohnt in der Lindenstraße, Hausnummer einundsiebzig."
           },
           {
-            "speaker": "Lukas",
-            "text": "Ja, sie ist letzte Woche umgezogen. Sie wohnt jetzt direkt im Zentrum, in der Bahnhofstraße."
+            "speaker": "Ansage",
+            "text": "Nummer 5."
           },
           {
-            "speaker": "Lena",
-            "text": "Ach so, das ist ja nicht weit von hier."
+            "speaker": "Mann",
+            "text": "Entschuldigung, wie komme ich zum Bahnhof?"
           },
           {
-            "speaker": "Ansager",
-            "text": "Nummer 5. Wer kommt am Sonntag zu Besuch?"
+            "speaker": "Frau",
+            "text": "Gehen Sie hier geradeaus. Nach zehn Minuten sind Sie dort. Ein Bus fährt heute nicht."
           },
           {
-            "speaker": "Markus",
-            "text": "Freust du dich auch schon auf das Wochenende, Julia?"
+            "speaker": "Ansage",
+            "text": "Nummer 6."
           },
           {
-            "speaker": "Julia",
-            "text": "Ja, sehr! Am Sonntag kommen meine Eltern zum Kaffee vorbei."
+            "speaker": "Kollegin",
+            "text": "Wohin fahren Sie im Urlaub, Herr Kern?"
           },
           {
-            "speaker": "Markus",
-            "text": "Schön, dann müssen wir morgen noch einen Kuchen backen."
+            "speaker": "Herr Kern",
+            "text": "Dieses Jahr fahren wir nicht ans Meer. Wir fahren in die Berge."
           }
         ]
       },
       "items": [
         {
-          "prompt": "Wo ist der Autoschlüssel?",
+          "prompt": "Was kostet die Tasche?",
           "options": [
-            "Auf dem Tisch im Wohnzimmer",
-            "In der Küche auf dem Stuhl",
-            "Neben der Zeitung im Flur"
+            "€ 13,00",
+            "€ 30,00",
+            "€ 39,00"
+          ],
+          "answer": 1,
+          "why": "Dreißig Euro."
+        },
+        {
+          "prompt": "Wie spät ist es?",
+          "options": [
+            "9.15 Uhr",
+            "8.45 Uhr",
+            "9.45 Uhr"
+          ],
+          "answer": 2,
+          "why": "Viertel vor zehn = 9.45 Uhr."
+        },
+        {
+          "prompt": "Was trinkt der Gast?",
+          "options": [
+            "Tee",
+            "Kaffee",
+            "Wasser"
           ],
           "answer": 0,
-          "why": "Tom sagt: 'Schau mal auf dem Tisch im Wohnzimmer, da liegt er doch'."
+          "why": "Einen Tee."
         },
         {
-          "prompt": "Wie viel kostet der blaue Pullover?",
+          "prompt": "Welche Hausnummer hat Frau Berger?",
           "options": [
-            "15 Euro",
-            "25 Euro",
-            "50 Euro"
+            "17",
+            "70",
+            "71"
+          ],
+          "answer": 2,
+          "why": "Einundsiebzig."
+        },
+        {
+          "prompt": "Wie kommt der Mann zum Bahnhof?",
+          "options": [
+            "Mit dem Bus",
+            "Zu Fuß",
+            "Mit dem Taxi"
           ],
           "answer": 1,
-          "why": "Die Verkäuferin antwortet auf die Frage nach dem Preis: 'der ist heute im Angebot und kostet nur 25 Euro'."
+          "why": "Geradeaus, zehn Minuten."
         },
         {
-          "prompt": "Um wie viel Uhr treffen sich Maria und Stefan vor dem Kino?",
+          "prompt": "Wohin fährt Herr Kern?",
           "options": [
-            "Um 19:00 Uhr",
-            "Um 19:15 Uhr",
-            "Um 19:30 Uhr"
+            "Ans Meer",
+            "In die Berge",
+            "Zur Familie"
           ],
           "answer": 1,
-          "why": "Stefan schlägt vor: 'Treffen wir uns doch um viertel nach sieben vor dem Kino?'"
-        },
-        {
-          "prompt": "Wo wohnt die neue Kollegin Sarah?",
-          "options": [
-            "In der Bahnhofstraße",
-            "Am Stadtrand",
-            "In der Gartenstraße"
-          ],
-          "answer": 0,
-          "why": "Lukas erklärt: 'Sie wohnt jetzt direkt im Zentrum, in der Bahnhofstraße'."
-        },
-        {
-          "prompt": "Wer kommt am Sonntag zu Besuch?",
-          "options": [
-            "Die Geschwister",
-            "Die Eltern",
-            "Die Freunde"
-          ],
-          "answer": 1,
-          "why": "Julia sagt: 'Am Sonntag kommen meine Eltern zum Kaffee vorbei.'"
+          "why": "In die Berge."
         }
       ]
     },
@@ -173,10 +184,6 @@
           {
             "speaker": "Durchsage 4",
             "text": "Hier ist eine wichtige Durchsage für alle Gäste im Hallenbad Mitte. Das Kinderbecken ist wegen einer Reparatur heute leider den ganzen Tag geschlossen. Das große Schwimmerbecken ist aber normal geöffnet."
-          },
-          {
-            "speaker": "Durchsage 5",
-            "text": "Liebe Gäste im Café Sonnenschein, wir haben einen blauen Regenschirm am Tisch Nummer fünf gefunden. Bitte holen Sie den Regenschirm an der Theke ab, wenn er Ihnen gehört."
           }
         ]
       },
@@ -216,15 +223,6 @@
           ],
           "answer": 1,
           "why": "Im Text steht: 'Das große Schwimmerbecken ist aber normal geöffnet.'"
-        },
-        {
-          "prompt": "Im Café wurde ein blauer Regenschirm an Tisch Nummer fünf gefunden.",
-          "options": [
-            "Richtig",
-            "Falsch"
-          ],
-          "answer": 0,
-          "why": "Die Durchsage besagt: '...wir haben einen blauen Regenschirm am Tisch Nummer fünf gefunden.'"
         }
       ]
     },

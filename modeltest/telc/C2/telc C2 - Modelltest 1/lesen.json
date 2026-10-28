@@ -1,0 +1,266 @@
+{
+  "kind": "prepstudio.module",
+  "version": 1,
+  "exam": "telc",
+  "level": "C2",
+  "module": "lesen",
+  "name": "telc C2 — Modelltest 1 — lesen",
+  "content": {
+    "L1": {
+      "title": "Das Gedächtnis der Städte",
+      "example": {
+        "key": "z",
+        "text": "Wer sich mit der Geschichte europäischer Städte beschäftigt, stößt früher oder später auf ein Paradox: Ausgerechnet jene Orte, die ihre Vergangenheit am sorgfältigsten bewahren, sind oft die, die sich am schnellsten verändern."
+      },
+      "bank": [
+        {
+          "key": "a",
+          "text": "Dieser Wertewandel hat Folgen für die Gegenwart. Während man früher einzelne Prunkbauten schützte, rücken inzwischen ganze Ensembles ins Blickfeld, bis hin zu unscheinbaren Arbeitersiedlungen. Damit verschiebt sich der Fokus von der Kunstgeschichte zur Sozialgeschichte."
+        },
+        {
+          "key": "b",
+          "text": "Diese Einwände sind nicht von der Hand zu weisen, und manche Kommunen haben darauf reagiert. In Lübeck etwa werden Zuschüsse gezahlt, wenn historische Bauteile erhalten bleiben. Solche Lösungen zeigen, dass Bewahren und Erneuern keine unvereinbaren Gegensätze sein müssen."
+        },
+        {
+          "key": "c",
+          "text": "Das beginnt bereits bei der Frage, was überhaupt bewahrenswert ist. Im neunzehnten Jahrhundert galten Stadtmauern als Hindernis und wurden abgerissen, um Platz für Boulevards zu schaffen. Was damals als Fortschritt gefeiert wurde, beklagen heutige Denkmalpfleger als unwiederbringlichen Verlust."
+        },
+        {
+          "key": "d",
+          "text": "Am Ende bleibt die Erkenntnis, dass eine Stadt kein Museum ist. Ihr Gedächtnis besteht nicht nur aus Steinen, sondern ebenso aus den Gewohnheiten und Geschichten ihrer Bewohner. Wer das ignoriert, konserviert womöglich nur die Kulisse."
+        },
+        {
+          "key": "e",
+          "text": "Dagegen wehren sich allerdings viele Eigentümer. Sie verweisen darauf, dass Auflagen für Fenster, Fassaden und Dächer die Sanierung verteuern und energetische Modernisierungen erschweren. Der Schutz des Vergangenen, so ihr Argument, gehe auf Kosten derer, die dort heute leben."
+        }
+      ],
+      "items": [
+        {
+          "prompt": "Position 1",
+          "answer": "c"
+        },
+        {
+          "prompt": "Position 2",
+          "answer": "a"
+        },
+        {
+          "prompt": "Position 3",
+          "answer": "e"
+        },
+        {
+          "prompt": "Position 4",
+          "answer": "b"
+        },
+        {
+          "prompt": "Position 5",
+          "answer": "d"
+        }
+      ]
+    },
+    "L2": {
+      "title": "Was bleibt vom Übersetzen?",
+      "passage": "Als vor wenigen Jahren maschinelle Übersetzungsprogramme erstmals Texte lieferten, die sich flüssig lesen ließen, sagten manche das Ende des Berufsstands voraus. Inzwischen zeigt sich ein differenzierteres Bild: Die Nachfrage nach Übersetzungen ist insgesamt gestiegen, nur verlagert sich die Arbeit.\n\nRoutinetexte wie Bedienungsanleitungen werden heute überwiegend von Maschinen vorübersetzt, und Menschen prüfen das Ergebnis. „Post-Editing“ heißt diese Tätigkeit, die bei vielen Fachleuten zwiespältige Gefühle weckt. Sie empfinden sie als weniger kreativ, räumen aber ein, dass sie schneller vorankommen.\n\nGanz anders ist es bei literarischen Texten. Hier entscheiden der Klang, der Rhythmus und die Mehrdeutigkeit einzelner Wörter – Dinge, die ein Algorithmus zwar nachahmen, aber nicht verantworten kann. Die Übersetzerin Elke Brandt vergleicht ihre Arbeit mit der einer Dirigentin: Es genügt nicht, die Noten zu kennen.\n\nDennoch sind auch Literaturübersetzer nicht unberührt. Verlage drücken die Honorare, weil sie auf günstige Vorübersetzungen hoffen. Dem Berufsverband zufolge ist das Einkommen vieler Freiberufler in den letzten Jahren real gesunken.\n\nEin weiteres Problem betrifft das Vertrauen. In sensiblen Bereichen wie Medizin oder Recht haften Menschen für Fehler, Programme nicht. Eine falsch übersetzte Dosierung kann Leben gefährden. Deshalb verlangen Aufsichtsbehörden dort weiterhin die Unterschrift einer beeidigten Person.\n\nFür die Ausbildung folgt daraus eine Verschiebung. Gefragt sind weniger Vokabelkenntnisse als Textkompetenz, Fachwissen und die Fähigkeit, maschinelle Vorschläge kritisch zu beurteilen. Mehrere Hochschulen haben ihre Studiengänge bereits entsprechend umgebaut.",
+      "items": [
+        {
+          "prompt": "Wie hat sich laut Text die Nachfrage nach Übersetzungen entwickelt?",
+          "options": [
+            "Sie ist gesunken.",
+            "Sie ist insgesamt gestiegen.",
+            "Sie ist gleich geblieben."
+          ],
+          "answer": 1,
+          "why": ""
+        },
+        {
+          "prompt": "Was bedeutet „Post-Editing“?",
+          "options": [
+            "Maschinen übersetzen ohne jede Kontrolle.",
+            "Menschen prüfen maschinelle Vorübersetzungen.",
+            "Texte werden zuerst gedruckt und dann übersetzt."
+          ],
+          "answer": 1,
+          "why": ""
+        },
+        {
+          "prompt": "Wie bewerten viele Fachleute diese Tätigkeit?",
+          "options": [
+            "Zwiespältig",
+            "Einhellig positiv",
+            "Als überflüssig"
+          ],
+          "answer": 0,
+          "why": ""
+        },
+        {
+          "prompt": "Was kann ein Algorithmus bei literarischen Texten laut Text nicht?",
+          "options": [
+            "Wörter nachschlagen",
+            "Rhythmus nachahmen",
+            "Für Klang und Mehrdeutigkeit die Verantwortung tragen"
+          ],
+          "answer": 2,
+          "why": ""
+        },
+        {
+          "prompt": "Wofür steht der Vergleich mit der Dirigentin?",
+          "options": [
+            "Übersetzen verlangt mehr als die Kenntnis der Regeln.",
+            "Übersetzerinnen müssen musikalisch sein.",
+            "Übersetzen gelingt nur im Team."
+          ],
+          "answer": 0,
+          "why": ""
+        },
+        {
+          "prompt": "Warum drücken Verlage die Honorare?",
+          "options": [
+            "Sie hoffen auf günstige Vorübersetzungen.",
+            "Es erscheinen weniger Bücher.",
+            "Die Leser zahlen weniger."
+          ],
+          "answer": 0,
+          "why": ""
+        },
+        {
+          "prompt": "Was teilt der Berufsverband über das Einkommen mit?",
+          "options": [
+            "Es ist deutlich gestiegen.",
+            "Es ist real gesunken.",
+            "Es ist unverändert."
+          ],
+          "answer": 1,
+          "why": ""
+        },
+        {
+          "prompt": "Warum haften in Medizin und Recht weiterhin Menschen?",
+          "options": [
+            "Programme sind dort verboten.",
+            "Programme haften nicht für Fehler.",
+            "Menschen arbeiten günstiger."
+          ],
+          "answer": 1,
+          "why": ""
+        },
+        {
+          "prompt": "Was verlangen Aufsichtsbehörden dort?",
+          "options": [
+            "Die Unterschrift einer beeidigten Person",
+            "Den Einsatz eines Übersetzungsprogramms",
+            "Keine Prüfung der Übersetzung"
+          ],
+          "answer": 0,
+          "why": ""
+        },
+        {
+          "prompt": "Wie reagieren mehrere Hochschulen?",
+          "options": [
+            "Sie schließen ihre Studiengänge.",
+            "Sie bauen ihre Studiengänge um.",
+            "Sie lehren nur noch Vokabeln."
+          ],
+          "answer": 1,
+          "why": ""
+        }
+      ]
+    },
+    "L3": {
+      "title": "Die Ökonomie der Aufmerksamkeit",
+      "bank": [
+        {
+          "key": "a",
+          "text": "Aufmerksamkeit ist knapp. Während das Angebot an Informationen jährlich wächst, bleibt die Zeit, die Menschen dafür aufbringen können, konstant. Diese Diskrepanz bildet den Ausgangspunkt der sogenannten Aufmerksamkeitsökonomie."
+        },
+        {
+          "key": "b",
+          "text": "Der Begriff geht auf den Ökonomen Herbert Simon zurück, der schon 1971 feststellte, dass ein Reichtum an Information einen Mangel an Aufmerksamkeit erzeugt."
+        },
+        {
+          "key": "c",
+          "text": "Plattformen finanzieren sich überwiegend über Werbung. Je länger Nutzer verweilen, desto mehr Anzeigen lassen sich ausspielen. Daraus erklärt sich, warum Funktionen wie endloses Scrollen oder automatisch startende Videos entwickelt wurden."
+        },
+        {
+          "key": "d",
+          "text": "Kritiker sprechen von manipulativem Design. Befürworter entgegnen, Nutzer könnten die Dienste jederzeit verlassen; niemand werde zum Verweilen gezwungen."
+        },
+        {
+          "key": "e",
+          "text": "Die empirischen Belege für Schäden sind widersprüchlich. Einige Studien finden einen Zusammenhang zwischen intensiver Nutzung und Konzentrationsproblemen, andere können ihn nicht bestätigen."
+        },
+        {
+          "key": "f",
+          "text": "Besonders umstritten ist die Rolle der Algorithmen. Sie wählen Inhalte danach aus, welche Reaktionen sie hervorrufen, und bevorzugen daher emotionale, oft zugespitzte Beiträge."
+        },
+        {
+          "key": "g",
+          "text": "Medienhäuser reagieren mit eigenen Strategien. Manche setzen auf Abonnements, um weniger von Klickzahlen abhängig zu sein, andere gestalten Überschriften bewusst reißerischer."
+        },
+        {
+          "key": "h",
+          "text": "Die Bildungsforschung betont, dass Aufmerksamkeit trainierbar sei. Schulen erproben Übungen zur Konzentration, deren Wirkung bisher allerdings nur an kleinen Gruppen untersucht wurde."
+        },
+        {
+          "key": "i",
+          "text": "Juristen diskutieren, ob ein Recht auf Nichterreichbarkeit nötig sei. In Frankreich gilt seit 2017 eine Regelung, die Beschäftigten erlaubt, außerhalb der Arbeitszeit E-Mails zu ignorieren."
+        },
+        {
+          "key": "j",
+          "text": "Philosophen erinnern daran, dass Aufmerksamkeit mehr ist als eine Ressource. Wem man sie schenkt, dem erweist man Respekt; sie ist die Grundlage von Beziehungen."
+        },
+        {
+          "key": "k",
+          "text": "Technologieunternehmen werben inzwischen mit Funktionen zur Begrenzung der Bildschirmzeit. Skeptiker halten dies für ein Ablenkungsmanöver vom eigentlichen Geschäftsmodell."
+        },
+        {
+          "key": "l",
+          "text": "Ob sich das Muster dauerhaft ändert, hängt auch von den Nutzern ab. Erste Umfragen deuten darauf hin, dass jüngere Menschen bewusster mit digitalen Angeboten umgehen als frühere Generationen."
+        },
+        {
+          "key": "m",
+          "text": "Eine abschließende Bilanz steht noch aus. Fest steht nur, dass Aufmerksamkeit in der digitalen Gesellschaft zu einem umkämpften Gut geworden ist."
+        }
+      ],
+      "items": [
+        {
+          "prompt": "Wo wird der Ursprung des Begriffs genannt?",
+          "answer": "b"
+        },
+        {
+          "prompt": "Welcher Abschnitt erklärt, warum bestimmte Funktionen eingeführt wurden?",
+          "answer": "c"
+        },
+        {
+          "prompt": "In welchem Abschnitt wird bezweifelt, dass Schäden durch intensive Nutzung eindeutig belegt sind?",
+          "answer": "e"
+        },
+        {
+          "prompt": "Welcher Abschnitt nennt eine gesetzliche Regelung?",
+          "answer": "i"
+        },
+        {
+          "prompt": "In welchem Abschnitt wird Aufmerksamkeit als Grundlage menschlicher Beziehungen beschrieben?",
+          "answer": "j"
+        },
+        {
+          "prompt": "Wo wird auf die Auswahlkriterien von Algorithmen eingegangen?",
+          "answer": "f"
+        },
+        {
+          "prompt": "Welcher Abschnitt beschreibt Übungen zur Schulung der Konzentration?",
+          "answer": "h"
+        },
+        {
+          "prompt": "Wo wird behauptet, dass der Staat die Aufmerksamkeit der Bürger gezielt steuert?",
+          "answer": "x"
+        },
+        {
+          "prompt": "In welchem Abschnitt werden Abonnementmodelle als vollständiger Ausweg beschrieben?",
+          "answer": "x"
+        },
+        {
+          "prompt": "Welcher Abschnitt erwähnt einen möglichen Wandel im Nutzerverhalten jüngerer Menschen?",
+          "answer": "l"
+        }
+      ]
+    }
+  }
+}

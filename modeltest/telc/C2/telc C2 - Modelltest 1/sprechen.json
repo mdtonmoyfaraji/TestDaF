@@ -1,0 +1,38 @@
+{
+  "kind": "prepstudio.module",
+  "version": 1,
+  "exam": "telc",
+  "level": "C2",
+  "module": "sprechen",
+  "name": "telc C2 — Modelltest 1 — sprechen",
+  "content": {
+    "P1": {
+      "title": "Teil 1: Vortrag",
+      "prompt": "Wählen Sie Thema A oder Thema B. Halten Sie nach 20 Minuten Vorbereitung einen gegliederten Vortrag von etwa 6–8 Minuten. Stellen Sie eine These auf, begründen Sie sie und schließen Sie mit einem Fazit.",
+      "topicLabel": "Thema",
+      "topics": [
+        "Thema A: Sollten Universitäten ihre Lehre überwiegend digital anbieten? (Chancen, Risiken, Bedeutung der Präsenz)",
+        "Thema B: Brauchen Gesellschaften mehr oder weniger Spezialisierung? (Arbeitswelt, Bildung, Verantwortung)"
+      ],
+      "bullets": [
+        "Einleitung und These",
+        "Zwei bis drei Hauptargumente mit Beispielen",
+        "Gegenargument und Entkräftung",
+        "Fazit und Ausblick"
+      ],
+      "seconds": 420,
+      "tips": "Gliedern Sie hörbar („erstens, zweitens …“) und halten Sie Blickkontakt."
+    },
+    "P2": {
+      "title": "Teil 2: Vertiefendes Gespräch",
+      "prompt": "Beantworten Sie die Anschlussfragen der Prüfenden zu Ihrem Vortrag und verteidigen Sie Ihre These. Gehen Sie auf Einwände ein, differenzieren Sie Ihre Aussagen und nennen Sie Beispiele.",
+      "bullets": [
+        "Nachfragen beantworten",
+        "Einwände aufgreifen",
+        "Position differenziert verteidigen"
+      ],
+      "seconds": 480,
+      "tips": "Wendungen wie „Das trifft nur eingeschränkt zu, denn …“ oder „Man müsste allerdings unterscheiden zwischen …“."
+    }
+  }
+}

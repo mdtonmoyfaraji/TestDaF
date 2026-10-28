@@ -8,256 +8,250 @@
   "name": "telc C1 — Modelltest 1 — Sprachbausteine",
   "content": {
     "B1": {
-      "title": "Sprachbausteine Teil 1: Wissenschaftliches Arbeiten im digitalen Zeitalter",
-      "instruction": "Lesen Sie den folgenden Text und entscheiden Sie, welches Wort (a, b, c oder d) in die jeweilige Lücke passt.",
-      "passage": "Die Digitalisierung der Geisteswissenschaften hat in den letzten Jahren ___1___ Fahrt aufgenommen, dass traditionelle Forschungsmethoden zunehmend hinterfragt werden. Um große Textkorpora effizient zu analysieren, ___2___ sich Forschende vermehrt quantitativer Werkzeuge bedienen. Diese Entwicklung wird von einigen Wissenschaftlern ___3___ begrüßt, während andere skeptisch bleiben. Befürworter argumentieren, dass durch den Einsatz von Algorithmen Muster ___4___ werden können, die dem menschlichen Auge verborgen blieben. ___5___ ist jedoch zu beachten, dass automatisierte Analysen stets eine kritische Kontextualisierung erfordern. Ohne eine fundierte hermeneutische Einbettung ___6___ die Gefahr, statistische Korrelationen fälschlicherweise für kausale Zusammenhänge zu halten. Darüber hinaus ___7___ es als erwiesen, dass digitale Archive oft historische Verzerrungen aufweisen, die bei der Auswertung berücksichtigt werden ___8___. Werden diese methodischen Hürden ___9___ genommen, eröffnen sich völlig neue Perspektiven für die interdisziplinäre Zusammenarbeit. Insbesondere im Bereich der Netzwerkanalyse ___10___ sich Schnittstellen zur Soziologie und Informatik. Die Universität hat ___11___ reagiert und neue Studiengänge ins Leben gerufen, ___12___ Absolventen optimal auf diese Anforderungen vorbereiten.",
+      "title": "Ehrenamt in Deutschland",
+      "passage": "Ehrenamtliches Engagement ___1___ als wichtiger Pfeiler der Gesellschaft. In Deutschland ___2___ sich etwa jeder Dritte freiwillig für andere – von der Betreuung von Kindern ___3___ zur Pflege älterer Menschen.\n\nDie Motive sind dabei sehr verschieden. ___4___ die einen vor allem Gemeinschaft erleben möchten, ___5___ es für andere die Aussicht, Neues zu lernen. Nicht wenige hoffen ___6___, durch ihren Einsatz beruflich ___7___, ___8___ das offiziell selten der Grund ist.\n\nDie Vereine klagen ___9___ über Nachwuchssorgen. Viele junge Menschen ___10___, sich langfristig zu binden. ___11___ nur wenig Zeit hat, engagiert sich lieber in einzelnen Projekten. Mehrere Verbände ___12___ deshalb begonnen, kurzfristige Einsätze anzubieten.\n\nDas Ehrenamt wird inzwischen auch finanziell ___13___. Kommunen stellen Zuschüsse bereit, ___14___ Vereine ihre Arbeit fortsetzen können. Kritiker ___15___, dass der Staat sich so aus der Verantwortung zieht, und betonen, das Ehrenamt dürfe ___16___ zum Ersatz für staatliche Leistungen werden.\n\n___17___ des demografischen Wandels dürfte der Bedarf an Freiwilligen weiter steigen. Schon heute ___18___ in manchen Regionen Menschen, die bereit ___19___, Verantwortung zu übernehmen. Wer sich dafür entscheidet, ___20___ sich vorher gut informieren. Dabei ___21___ sich ein Blick auf die Angebote vor Ort, denn oft ___22___ sich, dass kleine Aufgaben den Einstieg erleichtern.",
       "items": [
         {
           "prompt": "1",
           "options": [
-            "solche",
-            "derart",
-            "so viel",
-            "solch eine"
+            "gilt",
+            "zählt",
+            "erscheint",
+            "besteht"
           ],
-          "answer": 1,
-          "why": "Die feste Wendung lautet 'derart Fahrt aufnehmen', wobei 'derart' hier als Graduierungsadverb vor dem Nomen steht."
+          "answer": 0,
+          "why": "richtig: gilt"
         },
         {
           "prompt": "2",
           "options": [
-            "scheinen",
-            "vermögen",
-            "pflegen",
-            "müssen"
+            "beteiligt",
+            "engagiert",
+            "widmet",
+            "befasst"
           ],
           "answer": 1,
-          "why": "Die Konstruktion 'sich zu bedienen vermögen' drückt im wissenschaftlichen Kontext eine gehobene Möglichkeit aus."
+          "why": "richtig: engagiert"
         },
         {
           "prompt": "3",
           "options": [
-            "ausdrücklich",
-            "voraussichtlich",
-            "ersichtlich",
-            "dienlich"
+            "bis",
+            "über",
+            "auf",
+            "von"
           ],
           "answer": 0,
-          "why": "Das Adverb 'ausdrücklich' passt semantisch perfekt zur Bekräftigung einer Zustimmung in einer wissenschaftlichen Debatte."
+          "why": "richtig: bis"
         },
         {
           "prompt": "4",
           "options": [
-            "identifiziert",
-            "identifizierend",
-            "zu identifizieren",
-            "identifizierbar"
+            "Solange",
+            "Damit",
+            "Während",
+            "Seit"
           ],
-          "answer": 0,
-          "why": "Nach dem Modalverb 'können' wird das Partizip II ('identifiziert') für das Passiv benötigt: 'können identifiziert werden'."
+          "answer": 2,
+          "why": "richtig: Während"
         },
         {
           "prompt": "5",
           "options": [
-            "Zugleich",
-            "Demzufolge",
-            "Nichtsdestotrotz",
-            "Allerdings"
+            "sind",
+            "werden",
+            "ist",
+            "wird"
           ],
-          "answer": 3,
-          "why": "Das Konnektiv 'Allerdings' leitet hier eine einschränkende und kontrastierende Aussage ein."
+          "answer": 2,
+          "why": "richtig: ist"
         },
         {
           "prompt": "6",
           "options": [
-            "besteht",
-            "entsteht",
-            "gewährt",
-            "erfolgt"
+            "daran",
+            "davon",
+            "dafür",
+            "darauf"
           ],
-          "answer": 0,
-          "why": "Die feste Kollokation im Wissenschaftsdeutsch lautet 'es besteht die Gefahr'."
+          "answer": 3,
+          "why": "richtig: darauf"
         },
         {
           "prompt": "7",
           "options": [
-            "gilt",
-            "hat",
-            "steht",
-            "wird"
+            "weiterkommen",
+            "weiterzukommen",
+            "weitergekommen",
+            "weiterkam"
           ],
-          "answer": 0,
-          "why": "Der wissenschaftssprachliche Ausdruck 'es gilt als erwiesen, dass...' drückt einen gesicherten Forschungsstand aus."
+          "answer": 1,
+          "why": "richtig: weiterzukommen"
         },
         {
           "prompt": "8",
           "options": [
-            "sollen",
-            "dürfen",
-            "müssen",
-            "können"
+            "weil",
+            "indem",
+            "damit",
+            "obwohl"
           ],
-          "answer": 2,
-          "why": "Die Passivkonstruktion mit 'berücksichtigt werden müssen' drückt eine notwendige Verpflichtung aus."
+          "answer": 3,
+          "why": "richtig: obwohl"
         },
         {
           "prompt": "9",
           "options": [
-            "erfolgreich",
-            "erfolglos",
-            "zunehmend",
-            "maßgeblich"
+            "deshalb",
+            "sonst",
+            "außerdem",
+            "jedoch"
           ],
-          "answer": 0,
-          "why": "Der Satzzusammenhang drückt aus, dass Hürden positiv bewältigt werden, wozu 'erfolgreich' passt."
+          "answer": 3,
+          "why": "richtig: jedoch"
         },
         {
           "prompt": "10",
           "options": [
-            "ergeben",
-            "zeigen",
-            "bieten",
-            "stellen"
+            "zielen",
+            "zögern",
+            "zerren",
+            "zweifeln"
           ],
           "answer": 1,
-          "why": "Die Reflexivkonstruktion 'sich zeigen' wird verwendet, um das Entstehen neuer Schnittstellen zu beschreiben."
+          "why": "richtig: zögern"
         },
         {
           "prompt": "11",
           "options": [
-            "darauf",
-            "hieran",
-            "hiermit",
-            "dazu"
+            "Wer",
+            "Wem",
+            "Was",
+            "Wen"
           ],
           "answer": 0,
-          "why": "Das Pronominaladverb 'darauf' verweist präzise auf die zuvor beschriebene Entwicklung ('reagieren auf etwas')."
+          "why": "richtig: Wer"
         },
         {
           "prompt": "12",
           "options": [
-            "die",
-            "deren",
-            "welche",
-            "wofür"
+            "waren",
+            "haben",
+            "werden",
+            "sind"
           ],
           "answer": 1,
-          "why": "Das Relativpronomen 'deren' drückt hier den Genitiv aus (die Absolventen dieser Studiengänge bzw. die Studiengänge, deren Absolventen...)."
-        }
-      ]
-    },
-    "B2": {
-      "title": "Sprachbausteine Teil 2: Akademische Textkompetenz",
-      "instruction": "Lesen Sie den folgenden Text und wählen Sie aus der Wortbank (A–N) für jede Lücke (1–10) das jeweils passende Wort aus.",
-      "passage": "Die moderne Hochschullehre steht vor der Herausforderung, digitale Medien sinnvoll in den Seminarkontext zu integrieren. Viele Universitäten haben in den letzten Jahren ihre Infrastruktur umfassend ___1___, um hybride Lernformate zu ermöglichen. Dabei spielt nicht nur die technische Ausstattung eine Rolle, sondern auch die hochschuldidaktische Qualifizierung des Personals. Lehrende müssen befähigt werden, virtuelle Lernumgebungen didaktisch sinnvoll zu ___2___. Ein zentraler Aspekt ist hierbei die Förderung des selbstgesteuerten Lernens bei den Studierenden. Wer sich aktiv mit den Inhalten auseinandersetzt, erzielt nachweislich bessere Lernerfolge. Die empirische Bildungsforschung kann diesen Zusammenhang ___3___ belegen. Dennoch skeptisch bleiben einige Kritiker, die eine Entfremdung zwischen Lehrenden und Lernenden befürchten. Um diesen Bedenken zu begegnen, ist ein kontinuierlicher Dialog innerhalb der akademischen Community ___4___. Es gilt, Best-Practice-Beispiele auszutauschen und kritisch zu evaluieren. Darüber hinaus wird von den Studierenden eine hohe Eigenverantwortung ___5___, die im traditionellen Frontalunterricht in diesem Maße oft nicht erforderlich war. Neben den fachlichen Kompetenzen gewinnen somit überfachliche Qualifikationen wie Medienkompetenz und Zeitmanagement stark an ___6___. Die Universitätsleitung hat deshalb beschlossen, entsprechende Beratungsangebote massiv auszubauen. Diese sollen sicherstellen, dass niemand durch die digitale Transformation ___7___. Langfristig zielt die Reform darauf ab, die Chancengleichheit beim Zugang zu Wissen nachhaltig zu verbessern. Skeptiker betonen allerdings, dass digitale Tools den persönlichen Austausch im Seminarraum niemals ___8___ können. Sie plädieren für ein ausgewogenes Verhältnis von Präsenz- und Online-Phasen. Die Hochschule folgt diesem Rat und setzt auf ein sogenanntes Blended-Learning-Modell. Dieses Konzept hat sich in ersten Pilotprojekten als äußerst ___9___ erwiesen. Die Evaluationen zeigen durchweg positive Rückmeldungen von Seiten der Studierenden und der Dozenten. Damit ist ein wichtiger Grundstein für die zukünftige Entwicklung der universitären Bildung ___10___.",
-      "bank": [
-        {
-          "key": "a",
-          "text": "ersetzen"
+          "why": "richtig: haben"
         },
         {
-          "key": "b",
-          "text": "gewährt"
+          "prompt": "13",
+          "options": [
+            "gefüllt",
+            "gefördert",
+            "gefordert",
+            "gefüttert"
+          ],
+          "answer": 1,
+          "why": "richtig: gefördert"
         },
         {
-          "key": "c",
-          "text": "gestalten"
+          "prompt": "14",
+          "options": [
+            "ob",
+            "obwohl",
+            "weil",
+            "damit"
+          ],
+          "answer": 3,
+          "why": "richtig: damit"
         },
         {
-          "key": "d",
-          "text": "modernisiert"
+          "prompt": "15",
+          "options": [
+            "befördern",
+            "befürchten",
+            "bedürfen",
+            "bestehen"
+          ],
+          "answer": 1,
+          "why": "richtig: befürchten"
         },
         {
-          "key": "e",
-          "text": "unumgänglich"
+          "prompt": "16",
+          "options": [
+            "noch",
+            "nicht",
+            "kein",
+            "nichts"
+          ],
+          "answer": 1,
+          "why": "richtig: nicht"
         },
         {
-          "key": "f",
-          "text": "verwandelt"
+          "prompt": "17",
+          "options": [
+            "Anstelle",
+            "Entgegen",
+            "Angesichts",
+            "Infolge von"
+          ],
+          "answer": 2,
+          "why": "richtig: Angesichts"
         },
         {
-          "key": "g",
-          "text": "empfunden"
+          "prompt": "18",
+          "options": [
+            "fehlten",
+            "fehle",
+            "fehlt",
+            "fehlen"
+          ],
+          "answer": 3,
+          "why": "richtig: fehlen"
         },
         {
-          "key": "h",
-          "text": "ermittelt"
+          "prompt": "19",
+          "options": [
+            "sein",
+            "sind",
+            "seid",
+            "bist"
+          ],
+          "answer": 1,
+          "why": "richtig: sind"
         },
         {
-          "key": "i",
-          "text": "definiert"
+          "prompt": "20",
+          "options": [
+            "sollten",
+            "sollst",
+            "solle",
+            "sollte"
+          ],
+          "answer": 3,
+          "why": "richtig: sollte"
         },
         {
-          "key": "j",
-          "text": "abgehängt"
+          "prompt": "21",
+          "options": [
+            "gelohnt",
+            "lohne",
+            "lohnt",
+            "lohnen"
+          ],
+          "answer": 2,
+          "why": "richtig: lohnt"
         },
         {
-          "key": "k",
-          "text": "Bedeutung"
-        },
-        {
-          "key": "l",
-          "text": "geleistet"
-        },
-        {
-          "key": "m",
-          "text": "empirisch"
-        },
-        {
-          "key": "n",
-          "text": "erfolgreich"
-        }
-      ],
-      "items": [
-        {
-          "prompt": "Lücke 1",
-          "answer": "d",
-          "why": "Im Kontext der Infrastruktur passt das Verb 'modernisiert' (Option d) am besten, da Universitäten ihre technischen Anlagen erneuern."
-        },
-        {
-          "prompt": "Lücke 2",
-          "answer": "c",
-          "why": "Virtuelle Lernumgebungen werden didaktisch sinnvoll 'gestaltet' (Option c)."
-        },
-        {
-          "prompt": "Lücke 3",
-          "answer": "m",
-          "why": "Die Forschung kann einen Zusammenhang 'empirisch' (Option m) belegen."
-        },
-        {
-          "prompt": "Lücke 4",
-          "answer": "e",
-          "why": "Ein kontinuierlicher Dialog wird als 'unumgänglich' (Option e) beschrieben."
-        },
-        {
-          "prompt": "Lücke 5",
-          "answer": "i",
-          "why": "Falsch, hier ist die Kollokation 'gefordert' nicht da, sondern im Text steht 'wird ... gefordert' oder ähnlich — Moment, schauen wir auf die Bank: 'definiert' (Option i) passt grammatikalisch und semantisch zu 'wird ... verlangt/abverlangt'? Ah, schauen wir auf den Text: 'eine hohe Eigenverantwortung ___5___'. Korrekt ist hier 'verlangt' oder 'abverlangt'? Da diese nicht in der Bank sind, prüfen wir 'definiert' oder andere. Oh, Entschuldigung, im Text steht 'Eigenverantwortung erwartet' — in der Bank haben wir 'abgehängt', 'gewährt', 'definiert'. Moment, der Schlüssel 'i' passt grammatikalisch kaum. Korrigieren wir gedanklich: Im Text steht 'eine hohe Eigenverantwortung abgefordert' oder 'vorausgesetzt'? Da 'definiert' in der Bank steht: 'wird ... definiert' passt syntaktisch, auch wenn es inhaltlich holprig ist. Nutzen wir 'definiert'."
-        },
-        {
-          "prompt": "Lücke 6",
-          "answer": "k",
-          "why": "Qualifikationen gewinnen an 'Bedeutung' (Option k), was eine feste Kollokation ist."
-        },
-        {
-          "prompt": "Lücke 7",
-          "answer": "j",
-          "why": "Niemand soll durch die Transformation 'abgehängt' (Option j) werden, ein geläufiger bildlicher Ausdruck."
-        },
-        {
-          "prompt": "Lücke 8",
-          "answer": "a",
-          "why": "Tools können den persönlichen Austausch nicht 'ersetzen' (Option a)."
-        },
-        {
-          "prompt": "Lücke 9",
-          "answer": "n",
-          "why": "Das Konzept hat sich als äußerst 'erfolgreich' (Option n) erwiesen."
-        },
-        {
-          "prompt": "Lücke 10",
-          "answer": "l",
-          "why": "Hier handelt es sich um die feste Redewendung 'einen Grundstein leisten' oder 'einen Beitrag leisten'? Im Text steht 'Grundstein ___10___', was syntaktisch nach 'gelegt' verlangt. Da 'gelegt' fehlt, nehmen wir 'geleistet' (Option l) im Sinne von 'Arbeit geleistet' oder das Verb wurde in der Bank angepasst. Textlich ist 'geleistet' hier passend."
+          "prompt": "22",
+          "options": [
+            "zeigt",
+            "zu zeigen",
+            "zeigen",
+            "gezeigt"
+          ],
+          "answer": 0,
+          "why": "richtig: zeigt"
         }
       ]
     }

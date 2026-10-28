@@ -8,17 +8,62 @@
   "name": "telc A2 — Modelltest 1 — Schreiben",
   "content": {
     "S1": {
-      "title": "Einladung zum Geburtstag",
-      "instruction": "Schreiben Sie eine E-Mail (ca. 50 Wörter). Beantworten Sie in Ihrer E-Mail alle vier Leitpunkte.",
-      "prompt": "Sie haben am Wochenende Geburtstag und möchten Ihren Freund / Ihre Freundin Lukas oder Anna zu einer Party einladen. Schreiben Sie eine E-Mail an ihn oder sie.",
+      "title": "Anmeldung Kochkurs",
+      "passage": "Ihr Kollege Pedro Alvarez möchte einen Kochkurs an der Volkshochschule besuchen. Er wohnt in der Rosenstraße 12 in Köln. Der Kurs beginnt am 8. November und kostet 45 Euro. Pedro möchte mit Kreditkarte bezahlen. Sie füllen für Pedro das Formular aus.",
+      "formTitle": "Volkshochschule — Anmeldung Kochkurs",
+      "items": [
+        {
+          "prompt": "Vorname:",
+          "answer": "Pedro"
+        },
+        {
+          "prompt": "Straße, Hausnummer:",
+          "answer": "Rosenstraße 12",
+          "answers": [
+            "Rosenstr. 12",
+            "Rosenstrasse 12"
+          ]
+        },
+        {
+          "prompt": "Wohnort:",
+          "answer": "Köln",
+          "answers": [
+            "Koeln",
+            "Cologne"
+          ]
+        },
+        {
+          "prompt": "Kursbeginn:",
+          "answer": "8. November",
+          "answers": [
+            "8.11.",
+            "08.11.",
+            "8.11",
+            "8 November"
+          ]
+        },
+        {
+          "prompt": "Zahlungsweise:",
+          "answer": "Kreditkarte",
+          "answers": [
+            "mit Kreditkarte",
+            "Karte"
+          ]
+        }
+      ]
+    },
+    "S2": {
+      "title": "Brief an eine Freundin",
+      "stimulus": "Ihre Freundin Eva hat Sie zu ihrer Hochzeit am 20. September eingeladen.",
+      "prompt": "Schreiben Sie ihr einen Brief. Hier finden Sie vier Punkte. Wählen Sie drei aus und schreiben Sie zu jedem dieser drei Punkte ein bis zwei Sätze.",
       "bullets": [
-        "Grund für die E-Mail (Einladung zum Geburtstag)",
-        "Wann und wo ist die Party?",
-        "Bitte um Hilfe beim Einkaufen",
-        "Bitte um eine kurze Antwort"
+        "Danken Sie für die Einladung.",
+        "Sagen Sie, ob Sie kommen können (und warum).",
+        "Fragen Sie nach einer Geschenkidee.",
+        "Fragen Sie, wie Sie am besten zum Fest kommen."
       ],
-      "words": 50,
-      "tips": "Schreiben Sie zu jedem der vier Leitpunkte mindestens einen Satz und achten Sie auf die passende Anrede und den Gruß."
+      "words": 40,
+      "tips": "Anrede, drei Punkte, Gruß am Schluss."
     }
   }
 }

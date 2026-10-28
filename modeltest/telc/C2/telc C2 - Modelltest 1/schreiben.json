@@ -1,0 +1,44 @@
+{
+  "kind": "prepstudio.module",
+  "version": 1,
+  "exam": "telc",
+  "level": "C2",
+  "module": "schreiben",
+  "name": "telc C2 — Modelltest 1 — schreiben",
+  "content": {
+    "S1": {
+      "title": "Schriftlicher Ausdruck: Aufsatz",
+      "choiceLabel": "Themenschwerpunkt",
+      "tasks": [
+        {
+          "key": "A",
+          "title": "Bewahren und Erneuern",
+          "stimulus": "Quellen: Lesetext 1 „Das Gedächtnis der Städte“, Lesetext 3 „Die Ökonomie der Aufmerksamkeit“, Hörtext „Hitzeinseln“ (Ihre Notizen).",
+          "prompt": "Schreiben Sie einen Aufsatz zu dem Thema: „Wie viel Vergangenheit verträgt die Gegenwart?“ Erörtern Sie, wo Bewahren und Erneuern in Konflikt geraten und wie sich Interessen ausgleichen lassen. Beziehen Sie Fakten und Argumente aus mindestens drei der gelesenen und gehörten Texte ein.",
+          "bullets": [
+            "Einleitung und Fragestellung",
+            "Argumente für das Bewahren",
+            "Argumente für Erneuerung",
+            "Eigene begründete Position",
+            "Schluss"
+          ],
+          "words": 400
+        },
+        {
+          "key": "B",
+          "title": "Mensch und Technik",
+          "stimulus": "Quellen: Lesetext 2 „Was bleibt vom Übersetzen?“, Lesetext 3 „Die Ökonomie der Aufmerksamkeit“, Hörtext „Hitzeinseln“ (Ihre Notizen).",
+          "prompt": "Schreiben Sie einen Aufsatz zu dem Thema: „Technik als Entlastung oder als Bedrohung?“ Erörtern Sie anhand von Beispielen aus mindestens drei der gelesenen und gehörten Texte, wie technische Entwicklungen Arbeit und Gesellschaft verändern, und beziehen Sie begründet Stellung.",
+          "bullets": [
+            "Einleitung und Fragestellung",
+            "Chancen",
+            "Risiken",
+            "Eigene begründete Position",
+            "Schluss"
+          ],
+          "words": 400
+        }
+      ]
+    }
+  }
+}

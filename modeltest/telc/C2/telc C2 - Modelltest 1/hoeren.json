@@ -1,0 +1,63 @@
+{
+  "kind": "prepstudio.module",
+  "version": 1,
+  "exam": "telc",
+  "level": "C2",
+  "module": "hoeren",
+  "name": "telc C2 — Modelltest 1 — hoeren",
+  "content": {
+    "H1": {
+      "title": "Hörverstehen und Schreiben",
+      "situation": "Sie arbeiten für das Umweltamt Ihrer Stadt und besuchen einen Vortrag über städtische Hitzeinseln. Für den Newsletter des Amtes sollen Sie den Vortrag für interessierte Bürgerinnen und Bürger zusammenfassen.",
+      "prompt": "Machen Sie sich während des Vortrags Notizen. Schreiben Sie danach anhand Ihrer Notizen eine Zusammenfassung als fortlaufenden Text in ganzen Sätzen (ca. 250 Wörter). Geben Sie die Inhalte sachlich wieder, ohne eigene Wertung.",
+      "bullets": [
+        "Entstehung und Folgen von Hitzeinseln",
+        "Maßnahmen und ihre Grenzen",
+        "Beitrag der Bevölkerung und Fazit"
+      ],
+      "words": 250,
+      "audio": {
+        "plays": 1,
+        "readSec": 10,
+        "script": [
+          {
+            "speaker": "Ansage",
+            "text": "Sie hören jetzt einen Vortrag. Sie hören ihn einmal."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Meine Damen und Herren, ich begrüße Sie zu meinem Vortrag über städtische Hitzeinseln und die Frage, wie sich Städte an heiße Sommer anpassen können."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Beginnen wir mit dem Phänomen selbst. In dicht bebauten Gebieten kann es nachts bis zu zehn Grad wärmer sein als im Umland. Der Grund: Beton, Asphalt und Stein speichern tagsüber Wärme und geben sie erst langsam wieder ab. Hinzu kommt, dass versiegelte Flächen kein Regenwasser aufnehmen, das verdunsten und kühlen könnte."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Die Folgen sind erheblich. In Hitzeperioden steigt die Zahl der Krankenhauseinweisungen, besonders bei älteren Menschen und Kindern. Schätzungen zufolge sind in Deutschland im vergangenen Sommer mehrere tausend Todesfälle auf Hitze zurückzuführen. Auch die Arbeitsproduktivität sinkt, wenn Büros und Werkhallen überhitzen."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Was lässt sich tun? Der wirksamste Hebel ist Vegetation. Bäume spenden Schatten und kühlen durch Verdunstung; eine Allee kann die gefühlte Temperatur um mehrere Grad senken. Deshalb pflanzen viele Kommunen Straßenbäume und fördern begrünte Dächer und Fassaden. Ergänzend kommen helle Oberflächen zum Einsatz, die Sonnenlicht reflektieren, sowie Brunnen und Wasserflächen."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Allerdings stoßen diese Maßnahmen an Grenzen. Erstens ist Platz knapp: Unter vielen Straßen liegen Leitungen, die Wurzeln beschädigen können. Zweitens sind junge Bäume anfällig; in trockenen Sommern müssen sie bewässert werden, was Personal und Wasser kostet. Drittens sind die Investitionen beträchtlich. Die Begrünung einer einzigen Straße kann mehrere hunderttausend Euro kosten, und nicht jede Gemeinde kann das tragen."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Interessant ist daher die Idee der Schwammstadt. Dabei wird Regenwasser nicht abgeleitet, sondern in speziellen Bodenschichten gespeichert und steht den Bäumen in Trockenzeiten zur Verfügung. Pilotprojekte in Berlin und Hamburg zeigen, dass diese Technik Überschwemmungen verringert und zugleich die Bäume gesund hält."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Nicht zuletzt spielt die Bevölkerung eine Rolle. Wer Vorgärten entsiegelt oder Patenschaften für Straßenbäume übernimmt, trägt unmittelbar zur Abkühlung bei. Mehrere Städte unterstützen das mit Zuschüssen und Beratung."
+          },
+          {
+            "speaker": "Referentin",
+            "text": "Zusammenfassend: Hitzeinseln sind kein Naturgesetz, sondern Ergebnis von Planungsentscheidungen. Mit Begrünung, hellen Oberflächen und kluger Regenwasserbewirtschaftung lässt sich gegensteuern – vorausgesetzt, Verwaltung, Politik und Bürger ziehen an einem Strang. Vielen Dank."
+          }
+        ]
+      }
+    }
+  }
+}

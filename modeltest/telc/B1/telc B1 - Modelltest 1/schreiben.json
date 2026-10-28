@@ -8,17 +8,17 @@
   "name": "telc B1 — Modelltest 1 — Schreiben",
   "content": {
     "S1": {
-      "title": "Schreiben Teil 1: E-Mail an den Vermieter",
-      "instruction": "Schreiben Sie eine E-Mail. Bearbeiten Sie alle vier Leitpunkte. Achten Sie auf Anrede, Aufbau und Gruß.",
-      "prompt": "In Ihrer Wohnung gibt es ein Problem mit der Heizung. Schreiben Sie an Ihren Vermieter, Herrn Weber, und schildern Sie die Situation.",
+      "title": "E-Mail an eine Freundin",
+      "stimulus": "Von: Jana\nBetreff: Umzug\n\nHallo,\nich ziehe nächsten Monat in eine neue Wohnung in deiner Stadt und freue mich schon sehr darauf. Hast du am Wochenende Zeit, mir beim Umzug zu helfen? Und kannst du mir sagen, wo ich am besten günstige Möbel kaufen kann? Ich brauche außerdem noch einen Tipp für einen guten Internetanbieter. Schreib mir bald!\nLiebe Grüße\nJana",
+      "prompt": "Antworten Sie auf die E-Mail. Schreiben Sie etwas zu allen vier Punkten. Überlegen Sie sich eine passende Reihenfolge, einen Betreff, eine Anrede, eine Einleitung und einen Schluss.",
       "bullets": [
-        "Grund für das Schreiben (Heizung funktioniert nicht)",
-        "Beschreiben Sie das genaue Problem",
-        "Bitte um einen schnellen Termin für die Reparatur",
-        "Vorschlag für die Erreichbarkeit"
+        "Hilfe beim Umzug: Zeit am Wochenende",
+        "Möbelgeschäft empfehlen",
+        "Internetanbieter empfehlen",
+        "Einladung zum Abendessen nach dem Umzug"
       ],
       "words": 150,
-      "tips": "Achten Sie darauf, alle vier Leitpunkte zu bearbeiten und schreiben Sie in einem höflichen Ton."
+      "tips": "Alle vier Leitpunkte müssen vorkommen. Informelle Anrede (du), Einleitung, Schluss."
     }
   }
 }

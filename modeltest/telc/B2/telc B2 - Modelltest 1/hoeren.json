@@ -8,67 +8,78 @@
   "name": "telc B2 — Modelltest 1 — Hören",
   "content": {
     "H1": {
-      "title": "Hören Teil 1: Neue Arbeitsmodelle",
-      "instruction": "Hören Sie den Beitrag. Sie hören den Text nur einmal. Lösen Sie die Aufgaben 1 bis 5, indem Sie die richtige Option wählen.",
+      "title": "Nachrichten",
       "audio": {
         "plays": 1,
+        "readSec": 30,
         "script": [
           {
-            "speaker": "Moderator",
-            "text": "Herzlich willkommen zu unserem Podcast 'Zukunft der Arbeit'. Heute sprechen wir über das Konzept der Vier-Tage-Woche und wie moderne Unternehmen mit der Digitalisierung und veränderten gesellschaftlichen Ansprüchen umgehen. Unser Gast ist Frau Dr. Weber, Arbeitssoziologin an der Universität Freiburg. Frau Dr. Weber, immer mehr Firmen experimentieren mit verkürzten Arbeitszeiten bei vollem Lohnausgleich. Ist das nur ein kurzfristiger Trend oder eine echte Revolution auf dem Arbeitsmarkt? Lassen Sie uns zunächst auf die Produktivität schauen. Kritiker befürchten oft einen wirtschaftlichen Einbruch, wenn plötzlich an einem Tag in der Woche gar nicht mehr gearbeitet wird. Unsere aktuellen Studien zeigen jedoch ein überraschendes Bild: Die Effizienz der Angestellten steigt in vielen Betrieben sogar an, weil die Arbeitszeit durch den Wegfall unnötiger Besprechungen viel fokussierter genutzt wird. Die Mitarbeiterinnen und Mitarbeiter berichten von einer spürbaren Entlastung und einem deutlich geringeren Stresslevel im Alltag. Ein wesentlicher Treiber dieser Entwicklung ist zweifellos die fortschreitende Digitalisierung. Dank moderner Kollaborationstools und künstlicher Intelligenz lassen sich viele Routineaufgaben in Bruchteilen der bisherigen Zeit erledigen. Das schafft Freiräume für komplexe Projekte und kreative Problemlösungen. Natürlich läuft die Umstellung nicht überall reibungslos. Besonders kleinere Handwerksbetriebe stehen vor großen Herausforderungen, wenn sie qualifiziertes Personal suchen und gleichzeitig die Öffnungszeiten halten müssen. Hier stößt das Modell der verkürzten Arbeitswoche organisatorisch oft an seine Grenzen, da der Fachkräftemangel in bestimmten Branchen nach wie vor akut ist. Dennoch zeigt sich, dass Unternehmen, die flexibel auf die Wünsche der Belegschaft eingehen, langfristig im Wettbewerb um die besten Köpfe die Nase vorn haben. Zum Schluss stellt sich die Frage nach den ökologischen Effekten. Weniger Pendelverkehr und geschlossene Bürogebäude an Freitagen senken den CO2-Ausstoß messbar. Die Vier-Tage-Woche verbindet somit ökonomische Effizienz, soziale Zufriedenheit und Umweltschutz auf eine Weise, die wir vor zehn Jahren so noch nicht für möglich gehalten hätten."
+            "speaker": "Sprecherin",
+            "text": "Nachrichten. Der Bundestag hat beschlossen: Wer künftig einen Mietvertrag befristet abschließen möchte, muss den Grund dafür schriftlich nennen. Außerdem müssen Vermieter die Befristung spätestens drei Monate vor Vertragsende bestätigen."
+          },
+          {
+            "speaker": "Sprecherin",
+            "text": "Bahnreisende zwischen Hamburg und Hannover müssen sich ab Dezember auf Einschränkungen einstellen. Wegen Bauarbeiten fallen einzelne Züge aus; zwischen den beiden Städten verkehren Ersatzbusse. Die Fahrzeit verlängert sich um etwa vierzig Minuten. Die Arbeiten sollen im März abgeschlossen sein."
+          },
+          {
+            "speaker": "Sprecherin",
+            "text": "Der Deutsche Wetterdienst warnt vor Hitze. Am Wochenende werden im Süden bis zu sechsunddreißig Grad erwartet. Im Norden bleibt es mit vierundzwanzig Grad deutlich kühler. Ab Dienstag ziehen im ganzen Land Gewitter auf."
+          },
+          {
+            "speaker": "Sprecherin",
+            "text": "Die Arbeitslosenquote ist im Oktober leicht gesunken und liegt jetzt bei fünf Komma acht Prozent. Wie die Bundesagentur für Arbeit mitteilte, sind vor allem im Gastgewerbe neue Stellen entstanden."
+          },
+          {
+            "speaker": "Sprecherin",
+            "text": "Das Stadtmuseum Leipzig öffnet nach zweijähriger Renovierung wieder seine Türen. Am ersten Sonntag im Monat ist der Eintritt frei. Neu ist eine Ausstellung zur Geschichte des Buchdrucks."
           }
         ]
       },
       "items": [
         {
-          "prompt": "Wie bewertet Frau Dr. Weber die Auswirkung einer verkürzten Arbeitszeit auf die Wirtschaftlichkeit?",
+          "prompt": "Laut Nachrichten müssen Vermieter künftig den Grund für eine Befristung des Mietvertrags schriftlich angeben.",
           "options": [
-            "Die Produktivität kann durch gezielteres Arbeiten sogar steigen.",
-            "Ein wirtschaftlicher Einbruch ist in jedem Fall unvermeidlich.",
-            "Die wirtschaftlichen Folgen lassen sich zum aktuellen Zeitpunkt noch nicht abschätzen."
+            "Richtig",
+            "Falsch"
           ],
           "answer": 0,
-          "why": "Im Text heißt es, dass die Effizienz in vielen Betrieben ansteigt, da die Arbeitszeit durch den Wegfall unnötiger Besprechungen fokussierter genutzt wird."
+          "why": "Der Grund muss schriftlich genannt werden."
         },
         {
-          "prompt": "Welche Rolle spielt die Digitalisierung bei der Umsetzung neuer Arbeitsmodelle?",
+          "prompt": "Zwischen Hamburg und Hannover fahren bis März überhaupt keine Züge.",
           "options": [
-            "Sie führt zu einer deutlichen Verlängerung der täglichen Arbeitszeit.",
-            "Sie erschwert die Kommunikation zwischen den Angestellten erheblich.",
-            "Sie hilft dabei, Routineaufgaben schneller zu erledigen und schafft neue Freiräume."
-          ],
-          "answer": 2,
-          "why": "Laut Hörtext lassen sich dank moderner Tools Routineaufgaben in Bruchteilen der Zeit erledigen, was Freiräume schafft."
-        },
-        {
-          "prompt": "Vor welchen Problemen stehen besonders kleinere Handwerksbetriebe bei der Einführung?",
-          "options": [
-            "Sie finden keine digitalen Werkzeuge für ihre Verwaltung.",
-            "Der Fachkräftemangel erschwert die Organisation bei gleichbleibenden Öffnungszeiten.",
-            "Ihre Kundschaft lehnt verkürzte Öffnungszeiten grundsätzlich ab."
+            "Richtig",
+            "Falsch"
           ],
           "answer": 1,
-          "why": "Der Text besagt, dass kleinere Handwerksbetriebe vor Herausforderungen stehen, wenn sie Personal suchen und gleichzeitig die Öffnungszeiten halten müssen, da der Fachkräftemangel akut ist."
+          "why": "Es fallen nur einzelne Züge aus; Ersatzbusse fahren."
         },
         {
-          "prompt": "Welcher Vorteil zeigt sich im Wettbewerb um qualifiziertes Personal?",
+          "prompt": "Am Wochenende ist es im Norden Deutschlands genauso heiß wie im Süden.",
           "options": [
-            "Firmen mit flexiblen Arbeitszeitmodellen sind im Vorteil.",
-            "Traditionelle Arbeitszeiten ziehen die meisten Fachkräfte an.",
-            "Das Gehalt ist das einzig ausschlaggebende Kriterium für Bewerber."
+            "Richtig",
+            "Falsch"
+          ],
+          "answer": 1,
+          "why": "Im Norden sind es 24, im Süden 36 Grad."
+        },
+        {
+          "prompt": "Im Gastgewerbe sind neue Arbeitsplätze entstanden.",
+          "options": [
+            "Richtig",
+            "Falsch"
           ],
           "answer": 0,
-          "why": "Der Beitrag erwähnt, dass Unternehmen, die flexibel auf die Wünsche der Belegschaft eingehen, langfristig im Wettbewerb die Nase vorn haben."
+          "why": "Vor allem im Gastgewerbe entstanden neue Stellen."
         },
         {
-          "prompt": "Welchen positiven Nebeneffekt hat die Vier-Tage-Woche laut dem Beitrag noch?",
+          "prompt": "Die Renovierung des Stadtmuseums hat zwei Jahre gedauert.",
           "options": [
-            "Einen spürbaren Rückgang der staatlichen Steuereinnahmen.",
-            "Einen messbaren Beitrag zum Umweltschutz durch weniger Pendelverkehr.",
-            "Eine starke Zunahme des privaten Konsums an den zusätzlichen freien Tagen."
+            "Richtig",
+            "Falsch"
           ],
-          "answer": 1,
-          "why": "Im Text wird genannt, dass weniger Pendelverkehr und geschlossene Bürogebäude den CO2-Ausstoß messbar senken und somit Umweltschutz bieten."
+          "answer": 0,
+          "why": "Zweijährige Renovierung."
         }
       ]
     },
@@ -206,91 +217,78 @@
       ]
     },
     "H3": {
-      "title": "Hören Teil 3: Künstliche Intelligenz am Arbeitsplatz",
-      "instruction": "Hören Sie das Gespräch einmal. Dazu lösen Sie fünf Aufgaben. Wählen Sie bei jeder Aufgabe die richtige Lösung.",
+      "title": "Fünf kurze Texte",
       "audio": {
         "plays": 1,
+        "readSec": 30,
         "script": [
           {
-            "speaker": "Moderatorin",
-            "text": "Herzlich willkommen zu unserem Podcast 'Zukunft der Arbeit'. Heute sprechen wir über den Einsatz von Künstlicher Intelligenz, kurz KI, in deutschen Unternehmen. Bei mir im Studio ist Dr. Martina Weber, Expertin für Arbeitsmarktfragen am Institut für Zukunftstechnologien. Frau Weber, viele Beschäftigte machen sich Sorgen um ihren Arbeitsplatz. Ist diese Angst berechtigt?"
+            "speaker": "Automatische Ansage",
+            "text": "Willkommen beim Kundenservice von Datalink. Unsere Hotline ist montags bis freitags von acht bis zwanzig Uhr für Sie erreichbar. Außerhalb dieser Zeiten finden Sie Hilfe auf unserer Internetseite."
           },
           {
-            "speaker": "Dr. Martina Weber",
-            "text": "Guten Tag. Die Sorge ist verständlich, aber in den allermeisten Fällen unbegründet. KI wird Arbeitsplätze nicht einfach vernichten, sondern sie grundlegend verändern. Routinen werden automatisiert, sodass Mitarbeiter mehr Zeit für kreative und strategische Aufgaben haben. Eine aktuelle Umfrage unseres Instituts zeigt, dass rund siebzig Prozent der befragten Firmen neue Stellen schaffen, die direkt mit der Betreuung und Steuerung dieser neuen Technologien zu tun haben."
+            "speaker": "Sprecher",
+            "text": "Für das Konzert von Elena Marchetti am vierzehnten Mai gibt es noch Karten ab fünfunddreißig Euro. Sie erhalten die Karten an der Abendkasse oder im Internet."
           },
           {
-            "speaker": "Moderatorin",
-            "text": "Das klingt erst einmal positiv. Aber gilt das denn für alle Branchen gleichermaßen? Was ist zum Beispiel mit dem Handwerk oder dem Dienstleistungssektor?"
+            "speaker": "Automatische Ansage",
+            "text": "Informationen zum neuen Tarif Flex Fünf erhalten Sie in jedem unserer Shops. Im Internet ist der Tarif erst ab Januar verfügbar."
           },
           {
-            "speaker": "Dr. Martina Weber",
-            "text": "Da gibt es tatsächlich große Unterschiede. Während in der Verwaltung und im IT-Bereich bereits sehr viele Prozesse automatisiert ablaufen, ist das Handwerk weitgehend stabil. Ein Installateur oder eine Elektrikerin müssen nicht befürchten, dass ein Roboter ihre handwerkliche Arbeit übernimmt. Im Dienstleistungssektor hingegen, vor allem im Kundenservice, sehen wir durch intelligente Chatbots eine starke Verschiebung hin zu digitaler Kommunikation. Dennoch bleiben menschliche Empathie und komplexe Beratung unersetzlich."
+            "speaker": "Sprecherin",
+            "text": "Das Schwerpunktthema im Museumspark lautet in diesem Jahr Norwegen. Deshalb treten an den Wochenenden norwegische Musikgruppen auf. Der Eintritt ist frei."
           },
           {
-            "speaker": "Moderatorin",
-            "text": "Ein oft genannter Punkt ist auch die Weiterbildung. Was raten Sie Arbeitnehmerinnen und Arbeitnehmern, die sich fit machen wollen?"
-          },
-          {
-            "speaker": "Dr. Martina Weber",
-            "text": "Das Wichtigste ist Neugierde und die Bereitschaft zum lebenslangen Lernen. Man muss kein Programmierer werden, aber ein grundlegendes Verständnis dafür, wie digitale Tools funktionieren, wird in fast jedem Beruf zur Grundvoraussetzung. Die Unternehmen sind hier in der Pflicht, entsprechende Schulungen anzubieten. Wer sich jetzt weiterbildet, sichert sich langfristig die besten Chancen auf dem Arbeitsmarkt."
-          },
-          {
-            "speaker": "Moderatorin",
-            "text": "Vielen Dank für diese spannenden Einblicke, Frau Weber."
+            "speaker": "Sprecher",
+            "text": "Das Stadtfest bietet nicht nur Livemusik auf drei Bühnen, sondern auch kulinarische Spezialitäten aus dem In- und Ausland."
           }
         ]
       },
       "items": [
         {
-          "prompt": "Was sagt Dr. Weber über die Angst vor Arbeitsplatzverlust durch KI?",
+          "prompt": "Der Kundenservice von Datalink ist rund um die Uhr erreichbar.",
           "options": [
-            "Die Angst ist völlig unbegründet, weil niemand seinen Job verliert.",
-            "Die Sorge ist verständlich, aber meistens unbegründet, da sich Berufe eher verändern.",
-            "Arbeitnehmer sollten große Angst haben, da die meisten Jobs wegrationalisiert werden."
+            "Richtig",
+            "Falsch"
           ],
           "answer": 1,
-          "why": "Frau Weber erklärt: 'Die Sorge ist verständlich, aber in den allermeisten Fällen unbegründet. KI wird Arbeitsplätze nicht einfach vernichten, sondern sie grundlegend verändern.'"
+          "why": "Nur montags bis freitags von 8 bis 20 Uhr."
         },
         {
-          "prompt": "Wie wirken sich neue Technologien laut einer Umfrage des Instituts auf die Beschäftigung aus?",
+          "prompt": "Für das Konzert mit Elena Marchetti gibt es noch Karten ab 35 Euro.",
           "options": [
-            "Viele Firmen schaffen neue Stellen, die sich mit der Betreuung der Technik befassen.",
-            "Die Zahl der Arbeitsplätze sinkt in fast allen großen Unternehmen drastisch.",
-            "Es entstehen ausschließlich Jobs für hochqualifizierte Programmierer."
+            "Richtig",
+            "Falsch"
           ],
           "answer": 0,
-          "why": "Laut Umfrage schaffen 'rund siebzig Prozent der befragten Firmen neue Stellen, die direkt mit der Betreuung und Steuerung dieser neuen Technologien zu tun haben'."
+          "why": "Karten ab fünfunddreißig Euro."
         },
         {
-          "prompt": "Welche Branche ist laut dem Interview am wenigsten von Automatisierung bedroht?",
+          "prompt": "Über den neuen Tarif können Sie sich schon jetzt im Internet informieren.",
           "options": [
-            "Der IT-Bereich",
-            "Die Verwaltung",
-            "Das Handwerk"
-          ],
-          "answer": 2,
-          "why": "Dr. Weber sagt: '...ist das Handwerk weitgehend stabil. Ein Installateur oder eine Elektrikerin müssen nicht befürchten, dass ein Roboter ihre handwerkliche Arbeit übernimmt.'"
-        },
-        {
-          "prompt": "Was passiert im Dienstleistungssektor durch intelligente Chatbots?",
-          "options": [
-            "Komplexe Beratungen werden komplett abgeschafft.",
-            "Es gibt eine starke Verschiebung hin zu digitaler Kommunikation.",
-            "Menschliche Empathie wird durch die Technik vollständig ersetzt."
+            "Richtig",
+            "Falsch"
           ],
           "answer": 1,
-          "why": "Im Dienstleistungssektor sieht die Expertin 'vor allem im Kundenservice... eine starke Verschiebung hin zu digitaler Kommunikation'."
+          "why": "Im Internet erst ab Januar."
         },
         {
-          "prompt": "Was hält Dr. Weber für die wichtigste Voraussetzung für Arbeitnehmer?",
+          "prompt": "Das Thema des Jahres im Museumspark ist Norwegen.",
           "options": [
-            "Dass sie sofort programmieren lernen",
-            "Dass sie die Verantwortung komplett den Unternehmen überlassen",
-            "Dass sie neugierig sind und bereit sind, lebenslang zu lernen"
+            "Richtig",
+            "Falsch"
           ],
-          "answer": 2,
-          "why": "Die Expertin betont: 'Das Wichtigste ist Neugierde und die Bereitschaft zum lebenslangen Lernen.'"
+          "answer": 0,
+          "why": "Schwerpunktthema Norwegen."
+        },
+        {
+          "prompt": "Beim Stadtfest gibt es ausschließlich Livemusik.",
+          "options": [
+            "Richtig",
+            "Falsch"
+          ],
+          "answer": 1,
+          "why": "Auch Spezialitäten aus dem In- und Ausland."
         }
       ]
     }

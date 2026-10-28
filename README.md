@@ -108,3 +108,6 @@ Alle Goethe-Module laufen in der Oberfläche des digitalen Goethe-Instituts-Test
 Hörablauf mit Lesezeit und Wiedergaben, Prüfung-beendet-Dialog). Details: `modeltest/goethe/SCHEMA.md`.
 Zeiten und Punkte folgen den Durchführungsbestimmungen vom 01.09.2025. KI-Bewertung (Schreiben/Sprechen) und
 KI-Generator arbeiten mit denselben Teilen wie die Oberfläche.
+
+## telc
+telc Deutsch A1–C2 läuft in der digitalen telc-Oberfläche (Reiter, Abgabe-Dialog, Hörplayer, Drag & Drop). Aufbau, Zeiten, Punkte und das Dateiformat: `modeltest/telc/SCHEMA.md`.

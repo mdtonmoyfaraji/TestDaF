@@ -12,39 +12,47 @@
       "instruction": "Lesen Sie die Informationen und ergänzen Sie das Formular.",
       "items": [
         {
-          "prompt": "Vorname",
+          "prompt": "Vorname:",
           "answer": "Maria"
         },
         {
-          "prompt": "Nachname",
+          "prompt": "Nachname:",
           "answer": "Santos"
         },
         {
-          "prompt": "Geburtsdatum",
-          "answer": "12.05.1995"
+          "prompt": "Geburtsdatum:",
+          "answer": "12.05.1995",
+          "answers": [
+            "12.05.1995",
+            "12. Mai 1995",
+            "12.5.1995"
+          ]
         },
         {
-          "prompt": "Sportart",
+          "prompt": "Sportart:",
           "answer": "Tennis"
         },
         {
-          "prompt": "E-Mail-Adresse",
-          "answer": "m.santos@web.de"
+          "prompt": "E-Mail-Adresse:",
+          "answer": "m.santos@web.de",
+          "answers": [
+            "m.santos@web.de"
+          ]
         }
-      ]
+      ],
+      "passage": "Ihre Freundin Maria Santos möchte im Verein „Sport für alle“ einen Tenniskurs machen. Sie ist am 12. Mai 1995 geboren. Ihre E-Mail-Adresse ist m.santos@web.de. Sie füllen für Maria das Anmeldeformular aus.",
+      "formTitle": "Sport für alle — Anmeldung"
     },
     "S2": {
-      "title": "Schreiben Teil 2",
-      "instruction": "Schreiben Sie eine kurze E-Mail. Beantworten Sie dabei alle vier Punkte.",
-      "prompt": "Sie möchten am Samstag eine Party machen und schreiben an Ihre Freundin Anna. Schreiben Sie eine Nachricht und antworten Sie auf die vier Punkte.",
+      "title": "Kurze Nachricht",
+      "prompt": "Sie möchten am Samstag eine Party machen und schreiben an Ihre Freundin Anna. Schreiben Sie zu jedem Punkt ein bis zwei Sätze.",
       "bullets": [
-        "Grund für die Nachricht",
-        "Uhrzeit",
-        "Essen und Trinken",
-        "Bitte um Antwort"
+        "Sie laden Anna zur Party ein (Grund: Geburtstag).",
+        "Sagen Sie, wann die Party beginnt (Uhrzeit).",
+        "Bitten Sie Anna, einen Salat mitzubringen."
       ],
       "words": 30,
-      "tips": "Schreiben Sie zu jedem Leitpunkt mindestens einen Satz."
+      "tips": "Anrede, drei Punkte, Gruß am Schluss."
     }
   }
 }

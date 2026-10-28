@@ -621,6 +621,8 @@ const FORMATS = {
   mc3:     { auto: true,  opts: 3 },
   mc4:     { auto: true,  opts: 4 },
   tf:      { auto: true,  opts: 2, fixed: ["Richtig", "Falsch"] },
+  tfn:     { auto: true,  opts: 3, fixed: ["Richtig", "Falsch", "Nicht im Text"] },
+  order:   { auto: true,  bank: true, order: true },
   yn:      { auto: true,  opts: 2, fixed: ["Ja", "Nein"] },
   match:   { auto: true,  bank: true },
   gapmc:   { auto: true,  opts: 4, cloze: true },
@@ -855,163 +857,190 @@ const BLUEPRINTS = {
   },
 
   /* -------------------------------- TELC -------------------------------- */
+  /* Aufbau, Zeiten, Punkte und Bestehensgrenzen nach den offiziellen telc-Übungstests
+     (Start Deutsch 1 / Start Deutsch 2 / B1 / B2 / C1 / C2). Die digitale Oberfläche
+     (Engine window.TC) bildet die telc-Prüfungsplattform nach. Siehe modeltest/telc/SCHEMA.md. */
   telc: {
     id: "telc",
     name: "telc Deutsch",
     short: "telc",
     org: "telc gGmbH",
-    levels: ["A1", "A2", "B1", "B2", "C1"],
-    unavailable: { C2: { de: "telc bietet auf C2 keine allgemeine Deutschprüfung an.", en: "telc does not offer a general German exam at C2." } },
+    levels: ["A1", "A2", "B1", "B2", "C1", "C2"],
     note: {
-      de: "B1–C1: 300 Punkte gesamt — schriftlich 225, mündlich 75. Bestanden ab 60 % in beiden Teilen getrennt.",
-      en: "B1–C1: 300 points total — 225 written, 75 oral. You need 60% in each part separately."
+      de: "A1/A2: 60 Punkte, bestanden ab 36. B1/B2: 300 Punkte (schriftlich 225, mündlich 75). C1: 214 Punkte, C2: 160 Punkte. Bestanden: mindestens 60 % in der schriftlichen und in der mündlichen Prüfung jeweils getrennt.",
+      en: "A1/A2: 60 points, pass at 36. B1/B2: 300 points (225 written, 75 oral). C1: 214 points, C2: 160 points. You need 60% in the written and in the oral part separately."
     },
     L: {
       A1: {
-        title: "telc Deutsch A1", modular: false, verified: "approx",
-        scoring: { kind: "split", written: { max: 75, pass: 45 }, speaking: { max: 25, pass: 15 } },
-        topics: "Person, Familie, Einkaufen, Uhrzeit, Wohnen",
+        title: "telc Deutsch A1 (Start Deutsch 1)", modular: false, verified: "verified",
+        source: "telc Start Deutsch 1, Übungstest 1: Hören ca. 20 Min (15 Aufgaben), Lesen und Schreiben zusammen 45 Min (Lesen 15, Schreiben 15), Sprechen ca. 15 Min (15). Gesamt 60 Punkte, bestanden ab 36.",
+        scoring: { kind: "telc60", total: 60, pass: 36, written: { max: 45, pass: 27 }, speaking: { max: 15, pass: 9 } },
+        topics: "Person, Familie, Einkaufen, Uhrzeit, Wohnen, Wegbeschreibung",
+        blockNote: "Lesen und Schreiben werden in einem gemeinsamen 45-Minuten-Block bearbeitet (Lesen ca. 25, Schreiben ca. 20 Minuten).",
         modules: {
-          lesen: { minutes: 25, parts: [
-            P("L1", "Teil 1", "Kurze Mitteilungen", "tf", 5, 3, 8, { instruction: "Richtig oder falsch?" }),
-            P("L2", "Teil 2", "Anzeigen zuordnen", "match", 5, 3, 9, { bank: 6, instruction: "Welche Anzeige passt?" }),
-            P("L3", "Teil 3", "Schilder und Hinweise", "mc2", 5, 3, 8, { instruction: "a oder b?" })
+          hoeren: { minutes: 20, ord: 1, parts: [
+            P("H1", "Teil 1", "Sechs kurze Gespräche und Ansagen (Bilder)", "mc3", 6, 1, 8, { plays: 2, images: true, instruction: "Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal." }),
+            P("H2", "Teil 2", "Vier Durchsagen: richtig oder falsch", "tf", 4, 1, 5, { plays: 1, instruction: "Kreuzen Sie an: Richtig (+) oder falsch (–)? Sie hören jeden Text einmal." }),
+            P("H3", "Teil 3", "Fünf kurze Texte: a, b oder c", "mc3", 5, 1, 7, { plays: 2, instruction: "Kreuzen Sie an: a, b oder c. Sie hören jeden Text zweimal." })
           ]},
-          bausteine: { minutes: 10, parts: [
-            P("B1", "Teil 1", "Lückentext – Grammatik und Wortschatz", "gapmc", 10, 1.5, 10, { instruction: "Welches Wort passt in die Lücke?" })
+          lesen: { minutes: 25, ord: 2, blockWith: "schreiben", blockMinutes: 45, parts: [
+            P("L1", "Teil 1", "Zwei kurze Mitteilungen: richtig oder falsch", "tf", 5, 1, 8, { instruction: "Sind die Aussagen 1–5 richtig (+) oder falsch (–)? Kreuzen Sie an." }),
+            P("L2", "Teil 2", "Anzeigen: a oder b", "mc2", 5, 1, 9, { images: false, instruction: "Lesen Sie die Texte und die Aufgaben 6–10. Welche Anzeige ist interessant für Sie? Kreuzen Sie an: a oder b?" }),
+            P("L3", "Teil 3", "Schilder und Hinweise: richtig oder falsch", "tf", 5, 1, 8, { instruction: "Lesen Sie die Texte und die Aufgaben 11–15. Kreuzen Sie an: Richtig (+) oder falsch (–)?" })
           ]},
-          hoeren: { minutes: 20, parts: [
-            P("H1", "Teil 1", "Kurze Gespräche", "mc3", 5, 3, 7, { plays: 2 }),
-            P("H2", "Teil 2", "Durchsagen", "tf", 5, 3, 6, { plays: 1 }),
-            P("H3", "Teil 3", "Telefonansagen", "mc3", 5, 3, 7, { plays: 2 })
+          schreiben: { minutes: 20, ord: 3, blockWith: "lesen", parts: [
+            P("S1", "Teil 1", "Formular ausfüllen", "short", 5, 1, 8, { instruction: "Schreiben Sie die fünf fehlenden Informationen in das Formular. Am Ende übertragen Sie Ihre Lösungen auf den Antwortbogen." }),
+            P("S2", "Teil 2", "Kurze Mitteilung schreiben", "writing", 1, 10, 12, { words: 30, leitpunkte: 3, instruction: "Schreiben Sie zu jedem Punkt ein bis zwei Sätze (circa 30 Wörter). Vergessen Sie nicht den passenden Anfang und Gruß am Schluss." })
           ]},
-          schreiben: { minutes: 20, parts: [
-            P("S1", "Teil 1", "Formular ausfüllen", "short", 5, 1, 8, {}),
-            P("S2", "Teil 2", "Kurze Mitteilung", "writing", 1, 10, 12, { words: 30 })
-          ]},
-          sprechen: { minutes: 15, group: "Gruppe", prep: 0, parts: [
-            P("P1", "Teil 1", "Sich vorstellen", "speaking", 1, 8, 4, { seconds: 90 }),
-            P("P2", "Teil 2", "Informationen erfragen", "speaking", 2, 5, 6, { seconds: 120 }),
-            P("P3", "Teil 3", "Bitten und reagieren", "speaking", 2, 3.5, 5, { seconds: 90 })
+          sprechen: { minutes: 15, ord: 4, group: "Prüfung zu zweit oder zu viert (ca. 15 Minuten)", prep: 0, parts: [
+            P("P1", "Teil 1", "Sich vorstellen", "speaking", 1, 3, 3, { seconds: 90, instruction: "Stellen Sie sich vor: Name, Alter, Land, Wohnort, Sprachen, Beruf, Hobby. Buchstabieren Sie danach ein Wort und nennen Sie eine Zahl." }),
+            P("P2", "Teil 2", "Um Informationen bitten und Informationen geben", "speaking", 1, 6, 4, { seconds: 120, instruction: "Bilden Sie zu den Stichwortkarten je eine Frage und antworten Sie auf die Frage Ihres Gegenübers." }),
+            P("P3", "Teil 3", "Bitten formulieren und darauf reagieren", "speaking", 1, 6, 4, { seconds: 90, instruction: "Formulieren Sie zu den Bildkarten eine Bitte und reagieren Sie auf die Bitte der anderen." })
           ]}
         }
       },
       A2: {
-        title: "telc Deutsch A2", modular: false, verified: "approx",
-        scoring: { kind: "split", written: { max: 75, pass: 45 }, speaking: { max: 25, pass: 15 } },
-        topics: "Alltag, Arbeit, Gesundheit, Freizeit, Reisen",
+        title: "telc Deutsch A2 (Start Deutsch 2)", modular: false, verified: "verified",
+        source: "telc Start Deutsch 2, Übungstest: Hören ca. 20 Min (15), Lesen und Schreiben zusammen 50 Min (Lesen 15, Schreiben 15), Sprechen ca. 15 Min (15). Gesamt 60 Punkte, bestanden ab 36.",
+        scoring: { kind: "telc60", total: 60, pass: 36, written: { max: 45, pass: 27 }, speaking: { max: 15, pass: 9 } },
+        topics: "Alltag, Arbeit, Gesundheit, Freizeit, Reisen, Einkaufen",
+        blockNote: "Lesen und Schreiben werden in einem gemeinsamen 50-Minuten-Block bearbeitet.",
         modules: {
-          lesen: { minutes: 30, parts: [
-            P("L1", "Teil 1", "Überschriften zuordnen", "match", 5, 3, 9, { bank: 8 }),
-            P("L2", "Teil 2", "Kurztext – Mehrfachwahl", "mc3", 5, 3, 10, {}),
-            P("L3", "Teil 3", "Anzeigen einer Situation zuordnen", "match", 5, 3, 11, { bank: 8, bankHasX: true })
+          hoeren: { minutes: 20, ord: 1, parts: [
+            P("H1", "Teil 1", "Fünf Ansagen am Telefon: Notizen ergänzen", "short", 5, 1, 7, { plays: 2, instruction: "Sie hören fünf Ansagen am Telefon. Zu jedem Text gibt es eine Aufgabe. Ergänzen Sie die Telefonnotizen. Sie hören jeden Text zweimal." }),
+            P("H2", "Teil 2", "Fünf Informationen aus dem Radio: a, b oder c", "mc3", 5, 1, 6, { plays: 1, instruction: "Sie hören fünf Informationen aus dem Radio. Zu jedem Text gibt es eine Aufgabe. Kreuzen Sie an: a, b oder c. Sie hören jeden Text einmal." }),
+            P("H3", "Teil 3", "Ein Gespräch: Zuordnen", "match", 5, 1, 7, { plays: 2, bank: 9, ui: "persons", instruction: "Sie hören ein Gespräch. Zu diesem Gespräch gibt es fünf Aufgaben. Ordnen Sie zu und notieren Sie den Buchstaben. Sie hören den Text zweimal." })
           ]},
-          bausteine: { minutes: 15, parts: [
-            P("B1", "Teil 1", "Grammatik im Kontext", "gapmc", 10, 1, 8, {}),
-            P("B2", "Teil 2", "Wortschatz mit Wortbank", "gapbank", 10, 0.5, 7, { bank: 15 })
+          lesen: { minutes: 25, ord: 2, blockWith: "schreiben", blockMinutes: 50, parts: [
+            P("L1", "Teil 1", "Informationstafel: a, b oder c", "mc3", 5, 1, 8, { instruction: "Lesen Sie die Aufgaben 1–5 und die Information. Kreuzen Sie an: a, b oder c." }),
+            P("L2", "Teil 2", "Kurztext: richtig oder falsch", "tf", 5, 1, 9, { instruction: "Lesen Sie den Text und die Aufgaben 6–10. Sind die Aussagen richtig (+) oder falsch (–)? Kreuzen Sie an." }),
+            P("L3", "Teil 3", "Anzeigen und Situationen (a–h, x)", "match", 5, 1, 9, { bank: 8, bankHasX: true, ui: "ads", instruction: "Lesen Sie die Anzeigen a–h und die Aufgaben 11–15. Welche Anzeige passt zu welcher Situation? Für eine Aufgabe gibt es keine Lösung. Schreiben Sie hier den Buchstaben x." })
           ]},
-          hoeren: { minutes: 25, parts: [
-            P("H1", "Teil 1", "Globalverstehen", "mc3", 5, 3, 8, { plays: 1 }),
-            P("H2", "Teil 2", "Detailverstehen", "tf", 5, 3, 9, { plays: 2 }),
-            P("H3", "Teil 3", "Selektives Verstehen", "mc3", 5, 3, 8, { plays: 1 })
+          schreiben: { minutes: 25, ord: 3, blockWith: "lesen", parts: [
+            P("S1", "Teil 1", "Formular ausfüllen", "short", 5, 1, 10, { instruction: "Schreiben Sie die fünf fehlenden Informationen in das Formular. Am Ende übertragen Sie Ihre Lösungen auf den Antwortbogen." }),
+            P("S2", "Teil 2", "Brief: drei von vier Punkten", "writing", 1, 10, 15, { words: 40, leitpunkte: 3, instruction: "Hier finden Sie vier Punkte. Wählen Sie drei aus. Schreiben Sie zu jedem dieser drei Punkte ein bis zwei Sätze. Vergessen Sie nicht den passenden Anfang und den Gruß am Schluss. Schreiben Sie ca. 40 Wörter." })
           ]},
-          schreiben: { minutes: 30, parts: [
-            P("S1", "Teil 1", "E-Mail mit vier Leitpunkten", "writing", 1, 15, 30, { words: 50 })
-          ]},
-          sprechen: { minutes: 15, group: "Paarprüfung", prep: 20, parts: [
-            P("P1", "Teil 1", "Kontaktaufnahme", "speaking", 1, 8, 4, { seconds: 120 }),
-            P("P2", "Teil 2", "Gespräch über ein Thema", "speaking", 1, 9, 6, { seconds: 180 }),
-            P("P3", "Teil 3", "Gemeinsam eine Aufgabe lösen", "speaking", 1, 8, 5, { seconds: 180 })
+          sprechen: { minutes: 15, ord: 4, group: "Prüfung zu zweit oder zu viert (ca. 15 Minuten)", prep: 0, parts: [
+            P("P1", "Teil 1", "Sich vorstellen", "speaking", 1, 3, 3, { seconds: 90, instruction: "Stellen Sie sich vor." }),
+            P("P2", "Teil 2", "Ein Alltagsgespräch führen", "speaking", 1, 6, 4, { seconds: 150, instruction: "Führen Sie mit Ihrem Partner / Ihrer Partnerin ein Gespräch zum Thema." }),
+            P("P3", "Teil 3", "Etwas aushandeln", "speaking", 1, 6, 4, { seconds: 150, instruction: "Planen Sie gemeinsam etwas und einigen Sie sich." })
           ]}
         }
       },
       B1: {
         title: "telc Deutsch B1 / Zertifikat Deutsch", modular: false, verified: "verified",
+        source: "telc Deutsch B1, Übungstest 1: Leseverstehen und Sprachbausteine zusammen 90 Min, Hörverstehen ca. 30 Min, Schriftlicher Ausdruck 30 Min, Mündlich ca. 15 Min (+ 20 Min Vorbereitung). 300 Punkte: schriftlich 225, mündlich 75; bestanden ab 135 bzw. 45.",
         scoring: { kind: "telc300", written: { max: 225, pass: 135 }, speaking: { max: 75, pass: 45 } },
-        topics: "Arbeit, Wohnen, Umwelt, Medien, Gesundheit, Bildung",
-        blockNote: "Leseverstehen und Sprachbausteine werden in einem gemeinsamen 90-Minuten-Block bearbeitet.",
+        topics: "Arbeit, Wohnen, Umwelt, Medien, Gesundheit, Bildung, Reisen",
+        blockNote: "Leseverstehen und Sprachbausteine werden in einem gemeinsamen 90-Minuten-Block bearbeitet. Sie teilen die Zeit selbst ein.",
         modules: {
-          lesen: { minutes: 70, blockWith: "bausteine", blockMinutes: 90, parts: [
-            P("L1", "Teil 1", "Überschriften zuordnen (Globalverstehen)", "match", 5, 5, 20, { bank: 10, instruction: "Welche Überschrift passt zu welchem Text?" }),
-            P("L2", "Teil 2", "Längerer Text – Mehrfachwahl (Detailverstehen)", "mc3", 5, 5, 25, { instruction: "Wählen Sie die richtige Lösung a, b oder c." }),
-            P("L3", "Teil 3", "Anzeigen (selektives Verstehen)", "match", 10, 2.5, 25, { bank: 12, bankHasX: true, instruction: "Welche Anzeige passt zu welcher Situation? Manchmal passt keine: x." })
+          lesen: { minutes: 60, ord: 1, blockWith: "bausteine", blockMinutes: 90, parts: [
+            P("L1", "Teil 1", "Globalverstehen: Überschriften zuordnen", "match", 5, 5, 20, { bank: 10, ui: "heads", instruction: "Lesen Sie die Überschriften a–j und die Texte 1–5. Finden Sie für jeden Text die passende Überschrift. Sie können jede Überschrift nur einmal benutzen." }),
+            P("L2", "Teil 2", "Detailverstehen: Multiple Choice", "mc3", 5, 5, 20, { instruction: "Lesen Sie den Text und die Aufgaben 6–10. Wählen Sie die richtige Lösung a, b oder c." }),
+            P("L3", "Teil 3", "Selektives Verstehen: Anzeigen zuordnen", "match", 10, 2.5, 20, { bank: 12, bankHasX: true, ui: "ads", instruction: "Lesen Sie die Situationen 11–20 und die Anzeigen a–l. Welche Anzeige passt zu welcher Situation? Sie können jede Anzeige nur einmal benutzen. Manchmal gibt es keine passende Anzeige. Dann schreiben Sie x." })
           ]},
-          bausteine: { minutes: 20, blockWith: "lesen", parts: [
-            P("B1", "Teil 1", "Grammatik im Kontext", "gapmc", 15, 1, 10, { instruction: "Welches Wort passt in die Lücke: a, b oder c?" }),
-            P("B2", "Teil 2", "Wortschatz mit Wortbank", "gapbank", 15, 1, 10, { bank: 20, instruction: "Welches Wort passt? Jedes Wort nur einmal." })
+          bausteine: { minutes: 30, ord: 1, blockWith: "lesen", parts: [
+            P("B1", "Teil 1", "Grammatik: Multiple Choice", "gapmc", 10, 1.5, 15, { instruction: "Lesen Sie den Text und entscheiden Sie, welche Lösung (a, b oder c) in die Lücke passt." }),
+            P("B2", "Teil 2", "Lexik: Wörter zuordnen", "gapbank", 10, 1.5, 15, { bank: 15, instruction: "Lesen Sie den Text und entscheiden Sie, welches Wort in welche Lücke passt. Sie können jedes Wort nur einmal verwenden. Nicht alle Wörter passen in den Text." })
           ]},
-          hoeren: { minutes: 30, parts: [
-            P("H1", "Teil 1", "Globalverstehen", "mc3", 5, 5, 8, { plays: 1, instruction: "Sie hören fünf kurze Texte einmal." }),
-            P("H2", "Teil 2", "Detailverstehen", "tf", 10, 2.5, 13, { plays: 2, instruction: "Sie hören einen längeren Text zweimal. Richtig oder falsch?" }),
-            P("H3", "Teil 3", "Selektives Verstehen", "mc3", 5, 5, 9, { plays: 1, instruction: "Sie hören fünf Ansagen einmal." })
+          hoeren: { minutes: 30, ord: 2, parts: [
+            P("H1", "Teil 1", "Globalverstehen: richtig oder falsch", "tf", 5, 5, 8, { plays: 1, instruction: "Sie hören fünf kurze Texte. Dazu sollen Sie fünf Aufgaben lösen. Entscheiden Sie beim Hören, ob die Aussagen 41–45 richtig oder falsch sind." }),
+            P("H2", "Teil 2", "Detailverstehen: richtig oder falsch", "tf", 10, 2.5, 13, { plays: 2, instruction: "Sie hören einen längeren Text. Dazu sollen Sie zehn Aufgaben lösen. Entscheiden Sie beim Hören, ob die Aussagen 46–55 richtig oder falsch sind." }),
+            P("H3", "Teil 3", "Selektives Verstehen: richtig oder falsch", "tf", 5, 5, 9, { plays: 1, instruction: "Sie hören fünf kurze Texte. Dazu sollen Sie fünf Aufgaben lösen. Entscheiden Sie beim Hören, ob die Aussagen 56–60 richtig oder falsch sind." })
           ]},
-          schreiben: { minutes: 30, parts: [
-            P("S1", "Teil 1", "Brief oder E-Mail mit vier Leitpunkten", "writing", 1, 45, 30, { words: 150, leitpunkte: 4, instruction: "Bearbeiten Sie alle vier Leitpunkte. Achten Sie auf Anrede, Aufbau und Gruß." })
+          schreiben: { minutes: 30, ord: 3, parts: [
+            P("S1", "Teil 1", "Informelle oder halbformelle E-Mail mit vier Leitpunkten", "writing", 1, 45, 30, { words: 150, leitpunkte: 4, instruction: "Antworten Sie auf die E-Mail. Schreiben Sie etwas zu allen vier Punkten. Überlegen Sie sich vor dem Schreiben eine passende Reihenfolge der Punkte, einen passenden Betreff, eine passende Anrede, Einleitung und einen passenden Schluss." })
           ]},
-          sprechen: { minutes: 15, group: "Paarprüfung", prep: 20, parts: [
-            P("P1", "Teil 1", "Kontaktaufnahme", "speaking", 1, 15, 3, { seconds: 150, instruction: "Stellen Sie sich vor und stellen Sie einander Fragen." }),
-            P("P2", "Teil 2", "Gespräch über ein Thema", "speaking", 1, 30, 6, { seconds: 300, instruction: "Tauschen Sie Meinungen und Erfahrungen zu dem Thema aus." }),
-            P("P3", "Teil 3", "Gemeinsam eine Aufgabe lösen", "speaking", 1, 30, 6, { seconds: 300, instruction: "Planen Sie gemeinsam und einigen Sie sich." })
+          sprechen: { minutes: 15, ord: 4, group: "Paarprüfung (zwei Teilnehmende)", prep: 20, parts: [
+            P("P1", "Teil 1", "Einander kennenlernen", "speaking", 1, 15, 3, { seconds: 150, instruction: "Unterhalten Sie sich mit Ihrer Partnerin bzw. Ihrem Partner über die genannten Themen." }),
+            P("P2", "Teil 2", "Über ein Thema sprechen", "speaking", 1, 30, 6, { seconds: 300, instruction: "Berichten Sie über das Gelesene, hören Sie die andere Meinung und sagen Sie Ihre Meinung. Erzählen Sie von eigenen Erfahrungen." }),
+            P("P3", "Teil 3", "Gemeinsam etwas planen", "speaking", 1, 30, 6, { seconds: 300, instruction: "Planen Sie gemeinsam. Machen Sie Vorschläge, begründen Sie sie, reagieren Sie auf den Partner und einigen Sie sich." })
           ]}
         }
       },
       B2: {
         title: "telc Deutsch B2", modular: false, verified: "verified",
+        source: "telc Deutsch B2, Übungstest 1: Leseverstehen und Sprachbausteine zusammen 90 Min, Hörverstehen ca. 20 Min, Schriftlicher Ausdruck 30 Min, Mündlich ca. 15 Min (+ 20 Min Vorbereitung). 300 Punkte: schriftlich 225, mündlich 75; bestanden ab 135 bzw. 45.",
         scoring: { kind: "telc300", written: { max: 225, pass: 135 }, speaking: { max: 75, pass: 45 } },
-        topics: "Beruf, Wissenschaft, Gesellschaft, Umwelt, Digitalisierung",
-        blockNote: "Leseverstehen und Sprachbausteine teilen sich einen 90-Minuten-Block — Sie teilen die Zeit selbst ein.",
+        topics: "Beruf, Wissenschaft, Gesellschaft, Umwelt, Digitalisierung, Reisen, Medien",
+        blockNote: "Leseverstehen und Sprachbausteine werden in einem gemeinsamen 90-Minuten-Block bearbeitet. Sie teilen die Zeit selbst ein.",
         modules: {
-          lesen: { minutes: 55, blockWith: "bausteine", blockMinutes: 90, parts: [
-            P("L1", "Teil 1", "Überschriften zuordnen (Globalverstehen)", "match", 5, 5, 15, { bank: 10 }),
-            P("L2", "Teil 2", "Fachtext – Mehrfachwahl (Detailverstehen)", "mc3", 5, 5, 20, {}),
-            P("L3", "Teil 3", "Zwölf Anzeigen, zehn Situationen", "match", 10, 2.5, 20, { bank: 12, bankHasX: true, instruction: "Manche Situationen haben keine passende Anzeige: x." })
+          lesen: { minutes: 60, ord: 1, blockWith: "bausteine", blockMinutes: 90, parts: [
+            P("L1", "Teil 1", "Globalverstehen: Überschriften zuordnen", "match", 5, 5, 20, { bank: 10, ui: "heads", instruction: "Lesen Sie zuerst die zehn Überschriften. Lesen Sie dann die fünf Texte und entscheiden Sie, welche Überschrift (a–j) am besten zu welchem Text (1–5) passt." }),
+            P("L2", "Teil 2", "Detailverstehen: Multiple Choice", "mc3", 5, 5, 20, { instruction: "Lesen Sie den Text und die Aufgaben 6–10. Wählen Sie die richtige Lösung a, b oder c." }),
+            P("L3", "Teil 3", "Selektives Verstehen: Anzeigen zuordnen", "match", 10, 2.5, 20, { bank: 12, bankHasX: true, ui: "ads", instruction: "Lesen Sie die Situationen 11–20 und die Anzeigen a–l. Welche Anzeige passt zu welcher Situation? Sie können jede Anzeige nur einmal benutzen. Manchmal gibt es keine passende Anzeige. Dann schreiben Sie x." })
           ]},
-          bausteine: { minutes: 35, blockWith: "lesen", parts: [
-            P("B1", "Teil 1", "Grammatik im Kontext (Passiv, Konjunktiv II, Nominalstil)", "gapmc", 10, 1.5, 18, { instruction: "Welche Lösung passt: a, b oder c?" }),
-            P("B2", "Teil 2", "Wortschatz mit Wortbank a–o", "gapbank", 10, 1.5, 17, { bank: 15, instruction: "Jedes Wort höchstens einmal." })
+          bausteine: { minutes: 30, ord: 1, blockWith: "lesen", parts: [
+            P("B1", "Teil 1", "Grammatik: Multiple Choice", "gapmc", 10, 1.5, 15, { instruction: "Lesen Sie den Text und entscheiden Sie, welche Lösung (a, b oder c) in die Lücke passt." }),
+            P("B2", "Teil 2", "Lexik: Wörter zuordnen (a–o)", "gapbank", 10, 1.5, 15, { bank: 15, instruction: "Lesen Sie den Text und entscheiden Sie, welches Wort in welche Lücke passt. Sie können jedes Wort nur einmal verwenden. Nicht alle Wörter passen in den Text." })
           ]},
-          hoeren: { minutes: 20, parts: [
-            P("H1", "Teil 1", "Globalverstehen", "mc3", 5, 5, 6, { plays: 1, instruction: "Jeder Text läuft nur einmal." }),
-            P("H2", "Teil 2", "Detailverstehen", "tf", 10, 2.5, 8, { plays: 1 }),
-            P("H3", "Teil 3", "Selektives Verstehen", "mc3", 5, 5, 6, { plays: 1 })
+          hoeren: { minutes: 20, ord: 2, parts: [
+            P("H1", "Teil 1", "Globalverstehen: Nachrichten (richtig/falsch)", "tf", 5, 5, 6, { plays: 1, readSec: 30, instruction: "Sie hören nun eine Nachrichtensendung. Dazu sollen Sie fünf Aufgaben lösen. Sie hören die Nachrichtensendung nur einmal. Entscheiden Sie beim Hören, ob die Aussagen 1–5 richtig oder falsch sind." }),
+            P("H2", "Teil 2", "Detailverstehen: Interview (richtig/falsch)", "tf", 10, 2.5, 8, { plays: 1, readSec: 60, instruction: "Sie hören ein Interview. Dazu sollen Sie zehn Aufgaben lösen. Sie hören dieses Interview nur einmal. Entscheiden Sie beim Hören, ob die Aussagen richtig oder falsch sind." }),
+            P("H3", "Teil 3", "Selektives Verstehen: fünf kurze Texte (richtig/falsch)", "tf", 5, 5, 6, { plays: 1, readSec: 30, instruction: "Sie hören jetzt fünf kurze Texte. Dazu sollen Sie fünf Aufgaben lösen. Sie hören diese Texte nur einmal. Entscheiden Sie beim Hören, ob die Aussagen richtig oder falsch sind." })
           ]},
-          schreiben: { minutes: 30, parts: [
-            P("S1", "Teil 1", "Halbformelle Nachricht", "writing", 1, 45, 30, { words: 180, leitpunkte: 4, instruction: "Schreiben Sie eine halbformelle Nachricht und bearbeiten Sie alle Leitpunkte." })
+          schreiben: { minutes: 30, ord: 3, parts: [
+            P("S1", "Teil 1", "Halbformelle E-Mail: Aufgabe A oder B", "writing", 1, 45, 30, { words: 150, leitpunkte: 3, choice: true, instruction: "Wählen Sie zuerst zwischen Aufgabe A und Aufgabe B. Entscheiden Sie schnell, denn die zur Verfügung stehende Zeit ist begrenzt auf 30 Minuten! Aufgabe A: Bitte um Informationen oder Aufgabe B: Beschwerde." })
           ]},
-          sprechen: { minutes: 15, group: "Paarprüfung", prep: 20, parts: [
-            P("P1", "Teil 1", "Präsentation / Kontaktaufnahme", "speaking", 1, 15, 4, { seconds: 180 }),
-            P("P2", "Teil 2", "Diskussion über ein Thema", "speaking", 1, 30, 6, { seconds: 300 }),
-            P("P3", "Teil 3", "Gemeinsam eine Aufgabe lösen", "speaking", 1, 30, 5, { seconds: 300 })
+          sprechen: { minutes: 15, ord: 4, group: "Paarprüfung (zwei Teilnehmende)", prep: 20, parts: [
+            P("P1", "Teil 1", "Über Erfahrungen sprechen", "speaking", 1, 25, 4, { seconds: 180, instruction: "Einander kennenlernen: Stellen Sie sich vor und sprechen Sie über Ihre Erfahrungen." }),
+            P("P2", "Teil 2", "Diskussion", "speaking", 1, 25, 6, { seconds: 300, instruction: "Diskutieren Sie mit Ihrer Partnerin / Ihrem Partner über das Thema." }),
+            P("P3", "Teil 3", "Gemeinsam etwas planen", "speaking", 1, 25, 5, { seconds: 300, instruction: "Planen Sie gemeinsam und einigen Sie sich auf ein Ergebnis." })
           ]}
         }
       },
       C1: {
-        title: "telc Deutsch C1 Hochschule", modular: false, verified: "approx",
-        scoring: { kind: "telc300", written: { max: 225, pass: 135 }, speaking: { max: 75, pass: 45 } },
-        topics: "Studium, Forschung, Hochschulalltag, Wissenschaftskommunikation",
-        blockNote: "Leseverstehen und Sprachbausteine bilden zusammen einen 90-Minuten-Block.",
+        title: "telc Deutsch C1", modular: false, verified: "verified",
+        source: "telc Deutsch C1, Übungstest 1 (Format 2016): Leseverstehen und Sprachbausteine zusammen 90 Min, 20 Min Pause, Hörverstehen ca. 40 Min, Schriftlicher Ausdruck 70 Min, Mündlich ca. 16 Min (+ 20 Min Vorbereitung). 214 Punkte: schriftlich 166 (bestanden ab 99), mündlich 48 (bestanden ab 29), gesamt mindestens 128.",
+        scoring: { kind: "telc214", written: { max: 166, pass: 99 }, speaking: { max: 48, pass: 29 }, total: 214, passTotal: 128 },
+        topics: "Wissenschaft, Medien, Gesellschaft, Beruf, Kultur, Umwelt",
+        blockNote: "Leseverstehen und Sprachbausteine werden in einem gemeinsamen 90-Minuten-Block bearbeitet. Danach folgt eine Pause von 20 Minuten.",
         modules: {
-          lesen: { minutes: 65, blockWith: "bausteine", blockMinutes: 90, parts: [
-            P("L1", "Teil 1", "Wissenschaftlicher Text – Zuordnung", "match", 6, 5, 20, { bank: 10 }),
-            P("L2", "Teil 2", "Fachtext – Mehrfachwahl", "mc4", 8, 5, 25, {}),
-            P("L3", "Teil 3", "Textrekonstruktion (Sätze einsetzen)", "gapbank", 10, 2.5, 20, { bank: 12 })
+          lesen: { minutes: 65, ord: 1, blockWith: "bausteine", blockMinutes: 90, parts: [
+            P("L1", "Teil 1", "Textrekonstruktion: Sätze in Lücken", "gapbank", 6, 2, 15, { bank: 8, instruction: "Lesen Sie den folgenden Text. Welche der Sätze a–h gehören in die Lücken 1–6? Es gibt jeweils nur eine richtige Lösung. Zwei Sätze können nicht zugeordnet werden." }),
+            P("L2", "Teil 2", "Selektives Verstehen: Textabsätze zuordnen", "match", 6, 2, 15, { bank: 5, ui: "paras", instruction: "Lesen Sie den folgenden Text. In welchem Textabsatz a–e finden Sie die Antworten auf die Fragen 7–12? Es gibt jeweils nur eine richtige Lösung. Jeder Absatz kann Antworten auf mehrere Fragen enthalten." }),
+            P("L3", "Teil 3", "Detailverstehen: richtig / falsch / nicht im Text", "tfn", 11, 2, 25, { instruction: "Welche der Aussagen sind richtig (+), falsch (–) oder nicht im Text enthalten (x)?" }),
+            P("L4", "Teil 4", "Globalverstehen: Makroaufgabe", "mc3", 1, 2, 5, { instruction: "Welche der Überschriften a, b oder c trifft die Aussage des Textes am besten?" })
           ]},
-          bausteine: { minutes: 25, blockWith: "lesen", parts: [
-            P("B1", "Teil 1", "Lückentext – wissenschaftssprachliche Strukturen", "gapmc", 12, 1.25, 13, {}),
-            P("B2", "Teil 2", "Wortbildung und Kollokationen", "gapbank", 10, 1.5, 12, { bank: 14 })
+          bausteine: { minutes: 25, ord: 1, blockWith: "lesen", parts: [
+            P("B1", "Teil 1", "Grammatik und Lexik: 4er-Mehrfachwahl", "gapmc", 22, 1, 25, { instruction: "Lesen Sie den folgenden Text. Welche Lösung (a, b, c oder d) ist jeweils richtig?" })
           ]},
-          hoeren: { minutes: 40, parts: [
-            P("H1", "Teil 1", "Vorlesungsausschnitt – Notizen", "short", 8, 3, 12, { plays: 1 }),
-            P("H2", "Teil 2", "Seminardiskussion", "mc3", 8, 3, 14, { plays: 1 }),
-            P("H3", "Teil 3", "Interview mit Forschenden", "tf", 8, 3, 14, { plays: 1 })
+          hoeren: { minutes: 40, ord: 2, pauseBefore: 20, parts: [
+            P("H1", "Teil 1", "Globalverstehen: Meinungen zuordnen", "match", 8, 1, 10, { plays: 1, bank: 10, readSec: 60, ui: "persons", instruction: "Sie hören die Meinungen von acht Personen. Sie hören die Meinungen nur einmal. Entscheiden Sie beim Hören, welche Aussage (a–j) zu welcher Person (Sprecherin/Sprecher 1–8) passt. Zwei Aussagen passen nicht." }),
+            P("H2", "Teil 2", "Detailverstehen: 3er-Mehrfachwahl", "mc3", 10, 2, 15, { plays: 1, readSec: 180, instruction: "Sie hören eine Radiosendung. Sie hören die Sendung nur einmal. Entscheiden Sie beim Hören, welche Aussage (a, b oder c) am besten passt." }),
+            P("H3", "Teil 3", "Informationstransfer: Informationen ergänzen", "short", 10, 2, 15, { plays: 1, readSec: 60, instruction: "Sie hören einen Vortrag. Sie hören den Vortrag nur einmal. Schreiben Sie die fehlenden Informationen stichwortartig in die freien Zeilen." })
           ]},
-          schreiben: { minutes: 70, parts: [
-            P("S1", "Teil 1", "Wissenschaftlicher Text mit Grafikbeschreibung", "writing", 1, 45, 70, { words: 350, instruction: "Beschreiben Sie die Grafik und nehmen Sie begründet Stellung." })
+          schreiben: { minutes: 70, ord: 3, parts: [
+            P("S1", "Teil 1", "Erörterung / Stellungnahme: Thema 1 oder 2", "writing", 1, 48, 70, { words: 350, choice: true, instruction: "Wählen Sie eines der folgenden zwei Themen. Schreiben Sie einen Text, in dem Sie Ihren eigenen Standpunkt dazu erarbeiten und argumentativ darlegen. Ihr Text soll etwa 350 Wörter umfassen. Sie haben 70 Minuten Zeit." })
           ]},
-          sprechen: { minutes: 24, group: "Paarprüfung", prep: 16, parts: [
-            P("P1", "Teil 1", "Präsentation eines Themas", "speaking", 1, 25, 8, { seconds: 300 }),
-            P("P2", "Teil 2", "Diskussion mit Partner/in", "speaking", 1, 25, 8, { seconds: 360 }),
-            P("P3", "Teil 3", "Gemeinsame Problemlösung", "speaking", 1, 25, 8, { seconds: 360 })
+          sprechen: { minutes: 16, ord: 4, group: "Paarprüfung (zwei Teilnehmende)", prep: 20, parts: [
+            P("P1", "Teil 1A", "Präsentation (ca. 3 Minuten)", "speaking", 1, 20, 4, { seconds: 180, choices: true, instruction: "Wählen Sie eines der Themen und halten Sie ein Kurzreferat (ca. 3 Minuten)." }),
+            P("P2", "Teil 1B", "Zusammenfassung und Anschlussfragen (ca. 2 Minuten)", "speaking", 1, 8, 3, { seconds: 120, instruction: "Fassen Sie zusammen, was Ihr Partner / Ihre Partnerin vorgetragen hat, und stellen Sie mindestens eine Frage." }),
+            P("P3", "Teil 2", "Diskussion (ca. 6 Minuten)", "speaking", 1, 20, 6, { seconds: 360, instruction: "Diskutieren Sie das Thema mit Ihrer Partnerin / Ihrem Partner. Tauschen Sie Argumente aus." })
+          ]}
+        }
+      },
+      C2: {
+        title: "telc Deutsch C2", modular: false, verified: "verified",
+        source: "telc Deutsch C2, Übungstest 1: Leseverstehen 80 Min (40 Punkte), Hörverstehen und Schreiben 60 Min (40 Punkte), 20 Min Pause, Schriftlicher Ausdruck 90 Min (40 Punkte), Mündlich ca. 15 Min (+ 20 Min Vorbereitung, 40 Punkte). 160 Punkte: schriftlich 120 (bestanden ab 72), mündlich 40 (bestanden ab 24), gesamt mindestens 96.",
+        scoring: { kind: "telc160", written: { max: 120, pass: 72 }, speaking: { max: 40, pass: 24 }, total: 160, passTotal: 96 },
+        topics: "Wissenschaft, Gesellschaft, Bildung, Philosophie, Politik, Kultur",
+        blockNote: "Die Lesetexte stehen Ihnen auch für den Subtest „Schriftlicher Ausdruck“ als Quellentexte zur Verfügung. Nach „Hörverstehen und Schreiben“ folgt eine Pause von 20 Minuten.",
+        modules: {
+          lesen: { minutes: 80, ord: 1, parts: [
+            P("L1", "Teil 1", "Textlogik verstehen: Abschnitte ordnen", "order", 5, 2, 20, { instruction: "Lesen Sie die Abschnitte und sortieren Sie sie in der richtigen Reihenfolge." }),
+            P("L2", "Teil 2", "Detailverstehen: 3er-Mehrfachwahl", "mc3", 10, 1, 25, { instruction: "Lesen Sie den folgenden Text und lösen Sie die darauf folgenden 10 Aufgaben. Markieren Sie die richtige Lösung (a, b oder c)." }),
+            P("L3", "Teil 3", "Detailverstehen / implizites Verstehen: Zuordnen", "match", 10, 2, 35, { bank: 13, bankHasX: true, ui: "paras", instruction: "Lesen Sie den folgenden Text. Beantworten Sie dann die Fragen. Markieren Sie die richtige Lösung. Es kann sein, dass es für eine oder mehrere Aufgaben keinen passenden Textabschnitt gibt. In diesem Fall markieren Sie „x“." })
+          ]},
+          hoeren: { minutes: 60, ord: 2, parts: [
+            P("H1", "Teil 1", "Informationstransfer: Zusammenfassung schreiben", "writing", 1, 40, 60, { plays: 1, words: 250, notes: true, instruction: "Sie hören einen Vortrag. Sie hören den Vortrag einmal. Machen Sie sich während des Hörens Notizen. Schreiben Sie nach dem Vortrag anhand Ihrer Notizen eine Zusammenfassung als fortlaufenden Text in ganzen Sätzen. Nach dem Vortrag haben Sie 45 Minuten Zeit." })
+          ]},
+          schreiben: { minutes: 90, ord: 3, pauseBefore: 20, parts: [
+            P("S1", "Teil 1", "Erörterung / Stellungnahme: Aufsatz mit Quellen", "writing", 1, 40, 90, { words: 400, choice: true, instruction: "Schreiben Sie einen Aufsatz. Wählen Sie einen der Themenschwerpunkte. Beziehen Sie Fakten und Argumente aus mindestens drei der gelesenen und gehörten Texte mit ein. Sie haben 90 Minuten Zeit." })
+          ]},
+          sprechen: { minutes: 15, ord: 4, group: "Einzelprüfung", prep: 20, parts: [
+            P("P1", "Teil 1", "Vortrag (ca. 6–8 Minuten)", "speaking", 1, 20, 8, { seconds: 420, choices: true, instruction: "Wählen Sie entweder Thema A oder Thema B und halten Sie einen gegliederten Vortrag (ca. 6–8 Minuten)." }),
+            P("P2", "Teil 2", "Vertiefendes Gespräch (ca. 7–9 Minuten)", "speaking", 1, 20, 8, { seconds: 480, instruction: "Beantworten Sie die Anschlussfragen der Prüfenden und verteidigen Sie die Thesen Ihres Vortrags." })
           ]}
         }
       }
@@ -1273,14 +1302,15 @@ function scoreModule(bp, modKey, content, answers) {
     const fmt = FORMATS[part.format] || {};
     const pm = partMax(part);
     max += pm;
-    let got = 0, correct = 0, answered = 0, autoable = fmt.auto && pc && pc.items;
+    const shortAuto = part.format === "short" && bp._exam === "telc" && pc && pc.items && pc.items.some(x => x.answer != null && x.answer !== "");
+    let got = 0, correct = 0, answered = 0, autoable = (fmt.auto || shortAuto) && pc && pc.items;
 
     if (autoable) {
       pc.items.forEach((it, i) => {
         const key = part.id + ":" + i;
         const given = answers ? answers[key] : undefined;
         if (given !== undefined && given !== null && given !== "") answered++;
-        if (given !== undefined && (window.TDF ? TDF.isRight(part, it, given) : String(given) === String(it.answer))) { correct++; got += part.ptsPerItem; }
+        if (given !== undefined && (shortAuto ? window.TC.shortRight(it, given) : (window.TDF ? TDF.isRight(part, it, given) : String(given) === String(it.answer)))) { correct++; got += part.ptsPerItem; }
       });
     } else {
       // Human/AI-graded: use stored grade if present (0..1 of part max)
@@ -1302,7 +1332,7 @@ function scoreModule(bp, modKey, content, answers) {
     normalised = Math.round(pct * 100); scale = 100;
     passed = normalised >= (sc.pass || 60);
     label = normalised + " / 100";
-  } else if (sc.kind === "telc300") {
+  } else if (sc.kind === "telc300" || sc.kind === "telc60" || sc.kind === "telc214" || sc.kind === "telc160") {
     normalised = Math.round(raw * 10) / 10; scale = max;
     passed = pct >= 0.6;
     label = normalised + " / " + Math.round(max) + " Pkt";
@@ -1341,6 +1371,20 @@ function examVerdict(bp, results) {
   if (sc.kind === "module100" || sc.kind === "tdn") {
     const all = keys.every(k => results[k].passed);
     return { text: all ? "Alle vorliegenden Module bestanden" : "Mindestens ein Modul unter der Grenze", ok: all };
+  }
+  if (sc.kind === "telc60" || sc.kind === "telc300" || sc.kind === "telc214" || sc.kind === "telc160") {
+    let w = 0, wm = 0, sp = 0, sm = 0;
+    for (const k of keys) { const r = results[k]; if (k === "sprechen") { sp += r.raw; sm += r.max; } else { w += r.raw; wm += r.max; } }
+    const rd = x => Math.round(x * 10) / 10;
+    if (sc.kind === "telc60") {
+      const tot = w + sp, full = wm + sm >= sc.total - 0.01;
+      return { text: full ? (tot >= sc.pass ? "Bestanden (" + rd(tot) + " von " + sc.total + " Punkten, Grenze " + sc.pass + ")" : "Nicht bestanden (" + rd(tot) + " von " + sc.total + ", Grenze " + sc.pass + ")") : (tot / (wm + sm) >= 0.6 ? "Bisher über 60 %" : "Bisher unter 60 %"), ok: tot / (wm + sm) >= 0.6, detail: "Schriftlich " + rd(w) + "/" + rd(wm) + " · Mündlich " + rd(sp) + "/" + rd(sm) };
+    }
+    const wOk = wm ? w / wm >= 0.6 : true, sOk = sm ? sp / sm >= 0.6 : true;
+    let ok = wOk && sOk;
+    if (sc.passTotal && wm && sm) ok = ok && (w + sp) >= sc.passTotal - 0.01;
+    return { text: ok ? "Bestanden: schriftlich und mündlich jeweils mindestens 60 %" + (sc.passTotal && wm && sm ? " und gesamt ≥ " + sc.passTotal : "") : "Nicht bestanden: unter 60 % in " + (!wOk ? "schriftlich" : !sOk ? "mündlich" : "der Gesamtpunktzahl"), ok,
+      detail: "Schriftlich " + rd(w) + "/" + rd(wm) + " (Grenze " + (sc.written ? sc.written.pass : "") + ") · Mündlich " + rd(sp) + "/" + rd(sm) + " (Grenze " + (sc.speaking ? sc.speaking.pass : "") + ")" };
   }
   // aggregate exams: written block vs speaking
   let wr = 0, wm = 0, sp = 0, sm = 0;
@@ -1393,7 +1437,7 @@ function contentCoverage(test) {
   for (const mk of moduleKeys(bp)) for (const p of bp.modules[mk].parts) {
     total++;
     const c = test.content?.[mk]?.[p.id];
-    if (c && (c.items?.length || c.prompt || c.task)) filled++;
+    if (c && (c.items?.length || c.prompt || c.task || c.tasks?.length || c.audio?.script?.length)) filled++;
   }
   return { filled, total };
 }
@@ -1404,7 +1448,7 @@ function moduleCoverage(test, mk) {
   let filled = 0;
   for (const p of mod.parts) {
     const c = test.content?.[mk]?.[p.id];
-    if (c && (c.items?.length || c.prompt || c.task)) filled++;
+    if (c && (c.items?.length || c.prompt || c.task || c.tasks?.length || c.audio?.script?.length)) filled++;
   }
   return { filled, total: mod.parts.length };
 }
@@ -2516,7 +2560,8 @@ function passLabel(bp) {
   const s = bp.scoring;
   if (s.kind === "module100") return s.pass + " / 100";
   if (s.kind === "tdn") return s.target;
-  if (s.kind === "telc300") return "60 %";
+  if (s.kind === "telc300" || s.kind === "telc214" || s.kind === "telc160") return "60 %";
+  if (s.kind === "telc60") return "36 / 60";
   if (s.kind === "split") return s.written.pass + "/" + s.written.max + " + " + s.speaking.pass + "/" + s.speaking.max;
   return "60 %";
 }
@@ -2863,8 +2908,13 @@ function startRun(testId, moduleKey, opts = {}) {
   const test = testById(testId);
   if (!test) return toast("Modelltest nicht gefunden.", "err");
   const bp = blueprint(test.exam, test.level);
-  const mod = bp.modules[moduleKey];
+  let mod = bp.modules[moduleKey], tcKeys = null;
   if (!mod) return toast("Dieses Modul gibt es in diesem Aufbau nicht.", "err");
+  if (test.exam === "telc" && window.TC) {
+    const pr = TC.prepare(test, bp, moduleKey);
+    if (opts.fresh) pr.keys.forEach(k => { clearAnswers(testId, k); clearCheckpoint(testId, k); });
+    moduleKey = pr.moduleKey; mod = pr.mod; tcKeys = pr.keys;
+  }
 
   const cov = moduleCoverage(test, moduleKey);
   if (!cov.filled) {
@@ -2878,7 +2928,8 @@ function startRun(testId, moduleKey, opts = {}) {
   S.run = {
     testId, test, bp, moduleKey, mod,
     partIndex: resuming ? Math.min(cp.partIndex || 0, mod.parts.length - 1) : 0,
-    answers: Object.assign({}, getAnswers(testId, moduleKey)),
+    answers: tcKeys ? TC.loadAnswers(testId, tcKeys) : Object.assign({}, getAnswers(testId, moduleKey)),
+    tc: tcKeys ? { intro: true, keys: tcKeys } : undefined,
     plays: {},
     startedAt: Date.now(),
     secondsLeft: resuming && cp.secondsLeft > 0 ? cp.secondsLeft : moduleMinutes(mod) * 60,
@@ -2896,7 +2947,7 @@ function startFullExam(testId) {
   const test = testById(testId);
   const bp = blueprint(test.exam, test.level);
   const ORD = test.exam === "goethe" ? (test.level === "A1" ? ["hoeren", "lesen", "schreiben", "sprechen"] : ["lesen", "hoeren", "schreiben", "sprechen"]) : null;
-  const keys = moduleKeys(bp).filter(k => moduleCoverage(test, k).filled > 0).sort((a, b) => ORD ? ORD.indexOf(a) - ORD.indexOf(b) : 0);
+  const keys = test.exam === "telc" && window.TC ? TC.fullOrder(test, bp) : moduleKeys(bp).filter(k => moduleCoverage(test, k).filled > 0).sort((a, b) => ORD ? ORD.indexOf(a) - ORD.indexOf(b) : 0);
   if (!keys.length) return toast("Es sind noch keine Inhalte vorhanden.", "err");
   confirmBox("Komplette Prüfung starten?",
     "Die Module laufen nacheinander mit ihren eigenen Zeitgebern: " + keys.map(k => modName(k) + " " + moduleMinutes(bp.modules[k]) + " Min").join(", ") + ". Gesamt " + keys.reduce((s, k) => s + moduleMinutes(bp.modules[k]), 0) + " Minuten." + (test.exam === "goethe" && lvlRank(test.level) >= 3 ? " Zwischen den schriftlichen Modulen ist nach den Durchführungsbestimmungen eine Pause von mindestens 15 Minuten vorgesehen." : ""),
@@ -2906,7 +2957,7 @@ function startFullExam(testId) {
 let clockTimer = null;
 function startClock() {
   stopClock();
-  if (S.run && S.run.test && (S.run.test.exam === "testdaf" || S.run.test.exam === "goethe")) return; // TestDaF/Goethe: eigene Zeitgeber (TDF-/GZ-Engine)
+  if (S.run && S.run.test && (S.run.test.exam === "testdaf" || S.run.test.exam === "goethe" || S.run.test.exam === "telc")) return; // TestDaF/Goethe: eigene Zeitgeber (TDF-/GZ-Engine)
   let tick = 0;
   clockTimer = setInterval(() => {
     if (!S.run || S.run.finished) return stopClock();
@@ -2934,6 +2985,7 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 
 function saveRunAnswers() {
   if (!S.run) return;
+  if (S.run.test.exam === "telc" && window.TC && S.run.tc) return TC.persist(S.run);
   setAnswers(S.run.testId, S.run.moduleKey, S.run.answers);
   setCheckpoint(S.run.testId, S.run.moduleKey, S.run.partIndex, S.run.secondsLeft);
 }
@@ -2962,7 +3014,8 @@ VIEWS.run = () => {
   const R = S.run;
   const shell = el("div", {});
   if (!R) { shell.append(el("div", { class: "page" }, el("div", { class: "empty" }, "Keine aktive Sitzung."))); return shell; }
-  if (R.reviewing) return reviewView();
+  if (R.reviewing) return (R.test.exam === "telc" && R.tc && R.tc.thanks && window.TC) ? TC.runView() : reviewView();
+  if (R.test.exam === "telc" && window.TC) return TC.runView();
   if (R.test.exam === "testdaf" && window.TDF) return TDF.runView();
   if (R.test.exam === "goethe" && window.GZ) return GZ.runView();
 
@@ -2986,7 +3039,7 @@ VIEWS.run = () => {
   shell.append(el("div", { class: "runbar" },
     el("button", { class: "btn sm ghost", title: "Sichert Antworten, aktuellen Teil und verbleibende Zeit — später an genau dieser Stelle weitermachen.", onclick: () => exitRun() }, "💾 Speichern & Verlassen"),
     el("div", { class: "row", style: "gap:8px" },
-      el("span", { class: "pill " + MODULE_META[R.moduleKey].cls }, el("span", { class: "mod-dot" }), modName(R.moduleKey)),
+      el("span", { class: "pill " + MODULE_META[R.moduleKey].cls }, el("span", { class: "mod-dot" }), (R.tc && R.tc.keys && R.tc.keys.length > 1) ? R.tc.keys.map(modName).join(" + ") : modName(R.moduleKey)),
       el("span", { class: "xsmall muted", text: R.test.name })),
     el("div", { class: "spacer" }),
     ratioSeg,
@@ -3908,15 +3961,21 @@ function finishRun() {
   saveRunAnswers();
   clearCheckpoint(R.testId, R.moduleKey); // done — a later restart begins fresh, not mid-way
 
-  const res = scoreModule(R.bp, R.moduleKey, R.test.content[R.moduleKey], R.answers);
-  const attempt = {
-    id: uid("att"), at: Date.now(), testId: R.testId, testName: R.test.name,
-    exam: R.test.exam, level: R.test.level, module: R.moduleKey,
-    raw: res.raw, max: res.max, pct: res.pct, normalised: res.normalised, scale: res.scale,
-    label: res.label, passed: res.passed, perPart: res.perPart,
-    durationSec: Math.round((Date.now() - R.startedAt) / 1000)
-  };
-  S.attempts.push(attempt); saveAttempts();
+  const tcKeys = (R.tc && R.tc.keys) || [R.moduleKey];
+  if (tcKeys.length > 1) tcKeys.slice(1).forEach(k => clearCheckpoint(R.testId, k));
+  const results = tcKeys.map(k => scoreModule(R.bp, k, R.test.content[k], R.answers));
+  tcKeys.forEach((k, i) => {
+    const r0 = results[i];
+    S.attempts.push({
+      id: uid("att"), at: Date.now(), testId: R.testId, testName: R.test.name,
+      exam: R.test.exam, level: R.test.level, module: k,
+      raw: r0.raw, max: r0.max, pct: r0.pct, normalised: r0.normalised, scale: r0.scale,
+      label: r0.label, passed: r0.passed, perPart: r0.perPart,
+      durationSec: Math.round((Date.now() - R.startedAt) / 1000)
+    });
+  });
+  saveAttempts();
+  const res = results.length > 1 ? TC.mergeResults(results) : results[0];
   R.result = res; R.reviewing = true;
   go("run");
 }
@@ -3935,7 +3994,7 @@ function reviewView() {
   page.append(el("div", { class: "card", style: "margin-bottom:18px" },
     el("div", { class: "row", style: "justify-content:space-between;align-items:flex-end" },
       el("div", {},
-        el("h1", { text: modName(R.moduleKey) + " — Ergebnis" }),
+        el("h1", { text: ((R.tc && R.tc.keys && R.tc.keys.length > 1) ? R.tc.keys.map(modName).join(" + ") : modName(R.moduleKey)) + " — Ergebnis" }),
         el("div", { class: "small muted", text: R.test.name + " · " + Math.round(res.raw * 10) / 10 + " von " + Math.round(res.max) + " Punkten" })),
       el("div", { style: "text-align:right" },
         el("div", { style: "font-family:var(--font-heading);font-size:38px;line-height:1" , text: String(res.normalised) }),
@@ -3965,7 +4024,7 @@ function reviewView() {
   } else if (S.settings.showSolutionsAfter) {
     page.append(el("h2", { style: "margin:20px 0 10px", text: "Lösungen" }));
     for (const part of R.mod.parts) {
-      const c = R.test.content?.[R.moduleKey]?.[part.id];
+      const c = R.test.content?.[part._mk || R.moduleKey]?.[part.id];
       if (!c) continue;
       const fmt = FORMATS[part.format] || {};
       const card = el("div", { class: "card", style: "margin-bottom:12px" },
@@ -4355,7 +4414,33 @@ const AI_SYSTEM = [
   "Jede Lösung ist allein aus dem gegebenen Text ableitbar — kein Weltwissen nötig."
 ].join(" ");
 
+/* telc: Schemata für die neuen Aufgabenformate (KI-Erzeugung) */
+function telcSchema(part, level) {
+  const f = part.format, n = part.items || 1, base = '"title": "kurzer Titel", "instruction": "Arbeitsanweisung auf Deutsch (wie im telc-Aufgabenheft)"';
+  const why = '"why": "ein Satz: warum diese Lösung richtig ist, mit Textbeleg"';
+  const audio = (len) => `"audio": { "plays": ${part.plays || 1}, "readSec": ${part.readSec != null ? part.readSec : 30}, "script": [ { "speaker": "Rolle", "text": "gesprochener Text${len ? ", " + len : ""}" } ] }`;
+  if (f === "writing" && part.choice) return `{ ${base}, "choiceLabel": "${part.id === "S1" && /^C/.test(level) ? "Thema" : "Aufgabe"}", "tasks": [ 2x { "key": "A", "title": "Kurztitel der Aufgabe", "stimulus": "Ausgangstext (Anzeige, Artikelauszug oder Situationsbeschreibung, 60-150 Wörter)", "prompt": "Aufgabenstellung in 2-4 Sätzen", "bullets": [ "Leitpunkt/Aspekt (je nach Niveau 3-4 Stück)" ], "words": ${part.words || 150} } ] }  Die Schlüssel der zwei Aufgaben sind ${/^C/.test(level) ? '"1" und "2"' : '"A" und "B"'}.${level === "B2" ? " Aufgabe A ist eine Bitte um Informationen (halbformelle E-Mail auf eine Anzeige), Aufgabe B eine Beschwerde auf eine Werbeanzeige." : ""}`;
+  if (f === "writing" && part.notes) return `{ ${base}, ${audio("Vortrag mit 5-8 Aspekten, insgesamt 450-700 Wörter, ein Sprecher")}, "situation": "Situation: wer schreibt für wen?", "prompt": "Aufgabe: Zusammenfassung als fließender Text", "bullets": [ "Inhaltlicher Schwerpunkt 1", "Schwerpunkt 2", "Schwerpunkt 3" ], "words": ${part.words || 250} }`;
+  if (f === "writing") return `{ ${base}, "stimulus": "Ausgangstext, auf den geantwortet wird (E-Mail oder Nachricht, 60-120 Wörter)", "prompt": "Aufgabenstellung in 2-3 Sätzen", "bullets": [ ${part.leitpunkte || 3}x "Leitpunkt" ], "words": ${part.words || 150}, "tips": "ein Satz zur Vorgehensweise" }`;
+  if (f === "speaking" && part.choices) return `{ ${base}, "prompt": "Sprechaufgabe in 2-3 Sätzen", "topics": [ "Thema A mit Leitfragen", "Thema B mit Leitfragen" ], "topicLabel": "Thema", "bullets": [ "Aspekt 1", "Aspekt 2", "Aspekt 3" ], "seconds": ${part.seconds || 180} }`;
+  if (f === "tfn") return `{ ${base}, "title": "Überschrift", "passage": "langer Lesetext mit nummerierten Absätzen, 450-700 Wörter", "items": [ ${n}x { "prompt": "Aussage zum Text", "options": ["Richtig","Falsch","Nicht im Text"], "answer": 0, ${why} } ] }  Genau 0 (richtig), 1 (falsch) oder 2 (steht nicht im Text); verteile die Lösungen gleichmäßig.`;
+  if (f === "order") return `{ ${base}, "example": { "key": "z", "text": "Einleitender Abschnitt (steht an Position 0)" }, "bank": [ ${n}x { "key": "a", "text": "Textabschnitt, 60-110 Wörter (nicht in der richtigen Reihenfolge angeordnet)" } ], "items": [ ${n}x { "prompt": "Position 1", "answer": "Schlüssel des Abschnitts an dieser Position", ${why} } ] }  Der vollständige Text ergibt sich aus z und den Abschnitten in der Reihenfolge der Items.`;
+  if (f === "match" && part.ui === "heads") return `{ ${base}, "bank": [ ${part.bank || n * 2}x { "key": "a", "text": "Überschrift" } ], "items": [ ${n}x { "prompt": "Textabschnitt, 90-150 Wörter (Zeitungsartikel, Anzeige, Reportage)", "answer": "a", ${why} } ] }  Jede Überschrift passt zu höchstens einem Text; die übrigen sind plausible Ablenker.`;
+  if (f === "match" && part.ui === "ads") return `{ ${base}, "bank": [ ${part.bank || n + 2}x { "key": "a", "text": "Anzeige oder Kurztext, 40-90 Wörter" } ], "items": [ ${n}x { "prompt": "Situation einer Person (Satz)", "answer": "a", ${why} } ] }${part.bankHasX ? '  Bei genau 1-2 Items ist "answer" exakt der String "x" (keine Anzeige passt).' : ""}  Jede Anzeige wird höchstens einmal verwendet.`;
+  if (f === "match" && part.ui === "paras") return `{ ${base}, "bank": [ ${part.bank || 5}x { "key": "a", "text": "Textabschnitt, 80-150 Wörter" } ], "items": [ ${n}x { "prompt": "Frage bzw. Aussage, die einem Abschnitt zugeordnet wird", "answer": "a", ${why} } ] }${part.bankHasX ? '  Bei 1-2 Items ist "answer" exakt "x" (kein Abschnitt passt).' : ""}`;
+  if (f === "match" && part.ui === "persons") return `{ ${base}, ${audio(n + " kurze Sprecherbeiträge bzw. ein Gespräch, deutlich unterscheidbar")}, "bank": [ ${part.bank || n + 2}x { "key": "a", "text": "Aussage / Ort / Option" } ], "items": [ ${n}x { "prompt": "Person bzw. Sprecher 1", "answer": "a", ${why} } ] }  Nicht alle Bankeinträge werden verwendet.`;
+  if (f === "gapbank" && part.id === "L1" && /^C/.test(level)) return `{ ${base}, "passage": "Zeitungs- oder Fachtext, 350-500 Wörter, mit genau ${n} Lücken ___1___ bis ___${n}___ an Absatz- bzw. Satzstellen, an denen ein ganzer Satz fehlt", "bank": [ ${part.bank || n + 2}x { "key": "a", "text": "ganzer Satz, der in eine Lücke passt (bei 2 Sätzen: Ablenker)" } ], "items": [ ${n}x { "prompt": "Lücke 1", "answer": "a", ${why} } ] }`;
+  if (f === "mc2") return `{ ${base}, "items": [ ${n}x { "prompt": "Aufgabe/Situation (z. B. 'Sie möchten …')", "options": ["Text bzw. Adresse a","Text bzw. Adresse b"], "answer": 0, ${why} } ] }`;
+  if (f === "short" && part.plays) return `{ ${base}, ${audio("")}, "formTitle": "Telefonnotiz bzw. Raster", "items": [ ${n}x { "prompt": "Notiz-Feld (z. B. 'Uhrzeit:')", "answer": "erwartete Antwort kurz", "answers": ["gleichwertige Schreibweisen"] } ] }`;
+  if (f === "short") return `{ ${base}, "passage": "Situation / Informationen, aus denen das Formular auszufüllen ist (40-90 Wörter)", "formTitle": "Titel des Formulars", "items": [ ${n}x { "prompt": "Feldname:", "answer": "erwartete Antwort", "answers": ["gleichwertige Schreibweisen"] } ] }`;
+  if ((f === "tf" || f === "mc3") && part.images) return `{ ${base}, "images": true, ${audio("")}, "items": [ ${n}x { "prompt": "Frage zu Text ${"i"}", "options": ["kurze Beschriftung a","kurze Beschriftung b","kurze Beschriftung c"], "answer": 0, ${why} } ] }  Der Text enthält ${n} sehr kurze Alltagsdialoge/Ansagen (Zahlen, Uhrzeit, Preise), jeder passt zu einer Frage.`;
+  if (f === "tf" && part.plays) return `{ ${base}, ${audio(n === 10 ? "ein Interview, insgesamt 400-600 Wörter" : n + " kurze Texte (Nachrichten, Ansagen), gemeinsam 250-450 Wörter")}, "items": [ ${n}x { "prompt": "Aussage zum Gehörten", "options": ["Richtig","Falsch"], "answer": 0, ${why} } ] }  Die Aussagen folgen der Reihenfolge der Informationen im Hörtext; ca. die Hälfte ist falsch.`;
+  if (f === "tf") return `{ ${base}, "passage": "kurzer Text / Mitteilung, 40-120 Wörter", "items": [ ${n}x { "prompt": "Aussage", "options": ["Richtig","Falsch"], "answer": 0, ${why} } ] }`;
+  return null;
+}
+
 function schemaFor(part, ex, level) {
+  if (ex && ex.id === "telc") { const ts = telcSchema(part, level); if (ts) return ts; }
   const f = part.format, n = part.items || 1;
   const base = '"title": "kurzer Titel", "instruction": "Arbeitsanweisung auf Deutsch"';
   const why = '"why": "ein Satz: warum diese Lösung richtig ist, mit Textbeleg"';
@@ -4430,7 +4515,7 @@ function validatePart(part, obj) {
   const problems = [];
   if (!obj || typeof obj !== "object") return ["Keine Objektstruktur erhalten."];
 
-  if (fmt.essay) { if (!obj.prompt) problems.push("prompt fehlt"); return problems; }
+  if (fmt.essay) { if (!obj.prompt && !(Array.isArray(obj.tasks) && obj.tasks.length)) problems.push("prompt bzw. tasks fehlt"); return problems; }
   if (fmt.spoken) { if (!obj.prompt) problems.push("prompt fehlt"); return problems; }
 
   if (!Array.isArray(obj.items) || !obj.items.length) return ["items fehlen"];
@@ -7244,6 +7329,807 @@ body.gz-active .shell>aside,body.gz-active #sidebar,body.gz-active .topbar{visib
 @media(max-width:800px){.gz-main{padding:8px 34px}.gz-split{grid-template-columns:1fr!important;overflow:auto}.gz-ctls{display:none}.gz-head{flex-wrap:wrap}}
 `;
 const st = document.createElement("style"); st.textContent = css; document.head.append(st);
+})();
+</script>
+
+<script>
+/* =========================================================================
+   telc digital — Prüfungsoberfläche nach der telc-Prüfungsplattform (Demo-PDF):
+   telc-Kopfzeile mit Teil-Reitern („Leseverstehen Teil 1 (25 Punkte)“, Haken bei
+   erledigten Teilen), Untertest-Leiste, gelber Hinweiskasten, Verbleibende Zeit,
+   ABGABE / SPEICHERN, Zeichen-Leiste und Meldungsfeld unten, Hörplayer im Kopf,
+   Drag-&-Drop-Zuordnungen, Tabellen Richtig/Falsch, Lückentexte mit Wortbank,
+   Wahl Aufgabe A/B beim Schreiben, „Prüfung versenden“-Dialog.
+   Aufbau, Zeiten und Punkte: telc Übungstests A1–C2 (siehe BLUEPRINTS.telc).
+   Zusammengehörige Untertests (Lesen + Sprachbausteine, A1/A2 Lesen + Schreiben)
+   laufen wie in der echten Prüfung in EINEM Block mit gemeinsamer Zeit.
+   Datenformat: modeltest/telc/SCHEMA.md
+   ======================================================================= */
+(function () {
+"use strict";
+const TC = window.TC = { vol: 1 };
+const PHIMG = (window.GZ && GZ.PH) || ("data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260"><rect width="400" height="260" fill="#e3e6e8"/><circle cx="300" cy="80" r="30" fill="#c5cacd"/><path d="M0 230 L120 110 L200 190 L270 130 L400 240 L400 260 L0 260Z" fill="#b3b9bd"/></svg>'));
+TC.PH = PHIMG;
+TC.shortRight = function (it, given) {
+  const norm = x => String(x == null ? "" : x).toLowerCase().replace(/[.,;:!?€"'„“()]/g, "").replace(/\s+/g, " ").replace(/uhr$/, "").trim();
+  const g = norm(given); if (!g) return false;
+  const ok = [it.answer].concat(it.answers || []).filter(x => x != null && x !== "").map(norm);
+  return ok.some(a => a === g || (a.length > 3 && g.length > 3 && (g.includes(a) || a.includes(g))));
+};
+const MODT = { lesen: "Leseverstehen", bausteine: "Sprachbausteine", hoeren: "Hörverstehen", schreiben: "Schriftlicher Ausdruck", sprechen: "Mündlicher Ausdruck" };
+const MODT_A = { lesen: "Lesen", schreiben: "Schreiben", hoeren: "Hören", sprechen: "Sprechen" };
+const modTitle = (lv, mk) => (lv === "A1" || lv === "A2") ? (MODT_A[mk] || mk) : (lv === "C2" && mk === "hoeren" ? "Hörverstehen und Schreiben" : (MODT[mk] || mk));
+const PAUSE = 5, WORK = 10;
+const UIK = "ps.tc.ui";
+const ui = Object.assign({ vol: 10 }, store.read(UIK, {}));
+TC.vol = ui.vol / 10;
+const fmtOf = p => FORMATS[p.format] || {};
+const isEssay = p => !!fmtOf(p).essay, isSpoken = p => !!fmtOf(p).spoken;
+const itemsOf = p => (isEssay(p) || isSpoken(p)) ? 1 : (p.items || 0);
+const contentOf = (R, part) => R.test.content?.[part._mk || R.moduleKey]?.[part.id];
+const curPart = R => R.mod.parts[R.partIndex];
+const lvlOf = R => R.test.level;
+const blank = v => v === undefined || v === null || String(v).trim() === "";
+const ptsText = p => Math.round(partMax(p) * 10) / 10;
+
+/* ------------------------------ Blöcke / Start ------------------------------ */
+TC.blockKeys = function (bp, mk) {
+  const m = bp.modules[mk];
+  if (!m || !m.blockWith || !bp.modules[m.blockWith]) return [mk];
+  const prim = m.blockMinutes ? mk : m.blockWith;
+  return [prim, prim === mk ? m.blockWith : mk];
+};
+TC.prepare = function (test, bp, mk) {
+  const keys = TC.blockKeys(bp, mk), prim = bp.modules[keys[0]], parts = [];
+  keys.forEach(k => bp.modules[k].parts.forEach(p => parts.push(Object.assign({}, p, { _mk: k }))));
+  const mod = Object.assign({}, prim, { parts, minutes: prim.blockMinutes || prim.minutes });
+  let filled = 0; keys.forEach(k => { filled += moduleCoverage(test, k).filled; });
+  return { keys, moduleKey: keys[0], mod, filled };
+};
+TC.loadAnswers = (testId, keys) => keys.slice().reverse().reduce((a, k) => Object.assign(a, getAnswers(testId, k)), {});
+TC.persist = function (R) {
+  const keys = (R.tc && R.tc.keys) || [R.moduleKey];
+  keys.forEach(k => setAnswers(R.testId, k, R.answers));
+  setCheckpoint(R.testId, R.moduleKey, R.partIndex, R.secondsLeft);
+};
+TC.clearAll = function (testId, bp, mk) { TC.blockKeys(bp, mk).forEach(k => { clearAnswers(testId, k); clearCheckpoint(testId, k); }); };
+/* Reihenfolge der kompletten Prüfung (je Block nur ein Eintrag) */
+TC.fullOrder = function (test, bp) {
+  const seen = {}, out = [];
+  Object.keys(bp.modules).filter(k => moduleCoverage(test, k).filled > 0 || TC.blockKeys(bp, k).some(x => moduleCoverage(test, x).filled > 0))
+    .sort((a, b) => (bp.modules[a].ord || 9) - (bp.modules[b].ord || 9))
+    .forEach(k => { const keys = TC.blockKeys(bp, k); if (seen[keys[0]]) return; seen[keys[0]] = 1; out.push(keys[0]); });
+  return out;
+};
+TC.mergeResults = function (rs) {
+  const raw = rs.reduce((s, r) => s + r.raw, 0), max = rs.reduce((s, r) => s + r.max, 0), pct = max ? raw / max : 0;
+  const rr = Math.round(raw * 10) / 10;
+  return { raw: rr, max: Math.round(max * 10) / 10, pct, normalised: rr, scale: max, label: rr + " / " + Math.round(max) + " Pkt", passed: pct >= 0.6,
+    perPart: rs.flatMap(r => r.perPart), pendingHuman: rs.reduce((s, r) => s + (r.pendingHuman || 0), 0) };
+};
+
+/* ------------------------------ Zustand / Hilfen ------------------------------ */
+let iv = null, curRoot = null, ac = null, chosenInput = null;
+function beep(f, ms) {
+  try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); const o = ac.createOscillator(), g = ac.createGain();
+    o.frequency.value = f || 880; g.gain.value = 0.18 * TC.vol; o.connect(g); g.connect(ac.destination); o.start(); o.stop(ac.currentTime + (ms || 350) / 1000); } catch (e) {}
+}
+const minLabel = s => Math.max(0, Math.ceil(s / 60));
+const mmss = s => { s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+function say(R, msg) { R.tc.msg = msg; const m = document.getElementById("tc-msg"); if (m) m.value = msg; }
+function partDone(R, p) {
+  const n = itemsOf(p);
+  for (let i = 0; i < n; i++) if (blank(R.answers[p.id + ":" + i])) return false;
+  return n > 0;
+}
+function goPage(i) {
+  const R = S.run; if (!R) return;
+  try { Speech.stop(); } catch (e) {}
+  const au = R.tc.au;
+  R.partIndex = clamp(i, 0, R.mod.parts.length - 1); saveRunAnswers(); go("run");
+  /* läuft die Tonaufnahme, setzt sie nach dem Seitenwechsel dort fort, wo sie war */
+  if (au && au.st === "play" && !au.paused) resumeSpeech(R);
+}
+const answersOf = R => R.answers;
+
+/* ------------------------------ Hörablauf (eine durchgehende Aufnahme) ------------------------------ */
+function auList(R) { return R.mod.parts.map((p, i) => ({ p, i, c: contentOf(R, p) })).filter(x => x.c && x.c.audio && x.c.audio.script && x.c.audio.script.length); }
+function wordsOf(script) { return script.reduce((s, l) => s + String(l.text || "").split(/\s+/).length, 0); }
+function readSecOf(R, it) { return it.c.audio.readSec != null ? it.c.audio.readSec : (it.p.readSec != null ? it.p.readSec : 10); }
+function auTotal(R, list) {
+  const rate = S.settings.speechRate || 1;
+  return list.reduce((s, it) => { const pl = it.c.audio.plays || it.p.plays || 1; return s + readSecOf(R, it) + pl * wordsOf(it.c.audio.script) / 2.4 / rate + (pl - 1) * PAUSE + WORK; }, 0);
+}
+function auInit(R) {
+  if (!R.tc.au) { const list = auList(R); R.tc.au = { k: 0, st: "idle", left: 0, plays: 0, chunk: 0, el: 0, paused: false, total: auTotal(R, list), n: list.length }; }
+  return R.tc.au;
+}
+function auStatusText(au) { return au.st === "read" ? "Lesezeit" : au.st === "play" ? "Wiedergabe" : au.st === "gap" ? "Pause" : au.st === "post" ? "Bearbeitungszeit" : au.st === "done" ? "Ende der Aufnahme" : au.paused ? "angehalten" : "bereit"; }
+function paintAudio() {
+  const R = S.run; if (!R || !R.tc || !R.tc.au) return; const au = R.tc.au;
+  const t = document.getElementById("tc-autime"); if (t) t.textContent = mmss(au.el) + " / " + mmss(Math.max(au.total, au.el));
+  const b = document.getElementById("tc-aubtn"); if (b) b.textContent = (au.st === "idle" || au.paused || au.st === "done") ? "▶" : "❚❚";
+  const s = document.getElementById("tc-austate"); if (s) s.textContent = au.paused ? "angehalten" : auStatusText(au) + ((au.st === "read" || au.st === "gap" || au.st === "post") ? " · " + au.left + " s" : "");
+  say(R, au.paused ? "Audio angehalten" : au.st === "idle" ? "" : auStatusText(au) + (au.n > 1 ? " · Teil " + (au.k + 1) + " von " + au.n : ""));
+}
+function auBeginPart(R) {
+  const au = R.tc.au, list = auList(R), it = list[au.k];
+  if (!it) { au.st = "done"; paintAudio(); return; }
+  au.plays = 0; au.chunk = 0; au.st = "read"; au.left = readSecOf(R, it);
+  if (R.partIndex !== it.i) goPage(it.i); else paintAudio();
+  if (au.left <= 0) auPlay(R);
+}
+function auPlay(R) {
+  const au = R.tc.au, it = auList(R)[au.k]; if (!it) return;
+  au.plays++; au.st = "play"; au.chunk = 0; paintAudio();
+  speak(R, it, 0);
+}
+function speak(R, it, from) {
+  const au = R.tc.au, mine = au.plays, key = "tc:" + it.p.id + ":" + mine;
+  Speech.playFrom(key, it.c.audio.script, S.settings.speechRate || 1, from,
+    (i) => { if (R.tc.au === au && au.plays === mine) au.chunk = i; },
+    () => {
+      if (S.run !== R || au.plays !== mine || au.st !== "play" || au.paused) return;
+      const allowed = it.c.audio.plays || it.p.plays || 1;
+      if (au.plays < allowed) { au.st = "gap"; au.left = PAUSE; } else { au.st = "post"; au.left = WORK; }
+      paintAudio();
+    });
+}
+function resumeSpeech(R) { const au = R.tc.au, it = auList(R)[au.k]; if (au && it && au.st === "play") speak(R, it, au.chunk || 0); }
+TC.audioToggle = function () {
+  const R = S.run; if (!R || !R.tc) return; const au = auInit(R);
+  if (au.st === "done") return;
+  if (au.st === "idle") { au.k = 0; auBeginPart(R); return; }
+  if (au.paused) { au.paused = false; if (au.st === "play") resumeSpeech(R); paintAudio(); }
+  else { au.paused = true; try { Speech.stop(); } catch (e) {} paintAudio(); }
+};
+function audioTick(R) {
+  const au = R.tc.au; if (!au || au.paused || au.st === "idle" || au.st === "done") return;
+  au.el++;
+  if (!au.wait && (au.st === "read" || au.st === "gap" || au.st === "post")) {
+    au.left--;
+    if (au.left <= 0) {
+      if (au.st === "post") { au.k++; auBeginPart(R); return; }
+      au.wait = true; beep(880, 350);
+      setTimeout(() => { au.wait = false; if (S.run === R && !au.paused && (au.st === "read" || au.st === "gap")) auPlay(R); }, 600);
+    }
+  }
+  paintAudio();
+}
+
+/* ------------------------------ Navigation / Abgabe ------------------------------ */
+TC.leave = () => { try { Speech.stop(); } catch (e) {} stopAudio(); exitRun(); };
+TC.save = function () {
+  const R = S.run; if (!R) return; saveRunAnswers();
+  say(R, "Gespeichert um " + new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }) + " Uhr");
+  toast("Gespeichert.", "ok", 1800);
+};
+TC.submit = function (auto) {
+  const R = S.run; if (!R || R.finished) return;
+  try { Speech.stop(); } catch (e) {}
+  R.tc.thanks = true; closeModal(); finishRun();
+};
+function sendDialog() {
+  const R = S.run, total = R.mod.parts.reduce((s, p) => s + itemsOf(p), 0);
+  let done = 0; R.mod.parts.forEach(p => { for (let i = 0; i < itemsOf(p); i++) if (!blank(R.answers[p.id + ":" + i])) done++; });
+  const miss = total - done;
+  modal(el("div", { class: "tc-dlg" },
+    el("div", { class: "tc-dlgq", text: "SIND SIE SICHER, DASS SIE DIE PRÜFUNG VERSENDEN WOLLEN?" }),
+    miss > 0 ? el("div", { class: "tc-dlgs", text: miss + " Aufgabe(n) sind noch unbeantwortet und zählen als falsch." }) : null,
+    el("div", { class: "tc-dlgb" },
+      el("button", { type: "button", class: "tc-gbtn", onclick: () => TC.submit(false), text: "PRÜFUNG VERSENDEN" }),
+      el("button", { type: "button", class: "tc-gbtn", onclick: closeModal, text: "ABBRECHEN" }))));
+}
+function LOGO(big) {
+  return '<span class="tc-logo' + (big ? " big" : "") + '"><b><i>·</i>telc</b><small>LANGUAGE TESTS</small></span>';
+}
+TC.thanksView = function (R) {
+  const chain = R.chain && R.chain.length ? R.chain : null;
+  const root = el("div", { class: "tc-root" }, el("div", { class: "tc-center" },
+    el("div", { class: "tc-thanks" }, el("div", { html: LOGO(true) }),
+      el("p", { class: "tc-thx1", text: "Ich danke Ihnen!" }),
+      el("p", { text: chain ? "Fahren Sie jetzt mit dem nächsten Untertest fort." : "Sie haben diesen Untertest abgegeben." }),
+      el("div", { class: "tc-thxb" },
+        chain ? el("button", { type: "button", class: "tc-gbtn", onclick: () => { S.run = null; startRun(R.testId, chain[0], { chain: chain.slice(1) }); }, text: "Weiter mit " + (MODT[chain[0]] || chain[0]) }) : null,
+        el("button", { type: "button", class: "tc-gbtn", onclick: () => { R.tc.thanks = false; go("run"); }, text: "Ergebnis ansehen" }),
+        el("button", { type: "button", class: "tc-gbtn", onclick: () => { S.run = null; go("dashboard"); }, text: "Zurück auf die Startseite" })))));
+  return root;
+};
+
+/* ------------------------------ Gerüst: Kopf, Reiter, Fuß ------------------------------ */
+function applyVol(v) { ui.vol = clamp(v, 0, 10); TC.vol = ui.vol / 10; if (window.GZ) GZ.vol = TC.vol; store.write(UIK, ui); }
+function shell(R, mode) {
+  const root = el("div", { class: "tc-root" }); curRoot = root;
+  const lv = lvlOf(R), mk = R.moduleKey;
+  const head = el("div", { class: "tc-head" });
+  head.append(el("div", { class: "tc-hl", html: LOGO(false) }));
+  const hasAudio = mode === "page" && R.mod.parts.some(p => contentOf(R, p)?.audio?.script);
+  if (hasAudio) {
+    const au = auInit(R);
+    head.append(el("div", { class: "tc-player" },
+      el("button", { type: "button", id: "tc-aubtn", class: "tc-pbtn", title: "Wiedergabe / Pause", onclick: TC.audioToggle, text: "▶" }),
+      el("span", { id: "tc-autime", class: "tc-ptime", text: mmss(au.el) + " / " + mmss(au.total) }),
+      el("span", { class: "tc-pvol", title: "Lautstärke" }, "🔊", el("input", { type: "range", min: 0, max: 10, value: ui.vol, oninput: e => applyVol(Number(e.target.value)) })),
+      el("span", { id: "tc-austate", class: "tc-pstate", text: "" })));
+  }
+  const tabs = el("div", { class: "tc-tabs" });
+  if (mode === "page" || mode === "prep") R.mod.parts.forEach((p, i) => {
+    const done = isSpoken(p) ? false : (isEssay(p) ? !blank(R.answers[p.id + ":0"]) : partDone(R, p));
+    const on = mode === "page" && i === R.partIndex;
+    const tit = modTitle(lv, p._mk || mk);
+    const b = el("button", { type: "button", class: "tc-tab" + (on ? " on" : ""), onclick: () => mode === "page" ? goPage(i) : null, title: p.task },
+      el("b", { text: tit }), el("span", { text: p.label }), el("span", { text: "(" + ptsText(p) + " Punkte)" }),
+      done ? el("i", { class: "tc-tick", text: "✓" }) : null);
+    tabs.append(b);
+  });
+  head.append(tabs);
+  const info = el("div", { class: "tc-info" }, el("div", { text: "Deutsch - " + lv }),
+    el("div", {}, "Verbleibende Zeit: ", el("b", { id: "tc-time", text: minLabel(R.secondsLeft) + " Min" })),
+    el("div", {}, "Restzeit: ", el("b", { id: "tc-rest", text: R.secondsLeft <= 300 ? mmss(R.secondsLeft) : "" })));
+  head.append(info);
+  head.append(el("div", { class: "tc-hr" },
+    el("button", { type: "button", class: "tc-bbtn", onclick: () => { if (mode === "page") sendDialog(); }, html: "🏁 ABGABE" }),
+    el("button", { type: "button", class: "tc-bbtn", onclick: TC.save, html: "💾 SPEICHERN" })));
+  root.append(head);
+  if (mode === "page" && !(R.mod.parts.length === 0)) {
+    const p = curPart(R);
+    root.append(el("div", { class: "tc-sub", text: modTitle(lv, p._mk || mk) + ", TEIL " + (String(p.label).replace(/\D/g, "") || R.partIndex + 1) + (/[AB]$/.test(p.label) ? p.label.slice(-1) : "") }));
+  } else root.append(el("div", { class: "tc-sub", text: modTitle(lv, mk) }));
+  const body = el("div", { class: "tc-bodywrap" }); root.append(body);
+  const chars = el("div", { class: "tc-chars", hidden: true }, ["ä", "ö", "ü", "ß", "Ä", "Ö", "Ü", "„", "“", "–"].map(ch => el("button", { type: "button", onmousedown: e => e.preventDefault(), onclick: () => insertChar(ch), text: ch })));
+  root.append(chars);
+  root.append(el("div", { class: "tc-foot" },
+    el("b", { class: "tc-user", text: "TEST USER" }),
+    el("button", { type: "button", class: "tc-cbtn", onclick: () => { chars.hidden = !chars.hidden; }, text: "CHARACTERS" }),
+    el("button", { type: "button", class: "tc-lbtn", title: "Speichern und Prüfung verlassen – später genau hier weitermachen", onclick: TC.leave, text: "⎋ Speichern & Verlassen" }),
+    el("span", { class: "tc-sp" }),
+    el("label", { class: "tc-msgl" }, "Meldung: ", el("input", { id: "tc-msg", type: "text", readonly: true, value: R.tc.msg || "" })),
+    el("span", { class: "tc-ico", style: "color:#e5383b", text: "♥" }), el("span", { class: "tc-ico", text: "▣" })));
+  root.addEventListener("focusin", e => { if (e.target.matches("textarea,input[type=text]")) chosenInput = e.target; });
+  return { root, body };
+}
+function insertChar(ch) {
+  const t = chosenInput; if (!t || !document.body.contains(t)) return;
+  const s = t.selectionStart, e = t.selectionEnd; t.value = t.value.slice(0, s) + ch + t.value.slice(e);
+  t.selectionStart = t.selectionEnd = s + ch.length; t.focus(); t.dispatchEvent(new Event("input", { bubbles: true }));
+}
+function paintHead() {
+  const R = S.run; if (!R) return;
+  const t = document.getElementById("tc-time"); if (t) t.textContent = minLabel(R.secondsLeft) + " Min";
+  const r = document.getElementById("tc-rest"); if (r) r.textContent = R.secondsLeft <= 300 ? mmss(R.secondsLeft) : "";
+  if (R.secondsLeft <= 60 && curRoot) curRoot.classList.add("tc-crit");
+}
+
+/* ------------------------------ Startbildschirm ------------------------------ */
+function introLines(R) {
+  const lv = lvlOf(R), keys = R.tc.keys, n = R.mod.parts.length, L = [];
+  const names = keys.map(k => modTitle(lv, k)).join(" und ");
+  L.push("Untertest: " + names + " — " + n + " Teile, " + R.mod.minutes + " Minuten" + (keys.includes("hoeren") ? " (ca.)" : "") + ".");
+  if (keys.length > 1) L.push("Die Zeit gilt für den gesamten Block. Sie können mit den Reitern oben jederzeit zwischen den Teilen wechseln und Ihre Lösungen bis zur Abgabe ändern.");
+  else L.push("Mit den Reitern oben wechseln Sie zwischen den Teilen. Ihre Lösungen können Sie bis zur Abgabe ändern.");
+  if (keys.includes("hoeren")) L.push("Die Aufnahme läuft durchgehend: Lesezeit, Wiedergabe und Bearbeitungszeit sind enthalten. Mit ▶/❚❚ oben können Sie die Aufnahme anhalten. Hörtexte werden so oft gespielt, wie in der Aufgabe angegeben.");
+  if (keys.includes("schreiben")) L.push("Schreiben Sie Ihren Text direkt in das Textfeld. Die Wortanzahl sehen Sie unter dem Feld.");
+  if (keys.includes("sprechen")) L.push(R.mod.prep ? "Vor dem Prüfungsgespräch haben Sie " + R.mod.prep + " Minuten Vorbereitungszeit. Notizen in Stichworten sind erlaubt." : "Es gibt keine Vorbereitungszeit.", R.mod.group || "", "Ihre Antworten werden aufgenommen und können anschließend ausgewertet werden.");
+  if (R.mod.pauseBefore) L.push("In der echten Prüfung gibt es davor eine Pause von " + R.mod.pauseBefore + " Minuten.");
+  L.push("Wörterbücher und Mobiltelefone sind nicht erlaubt.");
+  return L.filter(Boolean);
+}
+function audioCheck(onOk) {
+  const sayIt = () => { beep(660, 400); setTimeout(() => { try { const u = new SpeechSynthesisUtterance("Dies ist ein Test. Können Sie mich gut hören?"); u.lang = "de-DE"; u.volume = TC.vol; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }, 500); };
+  modal(el("div", { class: "tc-dlg" },
+    el("div", { class: "tc-dlgq", text: "TONTEST" }),
+    el("div", { class: "tc-dlgs", style: "color:#fff", text: "Können Sie gut hören? Stellen Sie bei Bedarf die Lautstärke ein." }),
+    el("div", { class: "tc-dlgb" },
+      el("button", { type: "button", class: "tc-gbtn", onclick: sayIt, text: "▶ Testton" }),
+      el("button", { type: "button", class: "tc-gbtn", onclick: () => { try { speechSynthesis.cancel(); } catch (e) {} closeModal(); onOk(); }, text: "JA, PRÜFUNG STARTEN" }))));
+  sayIt();
+}
+function introView(R) {
+  const { root, body } = shell(R, "intro"), lv = lvlOf(R);
+  const cp = getCheckpoint(R.testId, R.moduleKey), resumed = !!cp && R.secondsLeft < R.mod.minutes * 60;
+  const hasAudio = R.mod.parts.some(p => contentOf(R, p)?.audio?.script);
+  body.append(el("div", { class: "tc-center" }, el("div", { class: "tc-intro" },
+    el("div", { html: LOGO(true) }),
+    el("h1", { text: "Deutsch – " + lv }),
+    el("h2", { text: R.tc.keys.map(k => modTitle(lv, k)).join(" und ") }),
+    introLines(R).map(l => el("p", { text: l })),
+    el("button", { type: "button", class: "tc-gbtn go", onclick: () => {
+      const start = () => {
+        R.tc.intro = false;
+        if (R.moduleKey === "sprechen" && R.mod.prep && !R.tc.prepDone) R.tc.prepLeft = R.mod.prep * 60;
+        go("run");
+        if (hasAudio) setTimeout(() => { if (S.run === R) TC.audioToggle(); }, 300);
+      };
+      if (hasAudio) audioCheck(start); else start();
+    }, text: resumed ? "PRÜFUNG FORTSETZEN" : "PRÜFUNG STARTEN" }))));
+  return root;
+}
+
+/* ------------------------------ Sprechen: Vorbereitung ------------------------------ */
+function paintPrep(R) {
+  const t = document.getElementById("tc-prep"), l = R.tc.prepLeft;
+  if (t) t.textContent = String(Math.floor(l / 60)).padStart(2, "0") + ":" + String(l % 60).padStart(2, "0");
+}
+function endPrep(R) { R.tc.prepLeft = 0; R.tc.prepDone = true; beep(880, 350); saveRunAnswers(); go("run"); }
+function prepView(R) {
+  const { root, body } = shell(R, "prep");
+  const left = el("div", { class: "tc-card" }), right = el("div", { class: "tc-card" });
+  left.append(el("h3", { text: "Aufgaben im Mündlichen Ausdruck" }));
+  R.mod.parts.forEach((p, i) => {
+    const c = contentOf(R, p); if (!c) return;
+    left.append(el("div", { class: "tc-prepcard" }, el("b", { text: p.label + (c.title ? ": " + c.title : "") }), c.prompt ? el("p", { text: c.prompt }) : null,
+      c.topics ? el("ul", {}, c.topics.map((tp, k) => el("li", {}, el("b", { text: (c.topicLabel || "Thema") + " " + (k + 1) + ": " }), tp))) : null,
+      c.bullets ? el("ul", {}, c.bullets.map(b => el("li", { text: b }))) : null));
+  });
+  right.append(el("h3", { text: "Vorbereitungszeit: " + R.mod.prep + " Minuten" }), el("div", { class: "tc-prepclock", id: "tc-prep" }),
+    el("p", { class: "tc-muted", text: "Notizen in Stichworten sind erlaubt und dürfen im Gespräch benutzt werden." }),
+    el("textarea", { class: "tc-ta", rows: 12, value: R.answers["prep:notes"] || "", oninput: e => { R.answers["prep:notes"] = e.target.value; } }),
+    el("div", { style: "text-align:center;margin-top:10px" }, el("button", { type: "button", class: "tc-gbtn", onclick: () => endPrep(R), text: "Vorbereitung beenden" })));
+  body.append(el("div", { class: "tc-split" }, left, right));
+  setTimeout(() => paintPrep(R), 0);
+  return root;
+}
+
+/* ------------------------------ Uhr ------------------------------ */
+function tick() {
+  const R = S.run;
+  if (!R || R.finished || S.view !== "run" || !R.tc || R.test.exam !== "telc" || R.reviewing) { clearInterval(iv); iv = null; return; }
+  if (R.tc.intro || R.tc.thanks) return;
+  if (R.tc.prepLeft > 0) { R.tc.prepLeft--; paintPrep(R); if (R.tc.prepLeft <= 0) endPrep(R); return; }
+  if (R.secondsLeft > 0) R.secondsLeft--;
+  paintHead(); audioTick(R);
+  R.tc.n = (R.tc.n || 0) + 1; if (R.tc.n % 20 === 0) saveRunAnswers();
+  if (R.secondsLeft <= 0 && !R.tc.over) {
+    R.tc.over = true;
+    if (S.settings.strictTimer) { toast("Zeit abgelaufen — der Untertest wurde abgegeben.", "err"); TC.submit(true); }
+    else toast("Zeit abgelaufen. Sie üben ohne Zeitdruck weiter.", "");
+  }
+}
+
+/* ------------------------------ Aufgabenseiten: Bausteine ------------------------------ */
+function refreshTabs(R) {
+  const tabs = document.querySelectorAll(".tc-tab");
+  R.mod.parts.forEach((p, i) => {
+    const t = tabs[i]; if (!t) return;
+    const done = isSpoken(p) ? false : (isEssay(p) ? !blank(R.answers[p.id + ":0"]) : partDone(R, p));
+    const tk = t.querySelector(".tc-tick");
+    if (done && !tk) t.append(el("i", { class: "tc-tick", text: "✓" })); else if (!done && tk) tk.remove();
+  });
+}
+function changed(R) { saveRunAnswers(); refreshTabs(R); }
+function panes(area, split) {
+  const left = el("div", { class: "tc-card tc-left" }), right = el("div", { class: "tc-right" });
+  if (!split) { right.classList.add("solo"); area.append(right); return { left: null, right }; }
+  area.append(el("div", { class: "tc-split" }, left, right)); return { left, right };
+}
+const paras = txt => { const d = el("div", { class: "tc-text" }); String(txt || "").split(/\n\s*\n/).forEach(p => d.append(el("p", { html: esc(p).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\n/g, "<br>") }))); return d; };
+const hasStim = (c, part) => !!(c.image || c.texts || c.personas || (c.passage && !fmtOf(part).cloze) || c.stimulus);
+function stim(left, c, part) {
+  if (c.image) left.append(el("img", { class: "tc-img", src: PHIMG, alt: "Platzhalterbild" }));
+  if (c.stimulus) left.append(paras(c.stimulus));
+  if (c.texts) c.texts.forEach(x => left.append(el("div", { class: "tc-textbox" }, x.label || x.n ? el("b", { text: x.label || ("Text " + x.n) }) : null, paras(x.text))));
+  if (c.passage && !fmtOf(part).cloze) { if (c.title && !c.audio) left.append(el("h3", { class: "tc-h", text: c.title })); left.append(paras(c.passage)); }
+}
+const qnum = (i, n) => el("span", { class: "tc-num", text: String(i + 1) });
+
+/* Richtig / Falsch (/ nicht im Text) als Tabelle wie in der telc-Plattform */
+function renderTable(area, R, part, c) {
+  const split = hasStim(c, part), { left, right } = panes(area, split);
+  if (split) stim(left, c, part);
+  const cols = part.format === "tfn" ? ["RICHTIG", "FALSCH", "NICHT IM TEXT"] : ["RICHTIG", "FALSCH"];
+  const tb = el("tbody"), tbl = el("table", { class: "tc-table" }, el("thead", {}, el("tr", {}, el("th", {}), cols.map(x => el("th", { text: x })), el("th", {}))), tb);
+  (c.items || []).forEach((it, i) => {
+    const key = part.id + ":" + i, tr = el("tr", {}), num = el("td", { class: "tc-n", text: (i + 1) + "." });
+    tr.append(num);
+    cols.forEach((_, oi) => tr.append(el("td", { class: "tc-r" }, el("input", { type: "radio", name: part.id + "_" + i, checked: String(R.answers[key]) === String(oi), onchange: () => { R.answers[key] = oi; paint(); changed(R); } }))));
+    tr.append(el("td", { class: "tc-t", text: it.prompt }));
+    function paint() { const on = !blank(R.answers[key]); tr.classList.toggle("sel", on); num.classList.toggle("ok", on); }
+    paint(); tb.append(tr);
+  });
+  right.append(el("div", { class: "tc-tablewrap" }, tbl));
+}
+/* Multiple Choice als Karten (A1-Hören mit Bildern) */
+function renderMC(area, R, part, c) {
+  const split = hasStim(c, part), { left, right } = panes(area, split);
+  if (split) stim(left, c, part);
+  (c.items || []).forEach((it, i) => {
+    const key = part.id + ":" + i, opts = it.options || ["a", "b", "c"];
+    const card = el("div", { class: "tc-qcard" }, el("div", { class: "tc-qt" }, el("b", { text: (i + 1) + ". " + (it.prompt || "") })));
+    const list = el("div", { class: c.images ? "tc-opts imgs" : "tc-opts" });
+    opts.forEach((o, oi) => {
+      const lab = el("label", { class: "tc-opt" + (String(R.answers[key]) === String(oi) ? " sel" : "") },
+        c.images ? el("img", { src: PHIMG, alt: "Platzhalterbild" }) : null,
+        el("input", { type: "radio", name: part.id + "_" + i, checked: String(R.answers[key]) === String(oi), onchange: () => { R.answers[key] = oi; [...list.children].forEach((x, k) => x.classList.toggle("sel", k === oi)); changed(R); } }),
+        el("span", { text: (c.images ? LETTERS[oi] + "  " : "") + String(o) }));
+      list.append(lab);
+    });
+    card.append(list); right.append(card);
+  });
+}
+/* Drag-&-Drop: Überschriften → Texte */
+function renderHeads(area, R, part, c) {
+  const { left, right } = panes(area, true), items = c.items || [], bank = c.bank || [];
+  let sel = null;
+  const key = i => part.id + ":" + i, get = i => R.answers[key(i)];
+  const textOf = k => (bank.find(b => String(b.key) === String(k)) || {}).text || "";
+  function assign(i, k) {
+    items.forEach((_, j) => { if (j !== i && String(get(j)) === String(k)) delete R.answers[key(j)]; });
+    R.answers[key(i)] = k; sel = null; changed(R); paint();
+  }
+  const slots = [];
+  items.forEach((it, i) => {
+    const slot = el("div", { class: "tc-slot" }); slots.push(slot);
+    slot.addEventListener("click", () => { if (sel !== null) assign(i, sel); else if (!blank(get(i))) { delete R.answers[key(i)]; changed(R); paint(); } });
+    makeDrop(slot, p => { if (p.k !== undefined) assign(i, p.k); });
+    left.append(el("div", { class: "tc-hblock" }, slot,
+      el("div", { class: "tc-mailf" }, ["An:", "CC:", "Betreff:"].map(l => el("div", {}, el("span", { text: l }), el("i", {})))),
+      el("div", { class: "tc-textbox" }, paras(it.prompt))));
+  });
+  const card = el("div", { class: "tc-bankcard" }), list = el("div", { class: "tc-bank" });
+  card.append(list, el("div", { class: "tc-c" }, el("button", { type: "button", class: "tc-bbtn", onclick: () => { items.forEach((_, i) => delete R.answers[key(i)]); sel = null; changed(R); paint(); }, text: "Zurücksetzen" })));
+  right.append(card);
+  function paint() {
+    slots.forEach((s, i) => { const k = get(i); s.className = "tc-slot" + (!blank(k) ? " filled" : "") + (sel !== null ? " armed" : ""); s.innerHTML = ""; s.append(!blank(k) ? el("span", {}, el("b", { text: (i + 1) + "  " }), textOf(k)) : el("span", { text: "…" + (i + 1) + "…" })); });
+    list.innerHTML = "";
+    const used = items.map((_, i) => get(i)).filter(v => !blank(v)).map(String);
+    bank.forEach(b => {
+      const row = el("div", { class: "tc-pill" + (used.includes(String(b.key)) ? " used" : "") + (String(sel) === String(b.key) ? " sel" : "") }, el("span", { class: "tc-k", text: String(b.key).toUpperCase() + "." }), el("span", { text: b.text }));
+      makeDrag(row, { k: b.key }); row.addEventListener("click", () => { sel = String(sel) === String(b.key) ? null : b.key; paint(); });
+      list.append(row);
+    });
+  }
+  paint();
+}
+/* Drag-&-Drop: Situationen → Anzeigen (a–l) bzw. x */
+function renderAds(area, R, part, c) {
+  const { left, right } = panes(area, true), items = c.items || [], bank = c.bank || [];
+  let sel = null; const key = i => part.id + ":" + i, get = i => R.answers[key(i)];
+  function assign(i, k) {
+    if (String(k).toLowerCase() !== "x") items.forEach((_, j) => { if (j !== i && String(get(j)) === String(k)) delete R.answers[key(j)]; });
+    R.answers[key(i)] = String(k).toLowerCase() === "x" ? "x" : k; sel = null; changed(R); paint();
+  }
+  const grid = el("div", { class: "tc-adgrid" }); left.append(grid);
+  const heads = {};
+  bank.forEach(b => {
+    const head = el("div", { class: "tc-slot" }); heads[b.key] = head;
+    head.addEventListener("click", () => { if (sel !== null) assign(sel, b.key); else { const j = items.findIndex((_, jj) => String(get(jj)) === String(b.key)); if (j >= 0) { delete R.answers[key(j)]; changed(R); paint(); } } });
+    makeDrop(head, p => { if (p.i !== undefined) assign(p.i, b.key); });
+    grid.append(el("div", { class: "tc-ad" }, head, el("div", { class: "tc-textbox", title: "Anzeige " + b.key }, paras(b.text))));
+  });
+  const list = el("div", { class: "tc-sits" }); right.append(el("div", { class: "tc-bankcard" }, list));
+  function paint() {
+    bank.forEach(b => {
+      const j = items.findIndex((_, jj) => String(get(jj)) === String(b.key)), h = heads[b.key];
+      h.className = "tc-slot" + (j >= 0 ? " filled" : "") + (sel !== null ? " armed" : "");
+      h.innerHTML = ""; h.append(j >= 0 ? el("span", {}, el("b", { text: (j + 1) + "  " }), items[j].prompt) : el("span", { text: " " }));
+    });
+    list.innerHTML = "";
+    items.forEach((it, i) => {
+      const v = get(i), isX = String(v).toLowerCase() === "x", assigned = !blank(v);
+      const circle = el("button", { type: "button", class: "tc-circle" + (assigned && !isX ? " on" : ""), title: "Zuordnung entfernen", onclick: () => { delete R.answers[key(i)]; changed(R); paint(); } }, assigned && !isX ? String(v).toUpperCase() : "");
+      const xb = el("button", { type: "button", class: "tc-xbtn" + (isX ? " on" : ""), title: "Keine Anzeige passt", onclick: () => assign(i, "x"), text: "x" });
+      const chip = el("div", { class: "tc-pill sit" + (sel === i ? " sel" : "") }, el("span", { class: "tc-k", text: (i + 1) + "." }), el("span", { text: it.prompt }));
+      makeDrag(chip, { i }); chip.addEventListener("click", () => { sel = sel === i ? null : i; paint(); });
+      list.append(el("div", { class: "tc-sit" }, el("div", { class: "tc-sitl" }, circle, xb), chip));
+    });
+  }
+  paint();
+}
+/* Buchstaben wählen (Absätze a–e, Personen a–j, Reihenfolge) */
+function renderLetters(area, R, part, c) {
+  const { left, right } = panes(area, true), items = c.items || [], bank = c.bank || [];
+  const isOrder = part.format === "order";
+  if (c.stimulus) left.append(paras(c.stimulus));
+  if (c.example) left.append(el("div", { class: "tc-textbox ex" }, el("b", { text: (c.example.key || "0") + " (Beispiel)  " }), paras(c.example.text)));
+  bank.forEach(b => left.append(el("div", { class: "tc-textbox" }, el("b", { class: "tc-bk", text: String(b.key).toUpperCase() }), paras(b.text))));
+  const letters = bank.map(b => b.key).concat(part.bankHasX || items.some(i => String(i.answer).toLowerCase() === "x") ? ["x"] : []);
+  items.forEach((it, i) => {
+    const key = part.id + ":" + i, row = el("div", { class: "tc-lrow" }), btns = el("div", { class: "tc-lbtns" });
+    letters.forEach(k => { const b = el("button", { type: "button", class: "tc-lb" + (String(R.answers[key]) === String(k) ? " on" : ""), onclick: () => { R.answers[key] = k; [...btns.children].forEach(x => x.classList.toggle("on", x.dataset.k === String(k))); changed(R); }, text: String(k).toUpperCase() }); b.dataset.k = String(k); btns.append(b); });
+    row.append(el("div", { class: "tc-lq" }, el("b", { text: (i + 1) + ".  " }), isOrder ? "Position " + (i + 1) : (it.prompt || "")), btns);
+    right.append(row);
+  });
+}
+/* Lückentext mit Auswahl rechts (Sprachbausteine Teil 1) */
+function gapTextNodes(c, onGap, exText) {
+  const wrap = el("div", { class: "tc-text gaps" });
+  String(c.passage || "").split(/\n\s*\n/).forEach(para => {
+    const p = el("p");
+    para.split(/(___\d+___)/g).forEach(seg => {
+      const m = seg.match(/^___(\d+)___$/); if (!m) { p.append(document.createTextNode(seg)); return; }
+      const n = Number(m[1]); if (n === 0) { p.append(el("span", { class: "tc-gap ex", text: "0  " + (exText || "Beispiel") })); return; }
+      p.append(onGap(n - 1));
+    });
+    wrap.append(p);
+  });
+  return wrap;
+}
+function renderGapMC(area, R, part, c) {
+  const { left, right } = panes(area, true), items = c.items || [], gaps = [], rows = [];
+  const key = i => part.id + ":" + i;
+  if (c.title) left.append(el("h3", { class: "tc-h", text: c.title }));
+  left.append(gapTextNodes(c, i => { const g = el("button", { type: "button", class: "tc-gap", onclick: () => { rows[i] && rows[i].scrollIntoView({ block: "center", behavior: "smooth" }); rows[i] && rows[i].classList.add("flash"); setTimeout(() => rows[i] && rows[i].classList.remove("flash"), 900); } }); gaps[i] = g; return g; }, c.example && c.example.text));
+  items.forEach((it, i) => {
+    const row = el("div", { class: "tc-grow" }); rows[i] = row;
+    row.append(el("span", { class: "tc-badge", text: String(i + 1) }));
+    const opts = el("div", { class: "tc-gopts" });
+    (it.options || []).forEach((o, oi) => opts.append(el("label", { class: "tc-gopt" }, el("input", { type: "radio", name: part.id + "_g" + i, checked: String(R.answers[key(i)]) === String(oi), onchange: () => { R.answers[key(i)] = oi; paint(i); changed(R); } }), el("span", { text: String(o) }))));
+    row.append(opts); right.append(row);
+  });
+  function paint(i) { const v = R.answers[key(i)], it = items[i]; gaps[i].innerHTML = ""; gaps[i].classList.toggle("filled", !blank(v)); gaps[i].append(el("b", { text: String(i + 1) }), !blank(v) ? el("span", { text: " " + (it.options || [])[v] }) : "  "); }
+  items.forEach((_, i) => paint(i));
+}
+/* Lückentext mit Wortbank (Drag & Drop oder Anklicken) */
+function renderGapBank(area, R, part, c) {
+  const { left, right } = panes(area, true), items = c.items || [], bank = c.bank || [], gaps = [];
+  let sel = null; const key = i => part.id + ":" + i, get = i => R.answers[key(i)];
+  const textOf = k => (bank.find(b => String(b.key) === String(k)) || {}).text || "";
+  function assign(i, k) {
+    if (k !== undefined) items.forEach((_, j) => { if (j !== i && String(get(j)) === String(k)) delete R.answers[key(j)]; });
+    if (k === undefined) delete R.answers[key(i)]; else R.answers[key(i)] = k;
+    sel = null; changed(R); paint();
+  }
+  if (c.title) left.append(el("h3", { class: "tc-h", text: c.title }));
+  left.append(gapTextNodes(c, i => {
+    const g = el("span", { class: "tc-slot inl", tabindex: "0" }); gaps[i] = g;
+    g.addEventListener("click", () => { if (sel !== null) assign(i, sel); else if (!blank(get(i))) assign(i, undefined); });
+    makeDrop(g, p => { if (p.k !== undefined) assign(i, p.k); }); return g;
+  }, c.example && (c.example.key ? textOf(c.example.key) || c.example.text : c.example.text)));
+  const list = el("div", { class: "tc-bank" }); right.append(el("div", { class: "tc-bankcard" }, list));
+  function paint() {
+    gaps.forEach((g, i) => { const k = get(i); g.className = "tc-slot inl" + (!blank(k) ? " filled" : "") + (sel !== null ? " armed" : ""); g.innerHTML = ""; g.append(el("b", { text: "…" + (i + 1) + "…" }), !blank(k) ? el("span", { text: "  " + textOf(k) }) : ""); });
+    list.innerHTML = "";
+    const used = items.map((_, i) => get(i)).filter(v => !blank(v)).map(String), exKey = c.example && c.example.key;
+    bank.filter(b => String(b.key) !== String(exKey)).forEach(b => {
+      const row = el("div", { class: "tc-pill" + (used.includes(String(b.key)) ? " used" : "") + (String(sel) === String(b.key) ? " sel" : "") }, el("span", { class: "tc-k", text: String(b.key).toUpperCase() + "." }), el("span", { text: b.text }));
+      makeDrag(row, { k: b.key }); row.addEventListener("click", () => { sel = String(sel) === String(b.key) ? null : b.key; paint(); }); list.append(row);
+    });
+  }
+  paint();
+}
+/* Kurzantworten (Telefonnotizen, Formular, Informationstransfer) */
+function renderShort(area, R, part, c) {
+  const split = hasStim(c, part), { left, right } = panes(area, split);
+  if (split) stim(left, c, part);
+  const card = el("div", { class: "tc-form" });
+  if (c.formTitle) card.append(el("h3", { class: "tc-formh", text: c.formTitle }));
+  (c.items || []).forEach((it, i) => {
+    const key = part.id + ":" + i;
+    card.append(el("label", { class: "tc-frow" }, el("span", { class: "tc-fl" }, el("b", { text: (i + 1) + ".  " }), it.prompt || ""),
+      el("input", { type: "text", class: "tc-in", autocomplete: "off", spellcheck: "false", value: R.answers[key] || "", oninput: e => { R.answers[key] = e.target.value; changed(R); } })));
+  });
+  right.append(card);
+}
+/* Schreiben (mit Wahl Aufgabe A/B bzw. Thema 1/2) */
+function taskCard(t, c, part, label) {
+  const card = el("div", { class: "tc-card tc-task" });
+  const head = t.heading || (t.key ? (label + " " + t.key + (t.title ? ": " + t.title : "")) : (c.title || part.task));
+  card.append(el("h3", { class: "tc-h", text: head }));
+  if (t.image) card.append(el("img", { class: "tc-img", src: PHIMG, alt: "Platzhalterbild" }));
+  if (t.stimulus) card.append(paras(t.stimulus));
+  if (t.prompt) card.append(paras(t.prompt));
+  if (t.bullets && t.bullets.length) card.append(el("ul", { class: "tc-ul" }, t.bullets.map(b => el("li", { text: b }))));
+  if (t.closing) card.append(paras(t.closing));
+  const w = t.words || c.words || part.words;
+  if (w) card.append(el("p", { class: "tc-words", html: "Schreiben Sie " + (lvlNum(S.run) >= 3 ? "mindestens" : "circa") + " <b>" + w + "</b> Wörter." }));
+  return card;
+}
+const lvlNum = R => ({ A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6 }[R.test.level] || 1);
+function sourcesBlock(R) {
+  const lesen = R.test.content?.lesen, notes = R.answers["H1:notes"];
+  const box = el("details", { class: "tc-src" }, el("summary", { text: "Quellentexte (Lesetexte) und Ihre Notizen zum Hörtext" }));
+  if (notes) box.append(el("h4", { text: "Ihre Notizen zum Hörtext" }), el("pre", { class: "tc-notes", text: notes }));
+  if (lesen) {
+    const l1 = lesen.L1, l2 = lesen.L2, l3 = lesen.L3;
+    if (l1 && l1.bank) { box.append(el("h4", { text: "Lesetext 1" })); (l1.example ? [l1.example] : []).concat(l1.bank).forEach(b => box.append(paras(b.text))); }
+    if (l2 && l2.passage) box.append(el("h4", { text: "Lesetext 2: " + (l2.title || "") }), paras(l2.passage));
+    if (l3 && l3.bank) { box.append(el("h4", { text: "Lesetext 3: " + (l3.title || "") })); l3.bank.forEach(b => box.append(paras(b.text))); }
+  }
+  return box;
+}
+function renderWrite(area, R, part, c) {
+  const key = part.id + ":0", ckey = part.id + ":choice", label = c.choiceLabel || "Aufgabe";
+  const hasTasks = Array.isArray(c.tasks) && c.tasks.length;
+  const chosen = hasTasks ? (c.tasks.find(t => String(t.key) === String(R.answers[ckey])) || null) : c;
+  if (hasTasks && !chosen) {
+    const row = el("div", { class: "tc-choose" });
+    c.tasks.forEach(t => { const card = taskCard(t, c, part, label); card.classList.add("pick"); card.title = label + " " + t.key + " auswählen"; card.addEventListener("click", () => { R.answers[ckey] = t.key; saveRunAnswers(); go("run"); });
+      card.append(el("div", { class: "tc-c" }, el("button", { type: "button", class: "tc-bbtn", text: label + " " + t.key + " auswählen" }))); row.append(card); });
+    area.append(row); return;
+  }
+  const { left, right } = panes(area, true);
+  const task = chosen === c ? Object.assign({}, c) : Object.assign({}, c, chosen, { tasks: undefined });
+  if (part.notes) {
+    left.append(el("h3", { class: "tc-h", text: c.title || "Hörverstehen und Schreiben" }));
+    if (c.situation) left.append(paras(c.situation)); if (c.prompt) left.append(paras(c.prompt));
+    if (c.bullets) left.append(el("ul", { class: "tc-ul" }, c.bullets.map(b => el("li", { text: b }))));
+    left.append(el("h4", { text: "Notizen zum Vortrag" }), el("textarea", { class: "tc-ta small", rows: 9, placeholder: "Notizen …", value: R.answers[part.id + ":notes"] || "", oninput: e => { R.answers[part.id + ":notes"] = e.target.value; R.answers["H1:notes"] = e.target.value; saveRunAnswers(); } }));
+  } else {
+    left.classList.remove("tc-card"); left.style.background = "none"; left.style.boxShadow = "none"; left.style.padding = "0";
+    left.append(taskCard(task, c, part, label));
+    if (R.test.level === "C2" && part.id === "S1") left.append(sourcesBlock(R));
+    if (hasTasks) left.append(el("div", { class: "tc-c" }, el("button", { type: "button", class: "tc-bbtn", text: label + " wechseln", onclick: () => { delete R.answers[ckey]; saveRunAnswers(); go("run"); } })));
+  }
+  const target = task.words || c.words || part.words || 100, counter = el("div", { class: "tc-wc" });
+  const ta = el("textarea", { class: "tc-ta big", spellcheck: "false", placeholder: "", value: R.answers[key] || "", oninput: e => { R.answers[key] = e.target.value; changed(R); upd(); } });
+  function upd() { const w = words(ta.value); counter.textContent = "Wortanzahl: " + w + " (Ziel: " + (lvlNum(R) >= 3 ? "mind. " : "ca. ") + target + ")"; counter.className = "tc-wc" + (w >= target ? " ok" : ""); }
+  right.append(ta, counter, el("div", { class: "tc-c" }, el("button", { type: "button", class: "tc-bbtn", onclick: () => aiGradeWriting(part, Object.assign({}, task, { prompt: [task.stimulus, task.prompt].filter(Boolean).join("\n\n") }), ta.value, key), text: "✦ Von der KI bewerten lassen" }),
+    el("span", { class: "tc-muted", text: R.answers[part.id + ":grade"] != null ? " KI-Bewertung gespeichert: " + Math.round(R.answers[part.id + ":grade"] * 100) + " %" : "" })));
+  upd();
+}
+function renderSpeak(area, R, part, c) {
+  const { left, right } = panes(area, true);
+  left.classList.add("light-app"); right.classList.add("light-app", "tc-card");
+  renderSpeaking(left, right, part, c);
+}
+
+/* HTML5-Drag-&-Drop (zusätzlich zum Anklicken) */
+function makeDrag(node, payload) {
+  node.draggable = true;
+  node.addEventListener("dragstart", e => { e.dataTransfer.setData("text/plain", JSON.stringify(payload)); e.dataTransfer.effectAllowed = "move"; node.classList.add("dragging"); });
+  node.addEventListener("dragend", () => node.classList.remove("dragging"));
+}
+function makeDrop(node, fn) {
+  node.addEventListener("dragover", e => { e.preventDefault(); node.classList.add("over"); });
+  node.addEventListener("dragleave", () => node.classList.remove("over"));
+  node.addEventListener("drop", e => { e.preventDefault(); node.classList.remove("over"); try { fn(JSON.parse(e.dataTransfer.getData("text/plain"))); } catch (_) {} });
+}
+
+/* ------------------------------ Aufgabenseite ------------------------------ */
+function bannerText(R, part, c) {
+  let t = part.instruction || c.instruction || part.task || "";
+  const rs = c.audio && (c.audio.readSec != null ? c.audio.readSec : part.readSec);
+  if (rs && !/Sekunden/.test(t) && !isEssay(part)) t += " Lesen Sie jetzt die Aufgaben. Dazu haben Sie " + rs + " Sekunden Zeit.";
+  return t;
+}
+function emptyPart(R, part) {
+  return el("div", { class: "tc-center" }, el("div", { class: "tc-intro" },
+    el("h2", { text: "Für diesen Teil ist noch kein Inhalt vorhanden." }),
+    el("p", { text: part.label + ": " + part.task }),
+    AI.ready() ? el("button", { type: "button", class: "tc-gbtn", onclick: async () => { await aiGeneratePart(R.testId, part._mk || R.moduleKey, part.id); go("run"); }, text: "✦ Diesen Teil mit KI erzeugen" })
+      : el("p", { class: "tc-muted", text: "Legen Sie die Aufgabe als JSON ab (modeltest/telc/SCHEMA.md) oder tragen Sie einen KI-Schlüssel in den Einstellungen ein." })));
+}
+function pageView(R) {
+  const part = curPart(R), c = contentOf(R, part), { root, body } = shell(R, "page");
+  if (!c) { body.append(emptyPart(R, part)); return root; }
+  body.append(el("div", { class: "tc-instr", text: bannerText(R, part, c) }));
+  const area = el("div", { class: "tc-area" }); body.append(area);
+  const f = part.format;
+  try {
+    if (isEssay(part)) renderWrite(area, R, part, c);
+    else if (isSpoken(part)) renderSpeak(area, R, part, c);
+    else if (f === "tf" || f === "tfn") renderTable(area, R, part, c);
+    else if (f === "mc2" || f === "mc3" || f === "mc4") renderMC(area, R, part, c);
+    else if (f === "match") (part.ui === "heads" ? renderHeads : part.ui === "ads" ? renderAds : renderLetters)(area, R, part, c);
+    else if (f === "order") renderLetters(area, R, part, c);
+    else if (f === "gapmc") renderGapMC(area, R, part, c);
+    else if (f === "gapbank") renderGapBank(area, R, part, c);
+    else if (f === "short") renderShort(area, R, part, c);
+    else { const { left, right } = panes(area, true); renderPart(left, right, part, c); }
+  } catch (e) { console.error(e); area.append(el("div", { class: "tc-card", text: "Dieser Teil konnte nicht angezeigt werden: " + e.message })); }
+  /* Transkript, falls die Sprachausgabe fehlt */
+  if (c.audio && !("speechSynthesis" in window)) area.append(el("details", { class: "tc-src" }, el("summary", { text: "Hörtext (Transkript, da keine Sprachausgabe verfügbar)" }), (c.audio.script || []).map(l => el("p", { text: (l.speaker ? l.speaker + ": " : "") + l.text }))));
+  return root;
+}
+
+/* ------------------------------ Einstieg ------------------------------ */
+TC.runView = function () {
+  const R = S.run;
+  if (!R.tc) R.tc = { intro: true, keys: [R.moduleKey] };
+  if (R.reviewing) return TC.thanksView(R);
+  document.body.classList.add("tc-active");
+  if (!iv) iv = setInterval(tick, 1000);
+  let root;
+  if (R.tc.intro) root = introView(R);
+  else if (R.moduleKey === "sprechen" && R.tc.prepLeft > 0) root = prepView(R);
+  else root = pageView(R);
+  setTimeout(paintAudio, 0);
+  return root;
+};
+new MutationObserver(() => { if (!document.querySelector(".tc-root")) document.body.classList.remove("tc-active"); }).observe(document.body, { childList: true, subtree: true });
+function stopAudio() { const R = S.run; if (R && R.tc && R.tc.au) { R.tc.au.paused = true; } }
+
+/* ------------------------------ Styles ------------------------------ */
+const css = document.createElement("style");
+css.textContent = `
+body.tc-active .topbar, body.tc-active #sidebar, body.tc-active aside, body.tc-active nav.sidebar{visibility:hidden}
+.tc-root{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:#efefef;color:#1c1c1c;font-family:Arial,Helvetica,sans-serif;font-size:14px;color-scheme:light;
+ --color-bg:#faf9f5;--color-bg-2:#f0ede4;--color-surface:#fff;--color-surface-2:#faf9f5;--color-ink:#17181c;--color-ink-2:#34363d;--color-on-ink:#fff;--color-muted:#6f6a61;--color-faint:#b5b7bd;--color-rule:#e4ded0;--color-rule-soft:#ece7dd;--color-accent:#c77416;--color-accent-soft:#fbeccf;--color-indigo:#3d4ad6;--color-indigo-soft:#e8eaff;--color-teal:#2b8a86;--color-teal-soft:#d4ece9;--color-rose:#c93a60;--color-rose-soft:#fadfe5;--color-good:#2b8a86;--color-danger:#c93a60}
+.tc-root *{box-sizing:border-box}
+.tc-head{display:flex;align-items:center;gap:14px;background:#1f2a40;color:#fff;padding:6px 14px;min-height:78px;flex-wrap:nowrap}
+.tc-hl{flex:0 0 auto}
+.tc-logo{display:inline-flex;flex-direction:column;background:#c8102e;color:#fff;padding:5px 9px 4px;line-height:1;border-radius:2px}
+.tc-logo b{font-size:25px;font-weight:700;letter-spacing:-1px}.tc-logo i{font-style:normal}
+.tc-logo small{font-size:6px;letter-spacing:1.6px;margin-top:2px}
+.tc-logo.big b{font-size:44px}.tc-logo.big small{font-size:9px}
+.tc-player{display:flex;align-items:center;gap:8px;background:#f1f3f4;color:#222;border-radius:30px;padding:5px 12px;flex:0 0 auto;font-size:12px}
+.tc-pbtn{border:0;background:none;font-size:15px;cursor:pointer;width:24px}
+.tc-pvol{display:flex;align-items:center;gap:4px}.tc-pvol input{width:60px}
+.tc-pstate{color:#555;min-width:90px}
+.tc-tabs{display:flex;gap:6px;flex:1 1 auto;justify-content:center;overflow:auto;padding:2px}
+.tc-tab{position:relative;background:#8f9296;color:#e8e8e8;border:0;border-radius:5px;padding:5px 12px 9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;font-size:11px;line-height:1.25;min-width:96px}
+.tc-tab b{font-size:11.5px}.tc-tab.on{background:#fff;color:#111}
+.tc-tick{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:#fff;color:#2d9d4a;font-size:11px;line-height:16px;text-align:center;font-style:normal;font-weight:700;box-shadow:0 0 0 1px #2d9d4a}
+.tc-info{flex:0 0 auto;font-size:12px;line-height:1.5;min-width:150px}
+.tc-hr{display:flex;flex-direction:column;gap:5px;flex:0 0 auto}
+.tc-bbtn{background:#1565d8;color:#fff;border:0;border-radius:4px;padding:6px 14px;font-weight:700;font-size:12px;cursor:pointer;text-align:left}
+.tc-bbtn:hover{background:#0f52b3}
+.tc-sub{background:#27487f;color:#fff;font-weight:700;font-size:15px;padding:7px 18px}
+.tc-bodywrap{flex:1 1 auto;overflow:auto;padding:12px 18px;min-height:0;display:flex;flex-direction:column;gap:10px}
+.tc-instr{align-self:center;max-width:880px;background:#ffffc8;border:1px solid #e3e3a5;border-radius:8px;padding:9px 16px;font-size:13px;line-height:1.45}
+.tc-area{flex:1 1 auto;min-height:0}
+.tc-split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;height:100%}
+.tc-card{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.18);padding:14px 16px}
+.tc-left{overflow:auto;max-height:100%}
+.tc-right{overflow:auto;max-height:100%;display:flex;flex-direction:column;gap:10px}
+.tc-right.solo{max-width:760px;margin:0 auto;width:100%}
+.tc-h{font-family:Arial,sans-serif;font-size:17px;font-weight:400;margin:0 0 8px}
+.tc-text p{margin:0 0 9px;line-height:1.5}.tc-textbox{background:#fff;border:1px solid #e1e1e1;border-radius:6px;padding:9px 12px;margin:0 0 10px}
+.tc-textbox.ex{background:#f3f3f3}.tc-bk{display:inline-block;background:#c9c4f4;border-radius:4px;padding:0 7px;margin-right:6px}
+.tc-img{width:100%;max-width:340px;border-radius:6px;display:block;margin:0 auto 10px}
+.tc-table{width:100%;border-collapse:collapse;background:#fff}
+.tc-table th{background:#27385e;color:#fff;font-size:11px;padding:6px 8px;border:1px solid #fff;font-weight:700}
+.tc-table td{border:1px solid #ddd;padding:7px 8px;vertical-align:middle}
+.tc-table td.tc-n{width:34px;text-align:center;font-weight:700;background:#27385e;color:#fff}
+.tc-table td.tc-n.ok{background:#0b8a2e}
+.tc-table td.tc-r{width:62px;text-align:center}
+.tc-table tr.sel td:not(.tc-n){background:#d9d4fb}
+.tc-tablewrap{width:100%}
+.tc-qcard{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.2);padding:10px 14px}
+.tc-opt{display:flex;gap:8px;align-items:flex-start;padding:4px 6px;border-radius:5px;cursor:pointer}.tc-opt.sel{background:#e4e0fc}
+.tc-opts.imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tc-opts.imgs .tc-opt{flex-direction:column;align-items:center;border:1px solid #ddd;background:#fafafa}
+.tc-opts.imgs img{width:100%;max-width:130px;height:84px;object-fit:cover;border-radius:4px}
+.tc-slot{display:block;min-height:30px;background:#c9c4f4;border-radius:5px;padding:5px 10px;font-size:13px;margin-bottom:6px;cursor:pointer;border:2px solid transparent}
+.tc-slot.filled{background:#b7b0f0}.tc-slot.armed{border-color:#6a5de0}.tc-slot.over{background:#2fbf5a;color:#fff}
+.tc-slot.inl{display:inline-block;min-height:0;margin:0 2px;padding:1px 8px;vertical-align:baseline}
+.tc-mailf{border:1px solid #e1e1e1;background:#fff;border-radius:4px;margin-bottom:6px;padding:3px 8px;font-size:12px;color:#555}
+.tc-mailf div{display:flex;gap:10px;border-bottom:1px solid #eee;padding:2px 0}.tc-mailf div:last-child{border:0}.tc-mailf span{width:50px}.tc-mailf i{flex:1}
+.tc-bankcard{background:#fff;border-radius:10px;box-shadow:0 1px 6px rgba(0,0,0,.25);padding:12px}
+.tc-pill{display:flex;gap:8px;background:#c9c4f4;border-radius:5px;padding:5px 10px;margin:0 0 7px;font-size:13px;cursor:grab;align-items:flex-start;user-select:none}
+.tc-pill .tc-k{font-weight:700;min-width:22px}.tc-pill.used{opacity:.4}.tc-pill.sel{outline:2px solid #6a5de0}.tc-pill.dragging{opacity:.5}
+.tc-c{text-align:center;margin:10px 0 0}
+.tc-adgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.tc-ad{display:flex;flex-direction:column;min-height:0}.tc-ad .tc-textbox{flex:1;font-size:12.5px;max-height:220px;overflow:auto}
+.tc-sits{display:flex;flex-direction:column;gap:8px}.tc-sit{display:flex;gap:8px;align-items:flex-start}
+.tc-sitl{display:flex;flex-direction:column;align-items:center;gap:1px}
+.tc-circle{width:26px;height:26px;border-radius:50%;border:1px solid #bbb;background:#fff;font-weight:700;font-size:12px;cursor:pointer;padding:0}.tc-circle.on{background:#b7b0f0;border-color:#6a5de0}
+.tc-xbtn{border:0;background:none;font-size:11px;color:#666;cursor:pointer;padding:0}.tc-xbtn.on{color:#fff;background:#6a5de0;border-radius:3px;padding:0 4px}
+.tc-pill.sit{flex:1;margin:0}
+.tc-lrow{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.2);padding:8px 12px}
+.tc-lbtns{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tc-lb{border:1px solid #bbb;background:#fff;border-radius:4px;min-width:30px;padding:3px 8px;font-weight:700;cursor:pointer}.tc-lb.on{background:#6a5de0;color:#fff;border-color:#6a5de0}
+.tc-gap{display:inline-block;background:#34456f;color:#fff;border:0;border-radius:5px;padding:1px 8px;margin:0 2px;font:inherit;cursor:pointer}
+.tc-gap.filled{background:#2a3a63}.tc-gap.ex{background:#8d8d8d;cursor:default}
+.tc-grow{display:flex;gap:10px;align-items:center;background:#f4f4f4;border-radius:6px;padding:6px 10px}.tc-grow.flash,.tc-grow:hover{background:#d9d4fb}
+.tc-badge{background:#111;color:#fff;border-radius:50%;width:24px;height:24px;line-height:24px;text-align:center;font-size:12px;font-weight:700;flex:0 0 auto}
+.tc-gopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:4px 10px;flex:1}.tc-gopt{display:flex;gap:5px;align-items:center}
+.tc-form{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.2);padding:14px 16px}.tc-formh{margin:0 0 10px;font-size:16px;text-align:center}
+.tc-frow{display:flex;gap:10px;align-items:center;margin:0 0 8px}.tc-fl{flex:0 0 46%}
+.tc-in{flex:1;border:1px solid #aaa;border-radius:4px;padding:6px 8px;font:inherit;background:#fff}
+.tc-ta{width:100%;border:1px solid #bbb;border-radius:6px;padding:10px;font:inherit;line-height:1.5;background:#fff;resize:vertical}.tc-ta.big{min-height:46vh;flex:1}.tc-ta.small{min-height:150px}
+.tc-wc{font-size:12px;color:#555;margin:0}.tc-wc.ok{color:#0b8a2e;font-weight:700}
+.tc-ul{margin:6px 0 8px 18px;padding:0}.tc-ul li{margin:3px 0}.tc-words{font-size:12px;color:#444;margin:6px 0 0}
+.tc-choose{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}.tc-card.pick{cursor:pointer}.tc-card.pick:hover{outline:3px solid #6a5de0}
+.tc-task{margin-bottom:10px}.tc-src{background:#fff;border-radius:8px;padding:8px 12px;margin:8px 0;font-size:13px}.tc-src summary{cursor:pointer;font-weight:700}
+.tc-notes{white-space:pre-wrap;font:inherit;background:#f6f6f6;padding:8px;border-radius:5px}
+.tc-muted{color:#666;font-size:12px}
+.tc-foot{display:flex;align-items:center;gap:12px;background:#0a1830;color:#fff;padding:5px 14px;font-size:12px}
+.tc-sp{flex:1}.tc-cbtn,.tc-lbtn{background:#1565d8;color:#fff;border:0;border-radius:4px;padding:3px 12px;font-weight:700;font-size:11px;cursor:pointer}.tc-lbtn{background:#33425f}
+.tc-msgl input{width:260px;border:0;border-radius:2px;padding:2px 6px;background:#fff;color:#111}.tc-ico{font-size:14px}
+.tc-chars{display:flex;gap:4px;background:#d9dce2;padding:5px 14px}.tc-chars button{min-width:30px;padding:3px 8px;border:1px solid #888;background:#fff;border-radius:3px;cursor:pointer}
+.tc-center{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;width:100%}
+.tc-intro,.tc-thanks{background:#445f80;color:#fff;border-radius:8px;padding:28px 36px;max-width:700px;width:100%;text-align:center}
+.tc-intro p,.tc-thanks p{margin:0 0 9px;line-height:1.5;font-size:14px}.tc-intro h1{font-size:24px;margin:12px 0 2px;font-family:Arial,sans-serif}.tc-intro h2{font-size:16px;font-weight:400;margin:0 0 14px;font-family:Arial,sans-serif}
+.tc-thx1{font-size:20px!important}.tc-thxb{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.tc-gbtn{background:#e6ffe6;color:#111;border:0;border-radius:5px;padding:12px 22px;font-size:14px;cursor:pointer;margin-top:10px}.tc-gbtn:hover{background:#c9f5c9}.tc-gbtn.go{font-weight:700}
+.tc-dlg{background:#445f80;color:#fff;border-radius:8px;padding:30px;text-align:center;min-width:min(620px,86vw)}
+.tc-dlgq{font-size:17px;letter-spacing:.3px;margin-bottom:6px}.tc-dlgs{font-size:13px;margin:8px 0;color:#ffe9a8}.tc-dlgb{display:flex;gap:26px;justify-content:center;margin-top:18px}
+.tc-prepcard{background:#f6f6f6;border-radius:6px;padding:8px 12px;margin:8px 0}.tc-prepclock{font-size:44px;font-weight:700;text-align:center;font-family:monospace;margin:6px 0}
+.tc-crit .tc-info{color:#ffb4b4}
+.tc-root .light-app .card{background:#fff}
+@media (max-width:900px){.tc-head{flex-wrap:wrap}.tc-split,.tc-choose{grid-template-columns:1fr}.tc-left,.tc-right{max-height:none}.tc-frow{flex-direction:column;align-items:stretch}}
+`;
+document.head.append(css);
 })();
 </script>
 

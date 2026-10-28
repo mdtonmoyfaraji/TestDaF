@@ -9,39 +9,37 @@
   "content": {
     "P1": {
       "title": "Sich vorstellen",
-      "instruction": "Stellen Sie sich bitte kurz vor. Sprechen Sie zu den folgenden Punkten.",
-      "prompt": "Sie machen einen Sprachkurs und möchten sich der Gruppe vorstellen. Erzählen Sie etwas über sich und antworten Sie auf die drei Punkte.",
+      "prompt": "Stellen Sie sich vor. Danach buchstabieren Sie Ihren Familiennamen und nennen Ihre Telefonnummer.",
       "bullets": [
-        "Name und Herkunft",
-        "Wohnort und Familie",
-        "Beruf oder Hobby"
+        "Name?",
+        "Alter?",
+        "Land?",
+        "Wohnort?",
+        "Sprachen?",
+        "Beruf?",
+        "Hobby?"
       ],
       "seconds": 90,
-      "tips": "Sprechen Sie laut und deutlich und machen Sie kurze Pausen zwischen den Sätzen."
+      "tips": "Ganze Sätze: „Ich heiße … Ich bin … Jahre alt.“"
     },
     "P2": {
-      "title": "Informationen erfragen",
-      "instruction": "Sie möchten Deutsch lernen. Sie haben eine Anzeige für einen Sprachkurs gelesen. Stellen Sie Fragen zu den Punkten unten.",
-      "prompt": "Sprechen Sie mit Ihrem Gesprächspartner oder Ihrer Gesprächspartnerin. Stellen Sie Fragen zu den drei Punkten auf der Karte.",
+      "title": "Um Informationen bitten und Informationen geben",
+      "prompt": "Ziehen Sie eine Karte, bilden Sie dazu eine Frage und antworten Sie auf die Frage Ihres Gegenübers. Beispiel: Karte „Frühstück“ → „Was essen Sie gern zum Frühstück?“",
       "bullets": [
-        "Wann beginnt der Kurs?",
-        "Wie viel kostet der Kurs?",
-        "Wo ist das Klassenzimmer?"
+        "Thema 1 Essen und Trinken: Frühstück · Lieblingsessen · Sonntag · Bier · Fisch · Brot",
+        "Thema 2 Einkaufen: Zeitung · Kasse · Obst · Schuhe · Buch · Stadtplan"
       ],
       "seconds": 120,
-      "tips": "Hören Sie gut zu und antworten Sie auch auf die Fragen Ihres Partners."
+      "tips": "Stellen Sie W-Fragen oder Ja/Nein-Fragen."
     },
     "P3": {
-      "title": "Bitten und reagieren: Im Supermarkt",
-      "instruction": "Sie sind im Supermarkt und brauchen Hilfe. Sprechen Sie mit Ihrer Partnerin oder Ihrem Partner.",
-      "prompt": "Sie suchen bestimmte Lebensmittel und möchten jemanden um Hilfe bitten. Reagieren Sie auf die Bitte Ihres Partners / Ihrer Partnerin.",
+      "title": "Bitten formulieren und darauf reagieren",
+      "prompt": "Ziehen Sie zwei Bildkarten. Formulieren Sie eine Bitte, z. B. „Ein Glas Wasser, bitte!“ oder „Könnte ich bitte … haben?“. Reagieren Sie auf die Bitte Ihres Gegenübers, z. B. „Hier, bitte.“ oder „Tut mir leid, ich habe keins.“",
       "bullets": [
-        "Wo ist die Milch?",
-        "Haben Sie Tomaten?",
-        "Danke für die Hilfe."
+        "Bildkarten: Äpfel · Fleisch · Banane · Orangensaft · Tasche · Hund · Schlüssel · Koffer · Blumen · Kuchen · Laptop · Auto"
       ],
       "seconds": 90,
-      "tips": "Hören Sie gut zu und antworten Sie höflich auf die Fragen."
+      "tips": "Freundlich bleiben: „bitte“, „danke“."
     }
   }
 }
