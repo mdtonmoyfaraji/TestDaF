@@ -4414,6 +4414,135 @@ const AI_SYSTEM = [
   "Jede Lösung ist allein aus dem gegebenen Text ableitbar — kein Weltwissen nötig."
 ].join(" ");
 
+/* =========================================================================
+   TestDaF (digital): KI-Erzeugung nach dem Schema des g.a.s.t.-Demo-PDFs.
+   Jede Aufgabe hat ein festes Feldschema (siehe modeltest/testdaf/SCHEMA.md);
+   Antworten der KI werden geprüft und – wo eindeutig ableitbar – automatisch
+   vereinheitlicht (z. B. Items aus order/wrong/statements, Hörtext aus H7-Text).
+   ======================================================================= */
+const TD_CHART = `{ "title": "Titel der Grafik", "axis": "Anteil in Prozent", "cats": ["Kategorie 1","Kategorie 2","Kategorie 3","Kategorie 4"], "series": [ { "name": "Anteil", "values": [40, 30, 20, 10] } ], "max": 50, "step": 10 }`;
+const TD_AUDIO = (what) => `"audio": { "plays": 1, "script": [ { "speaker": "Sprecherrolle", "text": "${what}" } ] }`;
+function tdSchema(part) {
+  const id = part.id, n = part.items || 1;
+  const S = {
+    L1: `{ "title": "Titel", "passage": "zusammenhängender Text (Alltag, Studium, Gesellschaft), 130-180 Wörter, mit genau 5 Lücken, markiert als [1] bis [5] (eckige Klammern, direkt an der Stelle des fehlenden Wortes)", "items": [ 5x { "options": ["Wort a","Wort b","Wort c","Wort d"], "answer": "a" } ] }  Die 4 Optionen sind einzelne Wörter bzw. kurze Formen derselben Wortart/Wortfamilie; nur eine passt grammatisch und inhaltlich. "answer" ist der Buchstabe a-d der richtigen Option.`,
+    L2: `{ "title": "Titel", "paras": [ 5x { "key": "a", "text": "Absatz, 40-70 Wörter" } ], "order": ["c","a","e","b","d"], "items": [ 4x { "answer": "a" } ] }  Der Text hat 5 Absätze mit klarer Textlogik (Verweiswörter wie "Diese", "Dort", "Deshalb", Konnektoren). "paras" steht in durchmischter Reihenfolge, "order" nennt die Schlüssel in der richtigen Textreihenfolge (alle 5). Der erste Absatz laut "order" ist vorgegeben; "items" enthält 4 Einträge: items[0].answer = order[1], items[1].answer = order[2] usw.`,
+    L3: `{ "title": "Titel", "passage": "Fachlich-gesellschaftlicher Text, 450-600 Wörter, in 7 Absätzen, jeder Absatz beginnt mit der Nummer in runden Klammern: (1) … (2) … bis (7) …", "items": [ 7x { "prompt": "Frage zu Absatz i", "options": ["Antwort a","Antwort b","Antwort c","Antwort d"], "answer": 0 } ] }  Item i bezieht sich auf Absatz i. Nur eine Option ist laut Text richtig ("answer" = 0-basierter Index).`,
+    L4: `{ "title": "Titel", "passage": "Kommentar eines Experten, 200-260 Wörter, mit genau 4 Markierungen [1] bis [4], jeweils direkt vor einem Satz, in dem der Autor eine Sprachhandlung ausführt", "items": [ 4x { "prompt": "Textstelle [i]", "answer": "a" } ] }  Sprachhandlungen (feste Liste): a bedauert, b begrüßt, c empfiehlt, d kritisiert, e prognostiziert, f vermutet, g warnt vor, h zweifelt an. Verwende 4 verschiedene Handlungen; "answer" ist der Buchstabe der Handlung des Satzes nach der Markierung. Die Handlung darf nicht wörtlich im Satz stehen.`,
+    L5: `{ "title": "Titel", "cats": ["Thema A","Thema B","beide","passt nicht"], "passage": "Text, 280-380 Wörter, der zwei Themen/Orte/Modelle (Thema A, Thema B) gegenüberstellt", "items": [ 7x { "prompt": "Aussage", "answer": 0 } ] }  "cats" hat genau 4 Einträge (A, B, beide, passt nicht); "answer" ist der 0-basierte Index der Kategorie (0 = nur A, 1 = nur B, 2 = beide, 3 = steht nicht/passt nicht zum Text). Mindestens je ein Item pro Kategorie.`,
+    L6: `{ "title": "Titel", "heading": "Überschrift der Tabelle", "pair": ["Begriff 1","Begriff 2"], "passage": "Text, 250-330 Wörter, der beide Begriffe/Aspekte behandelt", "statements": [ 8x { "t": "Aussage", "col": 0 } ] }  Genau 4 Aussagen sind laut Text richtig und gehören zu einem der beiden Begriffe ("col": 0 oder 1, je zwei pro Spalte); die anderen 4 stehen nicht im Text oder sind falsch ("col": null). Vermische die Reihenfolge.`,
+    L7: `{ "title": "Titel", "passage": "Sachtext, 150-220 Wörter, bezieht sich auf die Grafik", "chart": ${TD_CHART}, "summary": [ "Satz 1", "Satz 2", "…", "Satz 7" ], "wrong": [1, 3, 5] }  "summary" ist eine Zusammenfassung von Text und Grafik in 6-8 Sätzen; genau 3 Sätze enthalten einen inhaltlichen Fehler (Widerspruch zu Text oder Grafik). "wrong" nennt deren 0-basierte Indizes aufsteigend.`,
+    H1: `{ "topic": "Thema", "grid": { "title": "Titel der Übersicht", "headRight": "Info mit Eingabefeld [[1]]", "cols": ["Mo","Di","Mi","Do"], "rows": [ { "label": "Vormittag\\nWas?", "cells": ["…","…","[[2]]","…"] }, { "label": "Wo?", "cells": ["…","…","…","…"] }, { "span": "Mittagessen" } ] }, ${TD_AUDIO("Gespräch zweier Studierender über das Programm, 250-330 Wörter")}, "items": [ 5x { "prompt": "Feld [i]: Wonach wird gefragt", "answer": "Kurzantwort", "alts": ["gleichwertige Varianten"] } ] }  Das Raster hat genau 5 Eingabefelder, markiert als [[1]] bis [[5]] in headRight oder in Zellen; die Antworten stehen wörtlich im Hörtext (1-3 Wörter oder eine Zahl).`,
+    H2: `{ "topic": "Thema", "persons": ["Person 1","Person 2"], ${TD_AUDIO("Diskussion mit Moderator/in und den zwei Personen, 280-360 Wörter; jede Person nennt eine Forderung und ein Argument")}, "items": [ 4x { "prompt": "Person 1 – Forderung", "answer": "Kurzantwort", "alts": ["Varianten"] } ] }  Die 4 Items in dieser Reihenfolge: Person 1 Forderung, Person 1 Argument, Person 2 Forderung, Person 2 Argument.`,
+    H3: `{ "topic": "Thema", "field": "Fachgebiet", ${TD_AUDIO("Kurzvortrag/Vorlesungsausschnitt, 220-300 Wörter")}, "summary": [ "Satz 1", "…", "Satz 6" ], "wrong": [1, 4] }  "summary" fasst den Vortrag in 5-7 Sätzen zusammen; genau 2 Sätze widersprechen dem Hörtext. "wrong" = deren 0-basierte Indizes aufsteigend.`,
+    H4: `{ "topic": "Thema", "persons": ["Person 1","Person 2"], "speakers": ["Person 1","Person 2"], ${TD_AUDIO("Diskussion mit Moderator/in und zwei Personen mit gegensätzlichen Positionen, 320-420 Wörter")}, "items": [ 6x { "prompt": "Aussage", "answer": 0 } ] }  "answer": 0 = nur Person 1 äußert das, 1 = nur Person 2, 2 = beide, 3 = keiner von beiden. Alle vier Werte kommen mindestens einmal vor.`,
+    H5: `{ "topic": "Thema", "field": "Fachgebiet", "slideTitle": "Titel der Präsentationsfolie", ${TD_AUDIO("Vortrag mit klarer Gliederung, 260-340 Wörter")}, "items": [ 4x { "prompt": "Gliederungspunkt, zu dem eine Information zu ergänzen ist", "answer": "Kurzantwort", "alts": ["Varianten"] } ] }  Die Antworten stehen wörtlich im Vortrag, in der Reihenfolge der Items.`,
+    H6: `{ "topic": "Thema", ${TD_AUDIO("Gespräch oder Vortrag, 280-360 Wörter")}, "items": [ 5x { "prompt": "Frage", "options": ["a","b","c","d"], "answer": 0 } ] }  Die Fragen folgen dem Verlauf des Hörtextes; "answer" = 0-basierter Index.`,
+    H7: `{ "topic": "Thema", "title": "Titel", "text": "Gedruckter Text, 90-130 Wörter, in dem an genau 4 Stellen steht {{geschriebenes Wort|gehörtes Wort}}, z. B. {{Hälfte|Mehrzahl}}" }  An den 4 markierten Stellen weicht das gedruckte Wort vom gehörten ab (anderes, aber ähnlich klingendes oder bedeutungsnahes Wort); überall sonst ist Text und Hörtext identisch. Der Hörtext wird automatisch aus dem Text mit den gehörten Wörtern erzeugt.`,
+    S1: `{ "title": "Thema", "situation": "Kurze Situation (2-3 Sätze, Studienkontext, Forum/Diskussion)", "task": "Aufgabenstellung für einen argumentativen Text (Vor- und Nachteile, eigene Meinung, mindestens 200 Wörter)", "notes": ["Hinweis 1","Hinweis 2","Hinweis 3"] }`,
+    S2: `{ "title": "Thema", "situation": "Situation: Hausarbeit/Seminar", "task": "Fragestellung, die Text und Grafik gemeinsam beantworten", "text": "Lesetext, 180-250 Wörter", "chart": ${TD_CHART}, "notes": ["Hinweis 1","Hinweis 2"] }`,
+    P1: `{ "situation": "Alltagsnahe Situation im Studium (2-3 Sätze)", "task": "Rat geben: Was würden Sie raten? Begründen Sie.", "notes": ["Stichwort 1","Stichwort 2","Stichwort 3"] }`,
+    P2: `{ "situation": "Situation mit zwei Möglichkeiten (z. B. zwei Wohnungen/Studienorte)", "task": "Wägen Sie die Optionen gegeneinander ab und treffen Sie eine begründete Entscheidung.", "notes": ["Option A: …","Option B: …","Kriterien"] }`,
+    P3: `{ "title": "Titel", "situation": "Situation (Seminar, Tutorium)", "task": "Lesen Sie den Text. Fassen Sie ihn anschließend ohne Text mündlich zusammen.", "text": "Sachtext, 140-190 Wörter", "notes": ["Hinweis"] }`,
+    P4: `{ "situation": "Seminarsituation mit Grafik und gehörter Äußerung", "task": "Hören Sie die Äußerung. Nehmen Sie Stellung und beziehen Sie sich auf die Grafik.", "chart": ${TD_CHART}, "statement": { "script": [ { "speaker": "", "text": "Äußerung einer Seminarteilnehmerin, 60-90 Wörter" } ] }, "notes": ["Hinweis"] }`,
+    P5: `{ "situation": "Situation: Kurzpräsentation im Tutorium", "task": "Erläutern Sie zunächst den Aufbau Ihrer Präsentation. Gehen Sie dann auf die einzelnen Punkte ein.", "outline": { "title": "Titel der Präsentation", "points": [ { "t": "Punkt 1", "sub": ["Unterpunkt","Unterpunkt"] }, "Punkt 2", "Punkt 3" ] }, "notes": ["Hinweis"] }`,
+    P6: `{ "situation": "Situation im Seminar: eine Kommilitonin äußert sich", "task": "Geben Sie die Argumente wieder und nehmen Sie Stellung. Begründen Sie Ihren eigenen Standpunkt.", "statement": { "script": [ { "speaker": "", "text": "Äußerung mit 2-3 Argumenten, 80-120 Wörter" } ] }, "notes": ["Hinweis"] }`,
+    P7: `{ "situation": "Situation: Hochschul- oder Wohnheimaushang mit geplanter Maßnahme", "task": "Kritisieren Sie die Maßnahme und machen Sie einen Gegenvorschlag.", "notice": { "title": "Titel des Aushangs", "text": "Text des Aushangs, 50-90 Wörter" }, "notes": ["Hinweis"] }`
+  };
+  return S[id] || null;
+}
+const TD_RULES = [
+  "- Halte dich EXAKT an die Feldnamen und Zahlen des Schemas; keine zusätzlichen Felder, keine Platzhalter wie „…“ im Ergebnis.",
+  "- Niveau: TestDaF (B2-C1), akademischer Kontext (Hochschule, Forschung, Gesellschaft). Alle Aufgaben des Tests sind gleich schwer.",
+  "- Hörtexte (audio.script) sind gesprochene Sprache: natürliche Sätze, keine Aufzählungszeichen, Zahlen als Wörter ausschreiben.",
+  "- Lösungen eindeutig und im Text belegbar; verteile richtige Antworten gleichmäßig über die Positionen.",
+  "- Nenne keine realen Personen und erfinde keine Statistiken, die nach Tatsachenbehauptung klingen; bleibe bei plausiblen, klar fiktiven Beispielen.",
+  "- Antworte NUR mit dem JSON-Objekt."
+];
+const TD_KEYS = ["a", "b", "c", "d", "e", "f", "g", "h"];
+function tdSents(s) { return String(s || "").trim(); }
+function tdChartFix(ch) {
+  if (!ch || !Array.isArray(ch.cats) || !Array.isArray(ch.series) || !ch.series.length) return false;
+  ch.series.forEach(s => { s.values = (s.values || []).map(Number); });
+  const mx = Math.max(...ch.series.flatMap(s => s.values));
+  if (!ch.max || ch.max < mx) ch.max = Math.ceil(mx / 10) * 10 || 10;
+  if (!ch.step) ch.step = ch.max / 5 >= 10 ? Math.round(ch.max / 5 / 10) * 10 : Math.max(1, ch.max / 5);
+  return ch.series.every(s => s.values.length === ch.cats.length);
+}
+function tdNormalise(part, obj) {
+  const id = part.id;
+  if (obj.audio) { if (obj.audio.script && !Array.isArray(obj.audio.script)) obj.audio.script = [{ speaker: "", text: String(obj.audio.script) }]; obj.audio.plays = 1; }
+  if (obj.statement && obj.statement.script && !Array.isArray(obj.statement.script)) obj.statement.script = [{ speaker: "", text: String(obj.statement.script) }];
+  if (obj.chart) tdChartFix(obj.chart);
+  if (id === "L1" && Array.isArray(obj.items)) obj.items.forEach(it => {
+    if (typeof it.answer === "number") it.answer = TD_KEYS[it.answer];
+    else if (typeof it.answer === "string" && it.answer.length > 1 && Array.isArray(it.options)) { const k = it.options.findIndex(o => String(o).trim().toLowerCase() === it.answer.trim().toLowerCase()); if (k >= 0) it.answer = TD_KEYS[k]; }
+    if (typeof it.answer === "string") it.answer = it.answer.trim().toLowerCase().slice(0, 1);
+  });
+  if (id === "L2" && Array.isArray(obj.order) && Array.isArray(obj.paras)) {
+    obj.paras.forEach((p, i) => { p.key = String(p.key || TD_KEYS[i]).toLowerCase(); });
+    obj.order = obj.order.map(k => String(k).toLowerCase());
+    obj.items = obj.order.slice(1).map(k => ({ answer: k }));
+  }
+  if (id === "L4" && Array.isArray(obj.items)) obj.items.forEach((it, i) => { if (typeof it.answer === "number") it.answer = TD_KEYS[it.answer]; if (typeof it.answer === "string") it.answer = it.answer.trim().toLowerCase().slice(0, 1); it.prompt = it.prompt || "Textstelle [" + (i + 1) + "]"; });
+  if (id === "L6" && Array.isArray(obj.statements)) obj.items = obj.statements.filter(s => s.col === 0 || s.col === 1 || s.col === "0" || s.col === "1").map(s => ({ prompt: s.t, answer: Number(s.col) })), obj.statements.forEach(s => { if (s.col === "0" || s.col === "1") s.col = Number(s.col); if (s.col === undefined || s.col === "" || s.col === "null") s.col = null; });
+  if ((id === "L7" || id === "H3") && Array.isArray(obj.wrong)) { obj.wrong = obj.wrong.map(Number).sort((a, b) => a - b); obj.items = obj.wrong.map(w => ({ answer: w })); }
+  if (id === "H7" && typeof obj.text === "string") {
+    const heard = obj.text.replace(/\{\{([^|}]*)\|([^}]*)\}\}/g, (_, a, b) => b);
+    obj.audio = { plays: 1, script: [{ speaker: "", text: heard }] };
+    obj.items = [1, 2, 3, 4].map(i => ({ prompt: "Abweichung " + i, answer: "ok" }));
+  }
+  if (id === "H4") { obj.speakers = obj.speakers || obj.persons; if (Array.isArray(obj.items)) obj.items.forEach(it => { it.answer = Number(it.answer); }); }
+  if (Array.isArray(obj.items)) {
+    if (["L3", "L5", "H6"].includes(id)) obj.items.forEach(it => { if (typeof it.answer === "string" && /^[a-d]$/i.test(it.answer.trim())) it.answer = TD_KEYS.indexOf(it.answer.trim().toLowerCase()); else it.answer = Number(it.answer); });
+    if (["H1", "H2", "H5"].includes(id)) obj.items.forEach(it => { if (!Array.isArray(it.alts)) it.alts = it.alts ? [String(it.alts)] : []; if (it.answer != null && !it.alts.includes(it.answer)) it.alts.unshift(String(it.answer)); it.answer = String(it.answer == null ? "" : it.answer); });
+  }
+  if (id === "L5" && !Array.isArray(obj.cats)) obj.cats = ["Stadt", "Land", "beide", "passt nicht"];
+  return obj;
+}
+function tdValidate(part, obj) {
+  const id = part.id, P = [], items = obj.items;
+  const need = (cond, msg) => { if (!cond) P.push(msg); };
+  const hasAudio = () => need(obj.audio && Array.isArray(obj.audio.script) && obj.audio.script.length && obj.audio.script.every(l => l && String(l.text || "").trim()), "audio.script fehlt oder ist leer");
+  const marks = (re, txt) => new Set((String(txt || "").match(re) || []).map(m => m.replace(/\D/g, "")));
+  const nItems = (n) => need(Array.isArray(items) && items.length === n, "erwartet " + n + " Items, erhalten " + (items ? items.length : 0));
+  const opts4 = () => (items || []).forEach((it, i) => need(Array.isArray(it.options) && it.options.length === 4, "Item " + (i + 1) + ": genau 4 Optionen nötig"));
+  const idxOk = (max) => (items || []).forEach((it, i) => need(Number.isInteger(it.answer) && it.answer >= 0 && it.answer < max, "Item " + (i + 1) + ": answer muss ein Index 0-" + (max - 1) + " sein"));
+  const sa = () => (items || []).forEach((it, i) => need(String(it.answer || "").trim(), "Item " + (i + 1) + ": answer fehlt"));
+  switch (id) {
+    case "L1": need(obj.passage, "passage fehlt"); need(marks(/\[[1-5]\]/g, obj.passage).size === 5, "passage braucht die Marker [1] bis [5]"); nItems(5); opts4();
+      (items || []).forEach((it, i) => need(/^[a-d]$/.test(it.answer), "Item " + (i + 1) + ": answer muss a-d sein")); break;
+    case "L2": need(Array.isArray(obj.paras) && obj.paras.length === 5, "paras: genau 5 Absätze"); need(Array.isArray(obj.order) && obj.order.length === 5, "order: genau 5 Schlüssel");
+      if (Array.isArray(obj.paras) && Array.isArray(obj.order)) { const ks = obj.paras.map(p => p.key); need(new Set(ks).size === 5 && obj.order.every(k => ks.includes(k)) && new Set(obj.order).size === 5, "order muss jeden Schlüssel aus paras genau einmal nennen"); } nItems(4); break;
+    case "L3": need(obj.passage, "passage fehlt"); need(marks(/\([1-7]\)/g, obj.passage).size >= 6, "passage braucht Absatznummern (1) bis (7)"); nItems(7); opts4(); idxOk(4); break;
+    case "L4": need(obj.passage, "passage fehlt"); need(marks(/\[[1-4]\]/g, obj.passage).size === 4, "passage braucht die Marker [1] bis [4]"); nItems(4);
+      (items || []).forEach((it, i) => need(/^[a-h]$/.test(it.answer), "Item " + (i + 1) + ": answer muss a-h sein")); need(new Set((items || []).map(i => i.answer)).size === (items || []).length, "die 4 Sprachhandlungen müssen verschieden sein"); break;
+    case "L5": need(obj.passage, "passage fehlt"); need(Array.isArray(obj.cats) && obj.cats.length === 4, "cats: genau 4 Kategorien"); nItems(7); idxOk(4); break;
+    case "L6": need(obj.passage, "passage fehlt"); need(Array.isArray(obj.pair) && obj.pair.length === 2, "pair: genau 2 Begriffe");
+      need(Array.isArray(obj.statements) && obj.statements.length === 8, "statements: genau 8 Aussagen");
+      if (Array.isArray(obj.statements)) { const c = obj.statements.filter(s => s.col === 0 || s.col === 1); need(c.length === 4, "genau 4 Aussagen mit col 0/1 (erhalten " + c.length + ")"); need(obj.statements.every(s => s.t), "jede Aussage braucht t"); } nItems(4); break;
+    case "L7": need(obj.passage, "passage fehlt"); need(tdChartFix(obj.chart), "chart ungültig (cats/series.values gleich lang)"); need(Array.isArray(obj.summary) && obj.summary.length >= 5, "summary: mindestens 5 Sätze");
+      need(Array.isArray(obj.wrong) && obj.wrong.length === 3 && new Set(obj.wrong).size === 3 && obj.wrong.every(w => Number.isInteger(w) && w >= 0 && w < (obj.summary || []).length), "wrong: genau 3 verschiedene gültige Indizes"); nItems(3); break;
+    case "H1": hasAudio(); need(obj.grid && Array.isArray(obj.grid.cols) && Array.isArray(obj.grid.rows), "grid mit cols und rows fehlt"); need(marks(/\[\[[1-5]\]\]/g, JSON.stringify(obj.grid || {})).size === 5, "das Raster braucht die Eingabefelder [[1]] bis [[5]]"); nItems(5); sa(); break;
+    case "H2": hasAudio(); need(Array.isArray(obj.persons) && obj.persons.length === 2, "persons: genau 2"); nItems(4); sa(); break;
+    case "H3": hasAudio(); need(Array.isArray(obj.summary) && obj.summary.length >= 4, "summary: mindestens 4 Sätze");
+      need(Array.isArray(obj.wrong) && obj.wrong.length === 2 && new Set(obj.wrong).size === 2 && obj.wrong.every(w => Number.isInteger(w) && w >= 0 && w < (obj.summary || []).length), "wrong: genau 2 verschiedene gültige Indizes"); nItems(2); break;
+    case "H4": hasAudio(); need(Array.isArray(obj.persons) && obj.persons.length === 2, "persons: genau 2"); nItems(6); idxOk(4); break;
+    case "H5": hasAudio(); need(obj.slideTitle, "slideTitle fehlt"); nItems(4); sa(); break;
+    case "H6": hasAudio(); nItems(5); opts4(); idxOk(4); break;
+    case "H7": need(typeof obj.text === "string" && (obj.text.match(/\{\{[^|}]+\|[^}]+\}\}/g) || []).length === 4, "text braucht genau 4 Paare {{geschrieben|gehört}}"); break;
+    case "S1": need(obj.task, "task fehlt"); need(obj.situation, "situation fehlt"); break;
+    case "S2": need(obj.task, "task fehlt"); need(obj.text, "text fehlt"); need(tdChartFix(obj.chart), "chart ungültig"); break;
+    case "P3": need(obj.text, "text fehlt"); need(obj.task, "task fehlt"); break;
+    case "P4": need(obj.task, "task fehlt"); need(tdChartFix(obj.chart), "chart ungültig"); need(obj.statement && Array.isArray(obj.statement.script) && obj.statement.script.length, "statement.script fehlt"); break;
+    case "P5": need(obj.task, "task fehlt"); need(obj.outline && Array.isArray(obj.outline.points) && obj.outline.points.length >= 3, "outline.points: mindestens 3 Punkte"); break;
+    case "P6": need(obj.task, "task fehlt"); need(obj.statement && Array.isArray(obj.statement.script) && obj.statement.script.length, "statement.script fehlt"); break;
+    case "P7": need(obj.task, "task fehlt"); need(obj.notice && obj.notice.text, "notice.text fehlt"); break;
+    default: need(obj.task, "task fehlt");
+  }
+  return P;
+}
+
 /* telc: Schemata für die neuen Aufgabenformate (KI-Erzeugung) */
 function telcSchema(part, level) {
   const f = part.format, n = part.items || 1, base = '"title": "kurzer Titel", "instruction": "Arbeitsanweisung auf Deutsch (wie im telc-Aufgabenheft)"';
@@ -4440,6 +4569,7 @@ function telcSchema(part, level) {
 }
 
 function schemaFor(part, ex, level) {
+  if (ex && ex.id === "testdaf") { const ts = tdSchema(part); if (ts) return ts; }
   if (ex && ex.id === "telc") { const ts = telcSchema(part, level); if (ts) return ts; }
   const f = part.format, n = part.items || 1;
   const base = '"title": "kurzer Titel", "instruction": "Arbeitsanweisung auf Deutsch"';
@@ -4488,7 +4618,7 @@ function partPrompt(bp, mk, part, test) {
     `Aufgabenformat (intern): ${part.format}`,
     `Anzahl der Items: ${FORMATS[part.format]?.essay || FORMATS[part.format]?.spoken ? 1 : part.items}`,
     `Punkte pro Item: ${Math.round((part.ptsPerItem || 0) * 100) / 100}`,
-    `Bearbeitungszeit: ca. ${part.minutes} Minuten`,
+    part.minutes ? `Bearbeitungszeit: ca. ${part.minutes} Minuten` : null,
     part.plays ? `Der Hörtext wird ${part.plays}× abgespielt — passe die Informationsdichte daran an.` : null,
     part.words ? `Ziel-Wortzahl der Lernenden: ca. ${part.words}.` : null,
     `Themenbereiche dieser Prüfung: ${bp.topics}`,
@@ -4497,12 +4627,14 @@ function partPrompt(bp, mk, part, test) {
     schemaFor(part, ex, test.level),
     "",
     "Wichtige Regeln:",
+    ...(ex.id === "testdaf" ? TD_RULES : [
     "- 'answer' bei Optionsaufgaben ist der 0-basierte Index der richtigen Option, als Zahl.",
     "- 'answer' bei Zuordnungen mit 'bank' ist der Buchstabenschlüssel als String.",
     "- Bei Lückentexten muss die Zahl der Marker ___N___ exakt der Zahl der Items entsprechen.",
     "- Verteile die richtigen Lösungen gleichmäßig über die Optionen, nicht überwiegend auf eine Position.",
     "- Nenne keine realen Personen des öffentlichen Lebens und erfinde keine Statistiken, die nach Tatsachenbehauptung klingen; bleibe bei plausiblen, klar fiktiven Beispielen.",
     "- Antworte NUR mit dem JSON-Objekt."
+    ]),
   ].filter(Boolean);
   return lines.join("\n");
 }
@@ -4510,10 +4642,11 @@ function partPrompt(bp, mk, part, test) {
 /* =========================================================================
    VALIDATION / REPAIR
    ======================================================================= */
-function validatePart(part, obj) {
+function validatePart(part, obj, exam) {
   const f = part.format, fmt = FORMATS[f] || {};
   const problems = [];
   if (!obj || typeof obj !== "object") return ["Keine Objektstruktur erhalten."];
+  if (exam === "testdaf") return tdValidate(part, obj);
 
   if (fmt.essay) { if (!obj.prompt && !(Array.isArray(obj.tasks) && obj.tasks.length)) problems.push("prompt bzw. tasks fehlt"); return problems; }
   if (fmt.spoken) { if (!obj.prompt) problems.push("prompt fehlt"); return problems; }
@@ -4540,7 +4673,8 @@ function validatePart(part, obj) {
   return problems;
 }
 
-function normalisePart(part, obj) {
+function normalisePart(part, obj, exam) {
+  if (exam === "testdaf") return tdNormalise(part, obj);
   const fmt = FORMATS[part.format] || {};
   // personas-based matching: allow numeric or letter answers
   if (obj.personas && Array.isArray(obj.items)) {
@@ -4568,7 +4702,6 @@ function normalisePart(part, obj) {
    GENERATION
    ======================================================================= */
 async function aiGeneratePart(testId, mk, partId, silent = false) {
-  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { if (!silent) toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId);
   if (!test) return;
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }
@@ -4591,8 +4724,8 @@ async function aiGeneratePart(testId, mk, partId, silent = false) {
       const raw = await AI.call(messages, { temperature: attempt === 1 ? undefined : 0.5 });
       let obj = AI.parseJSON(raw);
       if (Array.isArray(obj)) obj = obj[0];
-      obj = normalisePart(part, obj);
-      const problems = validatePart(part, obj);
+      obj = normalisePart(part, obj, test.exam);
+      const problems = validatePart(part, obj, test.exam);
       if (problems.length) { lastErr = problems.join("; "); AI.log("  Versuch " + attempt + " verworfen: " + lastErr, "er"); continue; }
 
       test.content[mk] = test.content[mk] || {};
@@ -4614,7 +4747,6 @@ async function aiGeneratePart(testId, mk, partId, silent = false) {
 }
 
 async function aiGenerateModule(testId, mk, silent = false) {
-  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId);
   if (!test) return toast("Kein Modelltest ausgewählt.", "err");
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }
@@ -4638,7 +4770,6 @@ async function aiGenerateModule(testId, mk, silent = false) {
 }
 
 async function aiGenerateAll(testId) {
-  { const _t = testById(testId); if (_t && _t.exam === "testdaf") { toast("Für TestDaF ist die KI-Generierung deaktiviert (PDF-Schema). Aufgaben als JSON ablegen: modeltest/testdaf/SCHEMA.md", "err", 7000); return; } }
   const test = testById(testId || S.settings.testId);
   if (!test) return toast("Kein Modelltest ausgewählt.", "err");
   if (!AI.ready()) { go("settings"); return toast("Bitte zuerst den API-Schlüssel eintragen.", "err"); }

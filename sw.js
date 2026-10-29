@@ -14,7 +14,7 @@
    ======================================================================= */
 "use strict";
 
-const VERSION = "ps-cache-v5-telc-digital1";
+const VERSION = "ps-cache-v6-testdaf-ai1";
 const APP_SHELL = [
   "./",
   "./index.html",

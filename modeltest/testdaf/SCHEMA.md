@@ -33,3 +33,6 @@ Zeichen: `**fett**`, `__kursiv__`. Absätze durch Leerzeile.
 `audio.script` = `[{speaker, text}]`; optional `audioUrl` (mp3) ersetzt die Sprachausgabe. `video` (mp4) bei H4/H5.
 `chart` = `{title, cats[], series:[{name, values[], color?}], max, step, unit?, axis?, horizontal?, tags?}`.
 Kurzantworten (H1/H2/H5) werden gegen `answer` + `alts` toleranter abgeglichen (Schlüsselwörter, ≥60 %).
+
+## KI-Erzeugung
+Die KI-Generierung ist für TestDaF aktiv. Für jede der 23 Aufgaben (L1–L7, H1–H7, S1–S2, P1–P7) gibt es ein festes Feldschema (siehe oben). Antworten der KI werden geprüft (Markerzahl, Optionen, Indizes, Diagramm) und fehlende abgeleitete Felder automatisch ergänzt: `items` aus `order` (L2), `statements` (L6) und `wrong` (L7, H3); Hörtext und `items` aus dem `{{geschrieben|gehört}}`-Text (H7). Fehlerhafte Antworten werden verworfen und mit der konkreten Fehlermeldung neu angefragt.
