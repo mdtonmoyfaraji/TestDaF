@@ -1,4 +1,4 @@
-# Prüfungsstudio
+# TestDaF
 
 Einmal hochladen (danach nie wieder anfassen):
 - `index.html` — die App
